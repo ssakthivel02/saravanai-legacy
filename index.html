@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Sakthi AI Nexus — a private, provider-independent AI orchestration workspace.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://sakthiai.omsaravanabhava.org/">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <title>Sakthi AI Nexus | Private AI Orchestration</title>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="Sakthi AI Nexus home">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span><strong>Sakthi AI</strong><small>Nexus</small></span>
+    </a>
+    <div class="topbar-actions">
+      <span class="status-pill"><span class="status-dot"></span> Foundation Preview</span>
+      <button id="themeButton" class="icon-button" type="button" aria-label="Toggle colour theme" title="Toggle colour theme">◐</button>
+      <button id="menuButton" class="icon-button menu-button" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open navigation">☰</button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside id="sidebar" class="sidebar" aria-label="Primary navigation">
+      <nav>
+        <a href="#overview" data-route="overview" class="nav-item active"><span>◈</span> Overview</a>
+        <a href="#workspace" data-route="workspace" class="nav-item"><span>⌁</span> AI Workspace</a>
+        <a href="#research" data-route="research" class="nav-item"><span>◎</span> Research Studio</a>
+        <a href="#governance" data-route="governance" class="nav-item"><span>◇</span> Governance</a>
+        <a href="#roadmap" data-route="roadmap" class="nav-item"><span>↗</span> Roadmap</a>
+      </nav>
+
+      <div class="sidebar-section">
+        <p class="eyebrow">Release 001</p>
+        <div class="release-meter"><span></span></div>
+        <p class="muted small">Secure web/PWA foundation. Provider APIs are intentionally not connected yet.</p>
+      </div>
+
+      <div class="profile-card">
+        <span class="avatar">SS</span>
+        <span><strong>Private workspace</strong><small>Owner-only design</small></span>
+      </div>
+    </aside>
+
+    <main id="main-content" class="main-content" tabindex="-1">
+      <section id="view-overview" class="view active" data-view="overview">
+        <div class="hero-grid">
+          <article class="hero-card panel">
+            <p class="eyebrow">Private AI operating system</p>
+            <h1>One workspace.<br><span>Specialist intelligence.</span></h1>
+            <p class="hero-copy">A provider-independent foundation for research, reasoning, documents, coding, website delivery and evidence-based verification.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#workspace">Open workspace</a>
+              <a class="button secondary" href="#roadmap">View delivery plan</a>
+            </div>
+            <div class="trust-row" aria-label="Design principles">
+              <span>Human approval</span><span>Cost controls</span><span>Evidence first</span>
+            </div>
+          </article>
+
+          <article class="router-card panel" aria-labelledby="router-heading">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Orchestration preview</p><h2 id="router-heading">Smart Router</h2></div>
+              <span class="demo-label">UI simulation</span>
+            </div>
+            <div class="route-flow">
+              <div class="flow-step current"><span>01</span><div><strong>Classify</strong><small>Intent · risk · privacy</small></div></div>
+              <div class="flow-line"></div>
+              <div class="flow-step"><span>02</span><div><strong>Route</strong><small>Best specialist model</small></div></div>
+              <div class="flow-line"></div>
+              <div class="flow-step"><span>03</span><div><strong>Verify</strong><small>Evidence · critic · tests</small></div></div>
+            </div>
+            <div class="provider-row" aria-label="Planned phase one provider adapters">
+              <span class="provider-chip">OpenAI</span>
+              <span class="provider-chip">Claude</span>
+              <span class="provider-chip">Gemini</span>
+              <span class="provider-chip">Kimi</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-heading">
+          <div><p class="eyebrow">Core capabilities</p><h2>Built as a system, not a chatbot</h2></div>
+          <span class="muted">Planned modules</span>
+        </div>
+        <div class="capability-grid">
+          <article class="capability-card"><span class="card-icon">⌁</span><h3>Unified AI</h3><p>Automatic routing with manual provider override and failure fallback.</p><span class="tag planned">Phase 2</span></article>
+          <article class="capability-card"><span class="card-icon">◎</span><h3>Deep Research</h3><p>Source collection, contradiction checks, citations and evidence reports.</p><span class="tag planned">Phase 4</span></article>
+          <article class="capability-card"><span class="card-icon">▦</span><h3>Document Studio</h3><p>Controlled generation of reports, presentations, spreadsheets and PDFs.</p><span class="tag planned">Phase 5</span></article>
+          <article class="capability-card"><span class="card-icon">&lt;/&gt;</span><h3>Build Workspace</h3><p>Branch-first coding, isolated execution, testing and release evidence.</p><span class="tag planned">Phase 6</span></article>
+        </div>
+
+        <div class="metrics-grid">
+          <article class="metric panel"><span>Release state</span><strong>Foundation</strong><small>No live provider calls</small></article>
+          <article class="metric panel"><span>Architecture</span><strong>Provider-neutral</strong><small>Adapters replace hard-coding</small></article>
+          <article class="metric panel"><span>Deployment</span><strong>Cloudflare Pages</strong><small>Git-based preview workflow</small></article>
+          <article class="metric panel"><span>Mobile path</span><strong>PWA first</strong><small>Android/iOS after web validation</small></article>
+        </div>
+      </section>
+
+      <section id="view-workspace" class="view" data-view="workspace">
+        <div class="page-header"><div><p class="eyebrow">AI workspace</p><h1>Design the task before spending tokens.</h1></div><span class="demo-label">Safe preview</span></div>
+        <div class="workspace-grid">
+          <article class="composer panel">
+            <div class="composer-top">
+              <label for="taskType">Task mode</label>
+              <select id="taskType"><option>Automatic routing</option><option>Research</option><option>Document</option><option>Coding</option><option>Website build</option></select>
+            </div>
+            <label class="sr-only" for="promptInput">Describe your task</label>
+            <textarea id="promptInput" maxlength="1000" placeholder="Describe the outcome you need, the evidence required, and any constraints..."></textarea>
+            <div class="composer-footer">
+              <span id="characterCount" class="muted small">0 / 1000</span>
+              <button id="simulateButton" class="button primary" type="button">Simulate routing</button>
+            </div>
+          </article>
+
+          <aside class="panel decision-panel">
+            <p class="eyebrow">Routing decision</p>
+            <h2 id="decisionTitle">Awaiting a task</h2>
+            <p id="decisionText" class="muted">This release demonstrates the workflow without sending data to any external AI provider.</p>
+            <dl class="decision-list">
+              <div><dt>Privacy</dt><dd id="privacyValue">Not assessed</dd></div>
+              <div><dt>Suggested lane</dt><dd id="laneValue">Not selected</dd></div>
+              <div><dt>Verification</dt><dd id="verifyValue">Not selected</dd></div>
+              <div><dt>External cost</dt><dd>£0.00 in preview</dd></div>
+            </dl>
+          </aside>
+        </div>
+
+        <article id="simulationResult" class="panel simulation-result" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">Execution plan</p><h2>Proposed lifecycle</h2></div><button id="resetSimulation" class="text-button" type="button">Reset</button></div>
+          <ol class="execution-list">
+            <li><span>1</span><div><strong>Classify the request</strong><p>Determine task type, sensitivity, current-information need and maximum budget.</p></div></li>
+            <li><span>2</span><div><strong>Select the specialist lane</strong><p>Choose one primary provider and only add a critic when impact justifies the cost.</p></div></li>
+            <li><span>3</span><div><strong>Run approved tools</strong><p>Use allowlisted search, document, browser or code tools in an isolated workspace.</p></div></li>
+            <li><span>4</span><div><strong>Verify before delivery</strong><p>Attach citations, tests, changed files, limitations and rollback instructions.</p></div></li>
+          </ol>
+        </article>
+      </section>
+
+      <section id="view-research" class="view" data-view="research">
+        <div class="page-header"><div><p class="eyebrow">Research studio</p><h1>Claims should remain attached to evidence.</h1></div><span class="tag foundation">Foundation design</span></div>
+        <div class="research-layout">
+          <article class="panel source-library">
+            <div class="panel-heading"><div><p class="eyebrow">Evidence library</p><h2>Sources</h2></div><button class="text-button" type="button" disabled>+ Add later</button></div>
+            <div class="source-card"><span>DOC</span><div><strong>Development Plan</strong><small>Architecture and due diligence</small></div><em>Reference</em></div>
+            <div class="source-card"><span>WEB</span><div><strong>Official documentation</strong><small>Provider and deployment sources</small></div><em>Required</em></div>
+            <div class="source-card"><span>LOG</span><div><strong>Execution evidence</strong><small>Tests, screenshots and API results</small></div><em>Planned</em></div>
+          </article>
+          <article class="panel synthesis-card">
+            <p class="eyebrow">Synthesis standard</p>
+            <h2>Answer only what the evidence supports.</h2>
+            <p>A finished research task will separate retrieved facts, model inference and unresolved uncertainty. Citations will point to the precise source used.</p>
+            <blockquote>“No invented citations. No completion claim without evidence.”</blockquote>
+            <div class="reliability-row"><span><strong>Source quality</strong><small>Primary sources preferred</small></span><span><strong>Contradictions</strong><small>Shown, not hidden</small></span><span><strong>Freshness</strong><small>Date checked</small></span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="view-governance" class="view" data-view="governance">
+        <div class="page-header"><div><p class="eyebrow">Governance and sentry</p><h1>Autonomy without control is a defect.</h1></div><span class="tag foundation">Design baseline</span></div>
+        <div class="governance-grid">
+          <article class="panel governance-score"><span class="score-ring">01</span><div><p class="eyebrow">Current control state</p><h2>Foundation only</h2><p class="muted">No external model credentials, personal memory or write-capable tools are included in Release 001.</p></div></article>
+          <article class="panel"><p class="eyebrow">Mandatory approval gates</p><div class="policy-list"><span>Email sending <b>Required</b></span><span>Production deployment <b>Required</b></span><span>DNS modification <b>Required</b></span><span>Administrative commands <b>Required</b></span></div></article>
+          <article class="panel"><p class="eyebrow">Data boundary</p><div class="policy-list"><span>Keys in browser <b class="danger">Prohibited</b></span><span>Secrets in Git <b class="danger">Prohibited</b></span><span>Unverified completion <b class="danger">Prohibited</b></span><span>Provider-specific lock-in <b>Minimise</b></span></div></article>
+        </div>
+        <article class="panel evidence-manifest"><p class="eyebrow">Evidence manifest</p><h2>Every significant task must disclose:</h2><div class="manifest-grid"><span>Objective</span><span>Models used</span><span>Tools called</span><span>Sources</span><span>Files changed</span><span>Commands</span><span>Tests</span><span>Known limits</span><span>Cost</span><span>Approvals</span><span>Rollback</span><span>Confidence</span></div></article>
+      </section>
+
+      <section id="view-roadmap" class="view" data-view="roadmap">
+        <div class="page-header"><div><p class="eyebrow">Delivery roadmap</p><h1>Build capability in controlled releases.</h1></div><span class="tag foundation">Release 001</span></div>
+        <div class="timeline">
+          <article class="timeline-item active"><span>001</span><div><p class="eyebrow">Now</p><h2>Secure web/PWA foundation</h2><p>Responsive shell, deployment pipeline, offline fallback, security headers, documentation and quality gate.</p></div><b>Current</b></article>
+          <article class="timeline-item"><span>002</span><div><p class="eyebrow">Next</p><h2>Unified provider chat</h2><p>Server-side OpenAI, Claude, Gemini and Kimi adapters, streaming and provider health.</p></div><b>Planned</b></article>
+          <article class="timeline-item"><span>003</span><div><p class="eyebrow">Then</p><h2>Router, costs and fallback</h2><p>Task classification, budget modes, automatic routing, audit events and resilient fallback.</p></div><b>Planned</b></article>
+          <article class="timeline-item"><span>004–010</span><div><p class="eyebrow">Controlled expansion</p><h2>Research, documents, coding, action tools and mobile</h2><p>Each module enters only after the preceding release passes regression and security review.</p></div><b>Later</b></article>
+        </div>
+      </section>
+
+      <footer class="footer"><span>© 2026 Sakthi AI Nexus</span><span>Private personal-use foundation · v0.1.0</span></footer>
+    </main>
+  </div>
+
+  <noscript><div class="noscript">JavaScript is required for the workspace navigation. The release documentation remains available in the GitHub repository.</div></noscript>
+  <script type="module" src="/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sakthiai.omsaravanabhava.org/sitemap.xml
