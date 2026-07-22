@@ -1,0 +1,15 @@
+{
+  "name": "Sakthi AI Nexus",
+  "short_name": "Sakthi AI",
+  "description": "Private provider-independent AI orchestration workspace.",
+  "start_url": "/#overview",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "orientation": "any",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    {"src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}

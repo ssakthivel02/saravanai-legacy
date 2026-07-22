@@ -1,0 +1,13 @@
+{
+  "name": "sakthi-ai-nexus",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Release 001: secure static web/PWA foundation for Sakthi AI Nexus.",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "npm run validate && npm run build"
+  },
+  "engines": {"node": ">=20"}
+}
