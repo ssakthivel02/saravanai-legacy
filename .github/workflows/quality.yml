@@ -1,0 +1,30 @@
+name: Quality Gate
+
+on:
+  push:
+    branches: [main, "release/**"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate and build
+        run: npm test
+      - name: Upload production artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sakthiai-pages-dist
+          path: dist
+          if-no-files-found: error
