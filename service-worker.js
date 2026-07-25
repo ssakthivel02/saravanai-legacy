@@ -1,5 +1,5 @@
-const CACHE='sakthiai-v2';
-const CORE=['/','/index.html','/assets/styles.css','/assets/release002.css','/assets/app.js','/assets/favicon.svg','/manifest.webmanifest','/offline.html'];
+const CACHE='sakthiai-v3';
+const CORE=['/','/index.html','/assets/styles.css','/assets/release002.css','/assets/release003.css','/assets/app.js','/assets/favicon.svg','/manifest.webmanifest','/offline.html'];
 
 self.addEventListener('install',(event)=>{
   event.waitUntil(caches.open(CACHE).then((cache)=>cache.addAll(CORE)).then(()=>self.skipWaiting()));

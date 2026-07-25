@@ -1,7 +1,7 @@
 {
   "name": "Sakthi AI Nexus",
   "short_name": "Sakthi AI",
-  "description": "Public, team-ready AI operating platform for chat, research, documents, coding and governed automation.",
+  "description": "Public multi-provider AI platform for streaming chat, fresh cited research, documents, coding and governed automation.",
   "start_url": "/#overview",
   "scope": "/",
   "display": "standalone",

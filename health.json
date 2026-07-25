@@ -2,7 +2,7 @@
   "status": "ok",
   "service": "sakthi-ai-nexus-web",
   "environment": "production",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "apiVersion": "v1",
-  "message": "Release 002 public web workspace and server-side AI gateway are available. Use /api/v1/status for live runtime state."
+  "message": "Release 003 multi-provider routing, streaming and fresh cited web research are available. Use /api/v1/status for live runtime state."
 }
