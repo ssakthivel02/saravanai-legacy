@@ -1,8 +1,8 @@
 {
   "name": "sakthi-ai-nexus",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
-  "description": "Release 002: public team-ready SakthiAI workspace with a guarded server-side Workers AI runtime.",
+  "description": "Release 003: multi-provider SakthiAI workspace with streaming and fresh cited web research.",
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate.mjs",
