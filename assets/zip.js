@@ -1,3 +1,5 @@
+import './task-capture.js';
+
 const CRC_TABLE = (() => {
   const table = new Uint32Array(256);
   for (let n = 0; n < 256; n += 1) {
