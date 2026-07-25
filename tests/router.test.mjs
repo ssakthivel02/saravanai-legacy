@@ -3,9 +3,11 @@ import assert from 'node:assert/strict';
 import {
   containsSecret,
   extractAnswer,
+  isProviderBlocked,
   premiumEnabled,
   providerStatus,
   requiresFreshResearch,
+  resolveModel,
   selectRoute,
   uniqueCitations
 } from '../src/router.js';
@@ -28,15 +30,38 @@ test('router sends current information to free research and routine work to edge
   assert.equal(chat.provider, 'workers-ai');
 });
 
-test('premium routes remain explicit but disabled by production cost policy until enabled', () => {
+test('paid routes need both the feature flag and explicit owner acknowledgement', () => {
   assert.equal(selectRoute({ prompt: 'Refactor this code', mode: 'coding', provider: 'openai' }).provider, 'openai');
-  assert.equal(selectRoute({ prompt: 'Refactor this code', mode: 'coding', provider: 'auto', budget: 'premium' }).provider, 'openai');
-  assert.equal(selectRoute({ prompt: 'Create a report', mode: 'document', provider: 'auto', budget: 'premium' }).provider, 'gemini');
   assert.equal(premiumEnabled({}), false);
-  assert.equal(premiumEnabled({ PREMIUM_PROVIDERS_ENABLED: 'true' }), true);
+  assert.equal(premiumEnabled({ PREMIUM_PROVIDERS_ENABLED: 'true' }), false);
+  assert.equal(premiumEnabled({
+    PREMIUM_PROVIDERS_ENABLED: 'true',
+    PAID_PROVIDER_OWNER_APPROVAL: 'I_ACKNOWLEDGE_CHARGES'
+  }), true);
+
   const openai = providerStatus({ AI: {} }).find((provider) => provider.id === 'openai');
   assert.equal(openai.selectable, false);
   assert.equal(openai.health, 'disabled-cost-control');
+});
+
+test('Kimi is blocked, not selectable and resolves only to Sakthi Edge', () => {
+  assert.equal(isProviderBlocked('kimi'), true);
+  const route = selectRoute({ prompt: 'Explain landing zones', provider: 'kimi' });
+  assert.equal(route.provider, 'workers-ai');
+  assert.equal(route.reason, 'blocked-provider-kimi');
+  assert.equal(route.blockedProvider, 'kimi');
+  assert.equal(resolveModel('kimi').provider, 'workers-ai');
+  assert.match(resolveModel('kimi').model, /^@cf\/meta\//);
+
+  const kimi = providerStatus({
+    AI: {},
+    PREMIUM_PROVIDERS_ENABLED: 'true',
+    PAID_PROVIDER_OWNER_APPROVAL: 'I_ACKNOWLEDGE_CHARGES'
+  }).find((provider) => provider.id === 'kimi');
+  assert.equal(kimi.selectable, false);
+  assert.equal(kimi.live, false);
+  assert.equal(kimi.health, 'disabled-owner-policy');
+  assert.equal(kimi.blockedByOwnerPolicy, true);
 });
 
 test('secret detector rejects credential-shaped values', () => {

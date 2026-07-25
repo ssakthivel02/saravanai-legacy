@@ -1,4 +1,4 @@
-export const RELEASE = '0.3.1';
+export const RELEASE = '0.11.0-owner-security';
 export const DEFAULT_GATEWAY = 'default';
 
 export const MODEL_CATALOG = {
@@ -34,7 +34,7 @@ export const MODEL_CATALOG = {
     provider: 'kimi',
     label: 'Kimi',
     model: '@cf/moonshotai/kimi-k2.6',
-    costClass: 'included-or-metered',
+    costClass: 'blocked',
     webSearch: false
   }
 };
@@ -70,11 +70,17 @@ export function normaliseProvider(value) {
 }
 
 export function isPremiumProvider(provider) {
-  return ['openai', 'anthropic', 'gemini'].includes(provider);
+  return ['openai', 'anthropic', 'gemini', 'kimi'].includes(provider);
+}
+
+export function isProviderBlocked(provider) {
+  return provider === 'kimi';
 }
 
 export function premiumEnabled(env = {}) {
-  return String(env.PREMIUM_PROVIDERS_ENABLED || '').toLowerCase() === 'true';
+  const featureFlag = String(env.PREMIUM_PROVIDERS_ENABLED || '').toLowerCase() === 'true';
+  const ownerApproval = String(env.PAID_PROVIDER_OWNER_APPROVAL || '') === 'I_ACKNOWLEDGE_CHARGES';
+  return featureFlag && ownerApproval;
 }
 
 export function selectRoute({ prompt = '', mode = 'automatic', provider = 'auto', budget = 'balanced' } = {}) {
@@ -93,13 +99,25 @@ export function selectRoute({ prompt = '', mode = 'automatic', provider = 'auto'
     };
   }
 
+  if (isProviderBlocked(safeProvider)) {
+    return {
+      kind: 'chat',
+      provider: 'workers-ai',
+      reason: `blocked-provider-${safeProvider}`,
+      freshnessRequired: false,
+      budgetClass: 'economy',
+      blockedProvider: safeProvider,
+      premiumBlocked: true
+    };
+  }
+
   if (safeProvider !== 'auto' && safeProvider !== 'free-research') {
     return {
       kind: 'chat',
       provider: safeProvider,
       reason: 'user-override',
       freshnessRequired: false,
-      budgetClass: safeProvider === 'workers-ai' || safeProvider === 'kimi' ? 'economy' : 'premium'
+      budgetClass: safeProvider === 'workers-ai' ? 'economy' : 'premium'
     };
   }
 
@@ -119,12 +137,14 @@ export function selectRoute({ prompt = '', mode = 'automatic', provider = 'auto'
 }
 
 export function resolveModel(provider, env = {}) {
+  if (isProviderBlocked(provider)) {
+    return { ...MODEL_CATALOG.edge, blockedProvider: provider };
+  }
   const overrides = {
     'workers-ai': env.EDGE_MODEL,
     openai: env.OPENAI_MODEL,
     anthropic: env.ANTHROPIC_MODEL,
-    gemini: env.GEMINI_MODEL,
-    kimi: env.KIMI_MODEL
+    gemini: env.GEMINI_MODEL
   };
   const key = provider === 'workers-ai' ? 'edge' : provider;
   const entry = MODEL_CATALOG[key] || MODEL_CATALOG.edge;
@@ -159,8 +179,9 @@ export function providerStatus(env = {}) {
       webSearch: true
     },
     ...Object.values(MODEL_CATALOG).map((entry) => {
-      const premium = entry.costClass === 'premium';
-      const selectable = hasAi && (!premium || allowPremium);
+      const blocked = isProviderBlocked(entry.provider);
+      const premium = isPremiumProvider(entry.provider);
+      const selectable = hasAi && !blocked && (!premium || allowPremium);
       return {
         id: entry.provider,
         name: entry.label,
@@ -168,10 +189,19 @@ export function providerStatus(env = {}) {
         configured: selectable,
         selectable,
         live: selectable && !premium,
-        health: !hasAi ? 'missing-binding' : premium && !allowPremium ? 'disabled-cost-control' : premium ? 'gateway-on-demand' : 'ready',
+        health: !hasAi
+          ? 'missing-binding'
+          : blocked
+            ? 'disabled-owner-policy'
+            : premium && !allowPremium
+              ? 'disabled-cost-control'
+              : premium
+                ? 'gateway-on-demand'
+                : 'ready',
         costClass: entry.costClass,
         webSearch: entry.webSearch,
-        optionalPaid: premium
+        optionalPaid: premium,
+        blockedByOwnerPolicy: blocked
       };
     })
   ];

@@ -80,12 +80,12 @@ function post(path, body, extraHeaders = {}) {
   });
 }
 
-test('status endpoint reports Release 003.1 free-first capabilities', async () => {
+test('status endpoint reports Release 011 free-first security capabilities', async () => {
   const response = await worker.fetch(new Request(`${origin}/api/v1/status`), environment());
   assert.equal(response.status, 200);
   const body = await response.json();
   assert.equal(body.status, 'ok');
-  assert.equal(body.release, '0.3.1');
+  assert.equal(body.release, '0.11.0-owner-security');
   assert.equal(body.aiRuntime, true);
   assert.equal(body.costPolicy, 'free-first');
   assert.equal(body.premiumProvidersEnabled, false);

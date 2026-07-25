@@ -1,4 +1,4 @@
-const RELEASE = '0.10-owner-preview';
+const RELEASE = '0.11.0-owner-security';
 
 function json(data, status = 200) {
   return Response.json(data, {
@@ -27,7 +27,8 @@ function bindings(env) {
     aiSearch: Boolean(env.AI_SEARCH && typeof env.AI_SEARCH.get === 'function'),
     workersAi: Boolean(env.AI),
     ownerIngestionSecret: typeof env.SAKTHI_INGEST_TOKEN === 'string' && env.SAKTHI_INGEST_TOKEN.length >= 24,
-    premiumProvidersEnabled: String(env.PREMIUM_PROVIDERS_ENABLED || '').toLowerCase() === 'true'
+    premiumProvidersEnabled: false,
+    kimiEnabled: false
   };
 }
 
@@ -42,14 +43,15 @@ export async function handleOwnerApi(request, env, url) {
       costPolicy: 'free-first',
       publicRegistration: false,
       features: {
-        projects: { local: true, server: state.d1 },
-        conversations: { local: true, server: state.d1 },
+        projects: { local: true, server: state.d1, privacyLock: true },
+        conversations: { local: true, server: state.d1, encryptedExport: true },
         identity: { ownerLocal: true, cloudflareAccessReady: true, publicAccounts: false },
         artifacts: { docx: true, xlsx: true, pptx: true, printPdf: true, codeZip: true, localGeneration: true },
         approvals: { dryRun: true, externalWrites: false },
         memory: { ownerApprovedOnly: true, local: true, server: state.d1 },
         knowledgeGraph: { local: true, server: state.d1 },
-        usageLedger: { local: true, server: state.d1, paidCallsBlocked: !state.premiumProvidersEnabled },
+        usageLedger: { local: true, server: state.d1, paidCallsBlocked: true },
+        backupSecurity: { aes256Gcm: true, pbkdf2Sha256: true, plaintextExport: false },
         mobile: { pwa: true, nativeClients: 'api-contract-prepared-not-released' }
       },
       bindings: state,
@@ -72,9 +74,11 @@ export async function handleOwnerApi(request, env, url) {
       mode: identity.authenticated ? 'authenticated-owner' : 'local-owner-preview',
       identity,
       serverWritesAllowed: false,
+      localPrivacyLock: true,
+      encryptedBackups: true,
       message: identity.authenticated
         ? 'Cloudflare Access identity detected. Server write APIs remain disabled until D1/RBAC activation.'
-        : 'No server identity detected. Browser-local owner features remain available on this device.'
+        : 'No server identity detected. Browser-local owner features require the local privacy lock on this device.'
     });
   }
 
@@ -88,6 +92,7 @@ export async function handleOwnerApi(request, env, url) {
       currentClient: 'installable PWA',
       nativeClients: { android: 'not-released', ios: 'not-released' },
       endpoints: {
+        health: '/health',
         status: '/api/v1/status',
         chat: '/api/v1/chat',
         stream: '/api/v1/chat/stream',
