@@ -3,10 +3,10 @@ import { existsSync } from 'node:fs';
 
 const required = [
   'index.html','offline.html','manifest.webmanifest','service-worker.js','health.json',
-  'assets/styles.css','assets/release002.css','assets/release003.css','assets/owner-platform.css','assets/owner-security.css','assets/app.js','assets/owner-platform.js','assets/artifact-formats.js','assets/zip.js','assets/task-capture.js','assets/release-labels.js','assets/owner-security.js','assets/favicon.svg','assets/fallback.css',
+  'assets/styles.css','assets/release002.css','assets/release003.css','assets/owner-platform.css','assets/owner-security.css','assets/governance-dashboard.css','assets/app.js','assets/owner-platform.js','assets/artifact-formats.js','assets/zip.js','assets/task-capture.js','assets/release-labels.js','assets/owner-security.js','assets/governance-dashboard.js','assets/favicon.svg','assets/fallback.css',
   'src/entry.js','src/worker.js','src/router.js','src/free-research.js','src/files.js','src/owner-api.js','src/governance.js','wrangler.jsonc','_headers','_redirects',
   'migrations/0001_owner_platform.sql','migrations/0002_governance_assurance.sql','openapi/sakthiai-v1.yaml','openapi/sakthiai-governance-v1.yaml',
-  'docs/RELEASE_003_IMPLEMENTATION.md','docs/RELEASE_003_1_FREE_RESEARCH.md','docs/RELEASE_004_IMPLEMENTATION.md','docs/RELEASE_005_TO_010_ROADMAP.md','docs/RELEASE_011_SECURITY_AND_GLOBAL_SAFETY.md','docs/RELEASE_012_TO_020_MASTER_PLAN.md'
+  'docs/RELEASE_003_IMPLEMENTATION.md','docs/RELEASE_003_1_FREE_RESEARCH.md','docs/RELEASE_004_IMPLEMENTATION.md','docs/RELEASE_005_TO_010_ROADMAP.md','docs/RELEASE_011_OWNER_SECURITY.md','docs/RELEASE_012_TO_020_MASTER_PLAN.md'
 ];
 
 for (const file of required) {
@@ -64,8 +64,13 @@ for (const marker of ['PBKDF2_ITERATIONS','AES-GCM','createOwnerLockVerifier','v
 }
 
 const taskCapture = await readFile(new URL('../assets/task-capture.js', import.meta.url), 'utf8');
-for (const marker of ["import './release-labels.js'","import './owner-security.js'",'sakthiai:task-complete']) {
+for (const marker of ["import './release-labels.js'","import './owner-security.js'","import './governance-dashboard.js'",'sakthiai:task-complete']) {
   if (!taskCapture.includes(marker)) throw new Error(`assets/task-capture.js missing marker: ${marker}`);
+}
+
+const governanceDashboard = await readFile(new URL('../assets/governance-dashboard.js', import.meta.url), 'utf8');
+for (const marker of ['/api/v1/governance','governanceProgramme','certificationClaims','serverTenantWritesEnabled','Mandatory production launch gates']) {
+  if (!governanceDashboard.includes(marker)) throw new Error(`assets/governance-dashboard.js missing marker: ${marker}`);
 }
 
 const artifactFormats = await readFile(new URL('../assets/artifact-formats.js', import.meta.url), 'utf8');
@@ -98,7 +103,7 @@ for (const marker of ['/api/v1/status','/api/v1/chat/stream','/api/v1/research',
   if (!app.includes(marker)) throw new Error(`assets/app.js missing marker: ${marker}`);
 }
 
-const combined = `${html}\n${entry}\n${worker}\n${router}\n${governance}\n${freeResearch}\n${files}\n${ownerApi}\n${ownerPlatform}\n${ownerSecurity}\n${artifactFormats}\n${app}`;
+const combined = `${html}\n${entry}\n${worker}\n${router}\n${governance}\n${freeResearch}\n${files}\n${ownerApi}\n${ownerPlatform}\n${ownerSecurity}\n${governanceDashboard}\n${artifactFormats}\n${app}`;
 if (/sk-[A-Za-z0-9]{20,}|AIza[A-Za-z0-9_-]{20,}/.test(combined)) throw new Error('Potential API key found in source files');
 
 const manifest = JSON.parse(await readFile(new URL('../manifest.webmanifest', import.meta.url), 'utf8'));
