@@ -1,18 +1,19 @@
-const form = document.getElementById('taskForm');
-const title = document.getElementById('responseTitle');
-const body = document.getElementById('responseBody');
-const panel = document.getElementById('responsePanel');
+const doc = globalThis.document;
+const form = doc?.getElementById('taskForm');
+const title = doc?.getElementById('responseTitle');
+const body = doc?.getElementById('responseBody');
+const panel = doc?.getElementById('responsePanel');
 let pending = null;
 let lastSignature = '';
 let timer = null;
 
 function metaValue(id, prefix) {
-  const text = document.getElementById(id)?.textContent || '';
+  const text = doc?.getElementById(id)?.textContent || '';
   return text.startsWith(prefix) ? text.slice(prefix.length).trim() : text.trim();
 }
 
 function citations() {
-  return [...document.querySelectorAll('#citationList li')].map((item, index) => ({
+  return [...(doc?.querySelectorAll('#citationList li') || [])].map((item, index) => ({
     index: index + 1,
     title: item.querySelector('a')?.textContent?.replace(/^\d+\.\s*/, '') || '',
     url: item.querySelector('a')?.href || '',
@@ -44,23 +45,25 @@ function capture() {
     latencyMs: Number(metaValue('responseLatency', 'Latency:').replace(/\s*ms$/, '')) || 0,
     citations: citations()
   };
-  dispatchEvent(new CustomEvent(completed ? 'sakthiai:task-complete' : 'sakthiai:task-error', { detail }));
+  globalThis.dispatchEvent?.(new CustomEvent(completed ? 'sakthiai:task-complete' : 'sakthiai:task-error', { detail }));
   pending = null;
 }
 
 form?.addEventListener('submit', () => {
   pending = {
-    prompt: document.getElementById('promptInput')?.value?.trim() || '',
-    mode: document.getElementById('taskType')?.value || 'automatic',
-    providerRequested: document.getElementById('providerSelect')?.value || 'auto',
-    budget: document.getElementById('budgetSelect')?.value || 'economy',
+    prompt: doc?.getElementById('promptInput')?.value?.trim() || '',
+    mode: doc?.getElementById('taskType')?.value || 'automatic',
+    providerRequested: doc?.getElementById('providerSelect')?.value || 'auto',
+    budget: doc?.getElementById('budgetSelect')?.value || 'economy',
     startedAt: new Date().toISOString()
   };
   lastSignature = '';
 }, { capture: true });
 
-const observer = new MutationObserver(() => {
-  clearTimeout(timer);
-  timer = setTimeout(capture, 250);
-});
-if (panel) observer.observe(panel, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['class', 'hidden'] });
+if (panel && globalThis.MutationObserver) {
+  const observer = new MutationObserver(() => {
+    clearTimeout(timer);
+    timer = setTimeout(capture, 250);
+  });
+  observer.observe(panel, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['class', 'hidden'] });
+}
