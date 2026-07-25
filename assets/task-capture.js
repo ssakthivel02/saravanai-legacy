@@ -1,0 +1,66 @@
+const form = document.getElementById('taskForm');
+const title = document.getElementById('responseTitle');
+const body = document.getElementById('responseBody');
+const panel = document.getElementById('responsePanel');
+let pending = null;
+let lastSignature = '';
+let timer = null;
+
+function metaValue(id, prefix) {
+  const text = document.getElementById(id)?.textContent || '';
+  return text.startsWith(prefix) ? text.slice(prefix.length).trim() : text.trim();
+}
+
+function citations() {
+  return [...document.querySelectorAll('#citationList li')].map((item, index) => ({
+    index: index + 1,
+    title: item.querySelector('a')?.textContent?.replace(/^\d+\.\s*/, '') || '',
+    url: item.querySelector('a')?.href || '',
+    snippet: item.querySelector('p')?.textContent || ''
+  })).filter((item) => item.url);
+}
+
+function capture() {
+  if (!pending || !title || !body || panel?.hidden) return;
+  const titleText = title.textContent || '';
+  const answer = body.dataset.raw || body.textContent || '';
+  const completed = /completed/i.test(titleText);
+  const failed = /not completed/i.test(titleText);
+  if ((!completed && !failed) || !answer || body.classList.contains('loading')) return;
+  const signature = `${pending.startedAt}|${titleText}|${answer.length}|${answer.slice(-80)}`;
+  if (signature === lastSignature) return;
+  lastSignature = signature;
+
+  const detail = {
+    ...pending,
+    kind: pending.mode === 'research' ? 'research' : 'chat',
+    answer: completed ? answer : '',
+    error: failed ? answer : '',
+    provider: metaValue('responseProvider', 'Provider:'),
+    model: metaValue('responseModel', 'Model:'),
+    route: metaValue('responseRoute', 'Route:'),
+    costClass: metaValue('responseCost', 'Cost:'),
+    requestId: metaValue('responseRequestId', 'Request ID:'),
+    latencyMs: Number(metaValue('responseLatency', 'Latency:').replace(/\s*ms$/, '')) || 0,
+    citations: citations()
+  };
+  dispatchEvent(new CustomEvent(completed ? 'sakthiai:task-complete' : 'sakthiai:task-error', { detail }));
+  pending = null;
+}
+
+form?.addEventListener('submit', () => {
+  pending = {
+    prompt: document.getElementById('promptInput')?.value?.trim() || '',
+    mode: document.getElementById('taskType')?.value || 'automatic',
+    providerRequested: document.getElementById('providerSelect')?.value || 'auto',
+    budget: document.getElementById('budgetSelect')?.value || 'economy',
+    startedAt: new Date().toISOString()
+  };
+  lastSignature = '';
+}, { capture: true });
+
+const observer = new MutationObserver(() => {
+  clearTimeout(timer);
+  timer = setTimeout(capture, 250);
+});
+if (panel) observer.observe(panel, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['class', 'hidden'] });
