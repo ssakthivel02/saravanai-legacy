@@ -12,7 +12,7 @@ for (const file of required) {
 }
 
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-for (const marker of ['<main','manifest.webmanifest','assets/styles.css','assets/release002.css','assets/app.js','Sakthi AI Nexus','/api/v1/chat','Release 002']) {
+for (const marker of ['<main','manifest.webmanifest','assets/styles.css','assets/release002.css','assets/app.js','Sakthi AI Nexus','Release 002']) {
   if (!html.includes(marker)) throw new Error(`index.html missing marker: ${marker}`);
 }
 
@@ -21,7 +21,12 @@ for (const marker of ['/api/v1/status','/api/v1/chat','env.AI.run','SAKTHI_CHAT_
   if (!worker.includes(marker)) throw new Error(`src/worker.js missing marker: ${marker}`);
 }
 
-const combined = `${html}\n${worker}`;
+const app = await readFile(new URL('../assets/app.js', import.meta.url), 'utf8');
+for (const marker of ['/api/v1/status','/api/v1/chat','Run with SakthiAI']) {
+  if (!app.includes(marker)) throw new Error(`assets/app.js missing marker: ${marker}`);
+}
+
+const combined = `${html}\n${worker}\n${app}`;
 if (/sk-[A-Za-z0-9]{20,}|AIza[A-Za-z0-9_-]{20,}/.test(combined)) throw new Error('Potential API key found in source files');
 
 const manifest = JSON.parse(await readFile(new URL('../manifest.webmanifest', import.meta.url), 'utf8'));
