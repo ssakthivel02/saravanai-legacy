@@ -1,6 +1,7 @@
 import coreWorker from './worker.js';
 import { handleFiles } from './files.js';
 import { handleOwnerApi } from './owner-api.js';
+import { handleGovernance, GOVERNANCE_RELEASE } from './governance.js';
 import { RELEASE, premiumEnabled, providerStatus } from './router.js';
 
 export default {
@@ -12,11 +13,13 @@ export default {
         service: 'sakthi-ai-nexus',
         environment: 'production',
         release: RELEASE,
+        governanceRelease: GOVERNANCE_RELEASE,
         aiRuntime: Boolean(env.AI),
         costPolicy: 'free-first',
         premiumProvidersEnabled: premiumEnabled(env),
         kimiEnabled: Boolean(providerStatus(env).find((provider) => provider.id === 'kimi')?.selectable),
-        publicRegistration: false
+        publicRegistration: false,
+        serverTenantWritesEnabled: Boolean(env.SAKTHI_DB) && String(env.PUBLIC_TENANT_WRITES || '').toLowerCase() === 'true'
       }, {
         headers: {
           'Cache-Control': 'no-store',
@@ -24,6 +27,7 @@ export default {
         }
       });
     }
+    if (url.pathname.startsWith('/api/v1/governance')) return handleGovernance(request, env, url);
     if (url.pathname.startsWith('/api/v1/files')) return handleFiles(request, env, url);
     if (url.pathname.startsWith('/api/v1/platform') || url.pathname === '/api/v1/mobile/config') {
       return handleOwnerApi(request, env, url);
