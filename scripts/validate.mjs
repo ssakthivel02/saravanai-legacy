@@ -23,12 +23,12 @@ for (const marker of ['handleFiles','/api/v1/files','coreWorker.fetch']) {
 }
 
 const worker = await readFile(new URL('../src/worker.js', import.meta.url), 'utf8');
-for (const marker of ['/api/v1/status','/api/v1/chat','/api/v1/chat/stream','/api/v1/research','env.AI.run','runFreeResearch','PREMIUM_PROVIDERS_ENABLED','FRESH_RESEARCH_UNAVAILABLE']) {
+for (const marker of ['/api/v1/status','/api/v1/chat','/api/v1/chat/stream','/api/v1/research','env.AI.run','runFreeResearch','premiumEnabled','FRESH_RESEARCH_UNAVAILABLE']) {
   if (!worker.includes(marker)) throw new Error(`src/worker.js missing marker: ${marker}`);
 }
 
 const router = await readFile(new URL('../src/router.js', import.meta.url), 'utf8');
-for (const marker of ['0.3.1','requiresFreshResearch','selectRoute','premiumEnabled','free-research','disabled-cost-control']) {
+for (const marker of ['0.3.1','requiresFreshResearch','selectRoute','premiumEnabled','PREMIUM_PROVIDERS_ENABLED','free-research','disabled-cost-control']) {
   if (!router.includes(marker)) throw new Error(`src/router.js missing marker: ${marker}`);
 }
 
