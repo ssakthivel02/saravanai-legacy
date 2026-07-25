@@ -49,7 +49,7 @@ for (const marker of ['0.10-owner-preview','/api/v1/platform/capabilities','/api
 }
 
 const ownerPlatform = await readFile(new URL('../assets/owner-platform.js', import.meta.url), 'utf8');
-for (const marker of ['indexedDB.open','projects','approvals','memories','graphNodes','usage','createDocx','createXlsx','createPptx','printPdf','Anonymous upload']) {
+for (const marker of ['indexedDB.open','projects','approvals','memories','graphNodes','usage','createDocx','createXlsx','createPptx','printPdf','/api/v1/files/capabilities','fileUploadButton']) {
   if (!ownerPlatform.includes(marker)) throw new Error(`assets/owner-platform.js missing marker: ${marker}`);
 }
 
