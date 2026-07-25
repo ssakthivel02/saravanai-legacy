@@ -1,3 +1,4 @@
+import './release-labels.js';
 import './owner-security.js';
 
 const doc = globalThis.document;
