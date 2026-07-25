@@ -1,5 +1,6 @@
-export const RELEASE = '0.3.1';
+export const RELEASE = '0.11.0';
 export const DEFAULT_GATEWAY = 'default';
+export const ZERO_COST_MODE = true;
 
 export const MODEL_CATALOG = {
   edge: {
@@ -34,10 +35,12 @@ export const MODEL_CATALOG = {
     provider: 'kimi',
     label: 'Kimi',
     model: '@cf/moonshotai/kimi-k2.6',
-    costClass: 'included-or-metered',
+    costClass: 'premium',
     webSearch: false
   }
 };
+
+const PAID_PROVIDERS = new Set(['openai', 'anthropic', 'gemini', 'kimi']);
 
 const currentSignals = [
   /\b(today|tonight|latest|current|currently|recent|recently|news|breaking|this week|this month|this year|now|live|price|weather|score|schedule|election|office holder|who is)\b/i,
@@ -70,14 +73,14 @@ export function normaliseProvider(value) {
 }
 
 export function isPremiumProvider(provider) {
-  return ['openai', 'anthropic', 'gemini'].includes(provider);
+  return PAID_PROVIDERS.has(provider);
 }
 
-export function premiumEnabled(env = {}) {
-  return String(env.PREMIUM_PROVIDERS_ENABLED || '').toLowerCase() === 'true';
+export function premiumEnabled() {
+  return false;
 }
 
-export function selectRoute({ prompt = '', mode = 'automatic', provider = 'auto', budget = 'balanced' } = {}) {
+export function selectRoute({ prompt = '', mode = 'automatic', provider = 'auto', budget = 'economy' } = {}) {
   const safeMode = normaliseMode(mode);
   const safeProvider = normaliseProvider(provider);
   const fresh = safeMode === 'research' || requiresFreshResearch(prompt);
@@ -86,36 +89,58 @@ export function selectRoute({ prompt = '', mode = 'automatic', provider = 'auto'
     return {
       kind: 'research',
       provider: 'free-research',
-      preferredPremiumProvider: safeProvider === 'openai' ? 'openai' : 'anthropic',
-      reason: safeMode === 'research' ? 'research-mode' : 'freshness-required',
+      preferredPremiumProvider: null,
+      reason: safeMode === 'research' ? 'research-mode-free-only' : 'freshness-required-free-only',
       freshnessRequired: true,
-      budgetClass: 'free-research'
+      budgetClass: 'free-research',
+      zeroCostMode: true
     };
   }
 
-  if (safeProvider !== 'auto' && safeProvider !== 'free-research') {
+  if (isPremiumProvider(safeProvider)) {
     return {
       kind: 'chat',
-      provider: safeProvider,
-      reason: 'user-override',
+      provider: 'workers-ai',
+      requestedProvider: safeProvider,
+      reason: `paid-provider-disabled-${safeProvider}`,
       freshnessRequired: false,
-      budgetClass: safeProvider === 'workers-ai' || safeProvider === 'kimi' ? 'economy' : 'premium'
+      budgetClass: 'economy',
+      premiumBlocked: true,
+      zeroCostMode: true
     };
   }
 
-  if (budget === 'economy') {
-    return { kind: 'chat', provider: 'workers-ai', reason: 'economy-budget', freshnessRequired: false, budgetClass: 'economy' };
+  if (safeProvider === 'workers-ai') {
+    return {
+      kind: 'chat',
+      provider: 'workers-ai',
+      reason: 'user-selected-free-edge',
+      freshnessRequired: false,
+      budgetClass: 'economy',
+      zeroCostMode: true
+    };
   }
 
-  if (safeMode === 'coding' && budget === 'premium') {
-    return { kind: 'chat', provider: 'openai', reason: 'premium-coding', freshnessRequired: false, budgetClass: 'premium' };
+  if (budget === 'premium') {
+    return {
+      kind: 'chat',
+      provider: 'workers-ai',
+      reason: 'premium-budget-disabled-zero-cost-mode',
+      freshnessRequired: false,
+      budgetClass: 'economy',
+      premiumBlocked: true,
+      zeroCostMode: true
+    };
   }
 
-  if ((safeMode === 'document' || safeMode === 'website') && budget === 'premium') {
-    return { kind: 'chat', provider: 'gemini', reason: 'premium-long-form', freshnessRequired: false, budgetClass: 'premium' };
-  }
-
-  return { kind: 'chat', provider: 'workers-ai', reason: 'cost-first-default', freshnessRequired: false, budgetClass: 'economy' };
+  return {
+    kind: 'chat',
+    provider: 'workers-ai',
+    reason: budget === 'economy' ? 'economy-budget' : 'free-only-default',
+    freshnessRequired: false,
+    budgetClass: 'economy',
+    zeroCostMode: true
+  };
 }
 
 export function resolveModel(provider, env = {}) {
@@ -137,16 +162,15 @@ export function gatewayOptions(env = {}) {
 
 export function providerStatus(env = {}) {
   const hasAi = Boolean(env.AI);
-  const allowPremium = premiumEnabled(env);
   return [
     {
       id: 'auto',
-      name: 'Automatic free-first routing',
+      name: 'Automatic free-only routing',
       configured: hasAi,
       selectable: hasAi,
       live: hasAi,
       health: hasAi ? 'ready' : 'missing-binding',
-      costClass: 'free-first'
+      costClass: 'free-only'
     },
     {
       id: 'free-research',
@@ -159,19 +183,20 @@ export function providerStatus(env = {}) {
       webSearch: true
     },
     ...Object.values(MODEL_CATALOG).map((entry) => {
-      const premium = entry.costClass === 'premium';
-      const selectable = hasAi && (!premium || allowPremium);
+      const paid = isPremiumProvider(entry.provider);
+      const selectable = hasAi && !paid;
       return {
         id: entry.provider,
         name: entry.label,
         model: resolveModel(entry.provider, env).model,
         configured: selectable,
         selectable,
-        live: selectable && !premium,
-        health: !hasAi ? 'missing-binding' : premium && !allowPremium ? 'disabled-cost-control' : premium ? 'gateway-on-demand' : 'ready',
+        live: selectable,
+        health: !hasAi ? 'missing-binding' : paid ? 'disabled-zero-cost-policy' : 'ready',
         costClass: entry.costClass,
         webSearch: entry.webSearch,
-        optionalPaid: premium
+        optionalPaid: paid,
+        blockedByPolicy: paid
       };
     })
   ];
