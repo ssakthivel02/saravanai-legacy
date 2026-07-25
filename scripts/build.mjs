@@ -5,7 +5,7 @@ const dist = new URL('../dist/', import.meta.url);
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 
-const entries = ['index.html','offline.html','manifest.webmanifest','service-worker.js','_headers','_redirects','assets'];
+const entries = ['index.html','offline.html','manifest.webmanifest','service-worker.js','health.json','_headers','_redirects','assets'];
 for (const entry of entries) {
   if (!existsSync(new URL(`../${entry}`, import.meta.url))) {
     throw new Error(`Missing required build input: ${entry}`);
