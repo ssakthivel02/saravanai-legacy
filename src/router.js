@@ -99,6 +99,18 @@ export function selectRoute({ prompt = '', mode = 'automatic', provider = 'auto'
     };
   }
 
+  if (isProviderBlocked(safeProvider)) {
+    return {
+      kind: 'chat',
+      provider: 'workers-ai',
+      reason: `blocked-provider-${safeProvider}`,
+      freshnessRequired: false,
+      budgetClass: 'economy',
+      blockedProvider: safeProvider,
+      premiumBlocked: true
+    };
+  }
+
   if (safeProvider !== 'auto' && safeProvider !== 'free-research') {
     return {
       kind: 'chat',
@@ -125,12 +137,14 @@ export function selectRoute({ prompt = '', mode = 'automatic', provider = 'auto'
 }
 
 export function resolveModel(provider, env = {}) {
+  if (isProviderBlocked(provider)) {
+    return { ...MODEL_CATALOG.edge, blockedProvider: provider };
+  }
   const overrides = {
     'workers-ai': env.EDGE_MODEL,
     openai: env.OPENAI_MODEL,
     anthropic: env.ANTHROPIC_MODEL,
-    gemini: env.GEMINI_MODEL,
-    kimi: env.KIMI_MODEL
+    gemini: env.GEMINI_MODEL
   };
   const key = provider === 'workers-ai' ? 'edge' : provider;
   const entry = MODEL_CATALOG[key] || MODEL_CATALOG.edge;
