@@ -1,3 +1,5 @@
+import './release011-hardening.js';
+
 const doc = globalThis.document;
 const form = doc?.getElementById('taskForm');
 const title = doc?.getElementById('responseTitle');
