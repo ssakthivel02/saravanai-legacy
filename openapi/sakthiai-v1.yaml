@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI API
+  version: 0.10.0-owner-preview
+  description: Free-first private owner API contract. Public multi-tenant access is not enabled.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/status:
+    get:
+      summary: Get AI runtime and provider status
+      responses:
+        '200':
+          description: Runtime status
+  /api/v1/chat:
+    post:
+      summary: Run a non-streaming SakthiAI task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskRequest'
+      responses:
+        '200':
+          description: Completed task
+        '422':
+          description: Secret-shaped content detected
+        '429':
+          description: Rate limited
+  /api/v1/chat/stream:
+    post:
+      summary: Stream a non-current SakthiAI task as server-sent events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskRequest'
+      responses:
+        '200':
+          description: SSE stream
+          content:
+            text/event-stream: {}
+  /api/v1/research:
+    post:
+      summary: Run free-first current-information research with citations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskRequest'
+      responses:
+        '200':
+          description: Cited research response
+        '503':
+          description: Fresh evidence unavailable; stale answer refused
+  /api/v1/files/capabilities:
+    get:
+      summary: Report private file-processing bindings and limits
+      responses:
+        '200':
+          description: File capability state
+  /api/v1/files/upload:
+    post:
+      summary: Upload one file to private evidence storage
+      security:
+        - ownerToken: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: File stored
+        '401':
+          description: Owner token required
+        '503':
+          description: Private R2 binding not configured
+  /api/v1/files/{id}/convert:
+    post:
+      summary: Convert a stored file to Markdown and optionally index it
+      security:
+        - ownerToken: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Conversion completed
+  /api/v1/platform/capabilities:
+    get:
+      summary: Get Releases 005–010 owner feature and binding state
+      responses:
+        '200':
+          description: Owner platform capabilities
+  /api/v1/platform/session:
+    get:
+      summary: Get local-owner or Cloudflare Access identity state
+      responses:
+        '200':
+          description: Session state
+  /api/v1/mobile/config:
+    get:
+      summary: Get the stable API paths and mobile-client release state
+      responses:
+        '200':
+          description: Mobile client configuration
+components:
+  securitySchemes:
+    ownerToken:
+      type: http
+      scheme: bearer
+      description: Temporary encrypted Worker secret for private file ingestion. Replaced by OIDC/RBAC before public use.
+  schemas:
+    TaskRequest:
+      type: object
+      required: [prompt]
+      properties:
+        prompt:
+          type: string
+          maxLength: 12000
+        mode:
+          type: string
+          enum: [automatic, research, document, coding, website]
+          default: automatic
+        provider:
+          type: string
+          enum: [auto, free-research, workers-ai, openai, anthropic, gemini, kimi]
+          default: auto
+        budget:
+          type: string
+          enum: [economy, balanced, premium]
+          default: economy
