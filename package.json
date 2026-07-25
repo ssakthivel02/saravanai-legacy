@@ -1,8 +1,8 @@
 {
   "name": "sakthi-ai-nexus",
-  "version": "0.3.1",
+  "version": "0.10.0-owner.0",
   "private": true,
-  "description": "Release 003.1: free-first SakthiAI routing, streaming and cited public-data research with optional premium providers.",
+  "description": "Free-first SakthiAI owner platform preview with projects, artifacts, approvals, memory, usage controls and guarded mobile APIs.",
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate.mjs",
