@@ -10,5 +10,5 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-/sw.js
+/service-worker.js
   Cache-Control: no-cache
