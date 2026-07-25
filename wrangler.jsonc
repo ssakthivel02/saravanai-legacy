@@ -15,12 +15,12 @@
   "vars": {
     "AI_GATEWAY_ID": "default",
     "PREMIUM_PROVIDERS_ENABLED": "false",
+    "PAID_PROVIDER_OWNER_APPROVAL": "NOT_APPROVED",
     "AI_SEARCH_INSTANCE": "sakthiai-evidence",
     "EDGE_MODEL": "@cf/meta/llama-3.1-8b-instruct-fast",
     "OPENAI_MODEL": "openai/gpt-5.4-mini",
     "ANTHROPIC_MODEL": "anthropic/claude-haiku-4.5",
-    "GEMINI_MODEL": "google/gemini-3-flash",
-    "KIMI_MODEL": "@cf/moonshotai/kimi-k2.6"
+    "GEMINI_MODEL": "google/gemini-3-flash"
   },
   "ai": {
     "binding": "AI"
@@ -39,7 +39,7 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
-    "run_worker_first": ["/api/*"]
+    "run_worker_first": ["/api/*", "/health"]
   },
   "observability": {
     "enabled": true
