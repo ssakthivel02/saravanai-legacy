@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Governance API
+  version: 0.20.0-governance-foundation
+  description: Read-only governance, compliance and release-gate metadata. This API does not claim certification or legal conformity.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/governance:
+    get:
+      summary: Get the complete governance snapshot
+      responses:
+        '200':
+          description: Governance posture and hard gates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GovernanceSnapshot'
+  /api/v1/governance/releases:
+    get:
+      summary: Get Releases 012 through 020
+      responses:
+        '200':
+          description: Release train status
+  /api/v1/governance/pillars:
+    get:
+      summary: Get governance pillars and hard gates
+      responses:
+        '200':
+          description: Pillars and mandatory launch gates
+  /api/v1/governance/frameworks:
+    get:
+      summary: Get control-framework mapping posture
+      responses:
+        '200':
+          description: Framework mappings with certification claims disabled
+  /api/v1/governance/access:
+    get:
+      summary: Inspect authenticated Access identity posture
+      description: Owner write authorisation requires verified Cloudflare Access headers and an exact server-side owner email match.
+      responses:
+        '200':
+          description: Current access boundary
+components:
+  schemas:
+    GovernanceSnapshot:
+      type: object
+      required: [release, operatingMode, publicRegistration, commercialProvidersEnabled, certificationClaims, releases, pillars, frameworks, hardGates]
+      properties:
+        release:
+          type: string
+        operatingMode:
+          const: private-owner-free-first
+        publicRegistration:
+          const: false
+        commercialProvidersEnabled:
+          const: false
+        certificationClaims:
+          const: false
+        serverTenantWritesEnabled:
+          type: boolean
+        releases:
+          type: array
+          minItems: 9
+          items:
+            type: object
+        pillars:
+          type: array
+          minItems: 8
+          items:
+            type: object
+        frameworks:
+          type: array
+          items:
+            type: object
+        hardGates:
+          type: array
+          items:
+            type: string

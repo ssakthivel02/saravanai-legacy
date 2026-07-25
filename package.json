@@ -1,8 +1,8 @@
 {
   "name": "sakthi-ai-nexus",
-  "version": "0.11.0-owner-security",
+  "version": "0.20.0-governance-foundation",
   "private": true,
-  "description": "Free-first SakthiAI owner platform with local privacy lock, encrypted backups, guarded tools, projects, artifacts, memory and usage controls.",
+  "description": "Free-first SakthiAI owner platform with security-first governance, compliance evidence, tenant, editorial, agent, resilience and production launch foundations.",
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate.mjs",

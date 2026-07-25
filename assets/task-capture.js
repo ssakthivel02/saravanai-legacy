@@ -1,5 +1,6 @@
 import './release-labels.js';
 import './owner-security.js';
+import './governance-dashboard.js';
 
 const doc = globalThis.document;
 const form = doc?.getElementById('taskForm');
