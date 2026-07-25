@@ -2,9 +2,13 @@
   "status": "ok",
   "service": "sakthi-ai-nexus-web",
   "environment": "production",
-  "version": "0.10.0-owner.0",
+  "version": "0.11.0-owner-security",
   "apiVersion": "v1",
   "costPolicy": "free-first",
+  "premiumProvidersEnabled": false,
+  "kimiEnabled": false,
   "publicRegistration": false,
-  "message": "SakthiAI owner platform preview includes local projects, artifacts, approvals, memory, usage controls and guarded file/mobile APIs."
+  "ownerPrivacyLock": true,
+  "encryptedBackups": true,
+  "message": "Release 011 adds a local owner privacy lock, encrypted exports, dedicated JSON health and stronger paid-provider denial controls."
 }
