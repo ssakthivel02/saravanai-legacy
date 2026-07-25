@@ -1,8 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  ZERO_COST_MODE,
   containsSecret,
   extractAnswer,
+  isPremiumProvider,
   premiumEnabled,
   providerStatus,
   requiresFreshResearch,
@@ -20,23 +22,41 @@ test('router sends current information to free research and routine work to edge
   const research = selectRoute({ prompt: 'Latest news today', mode: 'automatic', provider: 'auto' });
   assert.equal(research.kind, 'research');
   assert.equal(research.provider, 'free-research');
-  assert.equal(research.reason, 'freshness-required');
+  assert.equal(research.reason, 'freshness-required-free-only');
   assert.equal(research.budgetClass, 'free-research');
 
   const chat = selectRoute({ prompt: 'Draft a migration checklist', mode: 'document', provider: 'auto', budget: 'balanced' });
   assert.equal(chat.kind, 'chat');
   assert.equal(chat.provider, 'workers-ai');
+  assert.equal(chat.zeroCostMode, true);
 });
 
-test('premium routes remain explicit but disabled by production cost policy until enabled', () => {
-  assert.equal(selectRoute({ prompt: 'Refactor this code', mode: 'coding', provider: 'openai' }).provider, 'openai');
-  assert.equal(selectRoute({ prompt: 'Refactor this code', mode: 'coding', provider: 'auto', budget: 'premium' }).provider, 'openai');
-  assert.equal(selectRoute({ prompt: 'Create a report', mode: 'document', provider: 'auto', budget: 'premium' }).provider, 'gemini');
+test('zero-cost mode cannot be enabled by configuration and blocks every paid provider', () => {
+  assert.equal(ZERO_COST_MODE, true);
   assert.equal(premiumEnabled({}), false);
-  assert.equal(premiumEnabled({ PREMIUM_PROVIDERS_ENABLED: 'true' }), true);
-  const openai = providerStatus({ AI: {} }).find((provider) => provider.id === 'openai');
-  assert.equal(openai.selectable, false);
-  assert.equal(openai.health, 'disabled-cost-control');
+  assert.equal(premiumEnabled({ PREMIUM_PROVIDERS_ENABLED: 'true' }), false);
+
+  for (const provider of ['openai', 'anthropic', 'gemini', 'kimi']) {
+    assert.equal(isPremiumProvider(provider), true);
+    const route = selectRoute({ prompt: 'Refactor this code', mode: 'coding', provider });
+    assert.equal(route.provider, 'workers-ai');
+    assert.equal(route.requestedProvider, provider);
+    assert.equal(route.premiumBlocked, true);
+
+    const status = providerStatus({ AI: {} }).find((item) => item.id === provider);
+    assert.equal(status.selectable, false);
+    assert.equal(status.live, false);
+    assert.equal(status.health, 'disabled-zero-cost-policy');
+    assert.equal(status.blockedByPolicy, true);
+  }
+});
+
+test('premium budget is downgraded to economy edge routing', () => {
+  const route = selectRoute({ prompt: 'Create a report', mode: 'document', provider: 'auto', budget: 'premium' });
+  assert.equal(route.provider, 'workers-ai');
+  assert.equal(route.budgetClass, 'economy');
+  assert.equal(route.premiumBlocked, true);
+  assert.equal(route.reason, 'premium-budget-disabled-zero-cost-mode');
 });
 
 test('secret detector rejects credential-shaped values', () => {
