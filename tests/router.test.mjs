@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import {
   containsSecret,
   extractAnswer,
+  premiumEnabled,
+  providerStatus,
   requiresFreshResearch,
   selectRoute,
   uniqueCitations
@@ -14,21 +16,27 @@ test('freshness detector covers English and Tamil current-information queries', 
   assert.equal(requiresFreshResearch('Explain virtualisation fundamentals.'), false);
 });
 
-test('router sends current information to research and routine work to edge', () => {
+test('router sends current information to free research and routine work to edge', () => {
   const research = selectRoute({ prompt: 'Latest news today', mode: 'automatic', provider: 'auto' });
   assert.equal(research.kind, 'research');
-  assert.equal(research.provider, 'anthropic');
+  assert.equal(research.provider, 'free-research');
   assert.equal(research.reason, 'freshness-required');
+  assert.equal(research.budgetClass, 'free-research');
 
   const chat = selectRoute({ prompt: 'Draft a migration checklist', mode: 'document', provider: 'auto', budget: 'balanced' });
   assert.equal(chat.kind, 'chat');
   assert.equal(chat.provider, 'workers-ai');
 });
 
-test('premium user override and budget routes are explicit', () => {
+test('premium routes remain explicit but disabled by production cost policy until enabled', () => {
   assert.equal(selectRoute({ prompt: 'Refactor this code', mode: 'coding', provider: 'openai' }).provider, 'openai');
   assert.equal(selectRoute({ prompt: 'Refactor this code', mode: 'coding', provider: 'auto', budget: 'premium' }).provider, 'openai');
   assert.equal(selectRoute({ prompt: 'Create a report', mode: 'document', provider: 'auto', budget: 'premium' }).provider, 'gemini');
+  assert.equal(premiumEnabled({}), false);
+  assert.equal(premiumEnabled({ PREMIUM_PROVIDERS_ENABLED: 'true' }), true);
+  const openai = providerStatus({ AI: {} }).find((provider) => provider.id === 'openai');
+  assert.equal(openai.selectable, false);
+  assert.equal(openai.health, 'disabled-cost-control');
 });
 
 test('secret detector rejects credential-shaped values', () => {
