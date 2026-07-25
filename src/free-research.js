@@ -14,11 +14,11 @@ function isTamil(value = '') {
   return /[\u0B80-\u0BFF]/.test(value);
 }
 
-async function fetchJson(url, timeoutMs = 9000) {
+async function fetchJson(fetcher, url, timeoutMs = 9000) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    const response = await fetch(url, {
+    const response = await fetcher(url, {
       headers: { 'User-Agent': 'SakthiAI/0.3.1 (+https://sakthiai.omsaravanabhava.org)' },
       signal: controller.signal
     });
@@ -29,7 +29,7 @@ async function fetchJson(url, timeoutMs = 9000) {
   }
 }
 
-async function searchGdelt(query) {
+async function searchGdelt(query, fetcher) {
   const url = new URL(GDELT_ENDPOINT);
   url.searchParams.set('query', query);
   url.searchParams.set('mode', 'ArtList');
@@ -37,7 +37,7 @@ async function searchGdelt(query) {
   url.searchParams.set('maxrecords', '8');
   url.searchParams.set('sort', 'DateDesc');
 
-  const payload = await fetchJson(url);
+  const payload = await fetchJson(fetcher, url);
   return (payload.articles || [])
     .filter((item) => item?.url && item?.title)
     .map((item) => ({
@@ -49,7 +49,7 @@ async function searchGdelt(query) {
     }));
 }
 
-async function searchWikipedia(query, language = 'en') {
+async function searchWikipedia(query, language = 'en', fetcher) {
   const host = language === 'ta' ? 'ta.wikipedia.org' : 'en.wikipedia.org';
   const url = new URL(`https://${host}/w/api.php`);
   url.searchParams.set('action', 'query');
@@ -59,7 +59,7 @@ async function searchWikipedia(query, language = 'en') {
   url.searchParams.set('format', 'json');
   url.searchParams.set('origin', '*');
 
-  const payload = await fetchJson(url);
+  const payload = await fetchJson(fetcher, url);
   return (payload?.query?.search || []).map((item) => ({
     title: stripHtml(item.title),
     url: `https://${host}/wiki/${encodeURIComponent(String(item.title).replaceAll(' ', '_'))}`,
@@ -90,15 +90,16 @@ function sourceContext(sources) {
 export async function runFreeResearch(prompt, env, options = {}) {
   const failures = [];
   const results = [];
+  const fetcher = options.fetcher || fetch;
 
   try {
-    results.push(...await searchGdelt(prompt));
+    results.push(...await searchGdelt(prompt, fetcher));
   } catch (error) {
     failures.push({ connector: 'gdelt', error: error?.message || 'GDELT failed' });
   }
 
   try {
-    results.push(...await searchWikipedia(prompt, isTamil(prompt) ? 'ta' : 'en'));
+    results.push(...await searchWikipedia(prompt, isTamil(prompt) ? 'ta' : 'en', fetcher));
   } catch (error) {
     failures.push({ connector: 'wikipedia', error: error?.message || 'Wikipedia failed' });
   }
