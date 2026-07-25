@@ -1,4 +1,5 @@
-const RELEASE = '0.10-owner-preview';
+const RELEASE = '0.11.0';
+const PAID_PROVIDERS = ['openai', 'anthropic', 'gemini', 'kimi'];
 
 function json(data, status = 200) {
   return Response.json(data, {
@@ -21,13 +22,37 @@ function accessIdentity(request) {
 }
 
 function bindings(env) {
+  const premiumRequested = String(env.PREMIUM_PROVIDERS_ENABLED || '').toLowerCase() === 'true';
   return {
     d1: Boolean(env.SAKTHI_DB && typeof env.SAKTHI_DB.prepare === 'function'),
     privateFiles: Boolean(env.EVIDENCE_BUCKET && typeof env.EVIDENCE_BUCKET.put === 'function'),
     aiSearch: Boolean(env.AI_SEARCH && typeof env.AI_SEARCH.get === 'function'),
     workersAi: Boolean(env.AI),
     ownerIngestionSecret: typeof env.SAKTHI_INGEST_TOKEN === 'string' && env.SAKTHI_INGEST_TOKEN.length >= 24,
-    premiumProvidersEnabled: String(env.PREMIUM_PROVIDERS_ENABLED || '').toLowerCase() === 'true'
+    premiumProvidersRequested: premiumRequested,
+    premiumProvidersEnabled: false
+  };
+}
+
+function costSafety(env) {
+  const state = bindings(env);
+  return {
+    status: state.premiumProvidersRequested ? 'warning-config-ignored' : 'ok',
+    release: RELEASE,
+    zeroCostMode: true,
+    paidProviderCallsAllowed: false,
+    blockedProviders: PAID_PROVIDERS,
+    allowedInferenceProviders: ['workers-ai'],
+    allowedResearchRoutes: ['free-research'],
+    premiumConfigurationRequested: state.premiumProvidersRequested,
+    premiumConfigurationEffective: false,
+    enforcement: [
+      'paid providers are non-selectable in provider status',
+      'paid provider overrides route to Sakthi Edge',
+      'premium budget requests route to Sakthi Edge',
+      'Kimi is classified as paid and blocked',
+      'no browser provider keys are accepted'
+    ]
   };
 }
 
@@ -39,7 +64,8 @@ export async function handleOwnerApi(request, env, url) {
       release: RELEASE,
       deploymentMode: 'private-first-owner',
       persistenceMode: state.d1 ? 'server-d1' : 'browser-indexeddb',
-      costPolicy: 'free-first',
+      costPolicy: 'zero-cost-hard-lock',
+      zeroCostMode: true,
       publicRegistration: false,
       features: {
         projects: { local: true, server: state.d1 },
@@ -49,8 +75,9 @@ export async function handleOwnerApi(request, env, url) {
         approvals: { dryRun: true, externalWrites: false },
         memory: { ownerApprovedOnly: true, local: true, server: state.d1 },
         knowledgeGraph: { local: true, server: state.d1 },
-        usageLedger: { local: true, server: state.d1, paidCallsBlocked: !state.premiumProvidersEnabled },
-        mobile: { pwa: true, nativeClients: 'api-contract-prepared-not-released' }
+        usageLedger: { local: true, server: state.d1, paidCallsBlocked: true },
+        mobile: { pwa: true, nativeClients: 'api-contract-prepared-not-released' },
+        operationalHealth: { jsonHealth: true, aliases: ['/health', '/healthz', '/api/health', '/api/v1/health'] }
       },
       bindings: state,
       requiredForPublicLaunch: [
@@ -62,6 +89,10 @@ export async function handleOwnerApi(request, env, url) {
         'export and deletion validation'
       ]
     });
+  }
+
+  if (request.method === 'GET' && url.pathname === '/api/v1/platform/cost-safety') {
+    return json(costSafety(env));
   }
 
   if (request.method === 'GET' && url.pathname === '/api/v1/platform/session') {
@@ -87,13 +118,16 @@ export async function handleOwnerApi(request, env, url) {
       authentication: 'Cloudflare Access/OIDC planned before native release',
       currentClient: 'installable PWA',
       nativeClients: { android: 'not-released', ios: 'not-released' },
+      zeroCostMode: true,
       endpoints: {
         status: '/api/v1/status',
+        health: '/health',
         chat: '/api/v1/chat',
         stream: '/api/v1/chat/stream',
         research: '/api/v1/research',
         fileCapabilities: '/api/v1/files/capabilities',
-        platformCapabilities: '/api/v1/platform/capabilities'
+        platformCapabilities: '/api/v1/platform/capabilities',
+        costSafety: '/api/v1/platform/cost-safety'
       }
     });
   }
