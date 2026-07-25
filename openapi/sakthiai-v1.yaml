@@ -1,20 +1,33 @@
 openapi: 3.1.0
 info:
   title: SakthiAI API
-  version: 0.10.0-owner-preview
-  description: Free-first private owner API contract. Public multi-tenant access is not enabled.
+  version: 0.11.0
+  description: Zero-cost private owner API contract. Paid providers and public multi-tenant access are disabled.
 servers:
   - url: https://sakthiai.omsaravanabhava.org
 paths:
+  /health:
+    get:
+      summary: Get dedicated JSON operational health
+      responses:
+        '200':
+          description: JSON health state
+  /healthz:
+    get:
+      summary: Kubernetes-style JSON health alias
+      responses:
+        '200':
+          description: JSON health state
   /api/v1/status:
     get:
       summary: Get AI runtime and provider status
       responses:
         '200':
-          description: Runtime status
+          description: Runtime status with paid providers non-selectable
   /api/v1/chat:
     post:
       summary: Run a non-streaming SakthiAI task
+      description: Paid-provider overrides and premium-budget requests are forced to Sakthi Edge while zero-cost mode is active.
       requestBody:
         required: true
         content:
@@ -45,6 +58,7 @@ paths:
   /api/v1/research:
     post:
       summary: Run free-first current-information research with citations
+      description: Uses the free public-data research route only. Paid fallback is disabled.
       requestBody:
         required: true
         content:
@@ -102,10 +116,16 @@ paths:
           description: Conversion completed
   /api/v1/platform/capabilities:
     get:
-      summary: Get Releases 005–010 owner feature and binding state
+      summary: Get owner feature, binding and operational state
       responses:
         '200':
           description: Owner platform capabilities
+  /api/v1/platform/cost-safety:
+    get:
+      summary: Confirm that paid providers are blocked
+      responses:
+        '200':
+          description: Zero-cost policy and blocked-provider list
   /api/v1/platform/session:
     get:
       summary: Get local-owner or Cloudflare Access identity state
@@ -114,7 +134,7 @@ paths:
           description: Session state
   /api/v1/mobile/config:
     get:
-      summary: Get the stable API paths and mobile-client release state
+      summary: Get stable API paths and mobile-client release state
       responses:
         '200':
           description: Mobile client configuration
@@ -140,7 +160,9 @@ components:
           type: string
           enum: [auto, free-research, workers-ai, openai, anthropic, gemini, kimi]
           default: auto
+          description: OpenAI, Anthropic, Gemini and Kimi are accepted only so the API can report and safely block paid-provider requests.
         budget:
           type: string
           enum: [economy, balanced, premium]
           default: economy
+          description: Premium is accepted for compatibility but is downgraded to economy while zero-cost mode is active.
