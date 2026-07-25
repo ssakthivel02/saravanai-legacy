@@ -1,7 +1,7 @@
 {
   "name": "Sakthi AI Nexus",
   "short_name": "Sakthi AI",
-  "description": "Private provider-independent AI orchestration workspace.",
+  "description": "Public, team-ready AI operating platform for chat, research, documents, coding and governed automation.",
   "start_url": "/#overview",
   "scope": "/",
   "display": "standalone",

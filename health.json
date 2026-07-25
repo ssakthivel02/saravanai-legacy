@@ -2,7 +2,7 @@
   "status": "ok",
   "service": "sakthi-ai-nexus-web",
   "environment": "production",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "apiVersion": "v1",
-  "message": "Static Web/PWA foundation is available. Live AI providers are not connected."
+  "message": "Release 002 public web workspace and server-side AI gateway are available. Use /api/v1/status for live runtime state."
 }
