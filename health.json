@@ -1,0 +1,8 @@
+{
+  "status": "ok",
+  "service": "sakthi-ai-nexus-web",
+  "environment": "production",
+  "version": "0.1.1",
+  "apiVersion": "v1",
+  "message": "Static Web/PWA foundation is available. Live AI providers are not connected."
+}
