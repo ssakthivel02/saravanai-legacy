@@ -132,19 +132,24 @@ export function providerStatus(env = {}) {
       id: 'auto',
       name: 'Automatic smart routing',
       configured: Boolean(env.AI),
+      selectable: Boolean(env.AI),
       live: Boolean(env.AI),
       health: env.AI ? 'ready' : 'missing-binding'
     },
-    ...Object.values(MODEL_CATALOG).map((entry) => ({
-      id: entry.provider,
-      name: entry.label,
-      model: resolveModel(entry.provider, env).model,
-      configured: Boolean(env.AI),
-      live: Boolean(env.AI),
-      health: env.AI ? (entry.costClass === 'premium' ? 'on-demand-unverified' : 'ready') : 'missing-binding',
-      costClass: entry.costClass,
-      webSearch: entry.webSearch
-    }))
+    ...Object.values(MODEL_CATALOG).map((entry) => {
+      const premium = entry.costClass === 'premium';
+      return {
+        id: entry.provider,
+        name: entry.label,
+        model: resolveModel(entry.provider, env).model,
+        configured: Boolean(env.AI),
+        selectable: Boolean(env.AI),
+        live: Boolean(env.AI) && !premium,
+        health: env.AI ? (premium ? 'gateway-on-demand' : 'ready') : 'missing-binding',
+        costClass: entry.costClass,
+        webSearch: entry.webSearch
+      };
+    })
   ];
 }
 
