@@ -15,28 +15,39 @@ function streamResponse(text = 'Streamed test response') {
   });
 }
 
+async function researchFetch(url) {
+  const target = String(url);
+  if (target.includes('api.gdeltproject.org')) {
+    return Response.json({
+      articles: [{
+        title: 'Current verified test news',
+        url: 'https://example.gov/current-news',
+        domain: 'example.gov',
+        seendate: '20260725T120000Z',
+        sourcecountry: 'India'
+      }]
+    });
+  }
+  if (target.includes('wikipedia.org')) {
+    return Response.json({
+      query: {
+        search: [{
+          title: 'Current test office-holder',
+          snippet: 'Current background source',
+          timestamp: '2026-07-25T12:00:00Z'
+        }]
+      }
+    });
+  }
+  return new Response('not found', { status: 404 });
+}
+
 function environment(overrides = {}) {
   return {
     AI_GATEWAY_ID: 'default',
+    RESEARCH_FETCH: researchFetch,
     AI: {
       async run(model, input) {
-        if (input.tools?.some((tool) => String(tool.type).includes('web_search'))) {
-          return {
-            content: [
-              { type: 'server_tool_use', name: 'web_search', search_query: 'current verified test' },
-              {
-                type: 'web_search_tool_result',
-                content: [{
-                  type: 'web_search_result',
-                  title: 'Official current source',
-                  url: 'https://example.gov/current',
-                  text: 'Current evidence returned by the search provider.'
-                }]
-              },
-              { type: 'text', text: 'Fresh verified research response.' }
-            ]
-          };
-        }
         if (input.stream) return streamResponse();
         assert.ok(Array.isArray(input.messages));
         return { response: `Verified response from ${model}` };
@@ -69,16 +80,28 @@ function post(path, body, extraHeaders = {}) {
   });
 }
 
-test('status endpoint reports Release 003 routing and research capabilities', async () => {
+test('status endpoint reports Release 003.1 free-first capabilities', async () => {
   const response = await worker.fetch(new Request(`${origin}/api/v1/status`), environment());
   assert.equal(response.status, 200);
   const body = await response.json();
   assert.equal(body.status, 'ok');
-  assert.equal(body.release, '0.3.0');
+  assert.equal(body.release, '0.3.1');
   assert.equal(body.aiRuntime, true);
-  assert.ok(body.capabilities.includes('fresh web research'));
+  assert.equal(body.costPolicy, 'free-first');
+  assert.equal(body.premiumProvidersEnabled, false);
+  assert.ok(body.capabilities.includes('free public-data research'));
   assert.ok(body.capabilities.includes('streaming chat'));
   assert.ok(body.requestId);
+});
+
+test('premium providers are disabled unless explicitly enabled', async () => {
+  const response = await worker.fetch(new Request(`${origin}/api/v1/models`), environment());
+  const body = await response.json();
+  const openai = body.providers.find((provider) => provider.id === 'openai');
+  const edge = body.providers.find((provider) => provider.id === 'workers-ai');
+  assert.equal(openai.selectable, false);
+  assert.equal(openai.health, 'disabled-cost-control');
+  assert.equal(edge.selectable, true);
 });
 
 test('normal chat uses the cost-first Sakthi Edge route', async () => {
@@ -96,7 +119,21 @@ test('normal chat uses the cost-first Sakthi Edge route', async () => {
   assert.equal(body.mode, 'coding');
 });
 
-test('current-information query automatically uses live research and citations', async () => {
+test('paid provider request falls back to Sakthi Edge when premium is disabled', async () => {
+  const response = await worker.fetch(post('/api/v1/chat', {
+    prompt: 'Create a secure plan.',
+    mode: 'coding',
+    provider: 'openai',
+    budget: 'premium'
+  }), environment());
+  const body = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(body.provider, 'workers-ai');
+  assert.equal(body.routing.premiumBlocked, true);
+  assert.match(body.routing.reason, /premium-disabled/);
+});
+
+test('current-information query uses free research and citations', async () => {
   const response = await worker.fetch(post('/api/v1/chat', {
     prompt: 'Who is the current chief minister today?',
     mode: 'automatic',
@@ -106,9 +143,10 @@ test('current-information query automatically uses live research and citations',
   const body = await response.json();
   assert.equal(body.kind, 'research');
   assert.equal(body.searchGrounded, true);
-  assert.equal(body.provider, 'anthropic');
-  assert.equal(body.answer, 'Fresh verified research response.');
-  assert.equal(body.citations[0].url, 'https://example.gov/current');
+  assert.equal(body.provider, 'free-research');
+  assert.match(body.answer, /Verified response/);
+  assert.equal(body.citations[0].url, 'https://example.gov/current-news');
+  assert.equal(body.costClass, 'free-first');
 });
 
 test('stream endpoint returns server-sent events and routing headers', async () => {
@@ -128,10 +166,11 @@ test('stream endpoint returns server-sent events and routing headers', async () 
 test('current-information failure never falls back to stale edge memory', async () => {
   let edgeCalled = false;
   const env = environment({
+    RESEARCH_FETCH: async () => { throw new Error('Research sources unavailable'); },
     AI: {
       async run(model) {
         if (model.startsWith('@cf/')) edgeCalled = true;
-        throw new Error('Unified billing unavailable');
+        return { response: 'must not run' };
       }
     }
   });
@@ -142,6 +181,7 @@ test('current-information failure never falls back to stale edge memory', async 
   assert.equal(response.status, 503);
   const body = await response.json();
   assert.equal(body.code, 'FRESH_RESEARCH_UNAVAILABLE');
+  assert.equal(body.costPolicy, 'free-first-premium-disabled');
   assert.equal(edgeCalled, false);
 });
 

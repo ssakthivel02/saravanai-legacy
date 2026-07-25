@@ -1,4 +1,4 @@
-export const RELEASE = '0.3.0';
+export const RELEASE = '0.3.1';
 export const DEFAULT_GATEWAY = 'default';
 
 export const MODEL_CATALOG = {
@@ -66,7 +66,15 @@ export function normaliseMode(value) {
 }
 
 export function normaliseProvider(value) {
-  return ['auto', 'workers-ai', 'openai', 'anthropic', 'gemini', 'kimi'].includes(value) ? value : 'auto';
+  return ['auto', 'free-research', 'workers-ai', 'openai', 'anthropic', 'gemini', 'kimi'].includes(value) ? value : 'auto';
+}
+
+export function isPremiumProvider(provider) {
+  return ['openai', 'anthropic', 'gemini'].includes(provider);
+}
+
+export function premiumEnabled(env = {}) {
+  return String(env.PREMIUM_PROVIDERS_ENABLED || '').toLowerCase() === 'true';
 }
 
 export function selectRoute({ prompt = '', mode = 'automatic', provider = 'auto', budget = 'balanced' } = {}) {
@@ -77,14 +85,15 @@ export function selectRoute({ prompt = '', mode = 'automatic', provider = 'auto'
   if (fresh) {
     return {
       kind: 'research',
-      provider: safeProvider === 'openai' ? 'openai' : 'anthropic',
+      provider: 'free-research',
+      preferredPremiumProvider: safeProvider === 'openai' ? 'openai' : 'anthropic',
       reason: safeMode === 'research' ? 'research-mode' : 'freshness-required',
       freshnessRequired: true,
-      budgetClass: 'premium-search'
+      budgetClass: 'free-research'
     };
   }
 
-  if (safeProvider !== 'auto') {
+  if (safeProvider !== 'auto' && safeProvider !== 'free-research') {
     return {
       kind: 'chat',
       provider: safeProvider,
@@ -127,27 +136,42 @@ export function gatewayOptions(env = {}) {
 }
 
 export function providerStatus(env = {}) {
+  const hasAi = Boolean(env.AI);
+  const allowPremium = premiumEnabled(env);
   return [
     {
       id: 'auto',
-      name: 'Automatic smart routing',
-      configured: Boolean(env.AI),
-      selectable: Boolean(env.AI),
-      live: Boolean(env.AI),
-      health: env.AI ? 'ready' : 'missing-binding'
+      name: 'Automatic free-first routing',
+      configured: hasAi,
+      selectable: hasAi,
+      live: hasAi,
+      health: hasAi ? 'ready' : 'missing-binding',
+      costClass: 'free-first'
+    },
+    {
+      id: 'free-research',
+      name: 'Free research · GDELT + Wikipedia',
+      configured: hasAi,
+      selectable: hasAi,
+      live: hasAi,
+      health: hasAi ? 'ready-with-source-limitations' : 'missing-binding',
+      costClass: 'free-first',
+      webSearch: true
     },
     ...Object.values(MODEL_CATALOG).map((entry) => {
       const premium = entry.costClass === 'premium';
+      const selectable = hasAi && (!premium || allowPremium);
       return {
         id: entry.provider,
         name: entry.label,
         model: resolveModel(entry.provider, env).model,
-        configured: Boolean(env.AI),
-        selectable: Boolean(env.AI),
-        live: Boolean(env.AI) && !premium,
-        health: env.AI ? (premium ? 'gateway-on-demand' : 'ready') : 'missing-binding',
+        configured: selectable,
+        selectable,
+        live: selectable && !premium,
+        health: !hasAi ? 'missing-binding' : premium && !allowPremium ? 'disabled-cost-control' : premium ? 'gateway-on-demand' : 'ready',
         costClass: entry.costClass,
-        webSearch: entry.webSearch
+        webSearch: entry.webSearch,
+        optionalPaid: premium
       };
     })
   ];

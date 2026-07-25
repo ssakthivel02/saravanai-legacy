@@ -1,8 +1,8 @@
 {
   "name": "sakthi-ai-nexus",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
-  "description": "Release 003: multi-provider SakthiAI workspace with streaming and fresh cited web research.",
+  "description": "Release 003.1: free-first SakthiAI routing, streaming and cited public-data research with optional premium providers.",
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate.mjs",

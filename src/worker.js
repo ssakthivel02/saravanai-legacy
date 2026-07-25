@@ -3,13 +3,16 @@ import {
   containsSecret,
   extractAnswer,
   gatewayOptions,
+  isPremiumProvider,
   normaliseMode,
   normaliseProvider,
+  premiumEnabled,
   providerStatus,
   resolveModel,
   selectRoute,
   uniqueCitations
 } from './router.js';
+import { runFreeResearch } from './free-research.js';
 
 const MAX_PROMPT_CHARS = 12000;
 const MAX_BODY_BYTES = 49152;
@@ -101,6 +104,17 @@ function validateInput(input, requestId) {
   return null;
 }
 
+function enforceCostPolicy(route, env) {
+  if (!isPremiumProvider(route.provider) || premiumEnabled(env)) return route;
+  return {
+    ...route,
+    provider: 'workers-ai',
+    reason: `premium-disabled-${route.reason}`,
+    budgetClass: 'economy',
+    premiumBlocked: true
+  };
+}
+
 async function runChatModel(route, input, env, stream = false) {
   const selected = resolveModel(route.provider, env);
   const messages = [
@@ -124,14 +138,14 @@ function hasSearchTrace(value) {
     if (Array.isArray(node)) return node.forEach(walk);
     if (typeof node !== 'object') return;
     if (typeof node.type === 'string' && /web_search|search_result/i.test(node.type)) found = true;
-    if (node.search_query || node.query && node.type === 'server_tool_use') found = true;
+    if (node.search_query || (node.query && node.type === 'server_tool_use')) found = true;
     Object.values(node).forEach(walk);
   }
   walk(value);
   return found;
 }
 
-async function runResearchProvider(provider, prompt, env) {
+async function runPremiumResearchProvider(provider, prompt, env) {
   const selected = resolveModel(provider, env);
   const now = new Date().toISOString();
   const researchPrompt = [
@@ -161,47 +175,81 @@ async function runResearchProvider(provider, prompt, env) {
 }
 
 async function executeResearch(input, env, requestId) {
-  const preferred = input.provider === 'openai' ? 'openai' : 'anthropic';
-  const providers = preferred === 'openai' ? ['openai', 'anthropic'] : ['anthropic', 'openai'];
   const failures = [];
 
-  for (const provider of providers) {
-    try {
-      const startedAt = Date.now();
-      const { result, selected } = await runResearchProvider(provider, input.prompt, env);
-      const answer = extractAnswer(result);
-      const citations = uniqueCitations(result);
-      const searchTrace = hasSearchTrace(result);
-      if (!answer || (!searchTrace && citations.length === 0)) {
-        throw new Error('The provider did not return verifiable web-search evidence.');
+  try {
+    const startedAt = Date.now();
+    const result = await runFreeResearch(input.prompt, env, {
+      model: resolveModel('workers-ai', env).model,
+      gatewayOptions: gatewayOptions(env),
+      fetcher: env.RESEARCH_FETCH || fetch
+    });
+    return json({
+      status: 'ok',
+      release: RELEASE,
+      kind: 'research',
+      provider: result.provider,
+      model: result.model,
+      mode: 'research',
+      answer: result.answer,
+      citations: result.citations,
+      searchedAt: result.searchedAt,
+      searchGrounded: true,
+      citationStatus: 'free-public-data-sources',
+      latencyMs: Date.now() - startedAt,
+      costClass: result.costClass,
+      routing: { provider: result.provider, reason: 'free-first-research', fallbackAttempts: failures },
+      limitations: result.limitations,
+      connectorFailures: result.connectorFailures
+    }, 200, requestId);
+  } catch (error) {
+    failures.push({ provider: 'free-research', error: error?.message || 'Free research failed' });
+    console.error('SakthiAI free research failed', { requestId, message: error?.message });
+  }
+
+  if (premiumEnabled(env)) {
+    const preferred = input.provider === 'openai' ? 'openai' : 'anthropic';
+    const providers = preferred === 'openai' ? ['openai', 'anthropic'] : ['anthropic', 'openai'];
+
+    for (const provider of providers) {
+      try {
+        const startedAt = Date.now();
+        const { result, selected } = await runPremiumResearchProvider(provider, input.prompt, env);
+        const answer = extractAnswer(result);
+        const citations = uniqueCitations(result);
+        const searchTrace = hasSearchTrace(result);
+        if (!answer || (!searchTrace && citations.length === 0)) {
+          throw new Error('The provider did not return verifiable web-search evidence.');
+        }
+        return json({
+          status: 'ok',
+          release: RELEASE,
+          kind: 'research',
+          provider,
+          model: selected.model,
+          mode: 'research',
+          answer,
+          citations,
+          searchedAt: new Date().toISOString(),
+          searchGrounded: true,
+          citationStatus: citations.length ? 'structured-citations-returned' : 'search-trace-returned',
+          latencyMs: Date.now() - startedAt,
+          costClass: 'premium-search',
+          routing: { provider, reason: 'premium-research-fallback', fallbackAttempts: failures },
+          limitations: citations.length ? [] : ['The provider confirmed web search but did not return structured URLs for every claim.']
+        }, 200, requestId);
+      } catch (error) {
+        failures.push({ provider, error: error?.message || 'Research provider failed' });
+        console.error('SakthiAI premium research failed', { requestId, provider, message: error?.message });
       }
-      return json({
-        status: 'ok',
-        release: RELEASE,
-        kind: 'research',
-        provider,
-        model: selected.model,
-        mode: 'research',
-        answer,
-        citations,
-        searchedAt: new Date().toISOString(),
-        searchGrounded: true,
-        citationStatus: citations.length ? 'structured-citations-returned' : 'search-trace-returned',
-        latencyMs: Date.now() - startedAt,
-        costClass: 'premium-search',
-        routing: { provider, reason: 'freshness-required', fallbackAttempts: failures },
-        limitations: citations.length ? [] : ['The provider confirmed web search but did not return structured URLs for every claim.']
-      }, 200, requestId);
-    } catch (error) {
-      failures.push({ provider, error: error?.message || 'Research provider failed' });
-      console.error('SakthiAI research provider failed', { requestId, provider, message: error?.message });
     }
   }
 
   return json({
-    error: 'Fresh web research is temporarily unavailable. SakthiAI refused to answer this current-information request from stale model memory.',
+    error: 'Fresh research is temporarily unavailable. SakthiAI refused to answer this current-information request from stale model memory.',
     code: 'FRESH_RESEARCH_UNAVAILABLE',
     searchedAt: new Date().toISOString(),
+    costPolicy: premiumEnabled(env) ? 'premium-fallback-enabled' : 'free-first-premium-disabled',
     attempts: failures
   }, 503, requestId);
 }
@@ -238,8 +286,9 @@ async function handleChat(request, env, stream = false) {
   const invalid = validateInput(input, requestId);
   if (invalid) return invalid;
 
-  const route = selectRoute(input);
-  if (route.kind === 'research') return executeResearch(input, env, requestId);
+  const selectedRoute = selectRoute(input);
+  if (selectedRoute.kind === 'research') return executeResearch(input, env, requestId);
+  const route = enforceCostPolicy(selectedRoute, env);
 
   const startedAt = Date.now();
   try {
@@ -277,7 +326,10 @@ async function handleChat(request, env, stream = false) {
       costClass: route.budgetClass,
       routing: route,
       citations: [],
-      limitations: ['This response did not use live web search. Current-information requests are automatically routed to the research endpoint.']
+      limitations: [
+        'This response did not use live web search. Current-information requests are automatically routed to the research endpoint.',
+        ...(route.premiumBlocked ? ['A paid provider was requested but disabled by the free-first cost policy; Sakthi Edge was used instead.'] : [])
+      ]
     }, 200, requestId);
   } catch (error) {
     console.error('SakthiAI inference failed', { requestId, provider: route.provider, message: error?.message });
@@ -301,7 +353,7 @@ async function handleChat(request, env, stream = false) {
           routing: fallbackRoute,
           fallbackFrom: route.provider,
           citations: [],
-          limitations: ['The selected premium provider was unavailable; Sakthi Edge handled this non-current request.']
+          limitations: ['The selected model was unavailable; Sakthi Edge handled this non-current request.']
         }, 200, requestId);
       } catch (fallbackError) {
         console.error('SakthiAI fallback failed', { requestId, message: fallbackError?.message });
@@ -323,7 +375,9 @@ export default {
         environment: 'production',
         release: RELEASE,
         aiRuntime: Boolean(env.AI),
-        gateway: env.AI_GATEWAY_ID || 'default'
+        gateway: env.AI_GATEWAY_ID || 'default',
+        costPolicy: 'free-first',
+        premiumProvidersEnabled: premiumEnabled(env)
       });
     }
 
@@ -335,10 +389,13 @@ export default {
         publicBeta: true,
         aiRuntime: Boolean(env.AI),
         gateway: env.AI_GATEWAY_ID || 'default',
+        costPolicy: 'free-first',
+        premiumProvidersEnabled: premiumEnabled(env),
         capabilities: [
           'multi-provider routing',
           'streaming chat',
-          'fresh web research',
+          'free public-data research',
+          'optional premium web research',
           'citations',
           'task modes',
           'server-side inference',
@@ -351,7 +408,13 @@ export default {
     }
 
     if (request.method === 'GET' && url.pathname === '/api/v1/models') {
-      return json({ release: RELEASE, gateway: env.AI_GATEWAY_ID || 'default', providers: providerStatus(env) });
+      return json({
+        release: RELEASE,
+        gateway: env.AI_GATEWAY_ID || 'default',
+        costPolicy: 'free-first',
+        premiumProvidersEnabled: premiumEnabled(env),
+        providers: providerStatus(env)
+      });
     }
 
     if (request.method === 'POST' && url.pathname === '/api/v1/chat') return handleChat(request, env, false);
