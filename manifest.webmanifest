@@ -1,14 +1,14 @@
 {
   "name": "Sakthi AI Nexus",
   "short_name": "Sakthi AI",
-  "description": "Public multi-provider AI platform for streaming chat, fresh cited research, documents, coding and governed automation.",
+  "description": "Free-first private owner AI workspace for research, projects, files, artifacts, approvals, memory and usage controls.",
   "start_url": "/#overview",
   "scope": "/",
   "display": "standalone",
   "background_color": "#07111f",
   "theme_color": "#07111f",
   "orientation": "any",
-  "categories": ["productivity", "utilities"],
+  "categories": ["productivity", "utilities", "business"],
   "icons": [
     {"src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
   ]
