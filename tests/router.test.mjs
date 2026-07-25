@@ -7,6 +7,7 @@ import {
   premiumEnabled,
   providerStatus,
   requiresFreshResearch,
+  resolveModel,
   selectRoute,
   uniqueCitations
 } from '../src/router.js';
@@ -43,8 +44,15 @@ test('paid routes need both the feature flag and explicit owner acknowledgement'
   assert.equal(openai.health, 'disabled-cost-control');
 });
 
-test('Kimi is blocked by owner policy and never selectable', () => {
+test('Kimi is blocked, not selectable and resolves only to Sakthi Edge', () => {
   assert.equal(isProviderBlocked('kimi'), true);
+  const route = selectRoute({ prompt: 'Explain landing zones', provider: 'kimi' });
+  assert.equal(route.provider, 'workers-ai');
+  assert.equal(route.reason, 'blocked-provider-kimi');
+  assert.equal(route.blockedProvider, 'kimi');
+  assert.equal(resolveModel('kimi').provider, 'workers-ai');
+  assert.match(resolveModel('kimi').model, /^@cf\/meta\//);
+
   const kimi = providerStatus({
     AI: {},
     PREMIUM_PROVIDERS_ENABLED: 'true',
