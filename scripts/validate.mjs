@@ -5,7 +5,7 @@ const required = [
   'index.html','offline.html','manifest.webmanifest','service-worker.js','health.json',
   'assets/styles.css','assets/release002.css','assets/release003.css','assets/owner-platform.css','assets/app.js','assets/owner-platform.js','assets/artifact-formats.js','assets/zip.js','assets/task-capture.js','assets/favicon.svg','assets/fallback.css',
   'src/entry.js','src/worker.js','src/router.js','src/free-research.js','src/files.js','src/owner-api.js','wrangler.jsonc','_headers','_redirects',
-  'migrations/0001_owner_platform.sql',
+  'migrations/0001_owner_platform.sql','openapi/sakthiai-v1.yaml',
   'docs/RELEASE_003_IMPLEMENTATION.md','docs/RELEASE_003_1_FREE_RESEARCH.md','docs/RELEASE_004_IMPLEMENTATION.md','docs/RELEASE_005_TO_010_ROADMAP.md'
 ];
 
@@ -49,7 +49,7 @@ for (const marker of ['0.10-owner-preview','/api/v1/platform/capabilities','/api
 }
 
 const ownerPlatform = await readFile(new URL('../assets/owner-platform.js', import.meta.url), 'utf8');
-for (const marker of ['indexedDB.open','projects','approvals','memories','graphNodes','usage','createDocx','createXlsx','createPptx','printPdf','anonymous upload']) {
+for (const marker of ['indexedDB.open','projects','approvals','memories','graphNodes','usage','createDocx','createXlsx','createPptx','printPdf','Anonymous upload']) {
   if (!ownerPlatform.includes(marker)) throw new Error(`assets/owner-platform.js missing marker: ${marker}`);
 }
 
@@ -61,6 +61,11 @@ for (const marker of ['createDocx','createXlsx','createPptx','createCodeZip','pr
 const migration = await readFile(new URL('../migrations/0001_owner_platform.sql', import.meta.url), 'utf8');
 for (const marker of ['CREATE TABLE IF NOT EXISTS tenants','projects','conversations','usage_events','approval_requests','memories','knowledge_nodes','knowledge_edges','audit_events']) {
   if (!migration.includes(marker)) throw new Error(`D1 migration missing marker: ${marker}`);
+}
+
+const openapi = await readFile(new URL('../openapi/sakthiai-v1.yaml', import.meta.url), 'utf8');
+for (const marker of ['openapi: 3.1.0','/api/v1/platform/capabilities','/api/v1/mobile/config','/api/v1/files/upload','TaskRequest']) {
+  if (!openapi.includes(marker)) throw new Error(`OpenAPI missing marker: ${marker}`);
 }
 
 const app = await readFile(new URL('../assets/app.js', import.meta.url), 'utf8');
