@@ -1,0 +1,34 @@
+name: Runtime Wave 3 validation
+on:
+  pull_request:
+    paths:
+      - 'src/entry.js'
+      - 'src/runtime-wave3.js'
+      - 'src/runtime-v3/**'
+      - 'tests/runtime-wave3.test.mjs'
+      - 'scripts/validate-runtime-wave3.mjs'
+      - 'migrations/0005_runtime_wave3.sql'
+      - 'openapi/sakthiai-runtime-wave3.yaml'
+      - 'docs/RUNTIME_WAVE_3_*.md'
+      - '.github/workflows/runtime-wave-3-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Runtime Wave 1 regression
+        run: node --test tests/runtime-wave1.test.mjs
+      - name: Runtime Wave 2 regression
+        run: node --test tests/runtime-wave2.test.mjs
+      - name: Runtime Wave 3 structural validation
+        run: node scripts/validate-runtime-wave3.mjs
+      - name: Runtime Wave 3 focused tests
+        run: node --test tests/runtime-wave3.test.mjs

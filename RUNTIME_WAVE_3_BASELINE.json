@@ -1,0 +1,13 @@
+{
+  "repository": "ssakthivel02/sakthiai",
+  "baseBranch": "main",
+  "baseCommit": "ef3b484108132456600c2c9f22f01eb50484d011",
+  "entryBlobSha": "fd364e9fbdf0ce571dcfe1e4118e71881c587dd9",
+  "wave3EnabledAtMerge": false,
+  "emergencyStopAtMerge": true,
+  "externalFetchEnabled": false,
+  "databaseWritesEnabled": false,
+  "aiExecutionEnabled": false,
+  "contentPersistenceEnabled": false,
+  "paidProvidersEnabled": false
+}
