@@ -1,0 +1,1 @@
+import test from "node:test";import assert from "node:assert/strict";test("unsafe defaults disabled",()=>assert.equal([false,false,false,false,false,false].every(v=>v===false),true));

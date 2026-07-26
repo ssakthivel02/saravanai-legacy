@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 251-260 API
+  version: 1.260.0
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/programme/251/enterprise-product-operating-model/status:
+    get:
+      summary: Return Release 251 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/252/customer-insight-and-feedback-governance/status:
+    get:
+      summary: Return Release 252 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/253/experimentation-and-product-decisioning/status:
+    get:
+      summary: Return Release 253 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/254/ai-capability-catalogue-and-marketplace/status:
+    get:
+      summary: Return Release 254 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/255/lifecycle-deprecation-and-customer-migration/status:
+    get:
+      summary: Return Release 255 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/256/legal-policy-and-contract-readiness/status:
+    get:
+      summary: Return Release 256 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/257/brand-trust-and-public-communications/status:
+    get:
+      summary: Return Release 257 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/258/operational-acceptance-and-handover/status:
+    get:
+      summary: Return Release 258 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/259/enterprise-release-readiness-board/status:
+    get:
+      summary: Return Release 259 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/260/enterprise-operations-and-product-completion-gate/status:
+    get:
+      summary: Return Release 260 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}

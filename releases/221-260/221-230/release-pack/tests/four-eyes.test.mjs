@@ -1,0 +1,1 @@
+import test from "node:test";import assert from "node:assert/strict";const v=(r,a,e)=>r!==a&&Boolean(a)&&e.length>0;test("self approval denied",()=>assert.equal(v("a","a",["e"]),false));test("independent approval accepted",()=>assert.equal(v("a","b",["e"]),true));

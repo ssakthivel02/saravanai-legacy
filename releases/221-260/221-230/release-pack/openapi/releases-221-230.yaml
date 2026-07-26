@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 221-230 API
+  version: 1.230.0
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/programme/221/enterprise-service-topology/status:
+    get:
+      summary: Return Release 221 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/222/configuration-and-asset-intelligence/status:
+    get:
+      summary: Return Release 222 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/223/incident-intelligence-and-triage/status:
+    get:
+      summary: Return Release 223 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/224/problem-and-root-cause-management/status:
+    get:
+      summary: Return Release 224 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/225/change-risk-intelligence/status:
+    get:
+      summary: Return Release 225 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/226/runbook-and-remediation-orchestration/status:
+    get:
+      summary: Return Release 226 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/227/service-level-and-error-budget-operations/status:
+    get:
+      summary: Return Release 227 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/228/operations-capacity-and-demand-forecasting/status:
+    get:
+      summary: Return Release 228 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/229/operational-cost-and-efficiency-management/status:
+    get:
+      summary: Return Release 229 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/230/enterprise-operations-assurance-gate/status:
+    get:
+      summary: Return Release 230 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}

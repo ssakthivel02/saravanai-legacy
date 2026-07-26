@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 241-250 API
+  version: 1.250.0
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/programme/241/multi-cloud-landing-zone-governance/status:
+    get:
+      summary: Return Release 241 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/242/workload-placement-and-portability/status:
+    get:
+      summary: Return Release 242 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/243/hybrid-network-and-connectivity-governance/status:
+    get:
+      summary: Return Release 243 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/244/edge-device-and-fleet-operations/status:
+    get:
+      summary: Return Release 244 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/245/enterprise-backup-and-data-protection/status:
+    get:
+      summary: Return Release 245 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/246/finops-allocation-and-budget-guardrails/status:
+    get:
+      summary: Return Release 246 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/247/sustainability-and-carbon-aware-operations/status:
+    get:
+      summary: Return Release 247 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/248/performance-and-scalability-engineering/status:
+    get:
+      summary: Return Release 248 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/249/provider-neutrality-and-exit-engineering/status:
+    get:
+      summary: Return Release 249 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/250/multi-cloud-finops-and-resilience-gate/status:
+    get:
+      summary: Return Release 250 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}

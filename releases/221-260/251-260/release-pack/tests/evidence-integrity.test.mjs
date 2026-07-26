@@ -1,0 +1,1 @@
+import test from "node:test";import assert from "node:assert/strict";test("sha256 valid",()=>assert.equal(/^[a-f0-9]{64}$/i.test("a".repeat(64)),true));

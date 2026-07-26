@@ -1,0 +1,1 @@
+export const SAFETY_DEFAULTS=Object.freeze({publicRegistration:false,paidProviders:false,unifiedBilling:false,billing:false,payments:false,anonymousWrites:false,autonomousWrites:false});

@@ -1,0 +1,1 @@
+export function validFourEyes(requester:string,approver:string,evidence:string[]):boolean{return requester!==approver&&Boolean(approver)&&evidence.length>0;}

@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 231-240 API
+  version: 1.240.0
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/programme/231/external-attack-surface-management/status:
+    get:
+      summary: Return Release 231 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/232/application-security-engineering/status:
+    get:
+      summary: Return Release 232 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/233/api-and-graphql-security/status:
+    get:
+      summary: Return Release 233 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/234/data-security-posture-management/status:
+    get:
+      summary: Return Release 234 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/235/secrets-certificates-and-key-rotation/status:
+    get:
+      summary: Return Release 235 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/236/privacy-engineering-and-data-protection-by-design/status:
+    get:
+      summary: Return Release 236 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/237/identity-governance-and-access-certification/status:
+    get:
+      summary: Return Release 237 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/238/secure-software-development-lifecycle/status:
+    get:
+      summary: Return Release 238 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/239/security-metrics-and-control-effectiveness/status:
+    get:
+      summary: Return Release 239 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/240/security-and-privacy-assurance-gate/status:
+    get:
+      summary: Return Release 240 status
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}

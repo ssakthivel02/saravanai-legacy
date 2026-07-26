@@ -1,0 +1,2 @@
+import type {Release233Record} from "./contracts";
+export function evaluateRelease233(v:Release233Record){if(v.riskScore>=70)return{allowed:false,reason:"risk_threshold",obligations:["human_review","retain_evidence"]};return{allowed:true,reason:"policy_satisfied",obligations:["audit_decision","retain_evidence"]};}

@@ -1,0 +1,23 @@
+name: Releases 221-260 validation
+on:
+  pull_request:
+    paths:
+      - 'releases/221-260/**'
+      - '.github/workflows/releases-221-260-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pack: ['221-230','231-240','241-250','251-260']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node releases/221-260/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - run: node --test releases/221-260/${{ matrix.pack }}/release-pack/tests/*.test.mjs
