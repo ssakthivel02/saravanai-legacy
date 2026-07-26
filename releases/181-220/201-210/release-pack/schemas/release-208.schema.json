@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cyber Recovery and Resilience Operations",
+  "type": "object",
+  "required": [
+    "exerciseId",
+    "service",
+    "backupRef",
+    "restoreEnvironment",
+    "rtoMinutes",
+    "rpoMinutes",
+    "evidenceRefs",
+    "outcome"
+  ],
+  "properties": {
+    "exerciseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "service": {
+      "type": "string",
+      "minLength": 1
+    },
+    "backupRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "restoreEnvironment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rtoMinutes": {
+      "type": "number",
+      "minimum": 0
+    },
+    "rpoMinutes": {
+      "type": "number",
+      "minimum": 0
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "outcome": {
+      "enum": [
+        "planned",
+        "passed",
+        "partial",
+        "failed"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

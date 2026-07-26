@@ -1,0 +1,8 @@
+{
+  "tenantScopeRequired": true,
+  "dataContractRequired": true,
+  "lineageRequired": true,
+  "retentionRequired": true,
+  "legalHoldOverridesDeletion": true,
+  "restrictedExternalSharing": "deny"
+}

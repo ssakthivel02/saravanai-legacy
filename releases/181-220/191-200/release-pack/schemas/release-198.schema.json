@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Records Discovery and eDiscovery Readiness",
+  "type": "object",
+  "required": [
+    "matterId",
+    "tenantId",
+    "custodians",
+    "recordTypes",
+    "legalHoldRefs",
+    "evidenceRefs",
+    "owner",
+    "status"
+  ],
+  "properties": {
+    "matterId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "custodians": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "recordTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "legalHoldRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "open",
+        "review",
+        "closed"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "publicRegistrationEnabled": false,
+  "paidProvidersEnabled": false,
+  "unifiedBillingEnabled": false,
+  "billingEnabled": false,
+  "paymentCollectionEnabled": false,
+  "autonomousProductionWritesEnabled": false,
+  "crossTenantAccessEnabled": false,
+  "promptContentLoggingEnabled": false
+}

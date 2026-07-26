@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Cost and Performance Optimisation",
+  "type": "object",
+  "required": [
+    "profileId",
+    "tenantId",
+    "latencyTargetMs",
+    "qualityFloor",
+    "monthlyBudgetPence",
+    "hardStopEnabled",
+    "paidProvidersEnabled",
+    "owner"
+  ],
+  "properties": {
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "latencyTargetMs": {
+      "type": "number",
+      "minimum": 0
+    },
+    "qualityFloor": {
+      "type": "number",
+      "minimum": 0
+    },
+    "monthlyBudgetPence": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hardStopEnabled": {
+      "const": true
+    },
+    "paidProvidersEnabled": {
+      "const": false
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

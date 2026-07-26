@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Memory Operations",
+  "type": "object",
+  "required": [
+    "memoryId",
+    "tenantId",
+    "subjectRef",
+    "memoryClass",
+    "sourceRef",
+    "confidence",
+    "expiresAt",
+    "status"
+  ],
+  "properties": {
+    "memoryId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "memoryClass": {
+      "enum": [
+        "working",
+        "project",
+        "organisation"
+      ]
+    },
+    "sourceRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0
+    },
+    "expiresAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "expired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

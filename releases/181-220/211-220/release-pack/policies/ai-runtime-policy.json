@@ -1,0 +1,8 @@
+{
+  "productionWritesEnabled": false,
+  "toolAllowlistRequired": true,
+  "egressAllowlistRequired": true,
+  "maximumAgentSteps": 50,
+  "killSwitchRequired": true,
+  "humanApprovalForMaterialActions": true
+}

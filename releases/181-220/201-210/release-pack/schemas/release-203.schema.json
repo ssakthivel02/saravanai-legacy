@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Vulnerability and Patch Governance",
+  "type": "object",
+  "required": [
+    "vulnerabilityId",
+    "assetRefs",
+    "severity",
+    "exploitKnown",
+    "owner",
+    "remediationDueAt",
+    "exceptionId",
+    "status"
+  ],
+  "properties": {
+    "vulnerabilityId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assetRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "severity": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "exploitKnown": {
+      "type": "boolean"
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "remediationDueAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exceptionId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "open",
+        "mitigated",
+        "closed"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

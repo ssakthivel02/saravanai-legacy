@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Master and Reference Data Management",
+  "type": "object",
+  "required": [
+    "recordId",
+    "tenantId",
+    "entityType",
+    "canonicalIdentifier",
+    "sourceRefs",
+    "steward",
+    "confidence",
+    "status"
+  ],
+  "properties": {
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entityType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonicalIdentifier": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "steward": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0
+    },
+    "status": {
+      "enum": [
+        "active",
+        "merged",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

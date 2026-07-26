@@ -1,0 +1,105 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 201–210 API
+    version: 1.210.0
+    description: Private enterprise capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/201/geopolitical-and-regional-risk-intelligence/status:
+  get:
+    summary: Return Release 201 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/202/crisis-information-integrity/status:
+  get:
+    summary: Return Release 202 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/203/vulnerability-and-patch-governance/status:
+  get:
+    summary: Return Release 203 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/204/software-supply-chain-provenance/status:
+  get:
+    summary: Return Release 204 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/205/identity-threat-detection-and-response/status:
+  get:
+    summary: Return Release 205 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/206/privileged-and-insider-risk-controls/status:
+  get:
+    summary: Return Release 206 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/207/fraud-account-abuse-and-misuse-prevention/status:
+  get:
+    summary: Return Release 207 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/208/cyber-recovery-and-resilience-operations/status:
+  get:
+    summary: Return Release 208 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/209/transparency-reporting-and-redress/status:
+  get:
+    summary: Return Release 209 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/210/global-trust-and-resilience-assurance-gate/status:
+  get:
+    summary: Return Release 210 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+

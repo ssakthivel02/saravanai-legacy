@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Product Lifecycle and Contracting",
+  "type": "object",
+  "required": [
+    "productId",
+    "tenantId",
+    "owner",
+    "version",
+    "contractId",
+    "slaId",
+    "exportFormats",
+    "status"
+  ],
+  "properties": {
+    "productId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contractId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slaId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exportFormats": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "active",
+        "deprecated",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

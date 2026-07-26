@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Runtime Control Plane",
+  "type": "object",
+  "required": [
+    "executionId",
+    "tenantId",
+    "actorSubject",
+    "capability",
+    "modelRouteId",
+    "maximumSteps",
+    "productionWriteAllowed",
+    "killSwitchAvailable"
+  ],
+  "properties": {
+    "executionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actorSubject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modelRouteId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "maximumSteps": {
+      "type": "number",
+      "minimum": 0
+    },
+    "productionWriteAllowed": {
+      "const": false
+    },
+    "killSwitchAvailable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false
+}

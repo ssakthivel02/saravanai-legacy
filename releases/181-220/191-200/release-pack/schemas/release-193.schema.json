@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event Streaming and Schema Registry",
+  "type": "object",
+  "required": [
+    "schemaId",
+    "eventType",
+    "version",
+    "compatibility",
+    "owner",
+    "retentionDays",
+    "containsPersonalData",
+    "status"
+  ],
+  "properties": {
+    "schemaId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eventType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "number",
+      "minimum": 0
+    },
+    "compatibility": {
+      "enum": [
+        "backward",
+        "forward",
+        "full"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retentionDays": {
+      "type": "number",
+      "minimum": 0
+    },
+    "containsPersonalData": {
+      "type": "boolean"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

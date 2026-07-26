@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Privacy-Preserving Analytics",
+  "type": "object",
+  "required": [
+    "policyId",
+    "tenantId",
+    "purpose",
+    "minimumGroupSize",
+    "directIdentifiersAllowed",
+    "reidentificationAllowed",
+    "retentionDays",
+    "approvedBy"
+  ],
+  "properties": {
+    "policyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "minimumGroupSize": {
+      "type": "number",
+      "minimum": 0
+    },
+    "directIdentifiersAllowed": {
+      "const": false
+    },
+    "reidentificationAllowed": {
+      "const": false
+    },
+    "retentionDays": {
+      "type": "number",
+      "minimum": 0
+    },
+    "approvedBy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

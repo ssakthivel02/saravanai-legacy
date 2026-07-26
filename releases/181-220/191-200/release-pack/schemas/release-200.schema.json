@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data and Integration Assurance Gate",
+  "type": "object",
+  "required": [
+    "gateId",
+    "releaseRange",
+    "dataEvidence",
+    "qualityEvidence",
+    "privacyEvidence",
+    "integrationEvidence",
+    "decision"
+  ],
+  "properties": {
+    "gateId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "releaseRange": {
+      "type": "string"
+    },
+    "dataEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "qualityEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "privacyEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "integrationEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "decision": {
+      "enum": [
+        "pending",
+        "go",
+        "conditional_go",
+        "no_go"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

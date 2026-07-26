@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Change and Rollback Management",
+  "type": "object",
+  "required": [
+    "changeId",
+    "changeType",
+    "owner",
+    "impactAssessmentId",
+    "canaryPlanId",
+    "rollbackRef",
+    "approvedBy",
+    "status"
+  ],
+  "properties": {
+    "changeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "changeType": {
+      "enum": [
+        "model",
+        "prompt",
+        "policy",
+        "corpus",
+        "agent"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "impactAssessmentId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canaryPlanId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rollbackRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approvedBy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved",
+        "deployed",
+        "rolled_back"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

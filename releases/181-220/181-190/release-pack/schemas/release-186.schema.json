@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tool and Connector Runtime Governance",
+  "type": "object",
+  "required": [
+    "invocationId",
+    "tenantId",
+    "toolId",
+    "capability",
+    "targetHost",
+    "idempotencyKey",
+    "approvalId",
+    "writeAction"
+  ],
+  "properties": {
+    "invocationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "toolId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetHost": {
+      "type": "string",
+      "minLength": 1
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approvalId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "writeAction": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}
