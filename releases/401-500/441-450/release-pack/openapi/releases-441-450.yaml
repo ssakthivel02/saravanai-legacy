@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 441–450 API
+    version: 4.450.0
+    description: Private Enterprise Platform v4 capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/441/business-capability-and-value-stream-map/status:
+  get:
+    summary: Return Release 441 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/442/application-portfolio-rationalisation/status:
+  get:
+    summary: Return Release 442 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/443/erp-integration-and-transaction-governance/status:
+  get:
+    summary: Return Release 443 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/444/crm-and-customer-data-integration/status:
+  get:
+    summary: Return Release 444 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/445/hr-and-workforce-system-integration/status:
+  get:
+    summary: Return Release 445 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/446/finance-and-procurement-integration/status:
+  get:
+    summary: Return Release 446 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/447/enterprise-event-and-api-integration-hub/status:
+  get:
+    summary: Return Release 447 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/448/master-data-and-reference-synchronisation-v2/status:
+  get:
+    summary: Return Release 448 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/449/business-transformation-benefits-tracking/status:
+  get:
+    summary: Return Release 449 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/450/business-architecture-and-integration-gate/status:
+  get:
+    summary: Return Release 450 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 411–420 API
+    version: 4.420.0
+    description: Private Enterprise Platform v4 capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/411/sovereign-ai-deployment-profile/status:
+  get:
+    summary: Return Release 411 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/412/offline-and-disconnected-ai-runtime/status:
+  get:
+    summary: Return Release 412 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/413/edge-model-packaging-and-verification/status:
+  get:
+    summary: Return Release 413 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/414/device-ai-policy-and-posture/status:
+  get:
+    summary: Return Release 414 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/415/local-retrieval-and-knowledge-synchronisation/status:
+  get:
+    summary: Return Release 415 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/416/constrained-compute-optimisation/status:
+  get:
+    summary: Return Release 416 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/417/offline-update-and-patch-governance/status:
+  get:
+    summary: Return Release 417 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/418/edge-ai-privacy-and-sensor-minimisation/status:
+  get:
+    summary: Return Release 418 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/419/sovereign-operations-and-support-readiness/status:
+  get:
+    summary: Return Release 419 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/420/sovereign-and-edge-ai-assurance-gate/status:
+  get:
+    summary: Return Release 420 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

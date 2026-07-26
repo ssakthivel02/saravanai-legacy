@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 451–460 API
+    version: 4.460.0
+    description: Private Enterprise Platform v4 capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/451/omnichannel-journey-orchestration/status:
+  get:
+    summary: Return Release 451 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/452/customer-identity-and-preference-centre/status:
+  get:
+    summary: Return Release 452 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/453/accessible-experience-personalisation/status:
+  get:
+    summary: Return Release 453 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/454/customer-notification-and-communication-safety/status:
+  get:
+    summary: Return Release 454 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/455/conversational-ai-customer-support/status:
+  get:
+    summary: Return Release 455 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/456/case-complaint-and-escalation-operations/status:
+  get:
+    summary: Return Release 456 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/457/customer-feedback-and-research-operations/status:
+  get:
+    summary: Return Release 457 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/458/customer-trust-transparency-centre/status:
+  get:
+    summary: Return Release 458 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/459/customer-experience-reliability-and-slo/status:
+  get:
+    summary: Return Release 459 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/460/customer-experience-assurance-gate/status:
+  get:
+    summary: Return Release 460 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

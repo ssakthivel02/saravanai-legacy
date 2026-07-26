@@ -1,0 +1,7 @@
+{
+  "wcagTarget": "2.2-AA-readiness",
+  "keyboardRequired": true,
+  "screenReaderReviewRequired": true,
+  "accessibleAlternativeRequired": true,
+  "automatedTestingAloneSufficient": false
+}
