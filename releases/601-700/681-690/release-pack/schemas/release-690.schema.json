@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Compliance and Assurance Gate",
+  "type": "object",
+  "required": [
+    "gateId",
+    "releaseRange",
+    "evidenceDomains",
+    "evidenceIndexSha256",
+    "approvedBy",
+    "residualRisks",
+    "conditions",
+    "decision"
+  ],
+  "properties": {
+    "gateId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "releaseRange": {
+      "const": "681-690"
+    },
+    "evidenceDomains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "evidenceIndexSha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approvedBy": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "residualRisks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "decision": {
+      "enum": [
+        "pending",
+        "go",
+        "conditional_go",
+        "no_go"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

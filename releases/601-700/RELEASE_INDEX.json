@@ -1,0 +1,706 @@
+{
+  "programme": "SakthiAI Enterprise Platform v6",
+  "range": "601-700",
+  "releases": [
+    {
+      "release": 601,
+      "title": "AI Runtime Service Registry",
+      "objective": "Register runtime services, owners, versions, dependencies, regions, limits and lifecycle state.",
+      "kind": "registry",
+      "pack": "601-610"
+    },
+    {
+      "release": 602,
+      "title": "Provider and Model Adapter Contract",
+      "objective": "Standardise approved provider and model adapters with capabilities, limits, safety and fallback metadata.",
+      "kind": "profile",
+      "pack": "601-610"
+    },
+    {
+      "release": 603,
+      "title": "Dynamic Model Routing Control",
+      "objective": "Route requests using tenant policy, quality, privacy, latency, availability and free-first cost boundaries.",
+      "kind": "policy",
+      "pack": "601-610"
+    },
+    {
+      "release": 604,
+      "title": "Inference Request Admission Control",
+      "objective": "Admit, queue or reject inference requests using quotas, risk, priority, concurrency and hard-stop controls.",
+      "kind": "execution",
+      "pack": "601-610"
+    },
+    {
+      "release": 605,
+      "title": "Context Window and Token Budget Governance",
+      "objective": "Control prompt, retrieval and output budgets with truncation, summarisation, evidence and user transparency.",
+      "kind": "policy",
+      "pack": "601-610"
+    },
+    {
+      "release": 606,
+      "title": "Runtime Safety Filter Orchestration",
+      "objective": "Coordinate prompt, output, PII, secret, malware and policy filters with explainable outcomes.",
+      "kind": "profile",
+      "pack": "601-610"
+    },
+    {
+      "release": 607,
+      "title": "Model Fallback and Degraded Service",
+      "objective": "Provide bounded fallbacks, reduced capability, safe failure and user-visible service status.",
+      "kind": "plan",
+      "pack": "601-610"
+    },
+    {
+      "release": 608,
+      "title": "Inference Cache and Privacy Boundary",
+      "objective": "Govern semantic and response caches through tenant scope, classification, expiry and invalidation.",
+      "kind": "profile",
+      "pack": "601-610"
+    },
+    {
+      "release": 609,
+      "title": "AI Runtime Capacity Forecasting",
+      "objective": "Forecast demand, queue pressure, latency, resource limits and contingency actions.",
+      "kind": "assessment",
+      "pack": "601-610"
+    },
+    {
+      "release": 610,
+      "title": "AI Runtime Control Plane Assurance Gate",
+      "objective": "Gate runtime release on routing, admission, safety, privacy, capacity, fallback and rollback evidence.",
+      "kind": "gate",
+      "pack": "601-610"
+    },
+    {
+      "release": 611,
+      "title": "Agent Runtime Identity and Session",
+      "objective": "Bind each agent execution to tenant, actor, purpose, permissions, expiry and immutable session evidence.",
+      "kind": "profile",
+      "pack": "611-620"
+    },
+    {
+      "release": 612,
+      "title": "Agent Plan Validation and Policy Compilation",
+      "objective": "Validate plans against tool scopes, data boundaries, step limits, approvals and prohibited actions.",
+      "kind": "policy",
+      "pack": "611-620"
+    },
+    {
+      "release": 613,
+      "title": "Tool Catalogue and Capability Manifest",
+      "objective": "Register tools, schemas, owners, permissions, side effects, costs, risks and retirement state.",
+      "kind": "registry",
+      "pack": "611-620"
+    },
+    {
+      "release": 614,
+      "title": "Tool Invocation Gateway",
+      "objective": "Execute allowlisted tool calls with schema validation, idempotency, approval, timeout and audit controls.",
+      "kind": "execution",
+      "pack": "611-620"
+    },
+    {
+      "release": 615,
+      "title": "Agent Sandbox and Resource Isolation",
+      "objective": "Isolate code, files, network, memory, CPU and temporary storage for untrusted agent workloads.",
+      "kind": "profile",
+      "pack": "611-620"
+    },
+    {
+      "release": 616,
+      "title": "Agent Memory Scope and Expiry",
+      "objective": "Control working, episodic and tenant memory through scope, classification, retention and deletion.",
+      "kind": "policy",
+      "pack": "611-620"
+    },
+    {
+      "release": 617,
+      "title": "Multi-Agent Coordination Protocol v2",
+      "objective": "Coordinate agent roles, messages, shared state, conflict resolution, deadlines and human override.",
+      "kind": "profile",
+      "pack": "611-620"
+    },
+    {
+      "release": 618,
+      "title": "Agent Failure Recovery and Compensation",
+      "objective": "Recover failed workflows through checkpoints, compensating actions, retry limits and escalation.",
+      "kind": "plan",
+      "pack": "611-620"
+    },
+    {
+      "release": 619,
+      "title": "Agent Behaviour and Drift Monitoring",
+      "objective": "Monitor action patterns, policy denials, tool usage, outcome drift and corrective controls.",
+      "kind": "assessment",
+      "pack": "611-620"
+    },
+    {
+      "release": 620,
+      "title": "Secure Agent Runtime Assurance Gate",
+      "objective": "Gate agent operations on identity, plans, tools, isolation, memory, recovery and behaviour evidence.",
+      "kind": "gate",
+      "pack": "611-620"
+    },
+    {
+      "release": 621,
+      "title": "Enterprise Source and Collection Registry",
+      "objective": "Register approved knowledge sources, owners, licences, classifications, regions and review dates.",
+      "kind": "registry",
+      "pack": "621-630"
+    },
+    {
+      "release": 622,
+      "title": "Ingestion Parsing and Normalisation Pipeline",
+      "objective": "Parse documents and records with malware scanning, metadata, language, structure and quarantine.",
+      "kind": "execution",
+      "pack": "621-630"
+    },
+    {
+      "release": 623,
+      "title": "Chunking Embedding and Index Governance",
+      "objective": "Version chunking, embedding, indexing, tenancy, quality tests and re-index procedures.",
+      "kind": "profile",
+      "pack": "621-630"
+    },
+    {
+      "release": 624,
+      "title": "Retrieval Access Filter Enforcement",
+      "objective": "Enforce document, row, field, tenant and purpose permissions before ranking or generation.",
+      "kind": "policy",
+      "pack": "621-630"
+    },
+    {
+      "release": 625,
+      "title": "Hybrid Search and Ranking Evaluation",
+      "objective": "Evaluate lexical, semantic and structured retrieval quality, bias, freshness and latency.",
+      "kind": "assessment",
+      "pack": "621-630"
+    },
+    {
+      "release": 626,
+      "title": "Citation Evidence and Source Traceability",
+      "objective": "Bind generated statements to source locations, versions, timestamps, confidence and correction history.",
+      "kind": "profile",
+      "pack": "621-630"
+    },
+    {
+      "release": 627,
+      "title": "Knowledge Freshness and Expiry Operations",
+      "objective": "Detect stale sources, enforce expiry, trigger review and prevent unsupported current-state claims.",
+      "kind": "plan",
+      "pack": "621-630"
+    },
+    {
+      "release": 628,
+      "title": "Knowledge Conflict and Canonical Resolution",
+      "objective": "Resolve conflicting sources through authority, recency, scope, human review and retained dissent.",
+      "kind": "decision",
+      "pack": "621-630"
+    },
+    {
+      "release": 629,
+      "title": "Knowledge Feedback and Correction Workflow",
+      "objective": "Capture user feedback, verify issues, correct indexes, notify consumers and preserve audit history.",
+      "kind": "plan",
+      "pack": "621-630"
+    },
+    {
+      "release": 630,
+      "title": "Enterprise Retrieval Assurance Gate",
+      "objective": "Gate retrieval on source approval, parsing, access, quality, citations, freshness and correction evidence.",
+      "kind": "gate",
+      "pack": "621-630"
+    },
+    {
+      "release": 631,
+      "title": "Data Residency and Sovereignty Registry",
+      "objective": "Register data locations, legal entities, jurisdictions, owners, permitted processing and restrictions.",
+      "kind": "registry",
+      "pack": "631-640"
+    },
+    {
+      "release": 632,
+      "title": "Purpose and Processing Activity Catalogue",
+      "objective": "Document processing purposes, lawful basis, data categories, recipients, retention and controls.",
+      "kind": "registry",
+      "pack": "631-640"
+    },
+    {
+      "release": 633,
+      "title": "Tenant Data Boundary Enforcement v2",
+      "objective": "Enforce logical and cryptographic tenant separation across storage, cache, logs, indexes and backups.",
+      "kind": "policy",
+      "pack": "631-640"
+    },
+    {
+      "release": 634,
+      "title": "Regional Routing and Processing Control",
+      "objective": "Route data and workloads only to approved regions, services and subcontractor boundaries.",
+      "kind": "execution",
+      "pack": "631-640"
+    },
+    {
+      "release": 635,
+      "title": "Privacy-Preserving Analytics Runtime",
+      "objective": "Operate aggregation, suppression, pseudonymisation and controlled privacy-enhancing techniques.",
+      "kind": "profile",
+      "pack": "631-640"
+    },
+    {
+      "release": 636,
+      "title": "Data Subject Rights Orchestration v2",
+      "objective": "Coordinate access, correction, deletion, restriction, portability and objection with legal holds.",
+      "kind": "plan",
+      "pack": "631-640"
+    },
+    {
+      "release": 637,
+      "title": "Sensitive Data Discovery and Classification",
+      "objective": "Discover and classify personal, confidential, regulated and secret data with human verification.",
+      "kind": "assessment",
+      "pack": "631-640"
+    },
+    {
+      "release": 638,
+      "title": "Privacy Incident and Breach Assessment",
+      "objective": "Assess scope, affected people, risk, containment, notification duties and remediation evidence.",
+      "kind": "incident",
+      "pack": "631-640"
+    },
+    {
+      "release": 639,
+      "title": "Data Deletion and Cryptographic Erasure",
+      "objective": "Delete or render data inaccessible with dependency tracking, evidence, exceptions and verification.",
+      "kind": "execution",
+      "pack": "631-640"
+    },
+    {
+      "release": 640,
+      "title": "Data Sovereignty Assurance Gate",
+      "objective": "Gate data services on residency, purpose, tenancy, rights, classification, incidents and deletion evidence.",
+      "kind": "gate",
+      "pack": "631-640"
+    },
+    {
+      "release": 641,
+      "title": "Multimodal Project and Asset Workspace",
+      "objective": "Manage governed projects, assets, contributors, versions, rights, approvals and publication state.",
+      "kind": "registry",
+      "pack": "641-650"
+    },
+    {
+      "release": 642,
+      "title": "Image Prompt and Edit Specification",
+      "objective": "Version image prompts and edits with source assets, consent, negative constraints and review.",
+      "kind": "profile",
+      "pack": "641-650"
+    },
+    {
+      "release": 643,
+      "title": "Audio and Voice Production Pipeline",
+      "objective": "Govern scripts, speakers, consent, synthesis, mixing, captions, provenance and withdrawal.",
+      "kind": "execution",
+      "pack": "641-650"
+    },
+    {
+      "release": 644,
+      "title": "Video Storyboard and Generation Pipeline",
+      "objective": "Govern storyboards, scenes, likeness, safety, rights, rendering, captions and approval.",
+      "kind": "execution",
+      "pack": "641-650"
+    },
+    {
+      "release": 645,
+      "title": "Document Presentation and PDF Composer",
+      "objective": "Compose accessible documents, reports, resumes and presentations from approved templates and sources.",
+      "kind": "execution",
+      "pack": "641-650"
+    },
+    {
+      "release": 646,
+      "title": "Media Quality and Brand Compliance",
+      "objective": "Assess resolution, layout, colour, audio, captions, terminology, brand and publication requirements.",
+      "kind": "assessment",
+      "pack": "641-650"
+    },
+    {
+      "release": 647,
+      "title": "Content Moderation and Sensitive Context Review",
+      "objective": "Review violence, sexual content, minors, public figures, medical, political and cultural contexts.",
+      "kind": "profile",
+      "pack": "641-650"
+    },
+    {
+      "release": 648,
+      "title": "Media Provenance Packaging and Verification",
+      "objective": "Package hashes, source references, edit history, synthetic disclosure and verification metadata.",
+      "kind": "execution",
+      "pack": "641-650"
+    },
+    {
+      "release": 649,
+      "title": "Content Distribution and Withdrawal",
+      "objective": "Publish to approved channels with access, expiry, cache purge, correction and withdrawal controls.",
+      "kind": "plan",
+      "pack": "641-650"
+    },
+    {
+      "release": 650,
+      "title": "Multimodal Content Operations Gate",
+      "objective": "Gate media release on rights, consent, quality, moderation, accessibility, provenance and withdrawal.",
+      "kind": "gate",
+      "pack": "641-650"
+    },
+    {
+      "release": 651,
+      "title": "Developer Workspace and Repository Boundary",
+      "objective": "Bind development workspaces to repositories, identities, branches, secrets and approved tools.",
+      "kind": "profile",
+      "pack": "651-660"
+    },
+    {
+      "release": 652,
+      "title": "Secure Code Generation and Review",
+      "objective": "Generate code under repository context, coding standards, tests, secret protection and human review.",
+      "kind": "profile",
+      "pack": "651-660"
+    },
+    {
+      "release": 653,
+      "title": "Ephemeral Code Execution Sandbox",
+      "objective": "Run untrusted code with isolated filesystem, network, CPU, memory, time and artefact controls.",
+      "kind": "execution",
+      "pack": "651-660"
+    },
+    {
+      "release": 654,
+      "title": "Dependency and Package Admission",
+      "objective": "Admit dependencies using provenance, licences, vulnerabilities, signatures, necessity and policy.",
+      "kind": "policy",
+      "pack": "651-660"
+    },
+    {
+      "release": 655,
+      "title": "Build Reproducibility and Provenance v2",
+      "objective": "Produce repeatable builds with locked inputs, signed outputs, SBOM and environment evidence.",
+      "kind": "assessment",
+      "pack": "651-660"
+    },
+    {
+      "release": 656,
+      "title": "Test Generation and Validation Intelligence",
+      "objective": "Generate and prioritise tests with requirements traceability, negative cases and human review.",
+      "kind": "assessment",
+      "pack": "651-660"
+    },
+    {
+      "release": 657,
+      "title": "Infrastructure and Policy Code Governance",
+      "objective": "Govern Terraform, configuration, policy and deployment code through plans, checks and approvals.",
+      "kind": "profile",
+      "pack": "651-660"
+    },
+    {
+      "release": 658,
+      "title": "Secure Release Artefact Registry",
+      "objective": "Register signed binaries, packages, containers, attestations, SBOM, environments and promotion state.",
+      "kind": "registry",
+      "pack": "651-660"
+    },
+    {
+      "release": 659,
+      "title": "Developer Platform Incident and Recovery",
+      "objective": "Contain compromised workspaces, tokens, packages, pipelines and artefacts with recovery evidence.",
+      "kind": "incident",
+      "pack": "651-660"
+    },
+    {
+      "release": 660,
+      "title": "Secure Developer Platform Assurance Gate",
+      "objective": "Gate engineering services on workspace, code, sandbox, dependencies, builds, tests and recovery.",
+      "kind": "gate",
+      "pack": "651-660"
+    },
+    {
+      "release": 661,
+      "title": "Telemetry Contract and Signal Registry",
+      "objective": "Register metrics, logs, traces, events, owners, classifications, retention and quality objectives.",
+      "kind": "registry",
+      "pack": "661-670"
+    },
+    {
+      "release": 662,
+      "title": "Service Dependency and Criticality Map v2",
+      "objective": "Map services, dependencies, failure modes, critical journeys, owners and recovery tiers.",
+      "kind": "registry",
+      "pack": "661-670"
+    },
+    {
+      "release": 663,
+      "title": "SLO Error Budget and Reliability Policy",
+      "objective": "Define objectives, windows, burn rates, exceptions, release controls and user impact.",
+      "kind": "policy",
+      "pack": "661-670"
+    },
+    {
+      "release": 664,
+      "title": "Anomaly Detection and Alert Quality",
+      "objective": "Evaluate anomalies and alerts for precision, recall, severity, context, ownership and fatigue.",
+      "kind": "assessment",
+      "pack": "661-670"
+    },
+    {
+      "release": 665,
+      "title": "Incident Intelligence and Triage Assistant",
+      "objective": "Support evidence-based incident triage, hypotheses, timelines and next actions with human command.",
+      "kind": "profile",
+      "pack": "661-670"
+    },
+    {
+      "release": 666,
+      "title": "Automated Remediation Safety Controller",
+      "objective": "Execute bounded remediation with dry-run, approvals, blast-radius checks, rollback and kill switch.",
+      "kind": "execution",
+      "pack": "661-670"
+    },
+    {
+      "release": 667,
+      "title": "Capacity Performance and Saturation Engineering",
+      "objective": "Model load, latency, contention, queues, limits and scaling or degradation actions.",
+      "kind": "assessment",
+      "pack": "661-670"
+    },
+    {
+      "release": 668,
+      "title": "Reliability Experiment and Chaos Governance",
+      "objective": "Run approved fault experiments with scope, hypotheses, abort criteria and recovery evidence.",
+      "kind": "plan",
+      "pack": "661-670"
+    },
+    {
+      "release": 669,
+      "title": "Post-Incident Learning and Action Tracking",
+      "objective": "Record contributing factors, customer impact, lessons, actions, owners and verification.",
+      "kind": "plan",
+      "pack": "661-670"
+    },
+    {
+      "release": 670,
+      "title": "Observability and SRE Assurance Gate",
+      "objective": "Gate operations on telemetry, dependencies, SLOs, alerts, incidents, remediation and learning.",
+      "kind": "gate",
+      "pack": "661-670"
+    },
+    {
+      "release": 671,
+      "title": "Business Process and Workflow Registry",
+      "objective": "Register processes, owners, actors, systems, data, controls, SLAs and lifecycle state.",
+      "kind": "registry",
+      "pack": "671-680"
+    },
+    {
+      "release": 672,
+      "title": "Workflow Definition and Version Control",
+      "objective": "Version steps, conditions, forms, roles, timeouts, exceptions, approvals and rollback.",
+      "kind": "profile",
+      "pack": "671-680"
+    },
+    {
+      "release": 673,
+      "title": "Human Task Inbox and Delegation",
+      "objective": "Manage assignments, competence, deadlines, accessibility, delegation, escalation and evidence.",
+      "kind": "profile",
+      "pack": "671-680"
+    },
+    {
+      "release": 674,
+      "title": "Rules and Decision Table Governance",
+      "objective": "Version business rules, priorities, conflicts, tests, approvals, explanations and retirement.",
+      "kind": "policy",
+      "pack": "671-680"
+    },
+    {
+      "release": 675,
+      "title": "Document and Form Automation",
+      "objective": "Generate and process forms and documents with validation, accessibility, signatures and retention.",
+      "kind": "execution",
+      "pack": "671-680"
+    },
+    {
+      "release": 676,
+      "title": "Workflow Integration and Connector Safety",
+      "objective": "Invoke approved systems through scoped connectors, schemas, idempotency and reconciliation.",
+      "kind": "execution",
+      "pack": "671-680"
+    },
+    {
+      "release": 677,
+      "title": "Process Mining and Improvement without Surveillance",
+      "objective": "Analyse process outcomes and bottlenecks while prohibiting invasive individual monitoring.",
+      "kind": "assessment",
+      "pack": "671-680"
+    },
+    {
+      "release": 678,
+      "title": "Workflow Exception and Case Management",
+      "objective": "Handle exceptions, evidence, ownership, deadlines, escalation, redress and closure.",
+      "kind": "plan",
+      "pack": "671-680"
+    },
+    {
+      "release": 679,
+      "title": "Automation Value and Control Monitoring",
+      "objective": "Measure outcomes, errors, controls, adoption, cost, fairness and corrective actions.",
+      "kind": "assessment",
+      "pack": "671-680"
+    },
+    {
+      "release": 680,
+      "title": "Business Automation Assurance Gate",
+      "objective": "Gate workflows on design, tasks, rules, documents, integrations, fairness and exception evidence.",
+      "kind": "gate",
+      "pack": "671-680"
+    },
+    {
+      "release": 681,
+      "title": "Obligation and Control Requirement Registry",
+      "objective": "Register obligations, applicability, owners, sources, interpretations, controls and review dates.",
+      "kind": "registry",
+      "pack": "681-690"
+    },
+    {
+      "release": 682,
+      "title": "Control Design and Test Catalogue v2",
+      "objective": "Define control objectives, procedures, evidence, frequency, owners, testers and limitations.",
+      "kind": "registry",
+      "pack": "681-690"
+    },
+    {
+      "release": 683,
+      "title": "Continuous Control Evidence Collection",
+      "objective": "Collect approved evidence metadata with source integrity, scope, timing and privacy boundaries.",
+      "kind": "execution",
+      "pack": "681-690"
+    },
+    {
+      "release": 684,
+      "title": "Control Effectiveness Assessment",
+      "objective": "Assess design and operating effectiveness, samples, exceptions, limitations and remediation.",
+      "kind": "assessment",
+      "pack": "681-690"
+    },
+    {
+      "release": 685,
+      "title": "Issue Finding and Remediation Management",
+      "objective": "Manage findings, severity, root cause, actions, owners, due dates, evidence and closure.",
+      "kind": "plan",
+      "pack": "681-690"
+    },
+    {
+      "release": 686,
+      "title": "Policy Exception and Risk Acceptance v2",
+      "objective": "Govern exceptions through scope, rationale, compensating controls, approval, expiry and review.",
+      "kind": "decision",
+      "pack": "681-690"
+    },
+    {
+      "release": 687,
+      "title": "Audit Request and Evidence Workspace",
+      "objective": "Coordinate scoped audit requests, access, evidence, questions, responses and retention.",
+      "kind": "profile",
+      "pack": "681-690"
+    },
+    {
+      "release": 688,
+      "title": "Management Assertion and Disclosure Control",
+      "objective": "Prepare evidence-backed assertions with scope, caveats, approvals and correction procedures.",
+      "kind": "policy",
+      "pack": "681-690"
+    },
+    {
+      "release": 689,
+      "title": "Independent Assurance Readiness v2",
+      "objective": "Prepare traceable evidence and remediation without representing readiness as certification.",
+      "kind": "assessment",
+      "pack": "681-690"
+    },
+    {
+      "release": 690,
+      "title": "Compliance and Assurance Gate",
+      "objective": "Gate assurance on obligations, controls, evidence, findings, exceptions and independent review.",
+      "kind": "gate",
+      "pack": "681-690"
+    },
+    {
+      "release": 691,
+      "title": "Enterprise Platform v6 Capability Catalogue",
+      "objective": "Publish supported capabilities, owners, versions, dependencies, limits, support and retirement.",
+      "kind": "registry",
+      "pack": "691-700"
+    },
+    {
+      "release": 692,
+      "title": "Production Architecture and Security Review v6",
+      "objective": "Consolidate architecture, threat, privacy, data, operations, cost and rollback evidence.",
+      "kind": "assessment",
+      "pack": "691-700"
+    },
+    {
+      "release": 693,
+      "title": "Tenant Onboarding and Configuration Factory v2",
+      "objective": "Provision approved tenant configuration, identities, policies, quotas, evidence and rollback.",
+      "kind": "plan",
+      "pack": "691-700"
+    },
+    {
+      "release": 694,
+      "title": "Production Migration and Cutover Control v4",
+      "objective": "Rehearse and govern schema, data, service and tenant cutovers with reconciliation and rollback.",
+      "kind": "execution",
+      "pack": "691-700"
+    },
+    {
+      "release": 695,
+      "title": "Global Operations and Follow-the-Sun Readiness",
+      "objective": "Prepare regional support, handovers, escalation, language, access and continuity evidence.",
+      "kind": "plan",
+      "pack": "691-700"
+    },
+    {
+      "release": 696,
+      "title": "Service Continuity and Provider Exit v4",
+      "objective": "Test degraded operation, export, replacement, credential revocation and supplier exit.",
+      "kind": "plan",
+      "pack": "691-700"
+    },
+    {
+      "release": 697,
+      "title": "Customer Acceptance and Pilot Evidence",
+      "objective": "Collect representative pilot, accessibility, reliability, support and correction evidence.",
+      "kind": "assessment",
+      "pack": "691-700"
+    },
+    {
+      "release": 698,
+      "title": "Commercial Entitlement Readiness without Billing v2",
+      "objective": "Validate service definitions, entitlements, quotas and disputes while payments remain disabled.",
+      "kind": "assessment",
+      "pack": "691-700"
+    },
+    {
+      "release": 699,
+      "title": "Enterprise Platform v6 General Availability Board",
+      "objective": "Make accountable go, conditional-go or no-go decisions using cross-domain evidence.",
+      "kind": "decision",
+      "pack": "691-700"
+    },
+    {
+      "release": 700,
+      "title": "SakthiAI Enterprise Platform v6 Completion Gate",
+      "objective": "Close Releases 601–700 only after all ten domains receive evidence-backed multi-party approval.",
+      "kind": "gate",
+      "pack": "691-700"
+    }
+  ]
+}
