@@ -4,6 +4,8 @@ import { readFile } from 'node:fs/promises';
 const required = [
   'src/entry.js',
   'src/runtime-waves12-30.js',
+  'src/runtime-v12-30/catalog.js',
+  'src/runtime-v12-30/core.js',
   'tests/runtime-waves12-30.test.mjs',
   'scripts/validate-runtime-waves12-30.mjs',
   '.github/workflows/runtime-waves-12-30-validation.yml',
@@ -32,10 +34,12 @@ for (const marker of [
   if (!entry.includes(marker)) throw new Error(`Entry integration marker missing: ${marker}`);
 }
 
-const runtime = await readFile(new URL('../src/runtime-waves12-30.js', import.meta.url), 'utf8');
+const catalogue = await readFile(new URL('../src/runtime-v12-30/catalog.js', import.meta.url), 'utf8');
 for (let wave = 12; wave <= 30; wave += 1) {
-  if (!runtime.includes(`"${wave}":`)) throw new Error(`Wave ${wave} missing from catalogue`);
+  if (!catalogue.includes(`[${wave},`)) throw new Error(`Wave ${wave} missing from catalogue`);
 }
+
+const runtime = await readFile(new URL('../src/runtime-waves12-30.js', import.meta.url), 'utf8');
 for (const marker of [
   'handleRuntimeWaves12To30',
   'runtimeWaves12To30Health',
@@ -43,14 +47,20 @@ for (const marker of [
   'evidence/validate',
   'risk/classify',
   'plan/validate',
-  'gate',
+  'gate'
+]) {
+  if (!runtime.includes(marker)) throw new Error(`Runtime marker missing: ${marker}`);
+}
+
+const core = await readFile(new URL('../src/runtime-v12-30/core.js', import.meta.url), 'utf8');
+for (const marker of [
   'externalCallsEnabled: false',
   'productionWritesEnabled: false',
   'paidProvidersEnabled: false',
   'publicRegistrationEnabled: false',
   'certificationClaimsEnabled: false'
 ]) {
-  if (!runtime.includes(marker)) throw new Error(`Runtime marker missing: ${marker}`);
+  if (!core.includes(marker)) throw new Error(`Safety marker missing: ${marker}`);
 }
 
 const safetyFiles = required.filter((path) => !path.startsWith('scripts/'));
@@ -79,4 +89,4 @@ for (const [name, value] of [
   if (combined.includes(marker)) throw new Error(`Unsafe marker found: ${marker}`);
 }
 
-console.log('Runtime Waves 12-30 compact structural validation passed.');
+console.log('Runtime Waves 12-30 split structural validation passed.');
