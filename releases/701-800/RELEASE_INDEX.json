@@ -1,0 +1,706 @@
+{
+  "programme": "SakthiAI Enterprise Platform v7",
+  "range": "701-800",
+  "releases": [
+    {
+      "release": 701,
+      "title": "AI Evaluation Dataset Registry",
+      "objective": "Register approved evaluation datasets, licences, owners, domains, sensitivity, versions and limitations.",
+      "kind": "registry",
+      "pack": "701-710"
+    },
+    {
+      "release": 702,
+      "title": "Model Capability Benchmark Framework",
+      "objective": "Benchmark reasoning, retrieval, coding, multilingual, multimodal and tool-use capabilities with reproducible evidence.",
+      "kind": "assessment",
+      "pack": "701-710"
+    },
+    {
+      "release": 703,
+      "title": "Safety Evaluation and Harm Taxonomy",
+      "objective": "Evaluate safety behaviour across defined harm categories, contexts, languages and affected groups.",
+      "kind": "assessment",
+      "pack": "701-710"
+    },
+    {
+      "release": 704,
+      "title": "Prompt Injection and Tool Abuse Testing",
+      "objective": "Test direct and indirect injection, tool escalation, data exfiltration and policy bypass scenarios.",
+      "kind": "assessment",
+      "pack": "701-710"
+    },
+    {
+      "release": 705,
+      "title": "Hallucination and Factuality Evaluation v2",
+      "objective": "Measure unsupported claims, source use, temporal accuracy, uncertainty and correction behaviour.",
+      "kind": "assessment",
+      "pack": "701-710"
+    },
+    {
+      "release": 706,
+      "title": "Fairness and Accessibility Evaluation",
+      "objective": "Evaluate relevant group impacts, language performance, assistive technology compatibility and alternative journeys.",
+      "kind": "assessment",
+      "pack": "701-710"
+    },
+    {
+      "release": 707,
+      "title": "Adversarial Red Team Campaign Management",
+      "objective": "Plan scoped red-team campaigns, testers, rules, evidence, findings, remediation and disclosure.",
+      "kind": "plan",
+      "pack": "701-710"
+    },
+    {
+      "release": 708,
+      "title": "Model Regression and Release Comparison",
+      "objective": "Compare model and prompt versions against protected baselines, tolerances and critical failure tests.",
+      "kind": "assessment",
+      "pack": "701-710"
+    },
+    {
+      "release": 709,
+      "title": "Evaluation Evidence and Decision Dashboard",
+      "objective": "Present traceable quality, safety, cost, latency, failures, caveats and release decisions.",
+      "kind": "profile",
+      "pack": "701-710"
+    },
+    {
+      "release": 710,
+      "title": "AI Evaluation and Red Team Assurance Gate",
+      "objective": "Gate AI releases on dataset, benchmark, safety, injection, factuality, fairness and remediation evidence.",
+      "kind": "gate",
+      "pack": "701-710"
+    },
+    {
+      "release": 711,
+      "title": "Research Question and Scope Registry",
+      "objective": "Register research questions, scope, audience, deadline, exclusions, owner and decision context.",
+      "kind": "registry",
+      "pack": "711-720"
+    },
+    {
+      "release": 712,
+      "title": "Source Discovery and Authority Ranking",
+      "objective": "Discover sources and rank authority, relevance, recency, independence, jurisdiction and limitations.",
+      "kind": "assessment",
+      "pack": "711-720"
+    },
+    {
+      "release": 713,
+      "title": "Primary Source Acquisition and Preservation",
+      "objective": "Acquire authorised source copies, metadata, hashes, access conditions and preservation evidence.",
+      "kind": "execution",
+      "pack": "711-720"
+    },
+    {
+      "release": 714,
+      "title": "Claim Evidence and Citation Graph",
+      "objective": "Link claims to exact source locations, versions, confidence, contradictions and review status.",
+      "kind": "registry",
+      "pack": "711-720"
+    },
+    {
+      "release": 715,
+      "title": "Research Synthesis and Argument Mapping",
+      "objective": "Synthesize evidence, viewpoints, assumptions, uncertainty, gaps and counterarguments.",
+      "kind": "profile",
+      "pack": "711-720"
+    },
+    {
+      "release": 716,
+      "title": "Fact Verification and Temporal Validation",
+      "objective": "Verify current-state claims, dates, office-holders, versions and other time-sensitive facts.",
+      "kind": "assessment",
+      "pack": "711-720"
+    },
+    {
+      "release": 717,
+      "title": "Research Quality and Bias Review",
+      "objective": "Review source diversity, conflicts, selection bias, framing, unsupported inference and limitations.",
+      "kind": "assessment",
+      "pack": "711-720"
+    },
+    {
+      "release": 718,
+      "title": "Research Report and Briefing Composer",
+      "objective": "Compose accessible reports, briefs, tables and appendices from verified evidence and templates.",
+      "kind": "execution",
+      "pack": "711-720"
+    },
+    {
+      "release": 719,
+      "title": "Research Correction and Retraction Workflow",
+      "objective": "Correct or retract claims, update citations, notify consumers and preserve revision history.",
+      "kind": "plan",
+      "pack": "711-720"
+    },
+    {
+      "release": 720,
+      "title": "Deep Research Assurance Gate",
+      "objective": "Gate research outputs on scope, sources, citations, verification, balance, accessibility and correction.",
+      "kind": "gate",
+      "pack": "711-720"
+    },
+    {
+      "release": 721,
+      "title": "Application Product Brief and Requirements",
+      "objective": "Define users, outcomes, journeys, constraints, data, security, accessibility and success measures.",
+      "kind": "registry",
+      "pack": "721-730"
+    },
+    {
+      "release": 722,
+      "title": "Experience Architecture and Design System",
+      "objective": "Govern information architecture, navigation, components, content patterns, accessibility and localisation.",
+      "kind": "profile",
+      "pack": "721-730"
+    },
+    {
+      "release": 723,
+      "title": "Website and Web Application Scaffold",
+      "objective": "Generate approved, maintainable web scaffolds with routing, configuration, tests and security defaults.",
+      "kind": "execution",
+      "pack": "721-730"
+    },
+    {
+      "release": 724,
+      "title": "Mobile and Progressive Web Experience",
+      "objective": "Design mobile-first and PWA experiences with offline behaviour, permissions, updates and accessibility.",
+      "kind": "profile",
+      "pack": "721-730"
+    },
+    {
+      "release": 725,
+      "title": "Form Workflow and Data Capture Builder",
+      "objective": "Build validated forms, consent, conditional logic, attachments, review, retention and error handling.",
+      "kind": "execution",
+      "pack": "721-730"
+    },
+    {
+      "release": 726,
+      "title": "Content Management and Publishing Workflow",
+      "objective": "Manage content, roles, previews, approvals, scheduling, versioning, corrections and withdrawal.",
+      "kind": "plan",
+      "pack": "721-730"
+    },
+    {
+      "release": 727,
+      "title": "Application Integration and API Composition",
+      "objective": "Compose approved APIs, events and connectors with schemas, identity, retries and observability.",
+      "kind": "execution",
+      "pack": "721-730"
+    },
+    {
+      "release": 728,
+      "title": "Application Quality Security and Accessibility Testing",
+      "objective": "Test functionality, security, performance, accessibility, localisation and resilient behaviour.",
+      "kind": "assessment",
+      "pack": "721-730"
+    },
+    {
+      "release": 729,
+      "title": "Deployment Preview and Release Promotion",
+      "objective": "Promote immutable artefacts through preview, test and production gates with rollback evidence.",
+      "kind": "plan",
+      "pack": "721-730"
+    },
+    {
+      "release": 730,
+      "title": "Application and Website Factory Assurance Gate",
+      "objective": "Gate applications on requirements, UX, security, integrations, tests, deployment and support.",
+      "kind": "gate",
+      "pack": "721-730"
+    },
+    {
+      "release": 731,
+      "title": "Enterprise Communication Campaign Registry",
+      "objective": "Register communication purpose, audience, channels, owners, approvals, timing and success measures.",
+      "kind": "registry",
+      "pack": "731-740"
+    },
+    {
+      "release": 732,
+      "title": "Email Drafting and Recipient Safety",
+      "objective": "Draft email with grounded context, recipient validation, attachment checks, approval and recall evidence.",
+      "kind": "execution",
+      "pack": "731-740"
+    },
+    {
+      "release": 733,
+      "title": "Calendar Scheduling and Meeting Coordination",
+      "objective": "Coordinate availability, time zones, attendees, rooms, accessibility, reminders and changes.",
+      "kind": "execution",
+      "pack": "731-740"
+    },
+    {
+      "release": 734,
+      "title": "Omnichannel Customer Contact Profile",
+      "objective": "Unify consented contact preferences, identity, language, accessibility and channel history.",
+      "kind": "profile",
+      "pack": "731-740"
+    },
+    {
+      "release": 735,
+      "title": "Customer Request and Case Intake",
+      "objective": "Capture requests, identity, category, urgency, evidence, consent, ownership and service deadlines.",
+      "kind": "execution",
+      "pack": "731-740"
+    },
+    {
+      "release": 736,
+      "title": "Case Resolution and Knowledge Guidance",
+      "objective": "Guide agents using approved knowledge, citations, next actions, escalation and human judgement.",
+      "kind": "profile",
+      "pack": "731-740"
+    },
+    {
+      "release": 737,
+      "title": "Complaint Appeal and Redress Operations",
+      "objective": "Manage complaints, independent review, evidence, deadlines, remedies and outcome communication.",
+      "kind": "plan",
+      "pack": "731-740"
+    },
+    {
+      "release": 738,
+      "title": "Service Quality and Conversation Review",
+      "objective": "Review accuracy, empathy, accessibility, privacy, compliance, resolution and customer effort.",
+      "kind": "assessment",
+      "pack": "731-740"
+    },
+    {
+      "release": 739,
+      "title": "Customer Communication Correction and Withdrawal",
+      "objective": "Correct inaccurate messages, stop campaigns, notify affected recipients and preserve evidence.",
+      "kind": "plan",
+      "pack": "731-740"
+    },
+    {
+      "release": 740,
+      "title": "Communications and Customer Operations Gate",
+      "objective": "Gate communication services on recipients, consent, accuracy, accessibility, redress and quality.",
+      "kind": "gate",
+      "pack": "731-740"
+    },
+    {
+      "release": 741,
+      "title": "Learning Programme and Curriculum Registry",
+      "objective": "Register programmes, outcomes, prerequisites, audience, owners, sources, versions and review dates.",
+      "kind": "registry",
+      "pack": "741-750"
+    },
+    {
+      "release": 742,
+      "title": "Personal Learning Path and Study Plan",
+      "objective": "Create learner-controlled plans using goals, baseline, availability, accessibility and progress evidence.",
+      "kind": "plan",
+      "pack": "741-750"
+    },
+    {
+      "release": 743,
+      "title": "Interactive Lesson and Practice Generator",
+      "objective": "Generate grounded lessons, examples, quizzes and practice with source and difficulty controls.",
+      "kind": "execution",
+      "pack": "741-750"
+    },
+    {
+      "release": 744,
+      "title": "Assessment Question Bank and Integrity",
+      "objective": "Govern questions, answers, explanations, difficulty, coverage, fairness, security and retirement.",
+      "kind": "registry",
+      "pack": "741-750"
+    },
+    {
+      "release": 745,
+      "title": "Learning Progress and Mastery Evidence",
+      "objective": "Measure progress, mastery, gaps, confidence and recommended review without invasive surveillance.",
+      "kind": "assessment",
+      "pack": "741-750"
+    },
+    {
+      "release": 746,
+      "title": "Career Profile Resume and Portfolio Composer",
+      "objective": "Compose evidence-backed resumes, profiles and portfolios with user control and no fabricated claims.",
+      "kind": "execution",
+      "pack": "741-750"
+    },
+    {
+      "release": 747,
+      "title": "Interview Simulation and Feedback",
+      "objective": "Run role-based interview practice with transparent scoring, examples, limitations and learner control.",
+      "kind": "assessment",
+      "pack": "741-750"
+    },
+    {
+      "release": 748,
+      "title": "Skills Taxonomy and Role Mapping",
+      "objective": "Map skills to roles, levels, evidence, learning resources, market context and review dates.",
+      "kind": "registry",
+      "pack": "741-750"
+    },
+    {
+      "release": 749,
+      "title": "Training Accessibility and Multilingual Delivery",
+      "objective": "Provide captions, transcripts, readable formats, localisation, assistive support and alternatives.",
+      "kind": "profile",
+      "pack": "741-750"
+    },
+    {
+      "release": 750,
+      "title": "Learning and Career Services Assurance Gate",
+      "objective": "Gate learning services on sources, integrity, fairness, privacy, accessibility and correction.",
+      "kind": "gate",
+      "pack": "741-750"
+    },
+    {
+      "release": 751,
+      "title": "Industrial Asset and Site Registry",
+      "objective": "Register sites, assets, owners, criticality, networks, firmware, support and lifecycle.",
+      "kind": "registry",
+      "pack": "751-760"
+    },
+    {
+      "release": 752,
+      "title": "OT Network Zone and Conduit Model",
+      "objective": "Model zones, conduits, protocols, trust, monitoring, dependencies and approved communications.",
+      "kind": "registry",
+      "pack": "751-760"
+    },
+    {
+      "release": 753,
+      "title": "Industrial Edge Workload Governance",
+      "objective": "Govern edge applications, resources, identities, data flows, updates, fallback and local autonomy.",
+      "kind": "profile",
+      "pack": "751-760"
+    },
+    {
+      "release": 754,
+      "title": "IoT Device Identity and Lifecycle",
+      "objective": "Issue device identity, enrolment, attestation, configuration, rotation, quarantine and retirement.",
+      "kind": "execution",
+      "pack": "751-760"
+    },
+    {
+      "release": 755,
+      "title": "Sensor Data Quality and Minimisation",
+      "objective": "Validate sensor accuracy, context, quality, purpose, retention, privacy and anomaly handling.",
+      "kind": "assessment",
+      "pack": "751-760"
+    },
+    {
+      "release": 756,
+      "title": "OT Vulnerability and Patch Readiness",
+      "objective": "Assess advisories, exposure, compatibility, safety, maintenance windows, rollback and exceptions.",
+      "kind": "assessment",
+      "pack": "751-760"
+    },
+    {
+      "release": 757,
+      "title": "Industrial Change and Maintenance Control",
+      "objective": "Govern changes through permits, dependencies, safety review, windows, tests, rollback and evidence.",
+      "kind": "plan",
+      "pack": "751-760"
+    },
+    {
+      "release": 758,
+      "title": "OT Security Monitoring and Incident Response",
+      "objective": "Monitor industrial signals, triage safely, preserve evidence, contain and recover with operations.",
+      "kind": "incident",
+      "pack": "751-760"
+    },
+    {
+      "release": 759,
+      "title": "Industrial Continuity and Manual Fallback",
+      "objective": "Maintain safe manual operation, spares, communications, recovery tiers and exercised procedures.",
+      "kind": "plan",
+      "pack": "751-760"
+    },
+    {
+      "release": 760,
+      "title": "OT Edge and IoT Assurance Gate",
+      "objective": "Gate industrial services on assets, zones, identity, data, patching, incidents and continuity.",
+      "kind": "gate",
+      "pack": "751-760"
+    },
+    {
+      "release": 761,
+      "title": "Hybrid Infrastructure Service Catalogue",
+      "objective": "Register cloud, datacentre, network, compute, storage and platform services with owners and SLOs.",
+      "kind": "registry",
+      "pack": "761-770"
+    },
+    {
+      "release": 762,
+      "title": "Landing Zone and Account Subscription Factory",
+      "objective": "Provision governed accounts, subscriptions, projects, policies, logging, budgets and network boundaries.",
+      "kind": "execution",
+      "pack": "761-770"
+    },
+    {
+      "release": 763,
+      "title": "Infrastructure as Code Module Registry",
+      "objective": "Govern reusable modules, versions, provenance, tests, security, documentation and deprecation.",
+      "kind": "registry",
+      "pack": "761-770"
+    },
+    {
+      "release": 764,
+      "title": "Server and Workload Modernisation Assessment",
+      "objective": "Assess workloads for retain, rehost, replatform, refactor, replace or retire decisions.",
+      "kind": "assessment",
+      "pack": "761-770"
+    },
+    {
+      "release": 765,
+      "title": "Hybrid Connectivity and Network Automation",
+      "objective": "Govern routing, DNS, firewall, private access, certificates, monitoring and rollback.",
+      "kind": "execution",
+      "pack": "761-770"
+    },
+    {
+      "release": 766,
+      "title": "Compute Cluster and Virtualisation Operations",
+      "objective": "Manage clusters, hosts, capacity, maintenance, migrations, compatibility and recovery.",
+      "kind": "profile",
+      "pack": "761-770"
+    },
+    {
+      "release": 767,
+      "title": "Storage Data Protection and Recovery",
+      "objective": "Govern storage tiers, encryption, replication, backup, restore, integrity and lifecycle.",
+      "kind": "profile",
+      "pack": "761-770"
+    },
+    {
+      "release": 768,
+      "title": "Cloud Security Posture and Configuration Drift",
+      "objective": "Assess policies, identities, exposure, encryption, logging, drift and remediation evidence.",
+      "kind": "assessment",
+      "pack": "761-770"
+    },
+    {
+      "release": 769,
+      "title": "Infrastructure Change and Migration Orchestration",
+      "objective": "Rehearse and coordinate infrastructure changes, cutovers, validation, rollback and communications.",
+      "kind": "plan",
+      "pack": "761-770"
+    },
+    {
+      "release": 770,
+      "title": "Hybrid Cloud and Infrastructure Assurance Gate",
+      "objective": "Gate infrastructure on landing zones, IaC, networking, compute, storage, security and migration.",
+      "kind": "gate",
+      "pack": "761-770"
+    },
+    {
+      "release": 771,
+      "title": "Enterprise Data Product Registry",
+      "objective": "Register data products, owners, consumers, contracts, quality, sensitivity, SLOs and lifecycle.",
+      "kind": "registry",
+      "pack": "771-780"
+    },
+    {
+      "release": 772,
+      "title": "Data Contract and Schema Evolution",
+      "objective": "Version schemas, semantics, compatibility, quality, lineage, consumers and deprecation.",
+      "kind": "profile",
+      "pack": "771-780"
+    },
+    {
+      "release": 773,
+      "title": "Master and Reference Data Governance",
+      "objective": "Govern golden records, identifiers, survivorship, stewardship, quality and distribution.",
+      "kind": "profile",
+      "pack": "771-780"
+    },
+    {
+      "release": 774,
+      "title": "Enterprise Semantic and Metrics Layer",
+      "objective": "Define governed concepts, measures, dimensions, calculations, ownership and versioning.",
+      "kind": "registry",
+      "pack": "771-780"
+    },
+    {
+      "release": 775,
+      "title": "Data Product Access and Usage Control",
+      "objective": "Enforce identity, purpose, tenant, row, field, region, retention and usage restrictions.",
+      "kind": "policy",
+      "pack": "771-780"
+    },
+    {
+      "release": 776,
+      "title": "Data Quality Rules and Observability",
+      "objective": "Monitor completeness, validity, timeliness, uniqueness, consistency, drift and ownership.",
+      "kind": "assessment",
+      "pack": "771-780"
+    },
+    {
+      "release": 777,
+      "title": "Data Lineage Impact and Change Analysis",
+      "objective": "Trace source-to-consumer lineage, changes, dependencies, risk, approvals and communications.",
+      "kind": "assessment",
+      "pack": "771-780"
+    },
+    {
+      "release": 778,
+      "title": "Data Product Marketplace and Discovery",
+      "objective": "Provide approved discovery, documentation, samples, access requests and consumer feedback.",
+      "kind": "profile",
+      "pack": "771-780"
+    },
+    {
+      "release": 779,
+      "title": "Data Product Deprecation and Portability",
+      "objective": "Plan migration, export, consumer transition, archive, deletion and evidence.",
+      "kind": "plan",
+      "pack": "771-780"
+    },
+    {
+      "release": 780,
+      "title": "Data Products and Semantic Layer Assurance Gate",
+      "objective": "Gate data products on contracts, master data, semantics, access, quality, lineage and portability.",
+      "kind": "gate",
+      "pack": "771-780"
+    },
+    {
+      "release": 781,
+      "title": "Enterprise Strategy and Objective Registry",
+      "objective": "Register strategic objectives, measures, owners, dependencies, assumptions and review cycles.",
+      "kind": "registry",
+      "pack": "781-790"
+    },
+    {
+      "release": 782,
+      "title": "Portfolio Investment and Capacity Planning",
+      "objective": "Allocate investment and capacity using value, risk, dependencies, constraints and scenarios.",
+      "kind": "assessment",
+      "pack": "781-790"
+    },
+    {
+      "release": 783,
+      "title": "Programme Milestone and Dependency Control",
+      "objective": "Track milestones, dependencies, critical paths, evidence, forecasts, escalation and decisions.",
+      "kind": "plan",
+      "pack": "781-790"
+    },
+    {
+      "release": 784,
+      "title": "Enterprise Risk and Opportunity Portfolio",
+      "objective": "Aggregate risks and opportunities with ownership, exposure, treatment, evidence and review.",
+      "kind": "registry",
+      "pack": "781-790"
+    },
+    {
+      "release": 785,
+      "title": "Executive Decision Brief and Board Pack",
+      "objective": "Compose concise evidence-backed decision briefs, options, assumptions, risks and conditions.",
+      "kind": "execution",
+      "pack": "781-790"
+    },
+    {
+      "release": 786,
+      "title": "Operational Resilience Command View",
+      "objective": "Present critical services, incidents, dependencies, recovery, capacity and executive actions.",
+      "kind": "profile",
+      "pack": "781-790"
+    },
+    {
+      "release": 787,
+      "title": "Crisis Command and Stakeholder Coordination",
+      "objective": "Coordinate roles, facts, decisions, actions, communications, welfare and transition.",
+      "kind": "plan",
+      "pack": "781-790"
+    },
+    {
+      "release": 788,
+      "title": "Benefits Outcomes and Value Realisation",
+      "objective": "Verify outcomes, attribution, disbenefits, customer impact, evidence and corrective actions.",
+      "kind": "assessment",
+      "pack": "781-790"
+    },
+    {
+      "release": 789,
+      "title": "Enterprise Performance and Trust Reporting",
+      "objective": "Report value, reliability, safety, privacy, accessibility, cost and residual risk transparently.",
+      "kind": "assessment",
+      "pack": "781-790"
+    },
+    {
+      "release": 790,
+      "title": "Executive Intelligence and Resilience Gate",
+      "objective": "Gate executive reporting on evidence, uncertainty, dependencies, risks, outcomes and accountability.",
+      "kind": "gate",
+      "pack": "781-790"
+    },
+    {
+      "release": 791,
+      "title": "Enterprise Platform v7 Capability Catalogue",
+      "objective": "Publish supported capabilities, owners, versions, dependencies, limits, support and retirement.",
+      "kind": "registry",
+      "pack": "791-800"
+    },
+    {
+      "release": 792,
+      "title": "Production Architecture Review v7",
+      "objective": "Consolidate architecture, security, privacy, data, operations, accessibility, cost and rollback evidence.",
+      "kind": "assessment",
+      "pack": "791-800"
+    },
+    {
+      "release": 793,
+      "title": "Environment Configuration and Secret Readiness",
+      "objective": "Validate environments, bindings, configuration, secrets, rotation, access and evidence.",
+      "kind": "assessment",
+      "pack": "791-800"
+    },
+    {
+      "release": 794,
+      "title": "Production Data and Migration Readiness v5",
+      "objective": "Rehearse schema and data migrations, reconciliation, rollback, retention and tenant impact.",
+      "kind": "plan",
+      "pack": "791-800"
+    },
+    {
+      "release": 795,
+      "title": "Operational Support and Service Transition v5",
+      "objective": "Prepare monitoring, runbooks, ownership, training, handover, escalation and acceptance.",
+      "kind": "plan",
+      "pack": "791-800"
+    },
+    {
+      "release": 796,
+      "title": "Global Rollout and Regional Readiness v3",
+      "objective": "Prepare regional deployment, localisation, legal review, support, resilience and rollback.",
+      "kind": "plan",
+      "pack": "791-800"
+    },
+    {
+      "release": 797,
+      "title": "Customer Pilot and Adoption Evidence v2",
+      "objective": "Collect representative pilot, accessibility, performance, support, value and correction evidence.",
+      "kind": "assessment",
+      "pack": "791-800"
+    },
+    {
+      "release": 798,
+      "title": "Commercial Service Definition without Billing v3",
+      "objective": "Validate service definitions, entitlements, quotas, support and disputes while payments remain disabled.",
+      "kind": "assessment",
+      "pack": "791-800"
+    },
+    {
+      "release": 799,
+      "title": "Enterprise Platform v7 General Availability Board",
+      "objective": "Make accountable go, conditional-go or no-go decisions using cross-domain evidence.",
+      "kind": "decision",
+      "pack": "791-800"
+    },
+    {
+      "release": 800,
+      "title": "SakthiAI Enterprise Platform v7 Completion Gate",
+      "objective": "Close Releases 701–800 only after all ten domains receive evidence-backed multi-party approval.",
+      "kind": "gate",
+      "pack": "791-800"
+    }
+  ]
+}

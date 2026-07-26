@@ -1,0 +1,98 @@
+{
+  "programme": "SakthiAI Releases 701-800",
+  "generatedAt": "2026-07-26T19:40:08.801169+00:00",
+  "packs": [
+    {
+      "range": "701-710",
+      "files": 171,
+      "tests": 58,
+      "validator": "Release pack validation passed: 166 files",
+      "zip": "/mnt/data/sakthiai-releases-701-710.zip",
+      "bytes": 99933,
+      "sha256": "d32ce6e0a7305def413b5010fae483af56991dcf19eabb8f1e6579ea883e8e12"
+    },
+    {
+      "range": "711-720",
+      "files": 171,
+      "tests": 62,
+      "validator": "Release pack validation passed: 166 files",
+      "zip": "/mnt/data/sakthiai-releases-711-720.zip",
+      "bytes": 99875,
+      "sha256": "629f2b955e9a00d3b5ce72afecb8d4801b750a61988635fd757af2cb89c1ea2a"
+    },
+    {
+      "range": "721-730",
+      "files": 171,
+      "tests": 64,
+      "validator": "Release pack validation passed: 166 files",
+      "zip": "/mnt/data/sakthiai-releases-721-730.zip",
+      "bytes": 100695,
+      "sha256": "7b73812598abb0784903bb5a31225eebc615e584b350624e842d76210105173d"
+    },
+    {
+      "range": "731-740",
+      "files": 171,
+      "tests": 64,
+      "validator": "Release pack validation passed: 166 files",
+      "zip": "/mnt/data/sakthiai-releases-731-740.zip",
+      "bytes": 100342,
+      "sha256": "02c8ce179b3b04c558ee924010f675f63393a4e9b1411a813a671b527a6cdaa1"
+    },
+    {
+      "range": "741-750",
+      "files": 171,
+      "tests": 62,
+      "validator": "Release pack validation passed: 166 files",
+      "zip": "/mnt/data/sakthiai-releases-741-750.zip",
+      "bytes": 100033,
+      "sha256": "e685467e6ba8bfb8cccdc4a962d6632c33e464564e545558859677309b097643"
+    },
+    {
+      "range": "751-760",
+      "files": 171,
+      "tests": 60,
+      "validator": "Release pack validation passed: 166 files",
+      "zip": "/mnt/data/sakthiai-releases-751-760.zip",
+      "bytes": 99643,
+      "sha256": "de615affc25a201d769809118ef08482366f2403eda237488695ef553aa11a68"
+    },
+    {
+      "range": "761-770",
+      "files": 171,
+      "tests": 62,
+      "validator": "Release pack validation passed: 166 files",
+      "zip": "/mnt/data/sakthiai-releases-761-770.zip",
+      "bytes": 100466,
+      "sha256": "7a22fa86faf65a399de694078a6df72879edcd1c8c5dd495bc3b13f72498a8cf"
+    },
+    {
+      "range": "771-780",
+      "files": 171,
+      "tests": 58,
+      "validator": "Release pack validation passed: 166 files",
+      "zip": "/mnt/data/sakthiai-releases-771-780.zip",
+      "bytes": 98929,
+      "sha256": "c094f1592a6a31591033516b57ce48d1f1f17ffce75486705824b76976026da9"
+    },
+    {
+      "range": "781-790",
+      "files": 171,
+      "tests": 60,
+      "validator": "Release pack validation passed: 166 files",
+      "zip": "/mnt/data/sakthiai-releases-781-790.zip",
+      "bytes": 99733,
+      "sha256": "25572d475d2bbd00fab3b5fbfb92f90c3ce700e0a91c4254949ceec18946d32d"
+    },
+    {
+      "range": "791-800",
+      "files": 171,
+      "tests": 58,
+      "validator": "Release pack validation passed: 166 files",
+      "zip": "/mnt/data/sakthiai-releases-791-800.zip",
+      "bytes": 100212,
+      "sha256": "c2e3ecc8297de6fba10db0db5c49f9aad6de399bb18a4796f6a166f2b27e6763"
+    }
+  ],
+  "totalTestsPassed": 608,
+  "allPackValidatorsPassed": true
+}

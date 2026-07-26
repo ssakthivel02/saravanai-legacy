@@ -1,0 +1,6 @@
+{
+  "exactCitationRequired": true,
+  "temporalVerificationRequiredForCurrentClaims": true,
+  "uncertaintyDisclosureRequired": true,
+  "correctionWorkflowRequired": true
+}
