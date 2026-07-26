@@ -1,0 +1,32 @@
+name: Runtime Wave 2 validation
+on:
+  pull_request:
+    paths:
+      - 'src/entry.js'
+      - 'src/runtime-wave2.js'
+      - 'src/runtime-v2/**'
+      - 'tests/runtime-wave2.test.mjs'
+      - 'scripts/validate-runtime-wave2.mjs'
+      - 'migrations/0004_runtime_wave2.sql'
+      - 'openapi/sakthiai-runtime-wave2.yaml'
+      - 'docs/RUNTIME_WAVE_2_*.md'
+      - '.github/workflows/runtime-wave-2-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Runtime Wave 1 regression
+        run: node --test tests/runtime-wave1.test.mjs
+      - name: Runtime Wave 2 structural validation
+        run: node scripts/validate-runtime-wave2.mjs
+      - name: Runtime Wave 2 focused tests
+        run: node --test tests/runtime-wave2.test.mjs

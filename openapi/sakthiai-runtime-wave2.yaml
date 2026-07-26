@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Runtime Wave 2 API
+  version: 2.0.0
+  description: |
+    Private-owner, plan-only agent and approval-control APIs.
+    No tool execution, external calls, database writes or production writes.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+components:
+  securitySchemes:
+    cloudflareAccess:
+      type: apiKey
+      in: header
+      name: cf-access-jwt-assertion
+paths:
+  /api/v1/runtime/v2/status:
+    get:
+      summary: Return safe Wave 2 activation and emergency-stop posture
+      responses:
+        '200': { description: Status returned }
+  /api/v1/runtime/v2/agent/plan:
+    post:
+      summary: Compile a bounded plan without executing it
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Valid plan compiled }
+        '422': { description: Plan rejected }
+  /api/v1/runtime/v2/tools/lease-proposal:
+    post:
+      summary: Create a non-authoritative, non-executable lease proposal
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Proposal created }
+        '422': { description: Proposal rejected }
+  /api/v1/runtime/v2/approvals/classify:
+    post:
+      summary: Classify required human approval without granting approval
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Approval requirement classified }
+        '422': { description: Approval request rejected }
+  /api/v1/runtime/v2/rollback/plan:
+    post:
+      summary: Build a manual compensating-action plan
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Rollback plan created }
+        '422': { description: Rollback plan rejected }
+  /api/v1/runtime/v2/idempotency/inspect:
+    post:
+      summary: Validate an idempotency contract without persisting it
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Contract valid }
+        '422': { description: Contract invalid }
+  /api/v1/runtime/v2/emergency-stop:
+    get:
+      summary: Return owner-only emergency-stop posture
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Emergency-stop posture returned }
+  /api/v1/runtime/v2/observability:
+    get:
+      summary: Return privacy-safe Wave 2 controls and route posture
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Operational posture returned }
