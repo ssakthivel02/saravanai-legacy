@@ -1,0 +1,137 @@
+{
+  "name": "SakthiAI Runtime Wave 3 — Knowledge and Research Controls",
+  "generatedAt": "2026-07-26T20:51:52.082833+00:00",
+  "fileCountBeforeManifest": 26,
+  "files": [
+    {
+      "path": ".github/workflows/runtime-wave-3-validation.yml",
+      "bytes": 1088,
+      "sha256": "23e21d15c03135810a2fd41ebe61162a02ab3b4c872b54da6183ab718f08f00b"
+    },
+    {
+      "path": "RUNTIME_WAVE_3_BASELINE.json",
+      "bytes": 422,
+      "sha256": "f097b7cc0c1c515673e6c2481a2ae2998288a33ae4ae4d6ebb9dc9671c03fb64"
+    },
+    {
+      "path": "RUNTIME_WAVE_3_UPLOAD_README.md",
+      "bytes": 336,
+      "sha256": "6f1b4e87fd8065d42cd7720f7b78b8cc95ab4f99ca3c510aadbaa4c3c2ee30f7"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_3_ACCEPTANCE_CHECKLIST.md",
+      "bytes": 583,
+      "sha256": "724aecb59e758b6847f0098c923762143b0bf4daddda5c855750926d16b5a43a"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_3_HLD.md",
+      "bytes": 329,
+      "sha256": "61b53ce8efde0abae21f616d4f7eba7e2b3a050dab30866da86de4e6948a12f1"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_3_IMPLEMENTATION.md",
+      "bytes": 553,
+      "sha256": "cc9fdc2a28ec942eeefa8fdade77662026afcc05ce96c2588d1ac71fc1c25679"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_3_LLD.md",
+      "bytes": 628,
+      "sha256": "cc6c4c494e8572f193db1e9696212743606c6e82cb45e3352e6c6255253d4d5b"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_3_ROLLOUT_AND_ROLLBACK.md",
+      "bytes": 592,
+      "sha256": "c464930103068cf291b367888ae063c2ce6fe5457d0f1c6c6225dae1d3e7250a"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_3_THREAT_MODEL.md",
+      "bytes": 889,
+      "sha256": "3c3e7dfd3032b92b9f731b1577a1b04ae64e74ddf863da5d166607202be42239"
+    },
+    {
+      "path": "migrations/0005_runtime_wave3.sql",
+      "bytes": 1699,
+      "sha256": "81336e7d94cba5c5b2de79416f601f839e33a4900e01b4f1942b07a16911b655"
+    },
+    {
+      "path": "openapi/sakthiai-runtime-wave3.yaml",
+      "bytes": 3174,
+      "sha256": "8b7016decab594c64ad29d519db2e773aa6bacfec93bf2cafa6da160f55734d3"
+    },
+    {
+      "path": "scripts/validate-runtime-wave3.mjs",
+      "bytes": 2600,
+      "sha256": "af94c86c994c3b9d296eec78c234b5630b4855b514075e882ad914bbdb4935fa"
+    },
+    {
+      "path": "src/entry.js",
+      "bytes": 2770,
+      "sha256": "eb049b7b2b4f700089611fccbb2630648d47f2a9c2d46e38c9027a5c48a0937f"
+    },
+    {
+      "path": "src/runtime-v3/boundary.js",
+      "bytes": 1392,
+      "sha256": "d2313efda1c59dec623213595c4edc673521860489e0d0898a6cb56acc86af78"
+    },
+    {
+      "path": "src/runtime-v3/citations.js",
+      "bytes": 1426,
+      "sha256": "61c94d8b42c2c8920803d19bab3873a5dabca8682132c51f2dfe6673acc4b5a1"
+    },
+    {
+      "path": "src/runtime-v3/contradictions.js",
+      "bytes": 1238,
+      "sha256": "dd813c85e864f710c7d7e4a7d4228bfbc3359d81598239f08a2367178ce8f282"
+    },
+    {
+      "path": "src/runtime-v3/corrections.js",
+      "bytes": 1231,
+      "sha256": "5314be9ea6314198be4d32ce66664f1889e33bb30a9e9a76fb430c2294245c10"
+    },
+    {
+      "path": "src/runtime-v3/evidence.js",
+      "bytes": 1152,
+      "sha256": "8e7a25d4331b29fa66ed3c6a34f7d1eb11bb28c6c2f2b7478a1ec7c9f9f02837"
+    },
+    {
+      "path": "src/runtime-v3/observability.js",
+      "bytes": 1131,
+      "sha256": "73a7ff7d669c434c9616fddbf32416b236123c85b0ae802d0bfe3ac2f4456be6"
+    },
+    {
+      "path": "src/runtime-v3/quarantine.js",
+      "bytes": 1660,
+      "sha256": "fe62a91dbebac727a735f0a8fafd8ac565b1233bd01f25b0b169187005fdeac2"
+    },
+    {
+      "path": "src/runtime-v3/retrieval.js",
+      "bytes": 1453,
+      "sha256": "26bea1de4810fce2fc3fab11f3e59f0acde4464892d7d5d96484b2c24fa925ef"
+    },
+    {
+      "path": "src/runtime-v3/shared.js",
+      "bytes": 1745,
+      "sha256": "6cb5f175ade643c33d0caec08c5632e82ca075db24dec59a61884fb0aa983707"
+    },
+    {
+      "path": "src/runtime-v3/source-policy.js",
+      "bytes": 2134,
+      "sha256": "966d38b57aea04d21f9aa6c9fa93f69b1a32097d7d7b01ac706ee4c599e5903d"
+    },
+    {
+      "path": "src/runtime-v3/temporal.js",
+      "bytes": 1190,
+      "sha256": "be51cab7331ad24e67674f5ea45ae57c98411d56047c7a890ed0ca0f8fda1813"
+    },
+    {
+      "path": "src/runtime-wave3.js",
+      "bytes": 3794,
+      "sha256": "52e8c1eebbb5dacb05943096f6acf7e0892b0d5c73817c887359125df47e006f"
+    },
+    {
+      "path": "tests/runtime-wave3.test.mjs",
+      "bytes": 10452,
+      "sha256": "ea9ede66ffe18b96689dcca4a41a7e1a73c28d5fe8ae6f7a6d0054808ffb9896"
+    }
+  ]
+}

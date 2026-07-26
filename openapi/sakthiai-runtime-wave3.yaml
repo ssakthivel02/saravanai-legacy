@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Runtime Wave 3 API
+  version: 3.0.0
+  description: |
+    Private-owner knowledge and research control APIs. All endpoints are
+    validation, planning or metadata-only. No external fetch, database write,
+    AI execution or content persistence is enabled.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+components:
+  securitySchemes:
+    cloudflareAccess:
+      type: apiKey
+      in: header
+      name: cf-access-jwt-assertion
+paths:
+  /api/v1/runtime/v3/status:
+    get:
+      summary: Return safe Wave 3 state
+      responses:
+        '200': { description: Status returned }
+  /api/v1/runtime/v3/sources/validate:
+    post:
+      summary: Validate a source record without registering it
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Source record valid }
+        '422': { description: Source record rejected }
+  /api/v1/runtime/v3/ingestion/quarantine-preview:
+    post:
+      summary: Inspect preview content for quarantine markers without storing it
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Preview accepted for quarantine workflow }
+        '422': { description: Preview rejected }
+  /api/v1/runtime/v3/retrieval/plan:
+    post:
+      summary: Build a retrieval plan without executing search
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Retrieval plan valid }
+        '422': { description: Retrieval plan rejected }
+  /api/v1/runtime/v3/citations/validate:
+    post:
+      summary: Validate citation structure without claiming factual verification
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Citation set structurally valid }
+        '422': { description: Citation set rejected }
+  /api/v1/runtime/v3/contradictions/analyse:
+    post:
+      summary: Identify contradiction candidates for human review
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Analysis completed }
+        '422': { description: Analysis request rejected }
+  /api/v1/runtime/v3/temporal/verify:
+    post:
+      summary: Apply deterministic freshness rules
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Temporal context checked }
+        '422': { description: Temporal request rejected }
+  /api/v1/runtime/v3/evidence/package:
+    post:
+      summary: Create evidence metadata without exporting or storing content
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Evidence metadata created }
+        '422': { description: Evidence packet rejected }
+  /api/v1/runtime/v3/corrections/plan:
+    post:
+      summary: Build a manual correction plan
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Correction plan created }
+        '422': { description: Correction plan rejected }
+  /api/v1/runtime/v3/observability:
+    get:
+      summary: Return privacy-safe Wave 3 control posture
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Operational posture returned }
