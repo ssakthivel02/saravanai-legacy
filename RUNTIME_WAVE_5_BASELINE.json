@@ -1,0 +1,15 @@
+{
+  "repository": "ssakthivel02/sakthiai",
+  "baseBranch": "main",
+  "baseCommit": "6da647d0656d5ea22d8a04273ea7ec41e5f533bd",
+  "entryBlobSha": "b5ba3c5da7f824cf3c4f3410571beb71f08fab37",
+  "wave5EnabledAtMerge": false,
+  "emergencyStopAtMerge": true,
+  "externalProbesEnabled": false,
+  "alertsSent": false,
+  "incidentsCreated": false,
+  "deploymentsExecuted": false,
+  "rollbacksExecuted": false,
+  "productionWritesEnabled": false,
+  "paidMonitoringEnabled": false
+}

@@ -1,0 +1,39 @@
+name: Runtime Wave 5 validation
+on:
+  pull_request:
+    paths:
+      - 'src/entry.js'
+      - 'src/runtime-wave5.js'
+      - 'src/runtime-v5/**'
+      - 'tests/runtime-wave5.test.mjs'
+      - 'scripts/validate-runtime-wave5.mjs'
+      - 'migrations/0007_runtime_wave5.sql'
+      - 'openapi/sakthiai-runtime-wave5.yaml'
+      - 'docs/RUNTIME_WAVE_5_*.md'
+      - 'docs/adr/ADR-003-NON-EXECUTING-SRE-CONTROLS.md'
+      - '.github/workflows/runtime-wave-5-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Runtime Wave 1 regression
+        run: node --test tests/runtime-wave1.test.mjs
+      - name: Runtime Wave 2 regression
+        run: node --test tests/runtime-wave2.test.mjs
+      - name: Runtime Wave 3 regression
+        run: node --test tests/runtime-wave3.test.mjs
+      - name: Runtime Wave 4 regression
+        run: node --test tests/runtime-wave4.test.mjs
+      - name: Runtime Wave 5 structural validation
+        run: node scripts/validate-runtime-wave5.mjs
+      - name: Runtime Wave 5 focused tests
+        run: node --test tests/runtime-wave5.test.mjs

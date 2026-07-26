@@ -6,6 +6,7 @@ import { handleRuntimeWave1, RUNTIME_WAVE_1_RELEASE } from './runtime-wave1.js';
 import { handleRuntimeWave2, RUNTIME_WAVE_2_RELEASE } from './runtime-wave2.js';
 import { handleRuntimeWave3, RUNTIME_WAVE_3_RELEASE } from './runtime-wave3.js';
 import { handleRuntimeWave4, RUNTIME_WAVE_4_RELEASE } from './runtime-wave4.js';
+import { handleRuntimeWave5, RUNTIME_WAVE_5_RELEASE } from './runtime-wave5.js';
 import { RELEASE, premiumEnabled, providerStatus } from './router.js';
 
 export default {
@@ -29,6 +30,9 @@ export default {
         runtimeWave4Release: RUNTIME_WAVE_4_RELEASE,
         runtimeWave4Enabled: String(env.RUNTIME_WAVE4_ENABLED || '').toLowerCase() === 'true',
         runtimeWave4EmergencyStopped: String(env.RUNTIME_WAVE4_EMERGENCY_STOP || 'true').toLowerCase() !== 'false',
+        runtimeWave5Release: RUNTIME_WAVE_5_RELEASE,
+        runtimeWave5Enabled: String(env.RUNTIME_WAVE5_ENABLED || '').toLowerCase() === 'true',
+        runtimeWave5EmergencyStopped: String(env.RUNTIME_WAVE5_EMERGENCY_STOP || 'true').toLowerCase() !== 'false',
         aiRuntime: Boolean(env.AI),
         costPolicy: 'free-first',
         premiumProvidersEnabled: premiumEnabled(env),
@@ -42,6 +46,7 @@ export default {
         }
       });
     }
+    if (url.pathname.startsWith('/api/v1/runtime/v5')) return handleRuntimeWave5(request, env, url);
     if (url.pathname.startsWith('/api/v1/runtime/v4')) return handleRuntimeWave4(request, env, url);
     if (url.pathname.startsWith('/api/v1/runtime/v3')) return handleRuntimeWave3(request, env, url);
     if (url.pathname.startsWith('/api/v1/runtime/v2')) return handleRuntimeWave2(request, env, url);
