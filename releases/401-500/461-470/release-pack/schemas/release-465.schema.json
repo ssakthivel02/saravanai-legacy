@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Environmental Risk and Dependency Assessment",
+  "type": "object",
+  "required": [
+    "assessmentId",
+    "tenantId",
+    "subjectId",
+    "owner",
+    "methodologyRef",
+    "score",
+    "findingIds",
+    "evidenceRefs",
+    "decision"
+  ],
+  "properties": {
+    "assessmentId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "methodologyRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0
+    },
+    "findingIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "decision": {
+      "enum": [
+        "pending",
+        "pass",
+        "conditional",
+        "fail"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

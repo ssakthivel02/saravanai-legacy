@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Operational Acceptance and Service Transition v2",
+  "type": "object",
+  "required": [
+    "planId",
+    "tenantId",
+    "owner",
+    "objective",
+    "dependencyRefs",
+    "milestoneIds",
+    "evidenceRefs",
+    "rollbackOrExitRef",
+    "approvedBy",
+    "status"
+  ],
+  "properties": {
+    "planId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dependencyRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "milestoneIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "rollbackOrExitRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approvedBy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved",
+        "active",
+        "completed",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,706 @@
+{
+  "programme": "SakthiAI Enterprise Platform v4",
+  "range": "401-500",
+  "releases": [
+    {
+      "release": 401,
+      "title": "Enterprise AI Capability Registry",
+      "objective": "Register AI capabilities, owners, versions, approved uses, limitations and retirement state.",
+      "kind": "registry",
+      "pack": "401-410"
+    },
+    {
+      "release": 402,
+      "title": "Model Routing and Selection Policy",
+      "objective": "Route requests across approved models using safety, privacy, quality, latency and cost constraints.",
+      "kind": "policy",
+      "pack": "401-410"
+    },
+    {
+      "release": 403,
+      "title": "Prompt Programme and Template Governance",
+      "objective": "Version prompts, variables, owners, test cases, approvals, redaction and rollback.",
+      "kind": "registry",
+      "pack": "401-410"
+    },
+    {
+      "release": 404,
+      "title": "Retrieval Pipeline Orchestration",
+      "objective": "Govern retrieval sources, access filters, chunking, ranking, freshness, citations and fallback.",
+      "kind": "profile",
+      "pack": "401-410"
+    },
+    {
+      "release": 405,
+      "title": "AI Evaluation Campaign Management",
+      "objective": "Plan benchmark suites, datasets, evaluators, thresholds, evidence and release decisions.",
+      "kind": "assessment",
+      "pack": "401-410"
+    },
+    {
+      "release": 406,
+      "title": "Inference Capacity and Queue Management",
+      "objective": "Manage concurrency, quotas, prioritisation, timeouts, degraded modes and hard budget stops.",
+      "kind": "profile",
+      "pack": "401-410"
+    },
+    {
+      "release": 407,
+      "title": "AI Feature Flag and Rollout Control",
+      "objective": "Release AI capabilities through disabled defaults, tenant pilots, kill switches and rollback.",
+      "kind": "execution",
+      "pack": "401-410"
+    },
+    {
+      "release": 408,
+      "title": "AI Quality Incident Management",
+      "objective": "Coordinate hallucination, safety, citation, privacy and service-quality incidents with evidence.",
+      "kind": "incident",
+      "pack": "401-410"
+    },
+    {
+      "release": 409,
+      "title": "AI Portfolio Value and Risk Reporting",
+      "objective": "Report capability outcomes, adoption, cost, residual risk and remediation with accountable owners.",
+      "kind": "assessment",
+      "pack": "401-410"
+    },
+    {
+      "release": 410,
+      "title": "Enterprise AI Operating System Assurance Gate",
+      "objective": "Gate AI operations on registry, routing, prompts, retrieval, evaluation, capacity and incident evidence.",
+      "kind": "gate",
+      "pack": "401-410"
+    },
+    {
+      "release": 411,
+      "title": "Sovereign AI Deployment Profile",
+      "objective": "Define jurisdiction, data boundary, model custody, key ownership, support and exit requirements.",
+      "kind": "profile",
+      "pack": "411-420"
+    },
+    {
+      "release": 412,
+      "title": "Offline and Disconnected AI Runtime",
+      "objective": "Operate approved AI functions without network dependency using signed packages and bounded storage.",
+      "kind": "profile",
+      "pack": "411-420"
+    },
+    {
+      "release": 413,
+      "title": "Edge Model Packaging and Verification",
+      "objective": "Package models with provenance, signatures, SBOM, compatibility, resource limits and revocation.",
+      "kind": "registry",
+      "pack": "411-420"
+    },
+    {
+      "release": 414,
+      "title": "Device AI Policy and Posture",
+      "objective": "Bind device identity, posture, approved models, data classes, telemetry and quarantine controls.",
+      "kind": "profile",
+      "pack": "411-420"
+    },
+    {
+      "release": 415,
+      "title": "Local Retrieval and Knowledge Synchronisation",
+      "objective": "Synchronise approved knowledge with integrity, deltas, retention, conflict and rollback controls.",
+      "kind": "execution",
+      "pack": "411-420"
+    },
+    {
+      "release": 416,
+      "title": "Constrained Compute Optimisation",
+      "objective": "Govern quantisation, pruning, batching and acceleration through quality and safety evidence.",
+      "kind": "assessment",
+      "pack": "411-420"
+    },
+    {
+      "release": 417,
+      "title": "Offline Update and Patch Governance",
+      "objective": "Deliver signed updates through staged validation, expiry, rollback and emergency revocation.",
+      "kind": "execution",
+      "pack": "411-420"
+    },
+    {
+      "release": 418,
+      "title": "Edge AI Privacy and Sensor Minimisation",
+      "objective": "Limit sensor data, retention, inference outputs and remote telemetry to the minimum necessary.",
+      "kind": "profile",
+      "pack": "411-420"
+    },
+    {
+      "release": 419,
+      "title": "Sovereign Operations and Support Readiness",
+      "objective": "Define regional ownership, skills, spares, recovery, audit and support evidence.",
+      "kind": "plan",
+      "pack": "411-420"
+    },
+    {
+      "release": 420,
+      "title": "Sovereign and Edge AI Assurance Gate",
+      "objective": "Gate sovereign and edge use on custody, integrity, privacy, support, recovery and exit evidence.",
+      "kind": "gate",
+      "pack": "411-420"
+    },
+    {
+      "release": 421,
+      "title": "Security Operations Case Management",
+      "objective": "Manage detections, incidents, evidence, assignments, containment, recovery and closure.",
+      "kind": "incident",
+      "pack": "421-430"
+    },
+    {
+      "release": 422,
+      "title": "Threat Intelligence Source Governance",
+      "objective": "Register intelligence sources, licences, confidence, freshness, handling and revocation.",
+      "kind": "registry",
+      "pack": "421-430"
+    },
+    {
+      "release": 423,
+      "title": "Detection Engineering Lifecycle",
+      "objective": "Version detection rules, tests, telemetry dependencies, tuning, ownership and retirement.",
+      "kind": "registry",
+      "pack": "421-430"
+    },
+    {
+      "release": 424,
+      "title": "Security Analytics and Correlation",
+      "objective": "Correlate identity, endpoint, network, cloud and application signals with explainable evidence.",
+      "kind": "assessment",
+      "pack": "421-430"
+    },
+    {
+      "release": 425,
+      "title": "Automated Containment Safety",
+      "objective": "Execute approved containment with allowlists, bounded scope, dry-run, four-eyes and rollback.",
+      "kind": "execution",
+      "pack": "421-430"
+    },
+    {
+      "release": 426,
+      "title": "Exposure and Vulnerability Prioritisation",
+      "objective": "Prioritise vulnerabilities through exploitability, asset criticality, exposure and compensating controls.",
+      "kind": "assessment",
+      "pack": "421-430"
+    },
+    {
+      "release": 427,
+      "title": "Identity Threat Detection and Response v2",
+      "objective": "Detect compromised identities, risky sessions, privilege escalation and persistence patterns.",
+      "kind": "assessment",
+      "pack": "421-430"
+    },
+    {
+      "release": 428,
+      "title": "Cloud and SaaS Security Posture Operations",
+      "objective": "Assess configuration drift, public exposure, identity, data, logging and remediation ownership.",
+      "kind": "assessment",
+      "pack": "421-430"
+    },
+    {
+      "release": 429,
+      "title": "Cyber Threat Hunting Programme",
+      "objective": "Plan hypotheses, datasets, queries, findings, evidence, privacy and repeatability.",
+      "kind": "plan",
+      "pack": "421-430"
+    },
+    {
+      "release": 430,
+      "title": "Security Operations Assurance Gate",
+      "objective": "Gate cyber operations on cases, intelligence, detections, containment, exposure and recovery evidence.",
+      "kind": "gate",
+      "pack": "421-430"
+    },
+    {
+      "release": 431,
+      "title": "Enterprise Lakehouse Domain Registry",
+      "objective": "Register governed data domains, products, owners, classifications, regions and lifecycle.",
+      "kind": "registry",
+      "pack": "431-440"
+    },
+    {
+      "release": 432,
+      "title": "Data Ingestion and Change Data Capture",
+      "objective": "Govern sources, schemas, checkpoints, deduplication, lineage, replay and quarantine.",
+      "kind": "execution",
+      "pack": "431-440"
+    },
+    {
+      "release": 433,
+      "title": "Batch and Stream Processing Governance",
+      "objective": "Version processing jobs, resources, quality gates, backfill, failure handling and rollback.",
+      "kind": "profile",
+      "pack": "431-440"
+    },
+    {
+      "release": 434,
+      "title": "Data Quality Rules and Observability v2",
+      "objective": "Operate rules, expectations, incidents, trends, owners and consumer impact evidence.",
+      "kind": "assessment",
+      "pack": "431-440"
+    },
+    {
+      "release": 435,
+      "title": "Data Lineage and Impact Analysis v2",
+      "objective": "Track column, dataset, pipeline, model and report lineage with change-impact analysis.",
+      "kind": "registry",
+      "pack": "431-440"
+    },
+    {
+      "release": 436,
+      "title": "Data Access Productisation",
+      "objective": "Publish governed datasets with contracts, scopes, purpose, approval, usage and revocation.",
+      "kind": "profile",
+      "pack": "431-440"
+    },
+    {
+      "release": 437,
+      "title": "Data Retention Archival and Legal Hold",
+      "objective": "Apply retention, archival, deletion, legal holds, evidence and recovery controls.",
+      "kind": "policy",
+      "pack": "431-440"
+    },
+    {
+      "release": 438,
+      "title": "Data Platform Cost and Capacity",
+      "objective": "Attribute storage and compute, forecast demand, enforce budgets and optimise free-first usage.",
+      "kind": "assessment",
+      "pack": "431-440"
+    },
+    {
+      "release": 439,
+      "title": "Data Platform Recovery and Portability",
+      "objective": "Test export, restore, schema portability, credential revocation and provider exit.",
+      "kind": "plan",
+      "pack": "431-440"
+    },
+    {
+      "release": 440,
+      "title": "Governed Data Platform Assurance Gate",
+      "objective": "Gate data platform release on contracts, quality, lineage, access, retention and recovery evidence.",
+      "kind": "gate",
+      "pack": "431-440"
+    },
+    {
+      "release": 441,
+      "title": "Business Capability and Value Stream Map",
+      "objective": "Map capabilities, value streams, owners, outcomes, applications, data and dependencies.",
+      "kind": "registry",
+      "pack": "441-450"
+    },
+    {
+      "release": 442,
+      "title": "Application Portfolio Rationalisation",
+      "objective": "Assess applications for value, risk, duplication, cost, lifecycle and target disposition.",
+      "kind": "assessment",
+      "pack": "441-450"
+    },
+    {
+      "release": 443,
+      "title": "ERP Integration and Transaction Governance",
+      "objective": "Govern transactions, idempotency, reconciliation, segregation, approvals and rollback.",
+      "kind": "profile",
+      "pack": "441-450"
+    },
+    {
+      "release": 444,
+      "title": "CRM and Customer Data Integration",
+      "objective": "Integrate customer records with consent, matching, purpose, access and correction controls.",
+      "kind": "profile",
+      "pack": "441-450"
+    },
+    {
+      "release": 445,
+      "title": "HR and Workforce System Integration",
+      "objective": "Integrate workforce systems with minimisation, role boundaries, fairness and legal review.",
+      "kind": "profile",
+      "pack": "441-450"
+    },
+    {
+      "release": 446,
+      "title": "Finance and Procurement Integration",
+      "objective": "Govern purchase, invoice, budget, supplier and approval flows without enabling payments.",
+      "kind": "profile",
+      "pack": "441-450"
+    },
+    {
+      "release": 447,
+      "title": "Enterprise Event and API Integration Hub",
+      "objective": "Operate events and APIs with schemas, ownership, security, replay, rate limits and observability.",
+      "kind": "profile",
+      "pack": "441-450"
+    },
+    {
+      "release": 448,
+      "title": "Master Data and Reference Synchronisation v2",
+      "objective": "Synchronise governed master data through stewardship, conflict, quality and rollback.",
+      "kind": "execution",
+      "pack": "441-450"
+    },
+    {
+      "release": 449,
+      "title": "Business Transformation Benefits Tracking",
+      "objective": "Track outcomes, baselines, benefits, cost, dependencies, risks and accountable owners.",
+      "kind": "plan",
+      "pack": "441-450"
+    },
+    {
+      "release": 450,
+      "title": "Business Architecture and Integration Gate",
+      "objective": "Gate transformation on capability, application, transaction, data and benefit evidence.",
+      "kind": "gate",
+      "pack": "441-450"
+    },
+    {
+      "release": 451,
+      "title": "Omnichannel Journey Orchestration",
+      "objective": "Coordinate web, mobile, email, chat and support journeys with consent and continuity.",
+      "kind": "profile",
+      "pack": "451-460"
+    },
+    {
+      "release": 452,
+      "title": "Customer Identity and Preference Centre",
+      "objective": "Manage identity links, communication preferences, consent, delegation and revocation.",
+      "kind": "profile",
+      "pack": "451-460"
+    },
+    {
+      "release": 453,
+      "title": "Accessible Experience Personalisation",
+      "objective": "Personalise experiences using explicit controls, accessible alternatives and opt-out.",
+      "kind": "profile",
+      "pack": "451-460"
+    },
+    {
+      "release": 454,
+      "title": "Customer Notification and Communication Safety",
+      "objective": "Govern templates, recipients, urgency, approvals, quiet hours, evidence and correction.",
+      "kind": "execution",
+      "pack": "451-460"
+    },
+    {
+      "release": 455,
+      "title": "Conversational AI Customer Support",
+      "objective": "Operate bounded support assistants with knowledge grounding, handoff, privacy and transcript controls.",
+      "kind": "profile",
+      "pack": "451-460"
+    },
+    {
+      "release": 456,
+      "title": "Case Complaint and Escalation Operations",
+      "objective": "Manage cases, deadlines, evidence, complaints, redress, escalation and independent review.",
+      "kind": "plan",
+      "pack": "451-460"
+    },
+    {
+      "release": 457,
+      "title": "Customer Feedback and Research Operations",
+      "objective": "Collect consented feedback, research evidence, themes, bias review and decision linkage.",
+      "kind": "assessment",
+      "pack": "451-460"
+    },
+    {
+      "release": 458,
+      "title": "Customer Trust Transparency Centre",
+      "objective": "Publish data use, AI use, limitations, corrections, status, redress and accessibility information.",
+      "kind": "registry",
+      "pack": "451-460"
+    },
+    {
+      "release": 459,
+      "title": "Customer Experience Reliability and SLO",
+      "objective": "Measure journey availability, latency, correctness, abandonment and recovery objectives.",
+      "kind": "assessment",
+      "pack": "451-460"
+    },
+    {
+      "release": 460,
+      "title": "Customer Experience Assurance Gate",
+      "objective": "Gate omnichannel experience on consent, accessibility, safety, support, redress and reliability evidence.",
+      "kind": "gate",
+      "pack": "451-460"
+    },
+    {
+      "release": 461,
+      "title": "Sustainability Data and Methodology Registry",
+      "objective": "Register energy, carbon, water and waste methods, assumptions, owners and verification status.",
+      "kind": "registry",
+      "pack": "461-470"
+    },
+    {
+      "release": 462,
+      "title": "Carbon-Aware Workload Scheduling v2",
+      "objective": "Schedule flexible workloads using approved signals without weakening reliability or safety.",
+      "kind": "policy",
+      "pack": "461-470"
+    },
+    {
+      "release": 463,
+      "title": "Energy Efficiency Engineering",
+      "objective": "Measure and improve compute, storage, network and model efficiency with evidence.",
+      "kind": "assessment",
+      "pack": "461-470"
+    },
+    {
+      "release": 464,
+      "title": "Hardware Lifecycle and Circularity",
+      "objective": "Govern procurement, repair, reuse, secure erasure, recycling and supplier evidence.",
+      "kind": "plan",
+      "pack": "461-470"
+    },
+    {
+      "release": 465,
+      "title": "Environmental Risk and Dependency Assessment",
+      "objective": "Assess climate, energy, water, location and supplier exposure with recovery actions.",
+      "kind": "assessment",
+      "pack": "461-470"
+    },
+    {
+      "release": 466,
+      "title": "Worker Wellbeing and Responsible Automation",
+      "objective": "Assess automation impact, workload, training, appeal, fairness and prohibited surveillance.",
+      "kind": "profile",
+      "pack": "461-470"
+    },
+    {
+      "release": 467,
+      "title": "Community and Public Interest Impact",
+      "objective": "Evaluate affected communities, accessibility, cultural impact, harms, benefits and redress.",
+      "kind": "assessment",
+      "pack": "461-470"
+    },
+    {
+      "release": 468,
+      "title": "Responsible Innovation Review Board",
+      "objective": "Review high-impact innovations through safety, privacy, ethics, inclusion and evidence.",
+      "kind": "decision",
+      "pack": "461-470"
+    },
+    {
+      "release": 469,
+      "title": "Sustainability Claims and Disclosure",
+      "objective": "Govern public claims, methodology, boundaries, evidence, corrections and independent review.",
+      "kind": "policy",
+      "pack": "461-470"
+    },
+    {
+      "release": 470,
+      "title": "Sustainability and Social Impact Gate",
+      "objective": "Gate impact claims and operations on methodology, safety, workforce and community evidence.",
+      "kind": "gate",
+      "pack": "461-470"
+    },
+    {
+      "release": 471,
+      "title": "Engineering Work Item Intelligence",
+      "objective": "Link requirements, designs, code, tests, releases, incidents and outcomes with traceability.",
+      "kind": "registry",
+      "pack": "471-480"
+    },
+    {
+      "release": 472,
+      "title": "Code Review Quality and Policy",
+      "objective": "Govern reviewers, ownership, critical paths, tests, security, exceptions and evidence.",
+      "kind": "policy",
+      "pack": "471-480"
+    },
+    {
+      "release": 473,
+      "title": "Test Intelligence and Coverage Risk",
+      "objective": "Prioritise tests using change impact, history, criticality, failure patterns and gaps.",
+      "kind": "assessment",
+      "pack": "471-480"
+    },
+    {
+      "release": 474,
+      "title": "CI Pipeline Reliability Engineering",
+      "objective": "Measure queue, duration, flakiness, failure, retries, cost and recovery with owners.",
+      "kind": "assessment",
+      "pack": "471-480"
+    },
+    {
+      "release": 475,
+      "title": "Developer Environment and Toolchain Governance",
+      "objective": "Govern editors, extensions, packages, credentials, updates, telemetry and support.",
+      "kind": "profile",
+      "pack": "471-480"
+    },
+    {
+      "release": 476,
+      "title": "Engineering Knowledge and Decision Records",
+      "objective": "Maintain ADRs, standards, runbooks, owners, review dates, evidence and supersession.",
+      "kind": "registry",
+      "pack": "471-480"
+    },
+    {
+      "release": 477,
+      "title": "Secure Coding Assistant Governance",
+      "objective": "Operate coding assistants with repository scopes, secret protection, review and provenance.",
+      "kind": "profile",
+      "pack": "471-480"
+    },
+    {
+      "release": 478,
+      "title": "Technical Debt and Refactoring Intelligence",
+      "objective": "Prioritise debt using risk, cost, dependencies, incidents, maintainability and outcomes.",
+      "kind": "assessment",
+      "pack": "471-480"
+    },
+    {
+      "release": 479,
+      "title": "Engineering Productivity and Fair Measurement",
+      "objective": "Measure system outcomes without ranking individuals or enabling invasive surveillance.",
+      "kind": "assessment",
+      "pack": "471-480"
+    },
+    {
+      "release": 480,
+      "title": "Engineering Intelligence Assurance Gate",
+      "objective": "Gate engineering intelligence on traceability, review, tests, security, fairness and recovery evidence.",
+      "kind": "gate",
+      "pack": "471-480"
+    },
+    {
+      "release": 481,
+      "title": "Global Privacy Jurisdiction Registry",
+      "objective": "Register privacy jurisdictions, applicability, owners, legal review and effective dates.",
+      "kind": "registry",
+      "pack": "481-490"
+    },
+    {
+      "release": 482,
+      "title": "Cross-Border Data Transfer Governance",
+      "objective": "Govern transfer purpose, regions, safeguards, suppliers, evidence and suspension.",
+      "kind": "profile",
+      "pack": "481-490"
+    },
+    {
+      "release": 483,
+      "title": "Consent and Lawful Basis Operations v2",
+      "objective": "Operate consent, withdrawal, lawful basis, purpose, evidence and downstream propagation.",
+      "kind": "profile",
+      "pack": "481-490"
+    },
+    {
+      "release": 484,
+      "title": "Digital Identity Trust Framework",
+      "objective": "Define identity assurance, credentials, federation, recovery, fraud and redress requirements.",
+      "kind": "profile",
+      "pack": "481-490"
+    },
+    {
+      "release": 485,
+      "title": "Electronic Signature and Evidence Readiness",
+      "objective": "Govern signing intent, identity, document integrity, timestamp, retention and dispute evidence.",
+      "kind": "profile",
+      "pack": "481-490"
+    },
+    {
+      "release": 486,
+      "title": "Records Management and Defensible Disposal",
+      "objective": "Classify records, retention, holds, disposition, approvals and destruction evidence.",
+      "kind": "policy",
+      "pack": "481-490"
+    },
+    {
+      "release": 487,
+      "title": "AI Regulatory Readiness Register",
+      "objective": "Track AI obligations, risk classification, technical documentation, testing and qualified review.",
+      "kind": "registry",
+      "pack": "481-490"
+    },
+    {
+      "release": 488,
+      "title": "Digital Trust Transparency Reporting",
+      "objective": "Report security, privacy, AI, accessibility, incidents, corrections and redress with evidence.",
+      "kind": "assessment",
+      "pack": "481-490"
+    },
+    {
+      "release": 489,
+      "title": "Independent Audit and Attestation Readiness",
+      "objective": "Prepare scoped evidence, findings, remediation and management assertions without claiming certification.",
+      "kind": "assessment",
+      "pack": "481-490"
+    },
+    {
+      "release": 490,
+      "title": "Global Digital Trust Assurance Gate",
+      "objective": "Gate global trust on privacy, identity, signatures, records, AI and independent review evidence.",
+      "kind": "gate",
+      "pack": "481-490"
+    },
+    {
+      "release": 491,
+      "title": "Enterprise Platform v4 Service Catalogue",
+      "objective": "Publish supported services, owners, versions, dependencies, SLOs, support and retirement.",
+      "kind": "registry",
+      "pack": "491-500"
+    },
+    {
+      "release": 492,
+      "title": "Production Readiness Review v4",
+      "objective": "Consolidate architecture, security, privacy, operations, cost, support and rollback evidence.",
+      "kind": "assessment",
+      "pack": "491-500"
+    },
+    {
+      "release": 493,
+      "title": "Operational Acceptance and Service Transition v2",
+      "objective": "Transfer services through ownership, monitoring, runbooks, backup, access and knowledge.",
+      "kind": "plan",
+      "pack": "491-500"
+    },
+    {
+      "release": 494,
+      "title": "Global Launch and Regional Rollout",
+      "objective": "Plan pilots, regions, capacity, support, communications, rollback and expansion evidence.",
+      "kind": "plan",
+      "pack": "491-500"
+    },
+    {
+      "release": 495,
+      "title": "Customer Migration Factory v2",
+      "objective": "Migrate tenants through discovery, rehearsal, compatibility, cutover, reconciliation and rollback.",
+      "kind": "plan",
+      "pack": "491-500"
+    },
+    {
+      "release": 496,
+      "title": "Enterprise Support and Escalation Model v2",
+      "objective": "Operate service desk, severity, follow-the-sun handover, knowledge and executive escalation.",
+      "kind": "profile",
+      "pack": "491-500"
+    },
+    {
+      "release": 497,
+      "title": "Commercial and Entitlement Readiness without Billing",
+      "objective": "Validate service definitions, entitlements, quotas, contracts and disputes while billing remains disabled.",
+      "kind": "assessment",
+      "pack": "491-500"
+    },
+    {
+      "release": 498,
+      "title": "Provider Exit and Business Continuity v2",
+      "objective": "Test exports, replacement capacity, credential revocation, supplier exit and continuity.",
+      "kind": "plan",
+      "pack": "491-500"
+    },
+    {
+      "release": 499,
+      "title": "Enterprise Platform v4 General Availability Board",
+      "objective": "Make accountable go, conditional-go or no-go decisions using cross-domain evidence.",
+      "kind": "decision",
+      "pack": "491-500"
+    },
+    {
+      "release": 500,
+      "title": "SakthiAI Enterprise Platform v4 Completion Gate",
+      "objective": "Close Releases 401–500 only after all ten domains receive evidence-backed multi-party approval.",
+      "kind": "gate",
+      "pack": "491-500"
+    }
+  ]
+}

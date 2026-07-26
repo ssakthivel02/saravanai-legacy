@@ -1,0 +1,37 @@
+name: Releases 401-500 validation
+on:
+  pull_request:
+    paths:
+      - 'releases/401-500/**'
+      - '.github/workflows/releases-401-500-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pack:
+          - '401-410'
+          - '411-420'
+          - '421-430'
+          - '431-440'
+          - '441-450'
+          - '451-460'
+          - '461-470'
+          - '471-480'
+          - '481-490'
+          - '491-500'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify pack exists
+        run: test -f releases/401-500/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Validate pack
+        run: node releases/401-500/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Test pack
+        run: node --test releases/401-500/${{ matrix.pack }}/release-pack/tests/*.test.mjs

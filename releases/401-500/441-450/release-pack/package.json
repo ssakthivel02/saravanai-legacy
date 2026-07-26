@@ -1,0 +1,13 @@
+{
+  "name": "@sakthiai/releases-441-450",
+  "version": "4.450.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-release-pack.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
