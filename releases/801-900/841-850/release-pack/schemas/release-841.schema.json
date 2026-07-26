@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Customer Workspace Tenant Provisioning",
+  "type": "object",
+  "required": [
+    "requestId",
+    "tenantId",
+    "owner",
+    "inputRef",
+    "policyRefs",
+    "evidenceRefs",
+    "idempotencyKey",
+    "resultRef",
+    "status"
+  ],
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policyRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resultRef": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "processing",
+        "completed",
+        "rejected",
+        "failed"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
