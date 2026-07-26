@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Innovation Portfolio Governance",
+  "type": "object",
+  "required": [
+    "initiativeId",
+    "owner",
+    "hypothesis",
+    "experimentIds",
+    "budgetPence",
+    "ethicalReviewId",
+    "decision"
+  ],
+  "properties": {
+    "initiativeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hypothesis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "experimentIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "budgetPence": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ethicalReviewId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "continue",
+        "scale",
+        "pause",
+        "stop"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

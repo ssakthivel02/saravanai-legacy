@@ -1,0 +1,105 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 211–220 API
+    version: 1.220.0
+    description: Private enterprise capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/211/enterprise-strategy-and-objectives/status:
+  get:
+    summary: Return Release 211 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/212/architecture-portfolio-and-technology-radar/status:
+  get:
+    summary: Return Release 212 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/213/scenario-intelligence-and-forecasting/status:
+  get:
+    summary: Return Release 213 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/214/board-decision-and-accountability-records/status:
+  get:
+    summary: Return Release 214 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/215/innovation-portfolio-governance/status:
+  get:
+    summary: Return Release 215 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/216/workforce-and-skills-intelligence/status:
+  get:
+    summary: Return Release 216 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/217/technology-and-supplier-evaluation/status:
+  get:
+    summary: Return Release 217 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/218/capacity-sustainability-and-demand-planning/status:
+  get:
+    summary: Return Release 218 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/219/archive-exit-and-long-term-preservation/status:
+  get:
+    summary: Return Release 219 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/220/enterprise-intelligence-completion-gate/status:
+  get:
+    summary: Return Release 220 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+

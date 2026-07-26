@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Software Supply-Chain Provenance",
+  "type": "object",
+  "required": [
+    "artifactId",
+    "version",
+    "sbomRef",
+    "provenanceRef",
+    "signatureRef",
+    "dependencyCount",
+    "criticalFindings",
+    "status"
+  ],
+  "properties": {
+    "artifactId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sbomRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provenanceRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "signatureRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dependencyCount": {
+      "type": "number",
+      "minimum": 0
+    },
+    "criticalFindings": {
+      "type": "number",
+      "minimum": 0
+    },
+    "status": {
+      "enum": [
+        "candidate",
+        "approved",
+        "revoked"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

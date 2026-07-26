@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Secure Data Sharing and Clean-Room Readiness",
+  "type": "object",
+  "required": [
+    "agreementId",
+    "providerTenantId",
+    "consumerTenantId",
+    "purpose",
+    "allowedFields",
+    "allowedQueries",
+    "expiresAt",
+    "approvedBy"
+  ],
+  "properties": {
+    "agreementId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "providerTenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "consumerTenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "allowedFields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "allowedQueries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "expiresAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approvedBy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

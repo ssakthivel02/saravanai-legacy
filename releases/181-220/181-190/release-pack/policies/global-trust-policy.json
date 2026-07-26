@@ -1,0 +1,7 @@
+{
+  "crisisSourceVerificationRequired": true,
+  "criticalVulnerabilitiesBlockRelease": true,
+  "sbomRequired": true,
+  "appealPathRequiredForAbuseActions": true,
+  "recoveryEvidenceRequired": true
+}

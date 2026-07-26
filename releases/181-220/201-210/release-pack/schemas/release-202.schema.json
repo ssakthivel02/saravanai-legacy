@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Crisis Information Integrity",
+  "type": "object",
+  "required": [
+    "itemId",
+    "region",
+    "title",
+    "sourceRefs",
+    "verifiedAt",
+    "verifiedBy",
+    "correctionOf",
+    "status"
+  ],
+  "properties": {
+    "itemId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "region": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "verifiedAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verifiedBy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "correctionOf": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "verified",
+        "withdrawn"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

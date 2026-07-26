@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Privileged and Insider Risk Controls",
+  "type": "object",
+  "required": [
+    "sessionId",
+    "tenantId",
+    "subject",
+    "privilege",
+    "approvalId",
+    "startsAt",
+    "expiresAt",
+    "recordingEvidenceRef"
+  ],
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "privilege": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approvalId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "startsAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expiresAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordingEvidenceRef": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

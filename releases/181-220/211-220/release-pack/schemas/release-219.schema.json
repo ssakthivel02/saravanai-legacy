@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Archive Exit and Long-Term Preservation",
+  "type": "object",
+  "required": [
+    "packageId",
+    "recordTypes",
+    "formats",
+    "sha256",
+    "retentionPolicyId",
+    "accessPolicyId",
+    "disposition",
+    "owner"
+  ],
+  "properties": {
+    "packageId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "formats": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retentionPolicyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "accessPolicyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "disposition": {
+      "enum": [
+        "preserve",
+        "review",
+        "delete"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

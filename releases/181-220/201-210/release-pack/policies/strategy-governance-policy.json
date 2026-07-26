@@ -1,0 +1,7 @@
+{
+  "namedOwnerRequired": true,
+  "evidenceLinkedDecisions": true,
+  "conflictDeclarationRequired": true,
+  "alternativesRequiredForMaterialDecisions": true,
+  "invasiveWorkerMonitoringAllowed": false
+}

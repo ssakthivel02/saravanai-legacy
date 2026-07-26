@@ -1,0 +1,105 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 191–200 API
+    version: 1.200.0
+    description: Private enterprise capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/191/enterprise-data-mesh-governance/status:
+  get:
+    summary: Return Release 191 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/192/master-and-reference-data-management/status:
+  get:
+    summary: Return Release 192 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/193/event-streaming-and-schema-registry/status:
+  get:
+    summary: Return Release 193 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/194/enterprise-integration-orchestration/status:
+  get:
+    summary: Return Release 194 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/195/data-quality-observability/status:
+  get:
+    summary: Return Release 195 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/196/privacy-preserving-analytics/status:
+  get:
+    summary: Return Release 196 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/197/secure-data-sharing-and-clean-room-readiness/status:
+  get:
+    summary: Return Release 197 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/198/records-discovery-and-ediscovery-readiness/status:
+  get:
+    summary: Return Release 198 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/199/data-product-lifecycle-and-contracting/status:
+  get:
+    summary: Return Release 199 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/200/data-and-integration-assurance-gate/status:
+  get:
+    summary: Return Release 200 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+

@@ -1,0 +1,105 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 181–190 API
+    version: 1.190.0
+    description: Private enterprise capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/181/ai-runtime-control-plane/status:
+  get:
+    summary: Return Release 181 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/182/prompt-and-policy-lifecycle/status:
+  get:
+    summary: Return Release 182 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/183/model-evaluation-and-benchmark-registry/status:
+  get:
+    summary: Return Release 183 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/184/retrieval-and-corpus-operations/status:
+  get:
+    summary: Return Release 184 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/185/agent-memory-operations/status:
+  get:
+    summary: Return Release 185 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/186/tool-and-connector-runtime-governance/status:
+  get:
+    summary: Return Release 186 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/187/ai-safety-incident-and-abuse-investigation/status:
+  get:
+    summary: Return Release 187 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/188/ai-cost-and-performance-optimisation/status:
+  get:
+    summary: Return Release 188 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/189/ai-change-and-rollback-management/status:
+  get:
+    summary: Return Release 189 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/190/ai-production-intelligence-assurance-gate/status:
+  get:
+    summary: Return Release 190 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped capability status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+

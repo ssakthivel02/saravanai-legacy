@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Retrieval and Corpus Operations",
+  "type": "object",
+  "required": [
+    "corpusId",
+    "tenantId",
+    "version",
+    "sourceRefs",
+    "accessPolicyId",
+    "freshnessAt",
+    "indexStatus"
+  ],
+  "properties": {
+    "corpusId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "accessPolicyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "freshnessAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "indexStatus": {
+      "enum": [
+        "building",
+        "ready",
+        "stale",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

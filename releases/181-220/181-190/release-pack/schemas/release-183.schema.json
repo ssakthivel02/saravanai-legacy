@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Model Evaluation and Benchmark Registry",
+  "type": "object",
+  "required": [
+    "resultId",
+    "modelVersion",
+    "suiteId",
+    "datasetRefs",
+    "scores",
+    "safetyFailures",
+    "regressions",
+    "promotionAllowed"
+  ],
+  "properties": {
+    "resultId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modelVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "suiteId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "datasetRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "scores": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "safetyFailures": {
+      "type": "number",
+      "minimum": 0
+    },
+    "regressions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "promotionAllowed": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Transparency Reporting and Redress",
+  "type": "object",
+  "required": [
+    "reportId",
+    "periodStart",
+    "periodEnd",
+    "owner",
+    "metricEvidenceRefs",
+    "limitations",
+    "redressChannels",
+    "status"
+  ],
+  "properties": {
+    "reportId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "periodStart": {
+      "type": "string",
+      "minLength": 1
+    },
+    "periodEnd": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metricEvidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "redressChannels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "reviewed",
+        "published"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

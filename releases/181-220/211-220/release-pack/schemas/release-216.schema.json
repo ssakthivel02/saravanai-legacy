@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workforce and Skills Intelligence",
+  "type": "object",
+  "required": [
+    "capabilityId",
+    "role",
+    "requiredSkills",
+    "learningPathIds",
+    "successionRisk",
+    "owner",
+    "invasiveMonitoringAllowed"
+  ],
+  "properties": {
+    "capabilityId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requiredSkills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "learningPathIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "successionRisk": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invasiveMonitoringAllowed": {
+      "const": false
+    }
+  },
+  "additionalProperties": false
+}

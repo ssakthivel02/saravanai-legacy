@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capacity Sustainability and Demand Planning",
+  "type": "object",
+  "required": [
+    "forecastId",
+    "service",
+    "periodStart",
+    "periodEnd",
+    "expectedDemand",
+    "capacityLimit",
+    "energyEstimateKwh",
+    "confidence"
+  ],
+  "properties": {
+    "forecastId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "service": {
+      "type": "string",
+      "minLength": 1
+    },
+    "periodStart": {
+      "type": "string",
+      "minLength": 1
+    },
+    "periodEnd": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expectedDemand": {
+      "type": "number",
+      "minimum": 0
+    },
+    "capacityLimit": {
+      "type": "number",
+      "minimum": 0
+    },
+    "energyEstimateKwh": {
+      "type": "number",
+      "minimum": 0
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false
+}

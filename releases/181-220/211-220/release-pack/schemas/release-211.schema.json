@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Enterprise Strategy and Objectives",
+  "type": "object",
+  "required": [
+    "objectiveId",
+    "name",
+    "owner",
+    "outcomeMeasures",
+    "initiativeIds",
+    "dependencyRefs",
+    "riskRefs",
+    "status"
+  ],
+  "properties": {
+    "objectiveId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outcomeMeasures": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "initiativeIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "dependencyRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "riskRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "active",
+        "achieved",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
