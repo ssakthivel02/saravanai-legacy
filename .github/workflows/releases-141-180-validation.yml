@@ -1,0 +1,27 @@
+name: Releases 141-180 validation
+on:
+  pull_request:
+    paths:
+      - 'releases/141-180/**'
+      - '.github/workflows/releases-141-180-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pack: ['141-150', '151-160', '161-170', '171-180']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify pack exists
+        run: test -f releases/141-180/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Validate pack
+        run: node releases/141-180/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Test pack
+        run: node --test releases/141-180/${{ matrix.pack }}/release-pack/tests/*.test.mjs

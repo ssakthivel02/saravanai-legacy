@@ -1,0 +1,105 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 171–180 API
+    version: 1.180.0
+    description: Private enterprise-scale capability contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/171/open-standards-and-interoperability/status:
+  get:
+    summary: Return Release 171 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/172/data-export-and-portability-operations/status:
+  get:
+    summary: Return Release 172 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/173/api-sdk-and-community-governance/status:
+  get:
+    summary: Return Release 173 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/174/plugin-verification-and-trust-readiness/status:
+  get:
+    summary: Return Release 174 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/175/research-and-innovation-sandbox/status:
+  get:
+    summary: Return Release 175 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/176/experimentation-and-feature-evaluation/status:
+  get:
+    summary: Return Release 176 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/177/roadmap-deprecation-and-lifecycle-governance/status:
+  get:
+    summary: Return Release 177 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/178/intellectual-property-and-licensing-governance/status:
+  get:
+    summary: Return Release 178 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/179/sustainability-accessibility-and-community-impact/status:
+  get:
+    summary: Return Release 179 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/180/enterprise-scale-and-ecosystem-completion-gate/status:
+  get:
+    summary: Return Release 180 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+

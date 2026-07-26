@@ -1,0 +1,105 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 151–160 API
+    version: 1.160.0
+    description: Private enterprise-scale capability contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/151/product-catalogue-and-entitlements/status:
+  get:
+    summary: Return Release 151 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/152/service-plans-quotas-and-fair-use/status:
+  get:
+    summary: Return Release 152 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/153/contracts-sla-and-obligation-management/status:
+  get:
+    summary: Return Release 153 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/154/customer-onboarding-and-success/status:
+  get:
+    summary: Return Release 154 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/155/support-case-and-escalation-management/status:
+  get:
+    summary: Return Release 155 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/156/service-request-automation/status:
+  get:
+    summary: Return Release 156 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/157/usage-metering-and-cost-transparency/status:
+  get:
+    summary: Return Release 157 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/158/supplier-and-partner-commercial-governance/status:
+  get:
+    summary: Return Release 158 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/159/billing-readiness-without-activation/status:
+  get:
+    summary: Return Release 159 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/160/customer-service-assurance-gate/status:
+  get:
+    summary: Return Release 160 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+
