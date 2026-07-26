@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Enterprise Automation Assurance Gate",
+  "type": "object",
+  "required": [
+    "gateId",
+    "releaseRange",
+    "processEvidence",
+    "safetyEvidence",
+    "valueEvidence",
+    "recoveryEvidence",
+    "decision"
+  ],
+  "properties": {
+    "gateId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "releaseRange": {
+      "type": "string"
+    },
+    "processEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "safetyEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "valueEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "recoveryEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "decision": {
+      "enum": [
+        "pending",
+        "go",
+        "conditional_go",
+        "no_go"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

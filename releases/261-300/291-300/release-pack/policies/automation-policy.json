@@ -1,0 +1,7 @@
+{
+  "productionWritesEnabled": false,
+  "maximumSteps": 50,
+  "applicationAllowlistRequired": true,
+  "externalCommunicationApprovalRequired": true,
+  "killSwitchRequired": true
+}

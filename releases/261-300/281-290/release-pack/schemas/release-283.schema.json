@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Audit Planning and Fieldwork",
+  "type": "object",
+  "required": [
+    "engagementId",
+    "scope",
+    "leadAuditor",
+    "procedureIds",
+    "sampleRefs",
+    "findingIds",
+    "independenceConfirmed",
+    "status"
+  ],
+  "properties": {
+    "engagementId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "leadAuditor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "procedureIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "sampleRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "findingIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "independenceConfirmed": {
+      "const": true
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "fieldwork",
+        "reporting",
+        "closed"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Enterprise General Availability Readiness Board",
+  "type": "object",
+  "required": [
+    "decisionId",
+    "releaseId",
+    "accountableOwner",
+    "evidenceDomains",
+    "residualRisks",
+    "conditions",
+    "approvedBy",
+    "decision"
+  ],
+  "properties": {
+    "decisionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "releaseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "accountableOwner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidenceDomains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "residualRisks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "approvedBy": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "decision": {
+      "enum": [
+        "pending",
+        "go",
+        "conditional_go",
+        "no_go"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

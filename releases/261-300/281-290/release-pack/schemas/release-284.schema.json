@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Regulatory Obligation Management",
+  "type": "object",
+  "required": [
+    "obligationId",
+    "jurisdiction",
+    "owner",
+    "summary",
+    "controlIds",
+    "effectiveFrom",
+    "legalReviewer",
+    "status"
+  ],
+  "properties": {
+    "obligationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "jurisdiction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "controlIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "effectiveFrom": {
+      "type": "string",
+      "minLength": 1
+    },
+    "legalReviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "applicable",
+        "not_applicable",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

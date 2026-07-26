@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Global Support and Follow-the-Sun Operations",
+  "type": "object",
+  "required": [
+    "modelId",
+    "owner",
+    "regions",
+    "handoverProcedureId",
+    "severityCoverage",
+    "knowledgeBaseIds",
+    "escalationRoles",
+    "status"
+  ],
+  "properties": {
+    "modelId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "regions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "handoverProcedureId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "severityCoverage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "knowledgeBaseIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "escalationRoles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "active",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

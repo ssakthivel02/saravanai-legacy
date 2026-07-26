@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Performance Scale and Cost Certification Readiness",
+  "type": "object",
+  "required": [
+    "recordId",
+    "serviceIds",
+    "performanceEvidenceRefs",
+    "capacityEvidenceRefs",
+    "reliabilityEvidenceRefs",
+    "costEvidenceRefs",
+    "certificationClaimed",
+    "status"
+  ],
+  "properties": {
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "serviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "performanceEvidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "capacityEvidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "reliabilityEvidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "costEvidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "certificationClaimed": {
+      "const": false
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "reviewed",
+        "approved"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

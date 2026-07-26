@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision Tables and Rules Management",
+  "type": "object",
+  "required": [
+    "tableId",
+    "version",
+    "owner",
+    "ruleIds",
+    "testCaseIds",
+    "effectiveFrom",
+    "approvedBy",
+    "status"
+  ],
+  "properties": {
+    "tableId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ruleIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "testCaseIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "effectiveFrom": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approvedBy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

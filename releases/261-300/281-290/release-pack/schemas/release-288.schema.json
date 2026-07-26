@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Business Continuity and Crisis Exercises",
+  "type": "object",
+  "required": [
+    "exerciseId",
+    "scenario",
+    "serviceIds",
+    "participantRefs",
+    "objectiveIds",
+    "evidenceRefs",
+    "actionIds",
+    "outcome"
+  ],
+  "properties": {
+    "exerciseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario": {
+      "type": "string",
+      "minLength": 1
+    },
+    "serviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "participantRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "objectiveIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "actionIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "outcome": {
+      "enum": [
+        "planned",
+        "passed",
+        "partial",
+        "failed"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

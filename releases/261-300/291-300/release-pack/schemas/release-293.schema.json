@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Developer Ecosystem and API Programme",
+  "type": "object",
+  "required": [
+    "programmeId",
+    "owner",
+    "apiIds",
+    "sdkIds",
+    "scopeCatalogueId",
+    "securityContact",
+    "deprecationPolicyId",
+    "status"
+  ],
+  "properties": {
+    "programmeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "apiIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "sdkIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "scopeCatalogueId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "securityContact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "deprecationPolicyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "private",
+        "preview",
+        "public",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

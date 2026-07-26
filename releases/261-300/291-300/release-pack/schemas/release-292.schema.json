@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Platform Marketplace and Plugin Operations",
+  "type": "object",
+  "required": [
+    "itemId",
+    "publisher",
+    "version",
+    "permissions",
+    "allowedHosts",
+    "signatureRef",
+    "reviewEvidenceRefs",
+    "status"
+  ],
+  "properties": {
+    "itemId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "allowedHosts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "signatureRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewEvidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved",
+        "revoked",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

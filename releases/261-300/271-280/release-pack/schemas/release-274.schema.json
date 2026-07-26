@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Translation Transliteration and Terminology",
+  "type": "object",
+  "required": [
+    "assetId",
+    "sourceLocale",
+    "targetLocale",
+    "terminologySetId",
+    "translationRef",
+    "confidence",
+    "nativeReviewer",
+    "status"
+  ],
+  "properties": {
+    "assetId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceLocale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetLocale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "terminologySetId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "translationRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0
+    },
+    "nativeReviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "reviewed",
+        "published"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

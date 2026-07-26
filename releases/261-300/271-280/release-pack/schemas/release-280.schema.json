@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Knowledge and Experience Assurance Gate",
+  "type": "object",
+  "required": [
+    "gateId",
+    "releaseRange",
+    "provenanceEvidence",
+    "editorialEvidence",
+    "safetyEvidence",
+    "accessibilityEvidence",
+    "decision"
+  ],
+  "properties": {
+    "gateId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "releaseRange": {
+      "type": "string"
+    },
+    "provenanceEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "editorialEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "safetyEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "accessibilityEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "decision": {
+      "enum": [
+        "pending",
+        "go",
+        "conditional_go",
+        "no_go"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SakthiAI Enterprise Programme Completion Gate v2",
+  "type": "object",
+  "required": [
+    "closureId",
+    "releaseRange",
+    "evidenceIndexSha256",
+    "approvedBy",
+    "residualRisks",
+    "decision"
+  ],
+  "properties": {
+    "closureId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "releaseRange": {
+      "type": "string"
+    },
+    "evidenceIndexSha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approvedBy": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "residualRisks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "decision": {
+      "enum": [
+        "pending",
+        "closed",
+        "rejected"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

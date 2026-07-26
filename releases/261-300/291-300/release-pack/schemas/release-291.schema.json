@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Global Tenant and Regional Operations",
+  "type": "object",
+  "required": [
+    "profileId",
+    "tenantId",
+    "regions",
+    "dataBoundaryId",
+    "localeIds",
+    "supportModelId",
+    "regionalOwners",
+    "status"
+  ],
+  "properties": {
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "regions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "dataBoundaryId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "localeIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "supportModelId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "regionalOwners": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "active",
+        "restricted",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

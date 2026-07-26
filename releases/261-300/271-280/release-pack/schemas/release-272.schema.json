@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content Lifecycle and Editorial Governance",
+  "type": "object",
+  "required": [
+    "itemId",
+    "owner",
+    "editor",
+    "contentType",
+    "reviewAt",
+    "sourceRefs",
+    "correctionOf",
+    "status"
+  ],
+  "properties": {
+    "itemId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "editor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contentType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "correctionOf": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "commissioned",
+        "draft",
+        "review",
+        "approved",
+        "archived"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

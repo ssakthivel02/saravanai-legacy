@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Multimodal Content Generation Safety",
+  "type": "object",
+  "required": [
+    "contentId",
+    "tenantId",
+    "mediaType",
+    "sourceRefs",
+    "syntheticDisclosureRequired",
+    "consentEvidenceRefs",
+    "safetyReviewId",
+    "status"
+  ],
+  "properties": {
+    "contentId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mediaType": {
+      "enum": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ]
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "syntheticDisclosureRequired": {
+      "const": true
+    },
+    "consentEvidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "safetyReviewId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved",
+        "rejected",
+        "withdrawn"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

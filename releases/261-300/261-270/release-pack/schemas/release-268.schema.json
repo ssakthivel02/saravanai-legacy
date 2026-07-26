@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Process Mining and Conformance",
+  "type": "object",
+  "required": [
+    "studyId",
+    "tenantId",
+    "processId",
+    "eventSourceRefs",
+    "conformanceScore",
+    "deviationIds",
+    "owner",
+    "invasiveWorkerMonitoringAllowed"
+  ],
+  "properties": {
+    "studyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "processId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eventSourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "conformanceScore": {
+      "type": "number",
+      "minimum": 0
+    },
+    "deviationIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invasiveWorkerMonitoringAllowed": {
+      "const": false
+    }
+  },
+  "additionalProperties": false
+}
