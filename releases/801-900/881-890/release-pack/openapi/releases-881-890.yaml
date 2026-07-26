@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 881–890 Implementation API
+    version: 8.890.0
+    description: Private Enterprise Platform v8 implementation-blueprint contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/881/platform-unit-economics-and-cost-model/status:
+  get:
+    summary: Return Release 881 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/882/tenant-quota-and-fair-use-runtime/status:
+  get:
+    summary: Return Release 882 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/883/capacity-forecast-and-admission-planning/status:
+  get:
+    summary: Return Release 883 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/884/cloud-resource-scheduling-and-rightsizing/status:
+  get:
+    summary: Return Release 884 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/885/finops-allocation-and-showback-without-billing/status:
+  get:
+    summary: Return Release 885 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/886/energy-carbon-and-sustainability-measurement/status:
+  get:
+    summary: Return Release 886 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/887/performance-efficiency-and-cost-regression/status:
+  get:
+    summary: Return Release 887 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/888/provider-contract-exit-and-portability-readiness/status:
+  get:
+    summary: Return Release 888 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/889/economic-stress-test-and-hard-stop-exercise/status:
+  get:
+    summary: Return Release 889 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/890/economics-capacity-and-sustainability-gate/status:
+  get:
+    summary: Return Release 890 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

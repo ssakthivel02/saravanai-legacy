@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 871–880 Implementation API
+    version: 8.880.0
+    description: Private Enterprise Platform v8 implementation-blueprint contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/871/digital-twin-asset-and-model-registry/status:
+  get:
+    summary: Return Release 871 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/872/simulation-scenario-and-assumption-contract/status:
+  get:
+    summary: Return Release 872 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/873/synthetic-data-and-privacy-boundary/status:
+  get:
+    summary: Return Release 873 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/874/simulation-execution-sandbox-runtime/status:
+  get:
+    summary: Return Release 874 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/875/scenario-comparison-and-sensitivity-analysis/status:
+  get:
+    summary: Return Release 875 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/876/operational-forecast-and-capacity-simulation/status:
+  get:
+    summary: Return Release 876 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/877/resilience-failure-and-recovery-simulation/status:
+  get:
+    summary: Return Release 877 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/878/human-decision-and-simulation-review-board/status:
+  get:
+    summary: Return Release 878 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/879/simulation-model-drift-and-recalibration/status:
+  get:
+    summary: Return Release 879 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/880/digital-twin-and-simulation-activation-gate/status:
+  get:
+    summary: Return Release 880 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

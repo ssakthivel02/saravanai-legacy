@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 831–840 Implementation API
+    version: 8.840.0
+    description: Private Enterprise Platform v8 implementation-blueprint contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/831/knowledge-source-connector-runtime/status:
+  get:
+    summary: Return Release 831 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/832/document-ingestion-and-quarantine-worker/status:
+  get:
+    summary: Return Release 832 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/833/tenant-scoped-index-and-retrieval-runtime/status:
+  get:
+    summary: Return Release 833 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/834/hybrid-retrieval-ranking-and-freshness-policy/status:
+  get:
+    summary: Return Release 834 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/835/citation-anchor-and-evidence-resolver/status:
+  get:
+    summary: Return Release 835 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/836/temporal-fact-verification-runtime/status:
+  get:
+    summary: Return Release 836 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/837/contradiction-and-source-conflict-resolver/status:
+  get:
+    summary: Return Release 837 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/838/research-synthesis-and-report-pipeline/status:
+  get:
+    summary: Return Release 838 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/839/knowledge-correction-reindex-and-notification/status:
+  get:
+    summary: Return Release 839 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/840/knowledge-and-research-runtime-activation-gate/status:
+  get:
+    summary: Return Release 840 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

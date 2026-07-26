@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 801–810 Implementation API
+    version: 8.810.0
+    description: Private Enterprise Platform v8 implementation-blueprint contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/801/runtime-identity-context-resolver/status:
+  get:
+    summary: Return Release 801 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/802/tenant-boundary-enforcement-middleware/status:
+  get:
+    summary: Return Release 802 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/803/organisation-team-and-project-runtime/status:
+  get:
+    summary: Return Release 803 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/804/rbac-and-abac-decision-engine-v2/status:
+  get:
+    summary: Return Release 804 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/805/privileged-session-and-step-up-control/status:
+  get:
+    summary: Return Release 805 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/806/api-key-and-workload-identity-runtime/status:
+  get:
+    summary: Return Release 806 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/807/session-revocation-and-device-trust/status:
+  get:
+    summary: Return Release 807 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/808/break-glass-identity-operations/status:
+  get:
+    summary: Return Release 808 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/809/identity-runtime-observability-and-abuse-detection/status:
+  get:
+    summary: Return Release 809 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/810/identity-and-tenant-runtime-activation-gate/status:
+  get:
+    summary: Return Release 810 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

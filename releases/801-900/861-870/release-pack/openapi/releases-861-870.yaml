@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 861–870 Implementation API
+    version: 8.870.0
+    description: Private Enterprise Platform v8 implementation-blueprint contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/861/jurisdiction-and-regional-policy-registry/status:
+  get:
+    summary: Return Release 861 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/862/regional-feature-and-data-routing-runtime/status:
+  get:
+    summary: Return Release 862 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/863/locale-language-and-content-runtime/status:
+  get:
+    summary: Return Release 863 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/864/translation-quality-and-terminology-service/status:
+  get:
+    summary: Return Release 864 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/865/accessibility-preference-and-adaptation-runtime/status:
+  get:
+    summary: Return Release 865 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/866/accessible-component-and-journey-validation/status:
+  get:
+    summary: Return Release 866 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/867/regional-consent-and-notice-orchestration/status:
+  get:
+    summary: Return Release 867 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/868/cultural-religious-and-sensitive-context-review/status:
+  get:
+    summary: Return Release 868 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/869/regional-incident-notification-and-support/status:
+  get:
+    summary: Return Release 869 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/870/global-regional-and-accessibility-activation-gate/status:
+  get:
+    summary: Return Release 870 implementation status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled implementation blueprint status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

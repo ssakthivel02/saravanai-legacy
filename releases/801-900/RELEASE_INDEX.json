@@ -1,0 +1,707 @@
+{
+  "programme": "SakthiAI Enterprise Platform v8",
+  "range": "801-900",
+  "implementationEmphasis": true,
+  "releases": [
+    {
+      "release": 801,
+      "title": "Runtime Identity Context Resolver",
+      "objective": "Resolve authenticated actor, tenant, organisation, session, roles and assurance level from trusted server-side claims.",
+      "kind": "runtime",
+      "pack": "801-810"
+    },
+    {
+      "release": 802,
+      "title": "Tenant Boundary Enforcement Middleware",
+      "objective": "Enforce tenant isolation before data access, cache lookup, tool invocation or domain execution.",
+      "kind": "runtime",
+      "pack": "801-810"
+    },
+    {
+      "release": 803,
+      "title": "Organisation Team and Project Runtime",
+      "objective": "Provide bounded organisation, team and project membership resolution with inherited and explicit permissions.",
+      "kind": "service",
+      "pack": "801-810"
+    },
+    {
+      "release": 804,
+      "title": "RBAC and ABAC Decision Engine v2",
+      "objective": "Evaluate role, attribute, resource, purpose, region and risk policies with explainable decisions.",
+      "kind": "policy",
+      "pack": "801-810"
+    },
+    {
+      "release": 805,
+      "title": "Privileged Session and Step-Up Control",
+      "objective": "Require phishing-resistant authentication, short-lived privilege and re-verification for material actions.",
+      "kind": "runtime",
+      "pack": "801-810"
+    },
+    {
+      "release": 806,
+      "title": "API Key and Workload Identity Runtime",
+      "objective": "Issue, scope, rotate, revoke and audit workload credentials without exposing secret material.",
+      "kind": "service",
+      "pack": "801-810"
+    },
+    {
+      "release": 807,
+      "title": "Session Revocation and Device Trust",
+      "objective": "Evaluate device posture, session age, risk and revocation status before sensitive execution.",
+      "kind": "runtime",
+      "pack": "801-810"
+    },
+    {
+      "release": 808,
+      "title": "Break-Glass Identity Operations",
+      "objective": "Provide emergency identity access with independent approval, expiry, monitoring and mandatory review.",
+      "kind": "plan",
+      "pack": "801-810"
+    },
+    {
+      "release": 809,
+      "title": "Identity Runtime Observability and Abuse Detection",
+      "objective": "Monitor authentication, authorisation, tenant denials, credential misuse and anomalous privilege patterns.",
+      "kind": "assessment",
+      "pack": "801-810"
+    },
+    {
+      "release": 810,
+      "title": "Identity and Tenant Runtime Activation Gate",
+      "objective": "Gate runtime wiring on identity, tenant, privilege, credentials, revocation, observability and rollback evidence.",
+      "kind": "gate",
+      "pack": "801-810"
+    },
+    {
+      "release": 811,
+      "title": "AI Gateway Request Envelope",
+      "objective": "Standardise tenant, purpose, model class, privacy, budget, safety and trace metadata for AI requests.",
+      "kind": "runtime",
+      "pack": "811-820"
+    },
+    {
+      "release": 812,
+      "title": "Provider Adapter Execution Contract v2",
+      "objective": "Execute approved provider adapters through strict capabilities, timeout, retry and response-normalisation contracts.",
+      "kind": "service",
+      "pack": "811-820"
+    },
+    {
+      "release": 813,
+      "title": "Free-First Model Routing Runtime",
+      "objective": "Route to approved free or local options first while enforcing quality, privacy, availability and hard budget stops.",
+      "kind": "runtime",
+      "pack": "811-820"
+    },
+    {
+      "release": 814,
+      "title": "Prompt Assembly and Context Policy",
+      "objective": "Assemble system, user and retrieved context with source boundaries, token budgets and injection controls.",
+      "kind": "policy",
+      "pack": "811-820"
+    },
+    {
+      "release": 815,
+      "title": "Output Validation and Safety Pipeline",
+      "objective": "Validate structured outputs, citations, PII, secrets, harmful content and policy obligations before release.",
+      "kind": "runtime",
+      "pack": "811-820"
+    },
+    {
+      "release": 816,
+      "title": "Provider Health Circuit Breaker and Fallback",
+      "objective": "Use health, latency, error rate and policy signals to isolate failures and enter safe degraded modes.",
+      "kind": "runtime",
+      "pack": "811-820"
+    },
+    {
+      "release": 817,
+      "title": "AI Request Idempotency and Replay Protection",
+      "objective": "Prevent duplicate side effects and malicious replay using tenant-scoped keys, expiry and payload binding.",
+      "kind": "service",
+      "pack": "811-820"
+    },
+    {
+      "release": 818,
+      "title": "AI Cost Capacity and Queue Controller",
+      "objective": "Control concurrency, queue priority, quotas, latency targets and hard cost boundaries.",
+      "kind": "runtime",
+      "pack": "811-820"
+    },
+    {
+      "release": 819,
+      "title": "AI Gateway Operational Dashboard Contract",
+      "objective": "Expose privacy-safe service health, provider status, denials, latency, capacity and budget evidence.",
+      "kind": "profile",
+      "pack": "811-820"
+    },
+    {
+      "release": 820,
+      "title": "AI Gateway Production Activation Gate",
+      "objective": "Gate AI gateway wiring on routing, safety, fallback, idempotency, capacity, cost and incident evidence.",
+      "kind": "gate",
+      "pack": "811-820"
+    },
+    {
+      "release": 821,
+      "title": "Agent Execution Request and Purpose Contract",
+      "objective": "Bind agent execution to tenant, actor, purpose, plan, tools, limits, expiry and accountable owner.",
+      "kind": "runtime",
+      "pack": "821-830"
+    },
+    {
+      "release": 822,
+      "title": "Agent Plan Compiler and Static Validator",
+      "objective": "Compile plans into bounded steps and reject prohibited tools, excessive authority and missing approvals.",
+      "kind": "service",
+      "pack": "821-830"
+    },
+    {
+      "release": 823,
+      "title": "Tool Lease and Scoped Capability Runtime",
+      "objective": "Issue short-lived tool leases limited by tenant, action, resource, purpose and maximum side effects.",
+      "kind": "runtime",
+      "pack": "821-830"
+    },
+    {
+      "release": 824,
+      "title": "Human Approval Inbox and Decision Runtime",
+      "objective": "Present material agent actions for independent approval with context, evidence, expiry and alternatives.",
+      "kind": "service",
+      "pack": "821-830"
+    },
+    {
+      "release": 825,
+      "title": "Checkpoint and Durable Agent State",
+      "objective": "Persist minimal checkpoints, plan state, tool outcomes and compensation references for recovery.",
+      "kind": "service",
+      "pack": "821-830"
+    },
+    {
+      "release": 826,
+      "title": "Agent Sandbox Network and File Boundary",
+      "objective": "Enforce isolated code, filesystem, network, memory, CPU and temporary artefact controls.",
+      "kind": "runtime",
+      "pack": "821-830"
+    },
+    {
+      "release": 827,
+      "title": "Compensating Action and Rollback Executor",
+      "objective": "Execute approved compensation for partially completed workflows with idempotency and evidence.",
+      "kind": "runtime",
+      "pack": "821-830"
+    },
+    {
+      "release": 828,
+      "title": "Agent Kill Switch and Emergency Stop",
+      "objective": "Stop tenant, workflow, tool or global agent execution and revoke active leases safely.",
+      "kind": "runtime",
+      "pack": "821-830"
+    },
+    {
+      "release": 829,
+      "title": "Agent Behaviour Evaluation and Drift Response",
+      "objective": "Evaluate denials, action patterns, tool use, outcome drift, policy bypass and corrective actions.",
+      "kind": "assessment",
+      "pack": "821-830"
+    },
+    {
+      "release": 830,
+      "title": "Bounded Agent Runtime Activation Gate",
+      "objective": "Gate agent operation on purpose, plans, leases, approval, state, sandbox, recovery and kill-switch evidence.",
+      "kind": "gate",
+      "pack": "821-830"
+    },
+    {
+      "release": 831,
+      "title": "Knowledge Source Connector Runtime",
+      "objective": "Connect only approved sources using scoped credentials, malware checks, rate limits and provenance capture.",
+      "kind": "runtime",
+      "pack": "831-840"
+    },
+    {
+      "release": 832,
+      "title": "Document Ingestion and Quarantine Worker",
+      "objective": "Parse, classify, deduplicate, normalise and quarantine suspicious or unsupported content.",
+      "kind": "service",
+      "pack": "831-840"
+    },
+    {
+      "release": 833,
+      "title": "Tenant-Scoped Index and Retrieval Runtime",
+      "objective": "Create tenant-isolated indexes and enforce document, row, field, purpose and regional permissions.",
+      "kind": "runtime",
+      "pack": "831-840"
+    },
+    {
+      "release": 834,
+      "title": "Hybrid Retrieval Ranking and Freshness Policy",
+      "objective": "Combine lexical, semantic and structured retrieval with authority, freshness and diversity controls.",
+      "kind": "policy",
+      "pack": "831-840"
+    },
+    {
+      "release": 835,
+      "title": "Citation Anchor and Evidence Resolver",
+      "objective": "Resolve generated citations to exact source, page, section, version, timestamp and integrity hash.",
+      "kind": "service",
+      "pack": "831-840"
+    },
+    {
+      "release": 836,
+      "title": "Temporal Fact Verification Runtime",
+      "objective": "Verify current office-holders, versions, laws, prices and other unstable facts using approved fresh sources.",
+      "kind": "runtime",
+      "pack": "831-840"
+    },
+    {
+      "release": 837,
+      "title": "Contradiction and Source Conflict Resolver",
+      "objective": "Identify conflicting evidence and route material conflicts to authority-aware human review.",
+      "kind": "service",
+      "pack": "831-840"
+    },
+    {
+      "release": 838,
+      "title": "Research Synthesis and Report Pipeline",
+      "objective": "Generate evidence-backed research artefacts with uncertainty, limitations, counterarguments and appendices.",
+      "kind": "service",
+      "pack": "831-840"
+    },
+    {
+      "release": 839,
+      "title": "Knowledge Correction Reindex and Notification",
+      "objective": "Correct sources, invalidate affected chunks, re-index safely and notify dependent consumers.",
+      "kind": "plan",
+      "pack": "831-840"
+    },
+    {
+      "release": 840,
+      "title": "Knowledge and Research Runtime Activation Gate",
+      "objective": "Gate retrieval and research on source approval, isolation, citations, freshness, conflicts and correction.",
+      "kind": "gate",
+      "pack": "831-840"
+    },
+    {
+      "release": 841,
+      "title": "Customer Workspace Tenant Provisioning",
+      "objective": "Provision private workspaces with tenant configuration, identity, quotas, policies and rollback evidence.",
+      "kind": "service",
+      "pack": "841-850"
+    },
+    {
+      "release": 842,
+      "title": "Workspace Role and Delegation Runtime",
+      "objective": "Manage owner, administrator, contributor, reviewer and viewer roles with bounded delegation.",
+      "kind": "runtime",
+      "pack": "841-850"
+    },
+    {
+      "release": 843,
+      "title": "Project Conversation and Activity Stream",
+      "objective": "Provide tenant-scoped conversations and activity metadata without logging sensitive content unnecessarily.",
+      "kind": "service",
+      "pack": "841-850"
+    },
+    {
+      "release": 844,
+      "title": "Document Asset and Version Workspace",
+      "objective": "Store document metadata, versions, approvals, access, retention and withdrawal state.",
+      "kind": "service",
+      "pack": "841-850"
+    },
+    {
+      "release": 845,
+      "title": "Task Review and Approval Board",
+      "objective": "Coordinate tasks, due dates, owners, evidence, dependencies, approvals and escalation.",
+      "kind": "service",
+      "pack": "841-850"
+    },
+    {
+      "release": 846,
+      "title": "Notification Preference and Delivery Runtime",
+      "objective": "Deliver approved notifications using user preferences, consent, quiet hours, accessibility and retries.",
+      "kind": "runtime",
+      "pack": "841-850"
+    },
+    {
+      "release": 847,
+      "title": "Customer Support Case and Service Request",
+      "objective": "Capture, prioritise, assign and resolve customer requests with evidence, SLA and redress controls.",
+      "kind": "service",
+      "pack": "841-850"
+    },
+    {
+      "release": 848,
+      "title": "Workspace Search and Knowledge Assistance",
+      "objective": "Search authorised workspace content and provide cited assistance under tenant and purpose boundaries.",
+      "kind": "runtime",
+      "pack": "841-850"
+    },
+    {
+      "release": 849,
+      "title": "Workspace Export Deletion and Portability",
+      "objective": "Export, retain, delete or transfer workspace data with legal holds and integrity evidence.",
+      "kind": "plan",
+      "pack": "841-850"
+    },
+    {
+      "release": 850,
+      "title": "Customer Workspace Activation Gate",
+      "objective": "Gate workspace operation on provisioning, roles, assets, tasks, notifications, support and portability.",
+      "kind": "gate",
+      "pack": "841-850"
+    },
+    {
+      "release": 851,
+      "title": "Trust Centre Control and Evidence Catalogue",
+      "objective": "Publish approved control descriptions, owners, evidence classes, review dates and limitations.",
+      "kind": "registry",
+      "pack": "851-860"
+    },
+    {
+      "release": 852,
+      "title": "Security Privacy and AI Transparency Profile",
+      "objective": "Present reviewed architecture, data, provider, model, safety and privacy disclosures without overclaiming.",
+      "kind": "profile",
+      "pack": "851-860"
+    },
+    {
+      "release": 853,
+      "title": "Continuous Control Evidence Collector Runtime",
+      "objective": "Collect approved evidence metadata from CI, configuration, logs and tests with integrity and scope.",
+      "kind": "runtime",
+      "pack": "851-860"
+    },
+    {
+      "release": 854,
+      "title": "Audit Evidence Request and Access Workflow",
+      "objective": "Provide scoped, time-limited evidence access with approvals, watermarking, audit and revocation.",
+      "kind": "service",
+      "pack": "851-860"
+    },
+    {
+      "release": 855,
+      "title": "Control Testing and Exception Runtime",
+      "objective": "Schedule control tests, record samples, findings, limitations, exceptions, expiry and remediation.",
+      "kind": "service",
+      "pack": "851-860"
+    },
+    {
+      "release": 856,
+      "title": "Supplier Assurance and Dependency Register",
+      "objective": "Track suppliers, services, data access, regions, resilience, exit, findings and review dates.",
+      "kind": "registry",
+      "pack": "851-860"
+    },
+    {
+      "release": 857,
+      "title": "Compliance Obligation Change Monitor",
+      "objective": "Track authoritative obligation changes and route impact assessments to qualified owners.",
+      "kind": "assessment",
+      "pack": "851-860"
+    },
+    {
+      "release": 858,
+      "title": "Customer Security Questionnaire Composer",
+      "objective": "Compose evidence-backed responses with scope, caveats, approvals and no unsupported certification claims.",
+      "kind": "service",
+      "pack": "851-860"
+    },
+    {
+      "release": 859,
+      "title": "Trust Incident Disclosure and Correction",
+      "objective": "Manage verified trust notices, affected scope, correction, customer communication and retained evidence.",
+      "kind": "plan",
+      "pack": "851-860"
+    },
+    {
+      "release": 860,
+      "title": "Trust Centre Operations Activation Gate",
+      "objective": "Gate trust operations on evidence, access, testing, suppliers, obligations, disclosures and correction.",
+      "kind": "gate",
+      "pack": "851-860"
+    },
+    {
+      "release": 861,
+      "title": "Jurisdiction and Regional Policy Registry",
+      "objective": "Register applicable regions, legal entities, hosting, processing, restrictions and review ownership.",
+      "kind": "registry",
+      "pack": "861-870"
+    },
+    {
+      "release": 862,
+      "title": "Regional Feature and Data Routing Runtime",
+      "objective": "Enable only approved regional features and route data to permitted processing locations.",
+      "kind": "runtime",
+      "pack": "861-870"
+    },
+    {
+      "release": 863,
+      "title": "Locale Language and Content Runtime",
+      "objective": "Resolve locale, fallback, direction, scripts, terminology and user-controlled language preferences.",
+      "kind": "runtime",
+      "pack": "861-870"
+    },
+    {
+      "release": 864,
+      "title": "Translation Quality and Terminology Service",
+      "objective": "Apply approved glossaries, quality checks, human review and correction for critical content.",
+      "kind": "service",
+      "pack": "861-870"
+    },
+    {
+      "release": 865,
+      "title": "Accessibility Preference and Adaptation Runtime",
+      "objective": "Apply user-controlled text, contrast, motion, input and cognitive-support preferences.",
+      "kind": "runtime",
+      "pack": "861-870"
+    },
+    {
+      "release": 866,
+      "title": "Accessible Component and Journey Validation",
+      "objective": "Validate semantics, keyboard, focus, screen-reader, zoom, alternatives and plain-language requirements.",
+      "kind": "assessment",
+      "pack": "861-870"
+    },
+    {
+      "release": 867,
+      "title": "Regional Consent and Notice Orchestration",
+      "objective": "Present versioned notices and consent choices appropriate to purpose, audience and region.",
+      "kind": "service",
+      "pack": "861-870"
+    },
+    {
+      "release": 868,
+      "title": "Cultural Religious and Sensitive Context Review",
+      "objective": "Route culturally or religiously sensitive content through representative review and correction.",
+      "kind": "assessment",
+      "pack": "861-870"
+    },
+    {
+      "release": 869,
+      "title": "Regional Incident Notification and Support",
+      "objective": "Coordinate jurisdiction-aware incident communication, language, accessibility and support.",
+      "kind": "plan",
+      "pack": "861-870"
+    },
+    {
+      "release": 870,
+      "title": "Global Regional and Accessibility Activation Gate",
+      "objective": "Gate global operation on jurisdiction, routing, locale, accessibility, consent and sensitive-context evidence.",
+      "kind": "gate",
+      "pack": "861-870"
+    },
+    {
+      "release": 871,
+      "title": "Digital Twin Asset and Model Registry",
+      "objective": "Register physical or business twins, owners, boundaries, data sources, versions and intended decisions.",
+      "kind": "registry",
+      "pack": "871-880"
+    },
+    {
+      "release": 872,
+      "title": "Simulation Scenario and Assumption Contract",
+      "objective": "Define scenario parameters, assumptions, constraints, uncertainty, owner and approval.",
+      "kind": "service",
+      "pack": "871-880"
+    },
+    {
+      "release": 873,
+      "title": "Synthetic Data and Privacy Boundary",
+      "objective": "Generate or use synthetic data with provenance, disclosure, privacy testing and permitted-use controls.",
+      "kind": "policy",
+      "pack": "871-880"
+    },
+    {
+      "release": 874,
+      "title": "Simulation Execution Sandbox Runtime",
+      "objective": "Run simulations with resource limits, deterministic inputs, isolation, timeout and evidence.",
+      "kind": "runtime",
+      "pack": "871-880"
+    },
+    {
+      "release": 875,
+      "title": "Scenario Comparison and Sensitivity Analysis",
+      "objective": "Compare outcomes and sensitivity across assumptions, alternatives, constraints and uncertainty.",
+      "kind": "assessment",
+      "pack": "871-880"
+    },
+    {
+      "release": 876,
+      "title": "Operational Forecast and Capacity Simulation",
+      "objective": "Model demand, capacity, queues, failures and recovery options without presenting forecasts as certainty.",
+      "kind": "assessment",
+      "pack": "871-880"
+    },
+    {
+      "release": 877,
+      "title": "Resilience Failure and Recovery Simulation",
+      "objective": "Exercise failure modes, dependencies, RTO, RPO, manual fallback and recovery decisions.",
+      "kind": "plan",
+      "pack": "871-880"
+    },
+    {
+      "release": 878,
+      "title": "Human Decision and Simulation Review Board",
+      "objective": "Review material simulations, assumptions, limitations, conflicts and recommended decisions.",
+      "kind": "service",
+      "pack": "871-880"
+    },
+    {
+      "release": 879,
+      "title": "Simulation Model Drift and Recalibration",
+      "objective": "Detect model drift, data changes, outcome deviation and trigger recalibration or retirement.",
+      "kind": "assessment",
+      "pack": "871-880"
+    },
+    {
+      "release": 880,
+      "title": "Digital Twin and Simulation Activation Gate",
+      "objective": "Gate simulations on models, assumptions, data, isolation, uncertainty, review and recalibration evidence.",
+      "kind": "gate",
+      "pack": "871-880"
+    },
+    {
+      "release": 881,
+      "title": "Platform Unit Economics and Cost Model",
+      "objective": "Model workload units, resource drivers, free-tier assumptions, budgets, constraints and sensitivity.",
+      "kind": "assessment",
+      "pack": "881-890"
+    },
+    {
+      "release": 882,
+      "title": "Tenant Quota and Fair-Use Runtime",
+      "objective": "Enforce tenant quotas, burst limits, priority, exceptions, communication and redress.",
+      "kind": "runtime",
+      "pack": "881-890"
+    },
+    {
+      "release": 883,
+      "title": "Capacity Forecast and Admission Planning",
+      "objective": "Forecast demand, saturation, regional capacity, queue pressure and safe admission decisions.",
+      "kind": "assessment",
+      "pack": "881-890"
+    },
+    {
+      "release": 884,
+      "title": "Cloud Resource Scheduling and Rightsizing",
+      "objective": "Recommend and execute approved scheduling or rightsizing with safety, rollback and evidence.",
+      "kind": "service",
+      "pack": "881-890"
+    },
+    {
+      "release": 885,
+      "title": "FinOps Allocation and Showback without Billing",
+      "objective": "Allocate attributable usage and showback while payment collection and Unified Billing remain disabled.",
+      "kind": "service",
+      "pack": "881-890"
+    },
+    {
+      "release": 886,
+      "title": "Energy Carbon and Sustainability Measurement",
+      "objective": "Track methodology-backed resource and emissions estimates with scope and uncertainty disclosure.",
+      "kind": "assessment",
+      "pack": "881-890"
+    },
+    {
+      "release": 887,
+      "title": "Performance Efficiency and Cost Regression",
+      "objective": "Detect latency, throughput, resource and cost regressions against protected baselines.",
+      "kind": "assessment",
+      "pack": "881-890"
+    },
+    {
+      "release": 888,
+      "title": "Provider Contract Exit and Portability Readiness",
+      "objective": "Maintain export, replacement, credential revocation, data deletion and continuity evidence.",
+      "kind": "plan",
+      "pack": "881-890"
+    },
+    {
+      "release": 889,
+      "title": "Economic Stress Test and Hard Stop Exercise",
+      "objective": "Exercise budget exhaustion, provider price changes, capacity loss and safe degraded operation.",
+      "kind": "plan",
+      "pack": "881-890"
+    },
+    {
+      "release": 890,
+      "title": "Economics Capacity and Sustainability Gate",
+      "objective": "Gate scale on quotas, capacity, efficiency, free-first cost, sustainability and provider-exit evidence.",
+      "kind": "gate",
+      "pack": "881-890"
+    },
+    {
+      "release": 891,
+      "title": "Enterprise Platform v8 Runtime Capability Map",
+      "objective": "Map implemented, blueprint, pilot and unsupported capabilities with owners, dependencies and evidence.",
+      "kind": "registry",
+      "pack": "891-900"
+    },
+    {
+      "release": 892,
+      "title": "Production Worker Integration Plan v8",
+      "objective": "Define route wiring, middleware order, bindings, flags, error handling, observability and rollback.",
+      "kind": "plan",
+      "pack": "891-900"
+    },
+    {
+      "release": 893,
+      "title": "D1 Migration Implementation and Rehearsal v6",
+      "objective": "Sequence tenant-scoped migrations, backups, reconciliation, rollback and non-production evidence.",
+      "kind": "plan",
+      "pack": "891-900"
+    },
+    {
+      "release": 894,
+      "title": "Secrets Bindings and Environment Readiness v2",
+      "objective": "Validate Cloudflare bindings, secret ownership, rotation, access, environment parity and rollback.",
+      "kind": "assessment",
+      "pack": "891-900"
+    },
+    {
+      "release": 895,
+      "title": "End-to-End Critical Journey Test Programme",
+      "objective": "Test identity, tenant, AI, agent, knowledge, workspace, trust and support journeys end to end.",
+      "kind": "assessment",
+      "pack": "891-900"
+    },
+    {
+      "release": 896,
+      "title": "Operational Readiness and Service Acceptance v6",
+      "objective": "Validate monitoring, SLOs, runbooks, support, training, incident response and ownership.",
+      "kind": "assessment",
+      "pack": "891-900"
+    },
+    {
+      "release": 897,
+      "title": "Controlled Tenant Pilot and Exit Criteria",
+      "objective": "Run allowlisted pilots with success, safety, support, rollback and termination criteria.",
+      "kind": "plan",
+      "pack": "891-900"
+    },
+    {
+      "release": 898,
+      "title": "Production Change Approval and Launch Window",
+      "objective": "Govern final change approval, freeze, communications, implementation, validation and rollback.",
+      "kind": "plan",
+      "pack": "891-900"
+    },
+    {
+      "release": 899,
+      "title": "Enterprise Platform v8 General Availability Board",
+      "objective": "Make accountable go, conditional-go or no-go decisions from implementation and operational evidence.",
+      "kind": "decision",
+      "pack": "891-900"
+    },
+    {
+      "release": 900,
+      "title": "SakthiAI Enterprise Platform v8 Completion Gate",
+      "objective": "Close Releases 801–900 only after implementation evidence, tests and multi-party approval are complete.",
+      "kind": "gate",
+      "pack": "891-900"
+    }
+  ]
+}

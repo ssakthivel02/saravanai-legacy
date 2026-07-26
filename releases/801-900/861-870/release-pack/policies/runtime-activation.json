@@ -1,0 +1,8 @@
+{
+  "implementationState": "blueprint",
+  "featureFlagDefault": "disabled",
+  "tenantAllowlistRequired": true,
+  "killSwitchRequired": true,
+  "productionMigrationAutomatic": false,
+  "productionWritesDefault": "deny"
+}
