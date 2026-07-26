@@ -1,0 +1,6 @@
+{
+  "freeFirst": true,
+  "unifiedBillingEnabled": false,
+  "paidProviderEnablement": "owner-approval-required",
+  "hardBudgetStopsRequired": true
+}

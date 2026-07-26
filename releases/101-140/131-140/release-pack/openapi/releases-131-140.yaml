@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 131-140 API
+  version: 1.140.0
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+components:
+  securitySchemes:
+    accessToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /api/v1/programme/131/autonomous-operations-safety-kernel/status:
+    get:
+      summary: Return Release 131 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/132/governed-planning-and-scheduling/status:
+    get:
+      summary: Return Release 132 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/133/rpa-and-tool-execution-control-plane/status:
+    get:
+      summary: Return Release 133 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/134/decision-rights-and-escalation/status:
+    get:
+      summary: Return Release 134 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/135/ai-assisted-change-management/status:
+    get:
+      summary: Return Release 135 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/136/continuous-control-monitoring/status:
+    get:
+      summary: Return Release 136 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/137/ai-security-red-team-platform/status:
+    get:
+      summary: Return Release 137 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/138/continuous-evaluation-and-regression/status:
+    get:
+      summary: Return Release 138 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/139/executive-trust-and-risk-dashboard/status:
+    get:
+      summary: Return Release 139 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/140/enterprise-transformation-completion-gate/status:
+    get:
+      summary: Return Release 140 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}

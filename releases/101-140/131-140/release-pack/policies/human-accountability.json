@@ -1,0 +1,6 @@
+{
+  "materialDecisionsRequireHumanOwner": true,
+  "fourEyesForHighRisk": true,
+  "selfApprovalAllowed": false,
+  "overridePathRequired": true
+}
