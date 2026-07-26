@@ -1,0 +1,1 @@
+export interface AccessibilityCheck{checkId:string;criterion:string;level:"A"|"AA"|"AAA";result:"pass"|"fail"|"not_applicable"|"not_tested";evidenceRef?:string;}export const releaseAccessible=(c:AccessibilityCheck[])=>c.filter(x=>x.level==="A"||x.level==="AA").every(x=>x.result==="pass"||x.result==="not_applicable");

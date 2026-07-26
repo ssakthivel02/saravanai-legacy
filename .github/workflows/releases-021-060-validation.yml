@@ -19,8 +19,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify pack exists
-        run: test -f releases/021-060/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
       - name: Validate pack
         run: node releases/021-060/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
       - name: Test pack

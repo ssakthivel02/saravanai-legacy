@@ -1,0 +1,23 @@
+name: Releases 051-060 validation
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  security-events: write
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node release-pack/scripts/validate-release-pack.mjs
+      - run: node --test release-pack/tests/*.test.mjs
+      - name: Evidence checksums
+        run: find release-pack -type f -not -path '*/evidence/*' -print0 | sort -z | xargs -0 sha256sum > release-pack/evidence/release-pack.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: releases-051-060-evidence
+          path: release-pack/evidence/

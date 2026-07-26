@@ -1,0 +1,1 @@
+export interface RecordsSchedule{scheduleId:string;recordType:string;retentionDays:number;disposition:"delete"|"review"|"archive";legalBasis:string;}

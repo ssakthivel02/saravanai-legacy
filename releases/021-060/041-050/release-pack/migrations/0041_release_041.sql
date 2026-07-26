@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS model_registry(model_id TEXT NOT NULL,provider TEXT NOT NULL,version TEXT NOT NULL,stage TEXT NOT NULL,capabilities_json TEXT NOT NULL,evaluation_suite_id TEXT NOT NULL,approved_by TEXT,approved_at TEXT,PRIMARY KEY(model_id,version));
+CREATE TABLE IF NOT EXISTS model_evaluations(evaluation_id TEXT PRIMARY KEY,model_id TEXT NOT NULL,suite_id TEXT NOT NULL,scores_json TEXT NOT NULL,safety_failures INTEGER NOT NULL,regressions_json TEXT NOT NULL,executed_at TEXT NOT NULL);

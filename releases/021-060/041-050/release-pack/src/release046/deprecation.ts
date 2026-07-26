@@ -1,0 +1,1 @@
+export interface ApiVersion{version:string;releasedAt:string;deprecatedAt?:string;sunsetAt?:string;}export const isSunset=(v:ApiVersion,now=Date.now())=>Boolean(v.sunsetAt&&new Date(v.sunsetAt).getTime()<=now);

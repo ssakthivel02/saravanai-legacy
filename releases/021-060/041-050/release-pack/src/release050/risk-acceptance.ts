@@ -1,0 +1,1 @@
+export interface RiskAcceptance{acceptanceId:string;findingId:string;acceptedBy:string;rationale:string;expiresAt:string;compensatingControls:string[];}

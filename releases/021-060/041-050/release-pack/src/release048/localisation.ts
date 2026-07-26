@@ -1,0 +1,1 @@
+export interface LocalePack{locale:string;version:string;direction:"ltr"|"rtl";keys:Record<string,string>;}export const missingKeys=(b:LocalePack,c:LocalePack)=>Object.keys(b.keys).filter(k=>!c.keys[k]?.trim());

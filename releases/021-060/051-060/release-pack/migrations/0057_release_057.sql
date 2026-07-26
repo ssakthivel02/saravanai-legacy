@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS collaboration_items(item_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,resource_ref TEXT NOT NULL,author_subject TEXT NOT NULL,item_type TEXT NOT NULL,body TEXT NOT NULL,created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS notification_preferences(subject TEXT NOT NULL,channel TEXT NOT NULL,category TEXT NOT NULL,enabled INTEGER NOT NULL,quiet_hours_json TEXT,PRIMARY KEY(subject,channel,category));

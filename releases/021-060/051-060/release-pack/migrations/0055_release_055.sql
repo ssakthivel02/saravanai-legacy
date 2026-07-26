@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS generated_artifacts(artifact_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,artifact_type TEXT NOT NULL,template_id TEXT NOT NULL,source_refs_json TEXT NOT NULL,sensitivity TEXT NOT NULL,status TEXT NOT NULL,sha256 TEXT,generated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS artifact_evidence(artifact_id TEXT PRIMARY KEY,sha256 TEXT NOT NULL,generated_by TEXT NOT NULL,template_version TEXT NOT NULL,source_refs_json TEXT NOT NULL,validation_results_json TEXT NOT NULL,reviewed_by TEXT);

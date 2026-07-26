@@ -1,0 +1,1 @@
+import test from"node:test";import assert from"node:assert/strict";const filter=(h,p)=>h.filter(x=>x.permissions.every(v=>p.has(v)));test("unauthorised chunks removed",()=>{const h=[{id:1,permissions:["a"]},{id:2,permissions:["b"]}];assert.deepEqual(filter(h,new Set(["a"])).map(x=>x.id),[1]);});

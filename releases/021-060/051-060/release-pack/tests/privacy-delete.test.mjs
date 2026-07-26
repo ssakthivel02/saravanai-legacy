@@ -1,0 +1,1 @@
+import test from"node:test";import assert from"node:assert/strict";const may=(t,s,h)=>t==="deletion"&&s==="verified"&&!h;test("legal hold blocks deletion",()=>assert.equal(may("deletion","verified",true),false));test("verified deletion allowed",()=>assert.equal(may("deletion","verified",false),true));

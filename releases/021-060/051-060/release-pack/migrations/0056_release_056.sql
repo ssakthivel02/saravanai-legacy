@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS device_sessions(session_id TEXT PRIMARY KEY,subject TEXT NOT NULL,device_id TEXT NOT NULL,trusted INTEGER NOT NULL,created_at TEXT NOT NULL,last_seen_at TEXT NOT NULL,revoked_at TEXT);
+CREATE TABLE IF NOT EXISTS pwa_release_checks(check_id TEXT PRIMARY KEY,release_id TEXT NOT NULL,check_type TEXT NOT NULL,result TEXT NOT NULL,evidence_ref TEXT,checked_at TEXT NOT NULL);

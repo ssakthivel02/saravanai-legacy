@@ -1,0 +1,1 @@
+export interface CollaborationItem{itemId:string;tenantId:string;resourceRef:string;authorSubject:string;type:"comment"|"review"|"decision"|"mention";body:string;createdAt:string;}export const mayMention=(targetTenant:string,actorTenant:string)=>targetTenant===actorTenant;

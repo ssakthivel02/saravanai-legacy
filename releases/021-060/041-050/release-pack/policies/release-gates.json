@@ -1,0 +1,20 @@
+{
+  "required": [
+    "pull_request",
+    "tests",
+    "tenant_isolation_tests",
+    "secret_scan",
+    "dependency_review",
+    "sbom",
+    "migration_review",
+    "rollback_plan",
+    "evidence_bundle",
+    "owner_approval"
+  ],
+  "forbidden": [
+    "direct_push_to_main",
+    "plaintext_secrets",
+    "unreviewed_production_migration",
+    "autonomous_production_deployment"
+  ]
+}

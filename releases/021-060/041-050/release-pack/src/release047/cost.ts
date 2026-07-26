@@ -1,0 +1,1 @@
+export interface CostEvent{eventId:string;tenantId:string;provider:string;service:string;units:number;estimatedPence:number;occurredAt:string;}export const monthlyEstimate=(e:CostEvent[])=>e.reduce((t,x)=>t+x.estimatedPence,0);

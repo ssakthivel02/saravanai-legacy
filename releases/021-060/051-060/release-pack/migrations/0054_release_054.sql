@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS agent_scenarios(scenario_id TEXT PRIMARY KEY,objective TEXT NOT NULL,allowed_tools_json TEXT NOT NULL,forbidden_outcomes_json TEXT NOT NULL,expected_evidence_json TEXT NOT NULL,version INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS agent_scenario_results(result_id TEXT PRIMARY KEY,scenario_id TEXT NOT NULL,agent_version TEXT NOT NULL,passed INTEGER NOT NULL,tool_violations_json TEXT NOT NULL,unsafe_outcomes_json TEXT NOT NULL,evidence_produced_json TEXT NOT NULL,executed_at TEXT NOT NULL);

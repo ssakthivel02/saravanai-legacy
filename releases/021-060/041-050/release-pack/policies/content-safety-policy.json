@@ -1,0 +1,11 @@
+{
+  "childSafety": "strict",
+  "highStakesDomains": [
+    "health",
+    "legal",
+    "financial"
+  ],
+  "religiousContentClassificationRequired": true,
+  "politicalCurrentFactsRequireCitations": true,
+  "humanReviewOnDerogatoryFaithContent": true
+}

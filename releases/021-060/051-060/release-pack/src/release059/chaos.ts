@@ -1,0 +1,1 @@
+export interface ChaosExperiment{experimentId:string;hypothesis:string;scope:string[];blastRadius:"single_component"|"non_production_tenant";abortConditions:string[];approvedBy?:string;}export const mayRunChaos=(e:ChaosExperiment)=>Boolean(e.approvedBy);

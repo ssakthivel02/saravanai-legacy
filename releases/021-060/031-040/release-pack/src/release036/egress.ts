@@ -1,0 +1,1 @@
+export function isAllowedHost(url:string,allowedHosts:string[]):boolean{try{const host=new URL(url).hostname.toLowerCase();return allowedHosts.some(a=>host===a||host.endsWith(`.${a}`));}catch{return false;}}

@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 041–050 API
+  version: 0.50.0
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/release-041/status:
+    get:
+      summary: Model Lifecycle and Evaluation status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-042/status:
+    get:
+      summary: Data Governance and Lineage status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-043/status:
+    get:
+      summary: Policy as Code status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-044/status:
+    get:
+      summary: Human Approval and Case Management status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-045/status:
+    get:
+      summary: Secrets and Key Lifecycle status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-046/status:
+    get:
+      summary: API Management and Developer Portal status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-047/status:
+    get:
+      summary: Cost Quota and FinOps Controls status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-048/status:
+    get:
+      summary: Accessibility and Localisation status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-049/status:
+    get:
+      summary: Content Safety and Cultural Sensitivity status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-050/status:
+    get:
+      summary: Enterprise Assurance status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}

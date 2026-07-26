@@ -1,0 +1,1 @@
+export interface SimulationBoundary{networkEnabled:boolean;productionCredentialsAvailable:false;filesystemWriteScope:string[];maximumSteps:number;maximumDurationSeconds:number;}

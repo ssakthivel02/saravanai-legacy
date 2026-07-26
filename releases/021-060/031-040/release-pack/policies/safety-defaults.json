@@ -1,0 +1,10 @@
+{
+  "publicRegistrationEnabled": false,
+  "productionWritesEnabled": false,
+  "paidProvidersEnabled": false,
+  "unifiedBillingEnabled": false,
+  "autonomousToolExecutionEnabled": false,
+  "promptLoggingEnabled": false,
+  "fileContentLoggingEnabled": false,
+  "crossTenantAccessEnabled": false
+}

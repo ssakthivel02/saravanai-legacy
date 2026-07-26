@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS quota_policies(tenant_id TEXT NOT NULL,metric TEXT NOT NULL,soft_limit INTEGER NOT NULL,hard_limit INTEGER NOT NULL,period TEXT NOT NULL,PRIMARY KEY(tenant_id,metric,period));
+CREATE TABLE IF NOT EXISTS cost_events(event_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,provider TEXT NOT NULL,service TEXT NOT NULL,units REAL NOT NULL,estimated_pence INTEGER NOT NULL,occurred_at TEXT NOT NULL);

@@ -1,0 +1,1 @@
+export interface DeviceSession{sessionId:string;subject:string;deviceId:string;trusted:boolean;createdAt:string;lastSeenAt:string;revokedAt?:string;}

@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS retrieval_queries(query_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,query_hash TEXT NOT NULL,filters_json TEXT NOT NULL,top_k INTEGER NOT NULL,require_citations INTEGER NOT NULL,executed_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS retrieval_evaluations(evaluation_id TEXT PRIMARY KEY,query_id TEXT NOT NULL,precision_at_k REAL,recall_at_k REAL,citation_coverage REAL,access_control_failures INTEGER NOT NULL,evaluated_at TEXT NOT NULL);

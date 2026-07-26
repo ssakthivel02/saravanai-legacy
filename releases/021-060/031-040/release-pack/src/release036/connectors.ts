@@ -1,0 +1,2 @@
+export interface ConnectorDefinition{connectorId:string;name:string;capabilities:string[];allowedHosts:string[];credentialBinding:string;writeCapabilities:string[];enabled:boolean;}
+export function validateConnector(d:ConnectorDefinition):string[]{const e:string[]=[];if(!d.allowedHosts.length)e.push("egress_allowlist_required");if(!d.credentialBinding)e.push("credential_binding_required");return e;}

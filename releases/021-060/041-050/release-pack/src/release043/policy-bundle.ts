@@ -1,0 +1,1 @@
+export interface PolicyBundle{bundleId:string;version:string;sha256:string;status:"draft"|"tested"|"approved"|"retired";approvedBy?:string;}

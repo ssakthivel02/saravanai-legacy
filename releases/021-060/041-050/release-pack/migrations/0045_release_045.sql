@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS secret_references(secret_id TEXT NOT NULL,tenant_id TEXT NOT NULL,binding TEXT NOT NULL,version INTEGER NOT NULL,created_at TEXT NOT NULL,rotate_by TEXT NOT NULL,status TEXT NOT NULL,PRIMARY KEY(secret_id,version));
+CREATE TABLE IF NOT EXISTS key_access_events(event_id TEXT PRIMARY KEY,secret_id TEXT NOT NULL,actor_subject TEXT NOT NULL,action TEXT NOT NULL,outcome TEXT NOT NULL,request_id TEXT NOT NULL,occurred_at TEXT NOT NULL);

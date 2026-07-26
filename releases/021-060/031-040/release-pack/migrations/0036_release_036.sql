@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS connectors(connector_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,name TEXT NOT NULL,capabilities_json TEXT NOT NULL,allowed_hosts_json TEXT NOT NULL,credential_binding TEXT NOT NULL,enabled INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,updated_at TEXT NOT NULL);

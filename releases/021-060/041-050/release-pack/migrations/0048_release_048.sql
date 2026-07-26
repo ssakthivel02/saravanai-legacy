@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS accessibility_checks(check_id TEXT PRIMARY KEY,release_id TEXT NOT NULL,criterion TEXT NOT NULL,level TEXT NOT NULL,result TEXT NOT NULL,evidence_ref TEXT,tested_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS locale_packs(locale TEXT NOT NULL,version TEXT NOT NULL,direction TEXT NOT NULL,keys_json TEXT NOT NULL,status TEXT NOT NULL,PRIMARY KEY(locale,version));

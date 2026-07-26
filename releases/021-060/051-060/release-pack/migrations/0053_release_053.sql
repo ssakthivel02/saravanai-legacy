@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS knowledge_issues(issue_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,issue_type TEXT NOT NULL,resource_refs_json TEXT NOT NULL,severity TEXT NOT NULL,status TEXT NOT NULL,steward TEXT,created_at TEXT NOT NULL,updated_at TEXT NOT NULL);

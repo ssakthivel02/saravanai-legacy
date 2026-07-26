@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS domain_events(event_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,event_type TEXT NOT NULL,schema_version INTEGER NOT NULL,occurred_at TEXT NOT NULL,producer TEXT NOT NULL,correlation_id TEXT NOT NULL,causation_id TEXT,payload_json TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS dead_letters(dead_letter_id TEXT PRIMARY KEY,event_id TEXT NOT NULL,tenant_id TEXT NOT NULL,reason TEXT NOT NULL,attempts INTEGER NOT NULL,first_failed_at TEXT NOT NULL,last_failed_at TEXT NOT NULL,status TEXT NOT NULL);

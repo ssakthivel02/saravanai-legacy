@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS content_reviews(review_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,age_band TEXT NOT NULL,region TEXT NOT NULL,language TEXT NOT NULL,domain TEXT NOT NULL,risk_tags_json TEXT NOT NULL,decision TEXT NOT NULL,reasons_json TEXT NOT NULL,reviewer TEXT,reviewed_at TEXT NOT NULL);

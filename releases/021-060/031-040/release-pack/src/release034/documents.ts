@@ -1,0 +1,3 @@
+export interface IngestedDocument{documentId:string;tenantId:string;filename:string;mimeType:string;sizeBytes:number;sha256:string;status:"quarantined"|"validated"|"extracting"|"ready"|"rejected";}
+const ALLOWED=new Set(["application/pdf","text/plain","text/markdown","application/vnd.openxmlformats-officedocument.wordprocessingml.document"]);
+export function validateUpload(d:IngestedDocument,max=20*1024*1024):string[]{const e:string[]=[];if(!ALLOWED.has(d.mimeType))e.push("mime_type_not_allowed");if(d.sizeBytes<=0||d.sizeBytes>max)e.push("file_size_not_allowed");if(!/^[a-f0-9]{64}$/i.test(d.sha256))e.push("sha256_required");return e;}

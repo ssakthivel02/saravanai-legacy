@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS approval_requests(approval_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,requested_by TEXT NOT NULL,action TEXT NOT NULL,resource_ref TEXT NOT NULL,risk_level TEXT NOT NULL,status TEXT NOT NULL,expires_at TEXT NOT NULL,decided_by TEXT,decided_at TEXT);
+CREATE TABLE IF NOT EXISTS cases(case_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,case_type TEXT NOT NULL,severity TEXT NOT NULL,status TEXT NOT NULL,owner TEXT NOT NULL,evidence_ids_json TEXT NOT NULL,created_at TEXT NOT NULL,updated_at TEXT NOT NULL);

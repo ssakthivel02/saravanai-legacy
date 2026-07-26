@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS data_assets(asset_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,name TEXT NOT NULL,classification TEXT NOT NULL,owner TEXT NOT NULL,purpose TEXT NOT NULL,retention_policy_id TEXT NOT NULL,status TEXT NOT NULL,updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS data_lineage(lineage_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,source_asset_id TEXT NOT NULL,target_asset_id TEXT NOT NULL,transformation TEXT NOT NULL,job_ref TEXT NOT NULL,observed_at TEXT NOT NULL);

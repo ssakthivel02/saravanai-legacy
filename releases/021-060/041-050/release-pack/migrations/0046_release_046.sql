@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS api_clients(client_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,name TEXT NOT NULL,scopes_json TEXT NOT NULL,status TEXT NOT NULL,created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS api_versions(version TEXT PRIMARY KEY,released_at TEXT NOT NULL,deprecated_at TEXT,sunset_at TEXT);

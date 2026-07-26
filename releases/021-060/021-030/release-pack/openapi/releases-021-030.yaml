@@ -1,0 +1,49 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Enterprise Runtime API
+  version: 0.30.0
+  description: Private, owner-controlled APIs for Releases 021–030.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/identity/me:
+    get:
+      summary: Return the authenticated identity and effective roles
+      responses:
+        "200": {description: Identity context}
+        "401": {description: Authentication required}
+  /api/v1/security/access-decision:
+    post:
+      summary: Evaluate Zero Trust access signals
+      responses:
+        "200": {description: Access decision}
+  /api/v1/safety/inspect:
+    post:
+      summary: Inspect an AI request for safety findings
+      responses:
+        "200": {description: Safety assessment}
+  /api/v1/agents:
+    get:
+      summary: List governed agent definitions
+      responses:
+        "200": {description: Agent definitions}
+  /api/v1/knowledge/nodes:
+    get:
+      summary: Query tenant-scoped knowledge nodes
+      responses:
+        "200": {description: Knowledge nodes}
+  /api/v1/memory:
+    get:
+      summary: Query approved tenant-scoped memories
+      responses:
+        "200": {description: Memories}
+  /api/v1/observability/slo:
+    get:
+      summary: Return service-level objective status
+      responses:
+        "200": {description: SLO status}
+  /api/v1/readiness:
+    get:
+      summary: Return Release 030 readiness gates
+      responses:
+        "200": {description: Readiness status}

@@ -1,0 +1,9 @@
+{
+  "defaultProvider": "workers-ai",
+  "allowedCostClasses": [
+    "free"
+  ],
+  "thirdPartyProvidersEnabled": false,
+  "restrictedDataExternalRouting": "deny",
+  "currentFactRequestsRequireResearch": true
+}

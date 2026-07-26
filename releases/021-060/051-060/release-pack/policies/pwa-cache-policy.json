@@ -1,0 +1,11 @@
+{
+  "networkOnlyPrefixes": [
+    "/api/",
+    "/admin/",
+    "/security/",
+    "/account/"
+  ],
+  "cachePersonalData": false,
+  "cacheAuthenticatedHtml": false,
+  "offlineWritesEnabled": false
+}
