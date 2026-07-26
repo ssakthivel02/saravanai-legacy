@@ -1,0 +1,162 @@
+{
+  "name": "SakthiAI Runtime Wave 6 — DevSecOps and Supply-Chain Controls",
+  "generatedAt": "2026-07-26T21:45:06.587930+00:00",
+  "fileCountBeforeManifest": 31,
+  "files": [
+    {
+      "path": ".github/workflows/runtime-wave-6-validation.yml",
+      "bytes": 1438,
+      "sha256": "e3dac06f55dcceb096cdd46e66d24cfc29d6e8fdd7673292eb78b6eda080ce61"
+    },
+    {
+      "path": "RUNTIME_WAVE_6_BASELINE.json",
+      "bytes": 510,
+      "sha256": "76d73cc45211c1fae92fa6a58cbf34ca2914f9367b60d7fb1b45a6ab859972da"
+    },
+    {
+      "path": "RUNTIME_WAVE_6_UPLOAD_README.md",
+      "bytes": 336,
+      "sha256": "56d41333075c504b093a3d0f5d319145c12f14e63971cda0948456b29bc1903f"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_6_ACCEPTANCE_CHECKLIST.md",
+      "bytes": 454,
+      "sha256": "0f2c3ef3eccb0823405f201a8a284902bb12ad54e26eeb07bc20f5f687edb9db"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_6_HLD.md",
+      "bytes": 348,
+      "sha256": "0da79b146ae57f75d50f151f7615a1e8b3c18b0399578de34b7b6eb0c4bfbd27"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_6_IMPLEMENTATION.md",
+      "bytes": 859,
+      "sha256": "8835a2af8883bad5dbab76affaa238806523ab5c9373f215ada8c0b4c5828454"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_6_LLD.md",
+      "bytes": 854,
+      "sha256": "841a10961c72df2ccc728078c611e0adbe448cfc02a0ad42f48f0d72682569f6"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_6_ROLLOUT_AND_ROLLBACK.md",
+      "bytes": 479,
+      "sha256": "c934da7d78bcd5e1f7c9f4cc0e30b91d87bf09610e1def9fa7656828144c7cc0"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_6_SUPPLY_CHAIN_POLICY.md",
+      "bytes": 635,
+      "sha256": "d4f6d7041d84d2b90222a2d4810f98c1654c03403298c450ca17e97eb14809d7"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_6_THREAT_MODEL.md",
+      "bytes": 860,
+      "sha256": "82eb4caac65c8c570b0ffc2e1b6c765b251eae0668362d06695fa7579bb54c8d"
+    },
+    {
+      "path": "docs/adr/ADR-004-METADATA-ONLY-SUPPLY-CHAIN-ASSESSMENT.md",
+      "bytes": 496,
+      "sha256": "93f2a7e4816414d6a7c71c637fc9474e940ef03e72694766b1852ff2fcade2c3"
+    },
+    {
+      "path": "migrations/0008_runtime_wave6.sql",
+      "bytes": 1005,
+      "sha256": "343a40b73d85464a453d5c44591675ca178a2a94cd39781c0273836fbc075a2b"
+    },
+    {
+      "path": "openapi/sakthiai-runtime-wave6.yaml",
+      "bytes": 1790,
+      "sha256": "7d574c01fac3937f841a16cea880c83f52c4c5efdd8a640dd9065e33791349f3"
+    },
+    {
+      "path": "scripts/validate-runtime-wave6.mjs",
+      "bytes": 2632,
+      "sha256": "eebf9caa37ac5e771e31500fcf367266eff6d7945f3bbcb837fc42848cf7b585"
+    },
+    {
+      "path": "src/entry.js",
+      "bytes": 4108,
+      "sha256": "7a1fc13760d444b69941d37cd979fb240ca283b98c1093b1f82752688fa3718f"
+    },
+    {
+      "path": "src/runtime-v6/artifact.js",
+      "bytes": 1181,
+      "sha256": "08de703371456e357c91c9af35519d638827ee97372dc89016a9b37fdd10932e"
+    },
+    {
+      "path": "src/runtime-v6/attestation.js",
+      "bytes": 1506,
+      "sha256": "403e56e609e60f1f55dd21b8eed3c9226b95a706ce87c90e00f9feb1edae38c4"
+    },
+    {
+      "path": "src/runtime-v6/core.js",
+      "bytes": 3008,
+      "sha256": "57d2d1284181fd8d4e2aad7c2a055d88cf596aab1181058b19ed206ad95f1e91"
+    },
+    {
+      "path": "src/runtime-v6/dependency.js",
+      "bytes": 1579,
+      "sha256": "20ee04cc4c2fb9f4d88da2c9ac36bdbf3637742f4a86760133bcb42165c752ea"
+    },
+    {
+      "path": "src/runtime-v6/evidence.js",
+      "bytes": 1111,
+      "sha256": "fff8c00393c714f0f3f487cc7692091a0addadbab921df3020249e32ed25097e"
+    },
+    {
+      "path": "src/runtime-v6/exception.js",
+      "bytes": 1230,
+      "sha256": "b7e9c8880d47bc32da548765546ce3265c41e288ef994681778d40d0a0eaeea2"
+    },
+    {
+      "path": "src/runtime-v6/iac.js",
+      "bytes": 1895,
+      "sha256": "6b46a58f83db73d9f95d3d93a50bc9e07e930b335cc9329e8ada8068fb888fe5"
+    },
+    {
+      "path": "src/runtime-v6/licenses.js",
+      "bytes": 1257,
+      "sha256": "71fceb00f54dd69816ba24765c2be1fdfe13cd734f9ffbde524b0872e2fde019"
+    },
+    {
+      "path": "src/runtime-v6/provenance.js",
+      "bytes": 1463,
+      "sha256": "dff42f573c7bb31ef559a335acc4051fe919c80cd7526f560240bc24750cd7f6"
+    },
+    {
+      "path": "src/runtime-v6/release-gate.js",
+      "bytes": 1170,
+      "sha256": "5e0b244b570c22ede7f69c0d3abe21721ea3187681c03911103d42f069b22ef8"
+    },
+    {
+      "path": "src/runtime-v6/repository.js",
+      "bytes": 1211,
+      "sha256": "7e3e37da1796cdba910f2023b4be45ccee069fd7a7bd253184dfad909f8e6d15"
+    },
+    {
+      "path": "src/runtime-v6/sbom.js",
+      "bytes": 1673,
+      "sha256": "5baec8c50a4cb7b617152399ebe38b9fce07c9092e5538fcfd975a81b12500c0"
+    },
+    {
+      "path": "src/runtime-v6/secrets.js",
+      "bytes": 1501,
+      "sha256": "25032592d2ad45504d2e6fd10f5478e67e3402154834352d32b7cb0117c9abde"
+    },
+    {
+      "path": "src/runtime-v6/workflow.js",
+      "bytes": 1819,
+      "sha256": "79774658faf6f776803f1506a81eb3644a02d3e85a08bfb0c3bd0878dc9e1bc1"
+    },
+    {
+      "path": "src/runtime-wave6.js",
+      "bytes": 3662,
+      "sha256": "a8b41e8dc0d8c70172c83de5105a97abe8246cf0cbb32be5b9e071dc1666cf5a"
+    },
+    {
+      "path": "tests/runtime-wave6.test.mjs",
+      "bytes": 13012,
+      "sha256": "f5936d37a4b4e76a0863fae588cc029252b26d3050107821bf161f4eb105355b"
+    }
+  ]
+}
