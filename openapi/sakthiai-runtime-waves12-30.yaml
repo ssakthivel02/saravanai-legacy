@@ -1,0 +1,121 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SakthiAI Runtime Waves 12–30 API",
+    "version": "30.0.0",
+    "description": "Disabled-by-default private-owner metadata assurance for Waves 12 through 30."
+  },
+  "servers": [
+    {
+      "url": "https://sakthiai.omsaravanabhava.org"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "cloudflareAccess": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "cf-access-jwt-assertion"
+      }
+    },
+    "schemas": {
+      "Status": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "emergencyStopped": {
+            "type": "boolean"
+          },
+          "operational": {
+            "type": "boolean"
+          },
+          "metadataOnly": {
+            "type": "boolean",
+            "const": true
+          }
+        }
+      },
+      "EvaluationRequest": {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "Bounded caller-supplied metadata. Request content is not persisted."
+      }
+    }
+  },
+  "paths": {
+    "/api/v1/runtime/v{wave}/status": {
+      "get": {
+        "summary": "Return safe disabled-by-default status",
+        "parameters": [
+          {
+            "name": "wave",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "enum": [12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+            }
+          }
+        ],
+        "responses": {
+          "200": {"description": "Evaluation completed"},
+          "401": {"description": "Cloudflare Access authentication required"},
+          "403": {"description": "Authenticated user is not the configured owner"},
+          "422": {"description": "Metadata or evidence was rejected"},
+          "503": {"description": "Wave is disabled or emergency-stopped"}
+        }
+      }
+    },
+    "/api/v1/runtime/v{wave}/assess": {
+      "post": {
+        "summary": "Assess configured enterprise dimensions",
+        "parameters": [{"name":"wave","in":"path","required":true,"schema":{"type":"integer","enum":[12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]}}],
+        "responses": {"200":{"description":"Evaluation completed"},"401":{"description":"Cloudflare Access authentication required"},"403":{"description":"Authenticated user is not the configured owner"},"422":{"description":"Metadata or evidence was rejected"},"503":{"description":"Wave is disabled or emergency-stopped"}},
+        "security": [{"cloudflareAccess":[]}],
+        "requestBody": {"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EvaluationRequest"}}}}
+      }
+    },
+    "/api/v1/runtime/v{wave}/evidence/validate": {
+      "post": {
+        "summary": "Validate caller-supplied evidence metadata",
+        "parameters": [{"name":"wave","in":"path","required":true,"schema":{"type":"integer","enum":[12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]}}],
+        "responses": {"200":{"description":"Evaluation completed"},"401":{"description":"Cloudflare Access authentication required"},"403":{"description":"Authenticated user is not the configured owner"},"422":{"description":"Metadata or evidence was rejected"},"503":{"description":"Wave is disabled or emergency-stopped"}},
+        "security": [{"cloudflareAccess":[]}],
+        "requestBody": {"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EvaluationRequest"}}}}
+      }
+    },
+    "/api/v1/runtime/v{wave}/risk/classify": {
+      "post": {
+        "summary": "Classify risk metadata",
+        "parameters": [{"name":"wave","in":"path","required":true,"schema":{"type":"integer","enum":[12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]}}],
+        "responses": {"200":{"description":"Evaluation completed"},"401":{"description":"Cloudflare Access authentication required"},"403":{"description":"Authenticated user is not the configured owner"},"422":{"description":"Metadata or evidence was rejected"},"503":{"description":"Wave is disabled or emergency-stopped"}},
+        "security": [{"cloudflareAccess":[]}],
+        "requestBody": {"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EvaluationRequest"}}}}
+      }
+    },
+    "/api/v1/runtime/v{wave}/plan/validate": {
+      "post": {
+        "summary": "Validate a bounded human-controlled plan",
+        "parameters": [{"name":"wave","in":"path","required":true,"schema":{"type":"integer","enum":[12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]}}],
+        "responses": {"200":{"description":"Evaluation completed"},"401":{"description":"Cloudflare Access authentication required"},"403":{"description":"Authenticated user is not the configured owner"},"422":{"description":"Metadata or evidence was rejected"},"503":{"description":"Wave is disabled or emergency-stopped"}},
+        "security": [{"cloudflareAccess":[]}],
+        "requestBody": {"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EvaluationRequest"}}}}
+      }
+    },
+    "/api/v1/runtime/v{wave}/gate": {
+      "post": {
+        "summary": "Evaluate a non-executing owner approval gate",
+        "parameters": [{"name":"wave","in":"path","required":true,"schema":{"type":"integer","enum":[12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]}}],
+        "responses": {"200":{"description":"Evaluation completed"},"401":{"description":"Cloudflare Access authentication required"},"403":{"description":"Authenticated user is not the configured owner"},"422":{"description":"Metadata or evidence was rejected"},"503":{"description":"Wave is disabled or emergency-stopped"}},
+        "security": [{"cloudflareAccess":[]}],
+        "requestBody": {"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/EvaluationRequest"}}}}
+      }
+    }
+  }
+}
