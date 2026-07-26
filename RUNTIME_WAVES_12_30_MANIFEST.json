@@ -1,12 +1,12 @@
 {
-  "name": "SakthiAI Runtime Waves 12–30 — Enterprise Completion Compact Pack",
-  "generatedAt": "2026-07-26T23:18:05.566266+00:00",
-  "fileCountBeforeManifest": 10,
+  "name": "SakthiAI Runtime Waves 12–30 — Enterprise Completion Split Pack",
+  "generatedAt": "2026-07-26T23:27:52.240789+00:00",
+  "fileCountBeforeManifest": 12,
   "files": [
     {
       "path": ".github/workflows/runtime-waves-12-30-validation.yml",
-      "bytes": 1418,
-      "sha256": "3a784839abd0a7b4de8cc262fa33d50755f92b81f882f6436ffd50359ac292a4"
+      "bytes": 1450,
+      "sha256": "d0ac9a21b96dc03e3e62b617be72c59ca3d11f6890e990a908c3ac0ee39aac24"
     },
     {
       "path": "RUNTIME_WAVES_12_30_BASELINE.json",
@@ -35,8 +35,8 @@
     },
     {
       "path": "scripts/validate-runtime-waves12-30.mjs",
-      "bytes": 2692,
-      "sha256": "35c9134dc6e117640d483bf553ed3a8f558533a5fb3d11c7c8038d8dbd561272"
+      "bytes": 3072,
+      "sha256": "174c05d032e0a62b257118f5a3478af4264dfc6dee4730d5a23f424c0356865b"
     },
     {
       "path": "src/entry.js",
@@ -44,9 +44,19 @@
       "sha256": "b53b928ca2af2a329a11dc1da81668f03c3410f82570b42ba27de6a8764138f3"
     },
     {
+      "path": "src/runtime-v12-30/catalog.js",
+      "bytes": 8207,
+      "sha256": "cdcfe53febf54479041f8375e1cad5e6d9d918afa8bab3cbeb67a7d4b404a1d0"
+    },
+    {
+      "path": "src/runtime-v12-30/core.js",
+      "bytes": 11078,
+      "sha256": "2d071e250293afdefb4be528ea348a88a59c728cc2031d96f237d3b634d4a3e4"
+    },
+    {
       "path": "src/runtime-waves12-30.js",
-      "bytes": 27669,
-      "sha256": "fe5737b2accc101f5be4d785c2ff9092a38dbc4fc685e66d3cfc0a9ba893e24a"
+      "bytes": 4188,
+      "sha256": "a627125582cc81ad6b79ddff940f0e25467e7b79bba1e7640ef92bed4d6d2436"
     },
     {
       "path": "tests/runtime-waves12-30.test.mjs",
