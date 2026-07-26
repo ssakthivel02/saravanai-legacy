@@ -1,0 +1,706 @@
+{
+  "programme": "SakthiAI Enterprise Platform v5",
+  "range": "501-600",
+  "releases": [
+    {
+      "release": 501,
+      "title": "Decision Problem Registry",
+      "objective": "Register governed decision problems, owners, affected parties, constraints, deadlines and review state.",
+      "kind": "registry",
+      "pack": "501-510"
+    },
+    {
+      "release": 502,
+      "title": "Evidence and Assumption Ledger",
+      "objective": "Record evidence, assumptions, uncertainty, provenance, expiry and challenge history for material decisions.",
+      "kind": "registry",
+      "pack": "501-510"
+    },
+    {
+      "release": 503,
+      "title": "Scenario and Counterfactual Analysis",
+      "objective": "Compare plausible scenarios and counterfactuals using explicit assumptions, sensitivity and limitations.",
+      "kind": "assessment",
+      "pack": "501-510"
+    },
+    {
+      "release": 504,
+      "title": "Multi-Criteria Decision Analysis",
+      "objective": "Evaluate alternatives across weighted criteria, thresholds, trade-offs, conflicts and human judgement.",
+      "kind": "assessment",
+      "pack": "501-510"
+    },
+    {
+      "release": 505,
+      "title": "Decision Explanation and Traceability",
+      "objective": "Link decisions to evidence, alternatives, policies, approvers, conditions, outcomes and revisions.",
+      "kind": "decision",
+      "pack": "501-510"
+    },
+    {
+      "release": 506,
+      "title": "Human Expert Review Workflow",
+      "objective": "Coordinate qualified expert review, conflicts, evidence requests, deadlines and final accountability.",
+      "kind": "plan",
+      "pack": "501-510"
+    },
+    {
+      "release": 507,
+      "title": "Decision Outcome Monitoring",
+      "objective": "Monitor intended and unintended outcomes, drift, affected groups, corrective actions and review dates.",
+      "kind": "assessment",
+      "pack": "501-510"
+    },
+    {
+      "release": 508,
+      "title": "Bias Fairness and Distributional Review",
+      "objective": "Assess decision impacts across relevant groups using justified methods and human interpretation.",
+      "kind": "assessment",
+      "pack": "501-510"
+    },
+    {
+      "release": 509,
+      "title": "Decision Appeal and Reconsideration",
+      "objective": "Provide challenge, appeal, correction, independent reconsideration, deadlines and redress evidence.",
+      "kind": "plan",
+      "pack": "501-510"
+    },
+    {
+      "release": 510,
+      "title": "Decision Intelligence Assurance Gate",
+      "objective": "Gate decision systems on evidence, assumptions, alternatives, fairness, explanation, appeal and outcomes.",
+      "kind": "gate",
+      "pack": "501-510"
+    },
+    {
+      "release": 511,
+      "title": "Enterprise Digital Asset Registry",
+      "objective": "Register images, audio, video, documents, owners, rights, versions, provenance and lifecycle.",
+      "kind": "registry",
+      "pack": "511-520"
+    },
+    {
+      "release": 512,
+      "title": "Image Generation and Editing Governance",
+      "objective": "Govern generated and edited images through source, consent, safety, disclosure and review controls.",
+      "kind": "profile",
+      "pack": "511-520"
+    },
+    {
+      "release": 513,
+      "title": "Audio Generation and Voice Safety",
+      "objective": "Protect voice identity, consent, disclosure, cloning restrictions, review and revocation.",
+      "kind": "profile",
+      "pack": "511-520"
+    },
+    {
+      "release": 514,
+      "title": "Video Generation and Editing Safety",
+      "objective": "Govern video synthesis, editing, likeness, sensitive contexts, provenance and publication approval.",
+      "kind": "profile",
+      "pack": "511-520"
+    },
+    {
+      "release": 515,
+      "title": "Document and PDF Generation Pipeline",
+      "objective": "Generate governed documents through templates, source traceability, accessibility, validation and approval.",
+      "kind": "execution",
+      "pack": "511-520"
+    },
+    {
+      "release": 516,
+      "title": "Brand Asset and Design System Governance",
+      "objective": "Control logos, typography, components, usage rules, accessibility, localisation and retirement.",
+      "kind": "registry",
+      "pack": "511-520"
+    },
+    {
+      "release": 517,
+      "title": "Rights Licensing and Consent Management",
+      "objective": "Track licences, consent, territorial scope, duration, restrictions, attribution and withdrawal.",
+      "kind": "profile",
+      "pack": "511-520"
+    },
+    {
+      "release": 518,
+      "title": "Synthetic Media Provenance and Disclosure v2",
+      "objective": "Attach provenance, synthetic disclosure, tamper evidence, limitations and correction channels.",
+      "kind": "policy",
+      "pack": "511-520"
+    },
+    {
+      "release": 519,
+      "title": "Media Accessibility and Localisation",
+      "objective": "Provide captions, transcripts, descriptions, translations, alternatives and native review.",
+      "kind": "profile",
+      "pack": "511-520"
+    },
+    {
+      "release": 520,
+      "title": "Multimodal Media Assurance Gate",
+      "objective": "Gate media release on rights, consent, provenance, safety, accessibility and correction evidence.",
+      "kind": "gate",
+      "pack": "511-520"
+    },
+    {
+      "release": 521,
+      "title": "API Product Lifecycle v2",
+      "objective": "Govern API ownership, versions, scopes, documentation, support, compatibility and deprecation.",
+      "kind": "registry",
+      "pack": "521-530"
+    },
+    {
+      "release": 522,
+      "title": "Event Contract and Schema Registry",
+      "objective": "Register event schemas, owners, compatibility, ordering, retention, consumers and lifecycle.",
+      "kind": "registry",
+      "pack": "521-530"
+    },
+    {
+      "release": 523,
+      "title": "Webhook Delivery and Replay Governance",
+      "objective": "Deliver webhooks with signatures, retries, idempotency, replay limits, evidence and revocation.",
+      "kind": "execution",
+      "pack": "521-530"
+    },
+    {
+      "release": 524,
+      "title": "Connector and Adapter Framework",
+      "objective": "Govern connector identity, scopes, egress, schemas, errors, secrets, support and retirement.",
+      "kind": "profile",
+      "pack": "521-530"
+    },
+    {
+      "release": 525,
+      "title": "Agent Tool Protocol Gateway",
+      "objective": "Expose bounded tool capabilities through authenticated, tenant-scoped, allowlisted protocol contracts.",
+      "kind": "profile",
+      "pack": "521-530"
+    },
+    {
+      "release": 526,
+      "title": "API Security and Abuse Protection v2",
+      "objective": "Apply authentication, authorisation, quotas, validation, anomaly detection and safe degradation.",
+      "kind": "policy",
+      "pack": "521-530"
+    },
+    {
+      "release": 527,
+      "title": "Partner Federation and Delegated Access",
+      "objective": "Govern partner identities, delegated scopes, approvals, expiry, monitoring and revocation.",
+      "kind": "profile",
+      "pack": "521-530"
+    },
+    {
+      "release": 528,
+      "title": "Integration Observability and Service Objectives",
+      "objective": "Measure delivery, latency, correctness, backlog, retries, failures and ownership.",
+      "kind": "assessment",
+      "pack": "521-530"
+    },
+    {
+      "release": 529,
+      "title": "Integration Portability and Exit",
+      "objective": "Export contracts, schemas, configurations, evidence and credentials through tested exit procedures.",
+      "kind": "plan",
+      "pack": "521-530"
+    },
+    {
+      "release": 530,
+      "title": "API and Integration Fabric Assurance Gate",
+      "objective": "Gate integration services on lifecycle, security, delivery, observability, portability and recovery.",
+      "kind": "gate",
+      "pack": "521-530"
+    },
+    {
+      "release": 531,
+      "title": "Cyber Recovery Service Catalogue",
+      "objective": "Register critical services, recovery tiers, dependencies, owners, RTO, RPO and evidence.",
+      "kind": "registry",
+      "pack": "531-540"
+    },
+    {
+      "release": 532,
+      "title": "Ransomware Containment and Recovery",
+      "objective": "Coordinate isolation, credential actions, evidence, rebuild, restore, validation and communication.",
+      "kind": "incident",
+      "pack": "531-540"
+    },
+    {
+      "release": 533,
+      "title": "Immutable Backup Verification v2",
+      "objective": "Verify isolated immutable copies, retention, access, integrity, malware scanning and restore.",
+      "kind": "assessment",
+      "pack": "531-540"
+    },
+    {
+      "release": 534,
+      "title": "Identity Recovery and Break-Glass Operations",
+      "objective": "Recover privileged identity through sealed credentials, approvals, monitoring and post-use rotation.",
+      "kind": "plan",
+      "pack": "531-540"
+    },
+    {
+      "release": 535,
+      "title": "Cloud Control Plane Recovery",
+      "objective": "Rebuild cloud control planes, policies, identities, networking, logging and trusted automation.",
+      "kind": "plan",
+      "pack": "531-540"
+    },
+    {
+      "release": 536,
+      "title": "Data Integrity and Reconciliation Recovery",
+      "objective": "Validate restored data, transactions, lineage, gaps, conflicts, approvals and residual risk.",
+      "kind": "assessment",
+      "pack": "531-540"
+    },
+    {
+      "release": 537,
+      "title": "Application Rebuild Factory",
+      "objective": "Rebuild applications from trusted source, signed dependencies, configuration, tests and evidence.",
+      "kind": "execution",
+      "pack": "531-540"
+    },
+    {
+      "release": 538,
+      "title": "Cyber Crisis Exercise and Lessons",
+      "objective": "Exercise attack, containment, recovery, communication, legal review and corrective actions.",
+      "kind": "assessment",
+      "pack": "531-540"
+    },
+    {
+      "release": 539,
+      "title": "Recovery Metrics and Executive Reporting",
+      "objective": "Report recovery capability, tests, gaps, ageing, risk, investments and accountable owners.",
+      "kind": "assessment",
+      "pack": "531-540"
+    },
+    {
+      "release": 540,
+      "title": "Cyber Resilience Assurance Gate",
+      "objective": "Gate resilience on service tiers, containment, backups, identity, rebuild, reconciliation and exercises.",
+      "kind": "gate",
+      "pack": "531-540"
+    },
+    {
+      "release": 541,
+      "title": "Identity Proofing and Assurance",
+      "objective": "Govern identity evidence, assurance levels, verification, exceptions, fraud and review.",
+      "kind": "profile",
+      "pack": "541-550"
+    },
+    {
+      "release": 542,
+      "title": "Credential Issuance and Lifecycle",
+      "objective": "Issue, bind, rotate, suspend, revoke and audit credentials with owner accountability.",
+      "kind": "execution",
+      "pack": "541-550"
+    },
+    {
+      "release": 543,
+      "title": "Passwordless and Passkey Readiness",
+      "objective": "Assess device support, recovery, attestation, phishing resistance, accessibility and fallback.",
+      "kind": "assessment",
+      "pack": "541-550"
+    },
+    {
+      "release": 544,
+      "title": "Verifiable Credential Readiness",
+      "objective": "Assess issuer, holder, verifier, schema, revocation, privacy and interoperability requirements.",
+      "kind": "assessment",
+      "pack": "541-550"
+    },
+    {
+      "release": 545,
+      "title": "Delegated Guardian and Representative Access",
+      "objective": "Govern carers, guardians, representatives and delegates through scope, evidence and expiry.",
+      "kind": "profile",
+      "pack": "541-550"
+    },
+    {
+      "release": 546,
+      "title": "Privileged Identity Governance v2",
+      "objective": "Control privileged eligibility, activation, approvals, session evidence, review and emergency access.",
+      "kind": "profile",
+      "pack": "541-550"
+    },
+    {
+      "release": 547,
+      "title": "Identity Recovery Fraud and Redress",
+      "objective": "Handle account recovery, fraud claims, identity disputes, evidence, correction and redress.",
+      "kind": "plan",
+      "pack": "541-550"
+    },
+    {
+      "release": 548,
+      "title": "Federation and Trust Broker Operations",
+      "objective": "Manage trust relationships, metadata, keys, claims, mappings, monitoring and termination.",
+      "kind": "profile",
+      "pack": "541-550"
+    },
+    {
+      "release": 549,
+      "title": "Identity Privacy and Selective Disclosure",
+      "objective": "Minimise identity attributes and support purpose-bound disclosure, consent and revocation.",
+      "kind": "policy",
+      "pack": "541-550"
+    },
+    {
+      "release": 550,
+      "title": "Identity Trust Assurance Gate",
+      "objective": "Gate identity services on proofing, credential, recovery, delegation, privilege, privacy and redress.",
+      "kind": "gate",
+      "pack": "541-550"
+    },
+    {
+      "release": 551,
+      "title": "Unified Work Queue and Personal Productivity",
+      "objective": "Coordinate assigned work, priorities, deadlines, dependencies, accessibility and user control.",
+      "kind": "profile",
+      "pack": "551-560"
+    },
+    {
+      "release": 552,
+      "title": "Email and Calendar Automation Safety",
+      "objective": "Govern drafting, recipients, scheduling, attachments, external sends, approvals and recall evidence.",
+      "kind": "execution",
+      "pack": "551-560"
+    },
+    {
+      "release": 553,
+      "title": "Meeting Intelligence and Consent",
+      "objective": "Manage recording, transcription, summaries, attendance, consent, retention and correction.",
+      "kind": "profile",
+      "pack": "551-560"
+    },
+    {
+      "release": 554,
+      "title": "Document Collaboration and Version Control",
+      "objective": "Govern collaborative documents, ownership, versions, comments, approvals and publication.",
+      "kind": "registry",
+      "pack": "551-560"
+    },
+    {
+      "release": 555,
+      "title": "Enterprise Search and Knowledge Assistance",
+      "objective": "Provide access-filtered search, citations, freshness, privacy, explanation and user feedback.",
+      "kind": "profile",
+      "pack": "551-560"
+    },
+    {
+      "release": 556,
+      "title": "Task Delegation and Approval Operations",
+      "objective": "Delegate work through scope, competence, deadlines, evidence, escalation and revocation.",
+      "kind": "plan",
+      "pack": "551-560"
+    },
+    {
+      "release": 557,
+      "title": "Office Process Analytics without Surveillance",
+      "objective": "Measure process outcomes while prohibiting invasive individual tracking and ranking.",
+      "kind": "assessment",
+      "pack": "551-560"
+    },
+    {
+      "release": 558,
+      "title": "Knowledge Worker Accessibility and Inclusion",
+      "objective": "Support assistive technology, flexible interaction, cognitive accessibility and alternatives.",
+      "kind": "profile",
+      "pack": "551-560"
+    },
+    {
+      "release": 559,
+      "title": "Workplace Change and Adoption",
+      "objective": "Plan communications, learning, support, feedback, resistance, benefits and fair transition.",
+      "kind": "plan",
+      "pack": "551-560"
+    },
+    {
+      "release": 560,
+      "title": "Workplace Operations Assurance Gate",
+      "objective": "Gate workplace tools on consent, privacy, accessibility, delegation, fairness and support evidence.",
+      "kind": "gate",
+      "pack": "551-560"
+    },
+    {
+      "release": 561,
+      "title": "Emergency Information Verification",
+      "objective": "Verify emergency facts, sources, timestamps, uncertainty, corrections and publication authority.",
+      "kind": "assessment",
+      "pack": "561-570"
+    },
+    {
+      "release": 562,
+      "title": "Crisis Alerting and Notification",
+      "objective": "Deliver accessible, multilingual, location-appropriate alerts with approval and correction controls.",
+      "kind": "execution",
+      "pack": "561-570"
+    },
+    {
+      "release": 563,
+      "title": "Disaster Response Resource Coordination",
+      "objective": "Coordinate shelters, supplies, transport, availability, owners, priorities and audit evidence.",
+      "kind": "plan",
+      "pack": "561-570"
+    },
+    {
+      "release": 564,
+      "title": "Humanitarian Data Protection",
+      "objective": "Protect vulnerable-person data through minimisation, purpose, access, retention and safe sharing.",
+      "kind": "profile",
+      "pack": "561-570"
+    },
+    {
+      "release": 565,
+      "title": "Missing Person and Family Reunification Safety",
+      "objective": "Handle sensitive reports, consent, identity, verification, exposure limits and escalation.",
+      "kind": "profile",
+      "pack": "561-570"
+    },
+    {
+      "release": 566,
+      "title": "Public Health Information Boundary",
+      "objective": "Publish non-clinical public information with qualified review, sources, uncertainty and referral.",
+      "kind": "profile",
+      "pack": "561-570"
+    },
+    {
+      "release": 567,
+      "title": "Essential Service Continuity",
+      "objective": "Coordinate power, water, communications, transport and digital-service continuity dependencies.",
+      "kind": "plan",
+      "pack": "561-570"
+    },
+    {
+      "release": 568,
+      "title": "Volunteer and Community Coordination",
+      "objective": "Register volunteers, roles, safeguarding, competence, scheduling, support and deactivation.",
+      "kind": "profile",
+      "pack": "561-570"
+    },
+    {
+      "release": 569,
+      "title": "Public Event and Crowd Safety Information",
+      "objective": "Publish verified capacity, access, travel, emergency and accessibility information.",
+      "kind": "profile",
+      "pack": "561-570"
+    },
+    {
+      "release": 570,
+      "title": "Public Safety and Humanitarian Assurance Gate",
+      "objective": "Gate emergency capabilities on verification, privacy, accessibility, safeguarding and continuity.",
+      "kind": "gate",
+      "pack": "561-570"
+    },
+    {
+      "release": 571,
+      "title": "Cost Model and Unit Economics Registry",
+      "objective": "Register cost drivers, units, assumptions, owners, evidence, sensitivity and review dates.",
+      "kind": "registry",
+      "pack": "571-580"
+    },
+    {
+      "release": 572,
+      "title": "Budget Planning and Scenario Analysis",
+      "objective": "Model budgets, scenarios, constraints, uncertainty, reserves, approvals and hard stops.",
+      "kind": "assessment",
+      "pack": "571-580"
+    },
+    {
+      "release": 573,
+      "title": "FinOps Allocation and Showback v2",
+      "objective": "Allocate consumption transparently across tenants, products, services and shared platforms.",
+      "kind": "profile",
+      "pack": "571-580"
+    },
+    {
+      "release": 574,
+      "title": "Investment Portfolio Prioritisation",
+      "objective": "Prioritise investments using value, risk, dependency, capacity, strategy and evidence.",
+      "kind": "assessment",
+      "pack": "571-580"
+    },
+    {
+      "release": 575,
+      "title": "Benefits Realisation and Outcome Verification",
+      "objective": "Verify baselines, benefits, disbenefits, attribution, evidence and accountable owners.",
+      "kind": "assessment",
+      "pack": "571-580"
+    },
+    {
+      "release": 576,
+      "title": "Vendor Cost and Contract Optimisation",
+      "objective": "Assess supplier pricing, commitments, utilisation, risk, exit, disputes and savings evidence.",
+      "kind": "assessment",
+      "pack": "571-580"
+    },
+    {
+      "release": 577,
+      "title": "Consumption Quota and Entitlement Planning",
+      "objective": "Plan quotas, eligibility, fairness, expiry, alerts and revocation without enabling billing.",
+      "kind": "profile",
+      "pack": "571-580"
+    },
+    {
+      "release": 578,
+      "title": "Economic Risk and Sensitivity Testing",
+      "objective": "Stress-test demand, prices, capacity, supplier and operational assumptions.",
+      "kind": "assessment",
+      "pack": "571-580"
+    },
+    {
+      "release": 579,
+      "title": "Value Transparency and Executive Reporting",
+      "objective": "Report cost, outcomes, risks, assumptions, uncertainty and corrective actions.",
+      "kind": "assessment",
+      "pack": "571-580"
+    },
+    {
+      "release": 580,
+      "title": "Enterprise Economics Assurance Gate",
+      "objective": "Gate economic decisions on assumptions, budgets, allocation, value, supplier and stress evidence.",
+      "kind": "gate",
+      "pack": "571-580"
+    },
+    {
+      "release": 581,
+      "title": "Locale and Market Readiness Registry",
+      "objective": "Register locales, scripts, formats, regulations, owners, evidence and release state.",
+      "kind": "registry",
+      "pack": "581-590"
+    },
+    {
+      "release": 582,
+      "title": "Translation Quality and Terminology v3",
+      "objective": "Govern terminology, translation memory, quality sampling, native review and corrections.",
+      "kind": "profile",
+      "pack": "581-590"
+    },
+    {
+      "release": 583,
+      "title": "Bidirectional and Complex Script Support",
+      "objective": "Validate bidirectional text, shaping, line breaking, fonts, input and export behaviour.",
+      "kind": "assessment",
+      "pack": "581-590"
+    },
+    {
+      "release": 584,
+      "title": "Accessible Design System v2",
+      "objective": "Govern components, semantics, keyboard, contrast, motion, alternatives and versioning.",
+      "kind": "registry",
+      "pack": "581-590"
+    },
+    {
+      "release": 585,
+      "title": "Cognitive Accessibility and Plain Language",
+      "objective": "Apply readable structure, plain language, error prevention, help and alternative journeys.",
+      "kind": "profile",
+      "pack": "581-590"
+    },
+    {
+      "release": 586,
+      "title": "Inclusive Personalisation and User Controls",
+      "objective": "Provide user-controlled presentation, language, accessibility and personalisation with opt-out.",
+      "kind": "profile",
+      "pack": "581-590"
+    },
+    {
+      "release": 587,
+      "title": "Cultural and Religious Sensitivity Operations v3",
+      "objective": "Apply respectful classification, source review, community input, correction and escalation.",
+      "kind": "profile",
+      "pack": "581-590"
+    },
+    {
+      "release": 588,
+      "title": "Regional Legal and Content Review",
+      "objective": "Coordinate jurisdiction, qualified review, restrictions, records, appeals and release decisions.",
+      "kind": "plan",
+      "pack": "581-590"
+    },
+    {
+      "release": 589,
+      "title": "Global Experience Quality Analytics",
+      "objective": "Measure locale, accessibility, content, support and journey quality without invasive profiling.",
+      "kind": "assessment",
+      "pack": "581-590"
+    },
+    {
+      "release": 590,
+      "title": "Global Experience Assurance Gate",
+      "objective": "Gate global release on locale, translation, scripts, accessibility, culture and legal evidence.",
+      "kind": "gate",
+      "pack": "581-590"
+    },
+    {
+      "release": 591,
+      "title": "Service Management Operating Model v3",
+      "objective": "Define service ownership, support, SLOs, incidents, changes, knowledge and continual improvement.",
+      "kind": "profile",
+      "pack": "591-600"
+    },
+    {
+      "release": 592,
+      "title": "Enterprise Architecture Repository v3",
+      "objective": "Maintain principles, standards, capabilities, systems, data, decisions, roadmaps and review state.",
+      "kind": "registry",
+      "pack": "591-600"
+    },
+    {
+      "release": 593,
+      "title": "Continuous Control Monitoring v2",
+      "objective": "Monitor approved controls, evidence freshness, failures, exceptions, remediation and ownership.",
+      "kind": "assessment",
+      "pack": "591-600"
+    },
+    {
+      "release": 594,
+      "title": "Product and Platform Roadmap Governance v2",
+      "objective": "Govern outcomes, releases, dependencies, capacity, risks, evidence and accountable decisions.",
+      "kind": "plan",
+      "pack": "591-600"
+    },
+    {
+      "release": 595,
+      "title": "Migration and Decommission Factory v3",
+      "objective": "Migrate and retire services through discovery, rehearsal, cutover, archive, revocation and rollback.",
+      "kind": "plan",
+      "pack": "591-600"
+    },
+    {
+      "release": 596,
+      "title": "Support Training and Certification Readiness",
+      "objective": "Prepare training, support, assessments and evidence without claiming external certification.",
+      "kind": "plan",
+      "pack": "591-600"
+    },
+    {
+      "release": 597,
+      "title": "Production Change and Release Control v3",
+      "objective": "Govern change risk, testing, approvals, windows, communications, rollback and verification.",
+      "kind": "execution",
+      "pack": "591-600"
+    },
+    {
+      "release": 598,
+      "title": "Enterprise Exit and Data Portability v3",
+      "objective": "Test open exports, knowledge transfer, contract exit, credential revocation and evidence.",
+      "kind": "plan",
+      "pack": "591-600"
+    },
+    {
+      "release": 599,
+      "title": "Enterprise Platform v5 General Availability Board",
+      "objective": "Make accountable launch decisions using product, security, privacy, operations and support evidence.",
+      "kind": "decision",
+      "pack": "591-600"
+    },
+    {
+      "release": 600,
+      "title": "SakthiAI Enterprise Platform v5 Completion Gate",
+      "objective": "Close Releases 501–600 only after all ten domains receive evidence-backed approval.",
+      "kind": "gate",
+      "pack": "591-600"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "alternativesRequiredForMaterialDecision": true,
+  "assumptionsRequired": true,
+  "uncertaintyDisclosed": true,
+  "independentReviewForHighImpact": true,
+  "appealSupported": true
+}
