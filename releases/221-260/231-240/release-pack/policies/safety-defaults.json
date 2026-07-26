@@ -1,0 +1,9 @@
+{
+  "publicRegistration": false,
+  "paidProviders": false,
+  "unifiedBilling": false,
+  "billing": false,
+  "payments": false,
+  "anonymousWrites": false,
+  "autonomousWrites": false
+}

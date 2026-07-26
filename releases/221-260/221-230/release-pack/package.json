@@ -1,0 +1,13 @@
+{
+  "name": "@sakthiai/releases-221-230",
+  "version": "1.230.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-release-pack.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

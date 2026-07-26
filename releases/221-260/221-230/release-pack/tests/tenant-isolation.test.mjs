@@ -1,0 +1,1 @@
+import test from "node:test";import assert from "node:assert/strict";const a=(x,y,r=[])=>r.includes("owner")||x===y;test("cross tenant denied",()=>assert.equal(a("a","b",["member"]),false));test("same tenant allowed",()=>assert.equal(a("a","a",["member"]),true));

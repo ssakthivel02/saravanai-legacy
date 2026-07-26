@@ -1,0 +1,7 @@
+{
+  "trustedIdentityRequired": true,
+  "tenantScopeRequired": true,
+  "criticalFindingsBlockRelease": true,
+  "rollbackRequired": true,
+  "humanApprovalForMaterialActions": true
+}

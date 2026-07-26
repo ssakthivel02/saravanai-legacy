@@ -1,0 +1,25 @@
+{
+  "required": [
+    "pull_request",
+    "tests",
+    "tenant_isolation",
+    "four_eyes",
+    "secret_scan",
+    "dependency_review",
+    "sbom",
+    "schema_review",
+    "migration_review",
+    "privacy_review",
+    "cost_review",
+    "recovery_review",
+    "rollback",
+    "owner_approval"
+  ],
+  "forbidden": [
+    "direct_main_push",
+    "plaintext_secret",
+    "self_approval",
+    "silent_paid_activation",
+    "unsupported_certification_claim"
+  ]
+}

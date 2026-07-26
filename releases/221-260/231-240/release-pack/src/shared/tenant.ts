@@ -1,0 +1,1 @@
+export function enforceTenant(actorTenant:string,targetTenant:string,roles:string[]=[]):void{if(!roles.includes("owner")&&actorTenant!==targetTenant)throw new Error("cross_tenant_access_denied");}

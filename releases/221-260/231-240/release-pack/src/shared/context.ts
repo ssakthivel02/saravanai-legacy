@@ -1,0 +1,1 @@
+export interface RuntimeContext {requestId:string;tenantId:string;actor:string;roles:string[];permissions:string[];riskScore:number;now:string;}
