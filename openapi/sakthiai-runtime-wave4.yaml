@@ -1,0 +1,39 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Runtime Wave 4 API
+  version: 4.0.0
+  description: Private-owner workspace and trust validation APIs. No writes, invitations, exports or paid features.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+components:
+  securitySchemes:
+    cloudflareAccess:
+      type: apiKey
+      in: header
+      name: cf-access-jwt-assertion
+paths:
+  /api/v1/runtime/v4/status:
+    get:
+      summary: Return safe Wave 4 state
+      responses:
+        '200': { description: Status returned }
+  /api/v1/runtime/v4/workspaces/validate:
+    post:
+      summary: Validate a private workspace proposal without creating it
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Valid }
+        '422': { description: Rejected }
+  /api/v1/runtime/v4/memberships/validate:
+    post:
+      summary: Validate membership without sending an invitation
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Valid }
+        '422': { description: Rejected }
+  /api/v1/runtime/v4/trust-centre:
+    get:
+      summary: Return control posture without certification claims
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Snapshot returned }
