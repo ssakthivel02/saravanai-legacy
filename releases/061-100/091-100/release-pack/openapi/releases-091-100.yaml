@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 091-100 API
+  version: 0.100.0
+  description: Private owner-controlled enterprise capability contracts.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/agent-nodes:
+    get:
+      summary: List tenant-scoped Governed Agent Mesh records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Governed Agent Mesh record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/remediation-plans:
+    get:
+      summary: List tenant-scoped Self-Healing Operations records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Self-Healing Operations record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/verification-suites:
+    get:
+      summary: List tenant-scoped Autonomous Testing and Verification records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Autonomous Testing and Verification record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/progressive-rollouts:
+    get:
+      summary: List tenant-scoped Progressive Delivery and Release Engineering records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Progressive Delivery and Release Engineering record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/digital-twins:
+    get:
+      summary: List tenant-scoped Digital Twin and Environment Simulation records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Digital Twin and Environment Simulation record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/capacity-profiles:
+    get:
+      summary: List tenant-scoped Capacity and Performance Engineering records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Capacity and Performance Engineering record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/carbon-aware-policies:
+    get:
+      summary: List tenant-scoped Sustainability and Carbon-Aware Computing records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Sustainability and Carbon-Aware Computing record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/continuity-exit-plans:
+    get:
+      summary: List tenant-scoped Enterprise Continuity and Exit Strategy records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Enterprise Continuity and Exit Strategy record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/evidence-packages:
+    get:
+      summary: List tenant-scoped Production Evidence and Certification Readiness records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Production Evidence and Certification Readiness record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/enterprise-launch-decisions:
+    get:
+      summary: List tenant-scoped SakthiAI Enterprise Edition v1.0 Launch Gate records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed SakthiAI Enterprise Edition v1.0 Launch Gate record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}

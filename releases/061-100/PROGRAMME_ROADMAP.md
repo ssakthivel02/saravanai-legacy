@@ -1,0 +1,42 @@
+# Releases 061–100 programme roadmap
+
+- **Release 061: Responsible Model Routing** — Route AI requests through approved free-first models using capability, sensitivity, freshness, safety and budget policy.
+- **Release 062: Multimodal Intelligence Runtime** — Safely ingest and normalise text, image, audio and video assets while retaining provenance, consent and sensitivity metadata.
+- **Release 063: Speech and Audio Intelligence** — Provide transcription, language detection and audio analysis with consent controls and an explicit prohibition on unauthorised voice cloning.
+- **Release 064: Vision and Media Safety** — Classify visual risks, protect children and vulnerable users, and prevent unsafe or sensitive media from bypassing review.
+- **Release 065: Citation Graph and Evidence Synthesis** — Link every material claim to source evidence, retrieval time, content hash, confidence and contradiction status.
+- **Release 066: Enterprise Ontology and Semantic Contracts** — Govern namespaces, classes, relationships, temporal validity and persistent identifiers for enterprise knowledge interoperability.
+- **Release 067: Decision Intelligence and Explainability** — Record decisions, alternatives, evidence, policy versions, explanations, uncertainty and accountable human owners.
+- **Release 068: Scenario Planning and Simulation** — Create bounded what-if scenarios with explicit assumptions, probabilities, dependencies, constraints and no production side effects.
+- **Release 069: Secure Code Intelligence** — Analyse code without exposing secrets, enforce repository boundaries, classify findings and require review before remediation.
+- **Release 070: Intelligence Assurance Gate** — Provide a formal gate for model routing, multimodal safety, evidence integrity, explainability, code safety and human approval.
+- **Release 071: Connector Marketplace Governance** — Govern connector discovery, approval, capability scopes, publisher identity, egress allowlists, versioning and revocation.
+- **Release 072: Business Process Orchestration** — Model tenant-safe business processes as versioned DAGs with approvals, retries, compensation and idempotency.
+- **Release 073: Customer Support Operations** — Manage support cases, service levels, secure evidence, escalations and customer communications without leaking sensitive data.
+- **Release 074: Secure Communications Hub** — Provide classified, tenant-scoped outbound and in-app communications with recipient verification, quiet hours and delivery evidence.
+- **Release 075: Knowledge Publishing and Editorial Workflow** — Publish evidence-backed knowledge through draft, verification, human approval, scheduled release, correction and withdrawal states.
+- **Release 076: Learning and Skills Platform** — Deliver accessible learning paths, competency evidence, assessments and role-based development plans without unverified certification claims.
+- **Release 077: Analytics and Executive Insights** — Provide privacy-safe KPIs, trends, thresholds and explanations with minimum aggregation and no personal-data exposure.
+- **Release 078: Data Products and Contracts** — Create discoverable data products with owners, schemas, quality objectives, consumers, versions and deprecation plans.
+- **Release 079: Partner and Supplier Risk** — Assess suppliers, subprocessors and partners for security, privacy, resilience, financial and concentration risk.
+- **Release 080: Ecosystem Readiness Gate** — Gate marketplace, processes, support, communications, publishing, learning, analytics, data products and supplier risk before ecosystem launch.
+- **Release 081: Global Privacy Orchestration** — Apply purpose, consent, retention and rights rules consistently across tenants, services, regions and data classes.
+- **Release 082: Regional Data Controls** — Enforce regional storage, processing and transfer policies with explicit exceptions and legal review requirements.
+- **Release 083: Children and Vulnerable User Safety** — Apply age assurance, minimisation, guardian controls, safe defaults, escalation and human review for vulnerable users.
+- **Release 084: Public Event and Emergency Safety** — Provide crowd, weather, transport, accessibility, child safety, emergency access and escalation controls for public events.
+- **Release 085: Trust and Transparency Centre** — Expose clear platform capabilities, limitations, data use, model involvement, human review, incidents and service status.
+- **Release 086: AI Ethics and Impact Assessment** — Assess intended use, affected groups, benefits, harms, mitigations, human oversight, contestability and monitoring.
+- **Release 087: Regulatory Change Management** — Track regulatory obligations, applicability, interpretation, control impact, implementation, evidence and legal review.
+- **Release 088: Fraud Abuse and Misuse Prevention** — Detect account abuse, automation misuse, content fraud, impersonation and anomalous behaviour with proportionate controls.
+- **Release 089: Security Operations and Threat Intelligence** — Manage indicators, detections, incidents, confidence, expiry, sharing restrictions and response actions.
+- **Release 090: Global Trust Assurance Gate** — Gate privacy, regional controls, vulnerable-user safety, public-event safety, transparency, ethics, regulation, abuse and SecOps.
+- **Release 091: Governed Agent Mesh** — Coordinate specialist agents through signed delegation, least privilege, tenant boundaries, bounded steps and human approval.
+- **Release 092: Self-Healing Operations** — Detect operational faults, propose bounded remediation, require approval for risky actions and preserve rollback evidence.
+- **Release 093: Autonomous Testing and Verification** — Generate and execute bounded test scenarios, negative paths, security checks and evidence without modifying production.
+- **Release 094: Progressive Delivery and Release Engineering** — Use feature flags, deployment waves, canaries, automated rollback and evidence-backed promotion decisions.
+- **Release 095: Digital Twin and Environment Simulation** — Represent services, dependencies, capacity and failure modes in isolated non-production simulations.
+- **Release 096: Capacity and Performance Engineering** — Define service capacity, headroom, latency, throughput and saturation thresholds with privacy-safe load tests.
+- **Release 097: Sustainability and Carbon-Aware Computing** — Measure estimated workload impact, prefer efficient free-first routes and schedule deferrable work without reducing safety.
+- **Release 098: Enterprise Continuity and Exit Strategy** — Maintain data portability, provider exit, credential revocation, archive, retention, customer transition and service closure plans.
+- **Release 099: Production Evidence and Certification Readiness** — Assemble traceable evidence for external assessment while explicitly avoiding unsupported certification or legal-conformity claims.
+- **Release 100: SakthiAI Enterprise Edition v1.0 Launch Gate** — Provide the final owner-controlled launch decision across security, privacy, safety, resilience, accessibility, operations and evidence.

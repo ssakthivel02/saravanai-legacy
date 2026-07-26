@@ -1,0 +1,401 @@
+{
+  "version": "0.70.0",
+  "controls": [
+    {
+      "controlId": "SAK-061-01",
+      "release": 61,
+      "domain": "Responsible Model Routing",
+      "statement": "policyId required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-061-02",
+      "release": 61,
+      "domain": "Responsible Model Routing",
+      "statement": "tenant required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-061-03",
+      "release": 61,
+      "domain": "Responsible Model Routing",
+      "statement": "provider allowlist required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-061-04",
+      "release": 61,
+      "domain": "Responsible Model Routing",
+      "statement": "restricted data external route denied",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-062-01",
+      "release": 62,
+      "domain": "Multimodal Intelligence Runtime",
+      "statement": "asset id required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-062-02",
+      "release": 62,
+      "domain": "Multimodal Intelligence Runtime",
+      "statement": "allowed mime required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-062-03",
+      "release": 62,
+      "domain": "Multimodal Intelligence Runtime",
+      "statement": "size limit enforced",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-062-04",
+      "release": 62,
+      "domain": "Multimodal Intelligence Runtime",
+      "statement": "consent required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-062-05",
+      "release": 62,
+      "domain": "Multimodal Intelligence Runtime",
+      "statement": "sha256 required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-063-01",
+      "release": 63,
+      "domain": "Speech and Audio Intelligence",
+      "statement": "source asset required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-063-02",
+      "release": 63,
+      "domain": "Speech and Audio Intelligence",
+      "statement": "confidence range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-063-03",
+      "release": 63,
+      "domain": "Speech and Audio Intelligence",
+      "statement": "voice cloning must be false",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-063-04",
+      "release": 63,
+      "domain": "Speech and Audio Intelligence",
+      "statement": "human review for low confidence",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-064-01",
+      "release": 64,
+      "domain": "Vision and Media Safety",
+      "statement": "risk score range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-064-02",
+      "release": 64,
+      "domain": "Vision and Media Safety",
+      "statement": "child safety strict",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-064-03",
+      "release": 64,
+      "domain": "Vision and Media Safety",
+      "statement": "high risk requires block",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-064-04",
+      "release": 64,
+      "domain": "Vision and Media Safety",
+      "statement": "reviewer required for override",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-065-01",
+      "release": 65,
+      "domain": "Citation Graph and Evidence Synthesis",
+      "statement": "claim required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-065-02",
+      "release": 65,
+      "domain": "Citation Graph and Evidence Synthesis",
+      "statement": "source required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-065-03",
+      "release": 65,
+      "domain": "Citation Graph and Evidence Synthesis",
+      "statement": "confidence range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-065-04",
+      "release": 65,
+      "domain": "Citation Graph and Evidence Synthesis",
+      "statement": "current fact verification required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-065-05",
+      "release": 65,
+      "domain": "Citation Graph and Evidence Synthesis",
+      "statement": "confirmed contradiction blocks publish",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-066-01",
+      "release": 66,
+      "domain": "Enterprise Ontology and Semantic Contracts",
+      "statement": "persistent namespace required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-066-02",
+      "release": 66,
+      "domain": "Enterprise Ontology and Semantic Contracts",
+      "statement": "semantic version required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-066-03",
+      "release": 66,
+      "domain": "Enterprise Ontology and Semantic Contracts",
+      "statement": "duplicate identifier denied",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-066-04",
+      "release": 66,
+      "domain": "Enterprise Ontology and Semantic Contracts",
+      "statement": "approval required for active contract",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-067-01",
+      "release": 67,
+      "domain": "Decision Intelligence and Explainability",
+      "statement": "outcome required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-067-02",
+      "release": 67,
+      "domain": "Decision Intelligence and Explainability",
+      "statement": "alternatives recorded",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-067-03",
+      "release": 67,
+      "domain": "Decision Intelligence and Explainability",
+      "statement": "evidence required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-067-04",
+      "release": 67,
+      "domain": "Decision Intelligence and Explainability",
+      "statement": "explanation required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-067-05",
+      "release": 67,
+      "domain": "Decision Intelligence and Explainability",
+      "statement": "owner required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-067-06",
+      "release": 67,
+      "domain": "Decision Intelligence and Explainability",
+      "statement": "confidence range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-068-01",
+      "release": 68,
+      "domain": "Scenario Planning and Simulation",
+      "statement": "assumptions required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-068-02",
+      "release": 68,
+      "domain": "Scenario Planning and Simulation",
+      "statement": "probability range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-068-03",
+      "release": 68,
+      "domain": "Scenario Planning and Simulation",
+      "statement": "production side effects must be false",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-068-04",
+      "release": 68,
+      "domain": "Scenario Planning and Simulation",
+      "statement": "approval required for external distribution",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-069-01",
+      "release": 69,
+      "domain": "Secure Code Intelligence",
+      "statement": "repository scope required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-069-02",
+      "release": 69,
+      "domain": "Secure Code Intelligence",
+      "statement": "path required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-069-03",
+      "release": 69,
+      "domain": "Secure Code Intelligence",
+      "statement": "secret material never persisted",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-069-04",
+      "release": 69,
+      "domain": "Secure Code Intelligence",
+      "statement": "critical finding blocks release",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-070-01",
+      "release": 70,
+      "domain": "Intelligence Assurance Gate",
+      "statement": "all mandatory domains pass",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-070-02",
+      "release": 70,
+      "domain": "Intelligence Assurance Gate",
+      "statement": "evidence required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-070-03",
+      "release": 70,
+      "domain": "Intelligence Assurance Gate",
+      "statement": "waiver requires risk acceptance",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-070-04",
+      "release": 70,
+      "domain": "Intelligence Assurance Gate",
+      "statement": "owner approval required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    }
+  ]
+}

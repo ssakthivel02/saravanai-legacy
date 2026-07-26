@@ -1,0 +1,15 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:REPLACE-DURING-CI",
+  "version": 1,
+  "metadata": {
+    "timestamp": "REPLACE-DURING-CI",
+    "component": {
+      "type": "application",
+      "name": "sakthiai-releases-071-080",
+      "version": "0.80.0"
+    }
+  },
+  "components": []
+}

@@ -1,0 +1,455 @@
+{
+  "version": "0.100.0",
+  "controls": [
+    {
+      "controlId": "SAK-091-01",
+      "release": 91,
+      "domain": "Governed Agent Mesh",
+      "statement": "capability allowlist required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-091-02",
+      "release": 91,
+      "domain": "Governed Agent Mesh",
+      "statement": "delegation depth bounded",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-091-03",
+      "release": 91,
+      "domain": "Governed Agent Mesh",
+      "statement": "maximum steps bounded",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-091-04",
+      "release": 91,
+      "domain": "Governed Agent Mesh",
+      "statement": "production write must be false",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-091-05",
+      "release": 91,
+      "domain": "Governed Agent Mesh",
+      "statement": "suspended agent denied",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-092-01",
+      "release": 92,
+      "domain": "Self-Healing Operations",
+      "statement": "trigger required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-092-02",
+      "release": 92,
+      "domain": "Self-Healing Operations",
+      "statement": "actions required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-092-03",
+      "release": 92,
+      "domain": "Self-Healing Operations",
+      "statement": "rollback required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-092-04",
+      "release": 92,
+      "domain": "Self-Healing Operations",
+      "statement": "high risk approval required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-092-05",
+      "release": 92,
+      "domain": "Self-Healing Operations",
+      "statement": "critical action manual only",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-093-01",
+      "release": 93,
+      "domain": "Autonomous Testing and Verification",
+      "statement": "scenarios required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-093-02",
+      "release": 93,
+      "domain": "Autonomous Testing and Verification",
+      "statement": "security checks required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-093-03",
+      "release": 93,
+      "domain": "Autonomous Testing and Verification",
+      "statement": "tenant isolation required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-093-04",
+      "release": 93,
+      "domain": "Autonomous Testing and Verification",
+      "statement": "production mutation must be false",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-093-05",
+      "release": 93,
+      "domain": "Autonomous Testing and Verification",
+      "statement": "minimum pass rate range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-094-01",
+      "release": 94,
+      "domain": "Progressive Delivery and Release Engineering",
+      "statement": "waves required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-094-02",
+      "release": 94,
+      "domain": "Progressive Delivery and Release Engineering",
+      "statement": "success criteria required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-094-03",
+      "release": 94,
+      "domain": "Progressive Delivery and Release Engineering",
+      "statement": "abort criteria required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-094-04",
+      "release": 94,
+      "domain": "Progressive Delivery and Release Engineering",
+      "statement": "rollback required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-094-05",
+      "release": 94,
+      "domain": "Progressive Delivery and Release Engineering",
+      "statement": "promotion requires evidence",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-095-01",
+      "release": 95,
+      "domain": "Digital Twin and Environment Simulation",
+      "statement": "service model required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-095-02",
+      "release": 95,
+      "domain": "Digital Twin and Environment Simulation",
+      "statement": "dependency model required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-095-03",
+      "release": 95,
+      "domain": "Digital Twin and Environment Simulation",
+      "statement": "synthetic or sanitised data only",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-095-04",
+      "release": 95,
+      "domain": "Digital Twin and Environment Simulation",
+      "statement": "production credentials must be false",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-095-05",
+      "release": 95,
+      "domain": "Digital Twin and Environment Simulation",
+      "statement": "validation required before active",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-096-01",
+      "release": 96,
+      "domain": "Capacity and Performance Engineering",
+      "statement": "maximum above expected",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-096-02",
+      "release": 96,
+      "domain": "Capacity and Performance Engineering",
+      "statement": "headroom range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-096-03",
+      "release": 96,
+      "domain": "Capacity and Performance Engineering",
+      "statement": "latency target positive",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-096-04",
+      "release": 96,
+      "domain": "Capacity and Performance Engineering",
+      "statement": "saturation range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-096-05",
+      "release": 96,
+      "domain": "Capacity and Performance Engineering",
+      "statement": "recent load test required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-097-01",
+      "release": 97,
+      "domain": "Sustainability and Carbon-Aware Computing",
+      "statement": "measurement method required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-097-02",
+      "release": 97,
+      "domain": "Sustainability and Carbon-Aware Computing",
+      "statement": "delay non negative",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-097-03",
+      "release": 97,
+      "domain": "Sustainability and Carbon-Aware Computing",
+      "statement": "safety override always available",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-097-04",
+      "release": 97,
+      "domain": "Sustainability and Carbon-Aware Computing",
+      "statement": "security never deferred",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-097-05",
+      "release": 97,
+      "domain": "Sustainability and Carbon-Aware Computing",
+      "statement": "cost and carbon do not override safety",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-098-01",
+      "release": 98,
+      "domain": "Enterprise Continuity and Exit Strategy",
+      "statement": "export format required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-098-02",
+      "release": 98,
+      "domain": "Enterprise Continuity and Exit Strategy",
+      "statement": "provider exit steps required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-098-03",
+      "release": 98,
+      "domain": "Enterprise Continuity and Exit Strategy",
+      "statement": "credential revocation required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-098-04",
+      "release": 98,
+      "domain": "Enterprise Continuity and Exit Strategy",
+      "statement": "archive policy required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-098-05",
+      "release": 98,
+      "domain": "Enterprise Continuity and Exit Strategy",
+      "statement": "rehearsal required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-099-01",
+      "release": 99,
+      "domain": "Production Evidence and Certification Readiness",
+      "statement": "controls required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-099-02",
+      "release": 99,
+      "domain": "Production Evidence and Certification Readiness",
+      "statement": "evidence required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-099-03",
+      "release": 99,
+      "domain": "Production Evidence and Certification Readiness",
+      "statement": "checksum index required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-099-04",
+      "release": 99,
+      "domain": "Production Evidence and Certification Readiness",
+      "statement": "certification claim must be false",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-099-05",
+      "release": 99,
+      "domain": "Production Evidence and Certification Readiness",
+      "statement": "external assessment separate",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-100-01",
+      "release": 100,
+      "domain": "SakthiAI Enterprise Edition v1.0 Launch Gate",
+      "statement": "all mandatory domains pass for go",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-100-02",
+      "release": 100,
+      "domain": "SakthiAI Enterprise Edition v1.0 Launch Gate",
+      "statement": "evidence index required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-100-03",
+      "release": 100,
+      "domain": "SakthiAI Enterprise Edition v1.0 Launch Gate",
+      "statement": "rollback required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-100-04",
+      "release": 100,
+      "domain": "SakthiAI Enterprise Edition v1.0 Launch Gate",
+      "statement": "conditional go requires expiring exceptions",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-100-05",
+      "release": 100,
+      "domain": "SakthiAI Enterprise Edition v1.0 Launch Gate",
+      "statement": "multiple owner approvals required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    }
+  ]
+}

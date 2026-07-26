@@ -1,0 +1,437 @@
+{
+  "version": "0.80.0",
+  "controls": [
+    {
+      "controlId": "SAK-071-01",
+      "release": 71,
+      "domain": "Connector Marketplace Governance",
+      "statement": "publisher identity required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-071-02",
+      "release": 71,
+      "domain": "Connector Marketplace Governance",
+      "statement": "egress allowlist required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-071-03",
+      "release": 71,
+      "domain": "Connector Marketplace Governance",
+      "statement": "write capabilities need approval",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-071-04",
+      "release": 71,
+      "domain": "Connector Marketplace Governance",
+      "statement": "revoked connector denied",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-072-01",
+      "release": 72,
+      "domain": "Business Process Orchestration",
+      "statement": "version positive",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-072-02",
+      "release": 72,
+      "domain": "Business Process Orchestration",
+      "statement": "steps required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-072-03",
+      "release": 72,
+      "domain": "Business Process Orchestration",
+      "statement": "acyclic dependencies",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-072-04",
+      "release": 72,
+      "domain": "Business Process Orchestration",
+      "statement": "idempotency required for writes",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-072-05",
+      "release": 72,
+      "domain": "Business Process Orchestration",
+      "statement": "approval required for high impact",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-073-01",
+      "release": 73,
+      "domain": "Customer Support Operations",
+      "statement": "owner required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-073-02",
+      "release": 73,
+      "domain": "Customer Support Operations",
+      "statement": "sla required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-073-03",
+      "release": 73,
+      "domain": "Customer Support Operations",
+      "statement": "p1 immediate escalation",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-073-04",
+      "release": 73,
+      "domain": "Customer Support Operations",
+      "statement": "sensitive evidence restricted",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-073-05",
+      "release": 73,
+      "domain": "Customer Support Operations",
+      "statement": "closure requires resolution",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-074-01",
+      "release": 74,
+      "domain": "Secure Communications Hub",
+      "statement": "verified recipient required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-074-02",
+      "release": 74,
+      "domain": "Secure Communications Hub",
+      "statement": "restricted email denied",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-074-03",
+      "release": 74,
+      "domain": "Secure Communications Hub",
+      "statement": "template required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-074-04",
+      "release": 74,
+      "domain": "Secure Communications Hub",
+      "statement": "approval required for bulk message",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-074-05",
+      "release": 74,
+      "domain": "Secure Communications Hub",
+      "statement": "delivery receipt required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-075-01",
+      "release": 75,
+      "domain": "Knowledge Publishing and Editorial Workflow",
+      "statement": "title required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-075-02",
+      "release": 75,
+      "domain": "Knowledge Publishing and Editorial Workflow",
+      "statement": "content hash required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-075-03",
+      "release": 75,
+      "domain": "Knowledge Publishing and Editorial Workflow",
+      "statement": "sources required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-075-04",
+      "release": 75,
+      "domain": "Knowledge Publishing and Editorial Workflow",
+      "statement": "human publisher required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-075-05",
+      "release": 75,
+      "domain": "Knowledge Publishing and Editorial Workflow",
+      "statement": "withdrawal preserves audit",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-076-01",
+      "release": 76,
+      "domain": "Learning and Skills Platform",
+      "statement": "competencies required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-076-02",
+      "release": 76,
+      "domain": "Learning and Skills Platform",
+      "statement": "modules required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-076-03",
+      "release": 76,
+      "domain": "Learning and Skills Platform",
+      "statement": "assessment integrity",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-076-04",
+      "release": 76,
+      "domain": "Learning and Skills Platform",
+      "statement": "accessibility review required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-076-05",
+      "release": 76,
+      "domain": "Learning and Skills Platform",
+      "statement": "certification claim must be false",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-077-01",
+      "release": 77,
+      "domain": "Analytics and Executive Insights",
+      "statement": "metric owner required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-077-02",
+      "release": 77,
+      "domain": "Analytics and Executive Insights",
+      "statement": "unit required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-077-03",
+      "release": 77,
+      "domain": "Analytics and Executive Insights",
+      "statement": "minimum cohort enforced",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-077-04",
+      "release": 77,
+      "domain": "Analytics and Executive Insights",
+      "statement": "personal data must be false",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-077-05",
+      "release": 77,
+      "domain": "Analytics and Executive Insights",
+      "statement": "explanation required for anomaly",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-078-01",
+      "release": 78,
+      "domain": "Data Products and Contracts",
+      "statement": "owner required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-078-02",
+      "release": 78,
+      "domain": "Data Products and Contracts",
+      "statement": "schema required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-078-03",
+      "release": 78,
+      "domain": "Data Products and Contracts",
+      "statement": "quality slo required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-078-04",
+      "release": 78,
+      "domain": "Data Products and Contracts",
+      "statement": "semantic version required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-078-05",
+      "release": 78,
+      "domain": "Data Products and Contracts",
+      "statement": "deprecation notice required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-079-01",
+      "release": 79,
+      "domain": "Partner and Supplier Risk",
+      "statement": "supplier required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-079-02",
+      "release": 79,
+      "domain": "Partner and Supplier Risk",
+      "statement": "score range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-079-03",
+      "release": 79,
+      "domain": "Partner and Supplier Risk",
+      "statement": "critical supplier due diligence",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-079-04",
+      "release": 79,
+      "domain": "Partner and Supplier Risk",
+      "statement": "high findings block approval",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-079-05",
+      "release": 79,
+      "domain": "Partner and Supplier Risk",
+      "statement": "conditional decision requires treatment plan",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-080-01",
+      "release": 80,
+      "domain": "Ecosystem Readiness Gate",
+      "statement": "all capabilities pass",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-080-02",
+      "release": 80,
+      "domain": "Ecosystem Readiness Gate",
+      "statement": "evidence required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-080-03",
+      "release": 80,
+      "domain": "Ecosystem Readiness Gate",
+      "statement": "supplier risk resolved",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-080-04",
+      "release": 80,
+      "domain": "Ecosystem Readiness Gate",
+      "statement": "owner approval required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    }
+  ]
+}

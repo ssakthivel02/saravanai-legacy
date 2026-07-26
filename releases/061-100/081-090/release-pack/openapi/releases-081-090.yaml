@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 081-090 API
+  version: 0.90.0
+  description: Private owner-controlled enterprise capability contracts.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/privacy-rules:
+    get:
+      summary: List tenant-scoped Global Privacy Orchestration records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Global Privacy Orchestration record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/regional-data-policies:
+    get:
+      summary: List tenant-scoped Regional Data Controls records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Regional Data Controls record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/safeguard-profiles:
+    get:
+      summary: List tenant-scoped Children and Vulnerable User Safety records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Children and Vulnerable User Safety record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/event-safety-plans:
+    get:
+      summary: List tenant-scoped Public Event and Emergency Safety records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Public Event and Emergency Safety record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/transparency-records:
+    get:
+      summary: List tenant-scoped Trust and Transparency Centre records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Trust and Transparency Centre record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/ai-impact-assessments:
+    get:
+      summary: List tenant-scoped AI Ethics and Impact Assessment records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed AI Ethics and Impact Assessment record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/regulatory-obligations:
+    get:
+      summary: List tenant-scoped Regulatory Change Management records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Regulatory Change Management record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/abuse-assessments:
+    get:
+      summary: List tenant-scoped Fraud Abuse and Misuse Prevention records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Fraud Abuse and Misuse Prevention record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/threat-indicators:
+    get:
+      summary: List tenant-scoped Security Operations and Threat Intelligence records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Security Operations and Threat Intelligence record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/global-trust-gates:
+    get:
+      summary: List tenant-scoped Global Trust Assurance Gate records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Global Trust Assurance Gate record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}

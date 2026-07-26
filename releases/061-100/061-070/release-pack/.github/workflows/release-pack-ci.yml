@@ -1,0 +1,15 @@
+name: Releases 061-070 pack validation
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node releases/061-100/061-070/release-pack/scripts/validate-release-pack.mjs
+      - run: node --test releases/061-100/061-070/release-pack/tests/*.test.mjs

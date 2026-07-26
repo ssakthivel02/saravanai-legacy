@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 061-070 API
+  version: 0.70.0
+  description: Private owner-controlled enterprise capability contracts.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/model-route-policies:
+    get:
+      summary: List tenant-scoped Responsible Model Routing records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Responsible Model Routing record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/multimodal-assets:
+    get:
+      summary: List tenant-scoped Multimodal Intelligence Runtime records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Multimodal Intelligence Runtime record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/audio-transcripts:
+    get:
+      summary: List tenant-scoped Speech and Audio Intelligence records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Speech and Audio Intelligence record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/vision-safety-assessments:
+    get:
+      summary: List tenant-scoped Vision and Media Safety records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Vision and Media Safety record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/evidence-claims:
+    get:
+      summary: List tenant-scoped Citation Graph and Evidence Synthesis records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Citation Graph and Evidence Synthesis record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/ontology-contracts:
+    get:
+      summary: List tenant-scoped Enterprise Ontology and Semantic Contracts records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Enterprise Ontology and Semantic Contracts record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/decision-records:
+    get:
+      summary: List tenant-scoped Decision Intelligence and Explainability records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Decision Intelligence and Explainability record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/scenario-definitions:
+    get:
+      summary: List tenant-scoped Scenario Planning and Simulation records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Scenario Planning and Simulation record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/code-findings:
+    get:
+      summary: List tenant-scoped Secure Code Intelligence records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Secure Code Intelligence record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/intelligence-gates:
+    get:
+      summary: List tenant-scoped Intelligence Assurance Gate records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Intelligence Assurance Gate record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
