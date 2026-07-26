@@ -1,0 +1,8 @@
+{
+  "featureFlagDefault": "disabled",
+  "tenantScopeRequired": true,
+  "humanApprovalForMaterialActions": true,
+  "productionWritesEnabled": false,
+  "killSwitchRequired": true,
+  "maximumAutonomousSteps": 50
+}

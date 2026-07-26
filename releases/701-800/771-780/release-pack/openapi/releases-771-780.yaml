@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 771–780 API
+    version: 7.780.0
+    description: Private Enterprise Platform v7 capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/771/enterprise-data-product-registry/status:
+  get:
+    summary: Return Release 771 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/772/data-contract-and-schema-evolution/status:
+  get:
+    summary: Return Release 772 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/773/master-and-reference-data-governance/status:
+  get:
+    summary: Return Release 773 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/774/enterprise-semantic-and-metrics-layer/status:
+  get:
+    summary: Return Release 774 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/775/data-product-access-and-usage-control/status:
+  get:
+    summary: Return Release 775 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/776/data-quality-rules-and-observability/status:
+  get:
+    summary: Return Release 776 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/777/data-lineage-impact-and-change-analysis/status:
+  get:
+    summary: Return Release 777 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/778/data-product-marketplace-and-discovery/status:
+  get:
+    summary: Return Release 778 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/779/data-product-deprecation-and-portability/status:
+  get:
+    summary: Return Release 779 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/780/data-products-and-semantic-layer-assurance-gate/status:
+  get:
+    summary: Return Release 780 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

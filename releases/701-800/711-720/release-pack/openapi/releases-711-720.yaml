@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 711–720 API
+    version: 7.720.0
+    description: Private Enterprise Platform v7 capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/711/research-question-and-scope-registry/status:
+  get:
+    summary: Return Release 711 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/712/source-discovery-and-authority-ranking/status:
+  get:
+    summary: Return Release 712 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/713/primary-source-acquisition-and-preservation/status:
+  get:
+    summary: Return Release 713 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/714/claim-evidence-and-citation-graph/status:
+  get:
+    summary: Return Release 714 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/715/research-synthesis-and-argument-mapping/status:
+  get:
+    summary: Return Release 715 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/716/fact-verification-and-temporal-validation/status:
+  get:
+    summary: Return Release 716 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/717/research-quality-and-bias-review/status:
+  get:
+    summary: Return Release 717 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/718/research-report-and-briefing-composer/status:
+  get:
+    summary: Return Release 718 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/719/research-correction-and-retraction-workflow/status:
+  get:
+    summary: Return Release 719 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/720/deep-research-assurance-gate/status:
+  get:
+    summary: Return Release 720 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

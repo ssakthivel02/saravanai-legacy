@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 761–770 API
+    version: 7.770.0
+    description: Private Enterprise Platform v7 capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/761/hybrid-infrastructure-service-catalogue/status:
+  get:
+    summary: Return Release 761 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/762/landing-zone-and-account-subscription-factory/status:
+  get:
+    summary: Return Release 762 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/763/infrastructure-as-code-module-registry/status:
+  get:
+    summary: Return Release 763 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/764/server-and-workload-modernisation-assessment/status:
+  get:
+    summary: Return Release 764 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/765/hybrid-connectivity-and-network-automation/status:
+  get:
+    summary: Return Release 765 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/766/compute-cluster-and-virtualisation-operations/status:
+  get:
+    summary: Return Release 766 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/767/storage-data-protection-and-recovery/status:
+  get:
+    summary: Return Release 767 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/768/cloud-security-posture-and-configuration-drift/status:
+  get:
+    summary: Return Release 768 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/769/infrastructure-change-and-migration-orchestration/status:
+  get:
+    summary: Return Release 769 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/770/hybrid-cloud-and-infrastructure-assurance-gate/status:
+  get:
+    summary: Return Release 770 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+

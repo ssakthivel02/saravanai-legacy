@@ -1,0 +1,7 @@
+{
+  "integrityHashRequired": true,
+  "retentionPolicyRequired": true,
+  "legalHoldSupported": true,
+  "evidenceExpirySupported": true,
+  "destructionEvidenceRequired": true
+}

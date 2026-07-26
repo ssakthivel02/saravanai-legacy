@@ -1,0 +1,135 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 781–790 API
+    version: 7.790.0
+    description: Private Enterprise Platform v7 capability and assurance contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/781/enterprise-strategy-and-objective-registry/status:
+  get:
+    summary: Return Release 781 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/782/portfolio-investment-and-capacity-planning/status:
+  get:
+    summary: Return Release 782 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/783/programme-milestone-and-dependency-control/status:
+  get:
+    summary: Return Release 783 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/784/enterprise-risk-and-opportunity-portfolio/status:
+  get:
+    summary: Return Release 784 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/785/executive-decision-brief-and-board-pack/status:
+  get:
+    summary: Return Release 785 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/786/operational-resilience-command-view/status:
+  get:
+    summary: Return Release 786 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/787/crisis-command-and-stakeholder-coordination/status:
+  get:
+    summary: Return Release 787 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/788/benefits-outcomes-and-value-realisation/status:
+  get:
+    summary: Return Release 788 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/789/enterprise-performance-and-trust-reporting/status:
+  get:
+    summary: Return Release 789 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+/api/v1/programme/790/executive-intelligence-and-resilience-gate/status:
+  get:
+    summary: Return Release 790 status
+    security:
+      - accessToken: []
+    responses:
+      '200':
+        description: Tenant-scoped disabled-by-default capability status
+      '401':
+        description: Authentication required
+      '403':
+        description: Authorisation denied
+
