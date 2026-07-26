@@ -1,0 +1,13 @@
+{
+  "name": "@sakthiai/releases-361-370",
+  "version": "3.370.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-release-pack.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

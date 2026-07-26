@@ -1,0 +1,37 @@
+name: Releases 301-400 validation
+on:
+  pull_request:
+    paths:
+      - 'releases/301-400/**'
+      - '.github/workflows/releases-301-400-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pack:
+          - '301-310'
+          - '311-320'
+          - '321-330'
+          - '331-340'
+          - '341-350'
+          - '351-360'
+          - '361-370'
+          - '371-380'
+          - '381-390'
+          - '391-400'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify pack exists
+        run: test -f releases/301-400/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Validate pack
+        run: node releases/301-400/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Test pack
+        run: node --test releases/301-400/${{ matrix.pack }}/release-pack/tests/*.test.mjs
