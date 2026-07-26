@@ -1,0 +1,117 @@
+{
+  "name": "SakthiAI Runtime Wave 1 — Identity, Tenant and AI Gateway",
+  "generatedAt": "2026-07-26T20:12:43.113568+00:00",
+  "fileCountBeforeManifest": 22,
+  "files": [
+    {
+      "path": ".github/workflows/runtime-wave-1-validation.yml",
+      "bytes": 897,
+      "sha256": "15d5d121063bf63a487d070f47cfa4da6460359aa9f1b86e0b04e6239f3fe40b"
+    },
+    {
+      "path": "RUNTIME_WAVE_1_BASELINE.json",
+      "bytes": 719,
+      "sha256": "7b47d13e332a31700861787aebfc26d9076bee94fad6b5369e26876e1ef207ab"
+    },
+    {
+      "path": "RUNTIME_WAVE_1_UPLOAD_README.md",
+      "bytes": 491,
+      "sha256": "61a78c17e024e6d46ececd87904c473d73c6d75558e3d70b233ad580040d85c4"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_1_ACCEPTANCE_CHECKLIST.md",
+      "bytes": 734,
+      "sha256": "8fc1e2b1279ec59730121224ea767acb576b72ddeadaf18d518fce607c287bad"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_1_HLD.md",
+      "bytes": 423,
+      "sha256": "cc8acb67fc2b3ac01140d1a85f65d38130aa10f5f15e6b03ac9da00847d74f3c"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_1_IMPLEMENTATION.md",
+      "bytes": 1865,
+      "sha256": "f4da82de9fdbd6e3c5b5a61a5e9aae3cd04f9fcc648cac445a0cf18b7a66cd1b"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_1_LLD.md",
+      "bytes": 699,
+      "sha256": "056ad94321d2242ae3864c799f70cf908eca81ed559fa40d6784227188b4df95"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_1_ROLLOUT_AND_ROLLBACK.md",
+      "bytes": 824,
+      "sha256": "7012078e7fe11f0d45ec7348f927f62fc0a32b83940551e3b6ad7652a2d6a2e3"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_1_THREAT_MODEL.md",
+      "bytes": 893,
+      "sha256": "ca262d6c3fc626ac7500d471a3bc740ef3623100167bacb983fd8d4e169c7f12"
+    },
+    {
+      "path": "migrations/0003_runtime_wave1.sql",
+      "bytes": 1752,
+      "sha256": "1364389d34fc6fc582daf8ba67fc721fde925ee0e5cc080ae8d107cc84df3664"
+    },
+    {
+      "path": "openapi/sakthiai-runtime-wave1.yaml",
+      "bytes": 3922,
+      "sha256": "0b3be932cee73dfc79a83065568a2e29ec8f0c5d1297216240bb346240d86a16"
+    },
+    {
+      "path": "scripts/validate-runtime-wave1.mjs",
+      "bytes": 2421,
+      "sha256": "b33b68ca47e468a7de9fec4856b48fcfd754a4072e5460a41ab66cfa39cac972"
+    },
+    {
+      "path": "src/entry.js",
+      "bytes": 1878,
+      "sha256": "7f1348e72b5f33159f66d628d640d3a0f1162d9ae989acd2eac83e06e09d6f0b"
+    },
+    {
+      "path": "src/runtime/ai-envelope.js",
+      "bytes": 1949,
+      "sha256": "5f134f6b8696d55bab1f2af6267c45f2d3c47ab9dceb4d05f34205ceba5cfb66"
+    },
+    {
+      "path": "src/runtime/identity.js",
+      "bytes": 1742,
+      "sha256": "38f9caaad83d35deffa81e80e512c9361c6ce72a3f9b9c98e0a4ec7f54593dd8"
+    },
+    {
+      "path": "src/runtime/observability.js",
+      "bytes": 1201,
+      "sha256": "3f427150a2452296a4976a855b7557cb1dd4ab974b6d4e518d1941688a1c9323"
+    },
+    {
+      "path": "src/runtime/output-safety.js",
+      "bytes": 1806,
+      "sha256": "f742b11cec3120d90bf3cd108e2139c8503449ede3120006bd4776f3a2e616cd"
+    },
+    {
+      "path": "src/runtime/policy.js",
+      "bytes": 1908,
+      "sha256": "01e448ec2fe82884ef721d3e2b8bd66650e0960e2384038f4edbf065a33701bf"
+    },
+    {
+      "path": "src/runtime/shared.js",
+      "bytes": 1548,
+      "sha256": "bbe0e0917436a810e1e49d15b123bc77f8b550eb05dc47b176f197fc405fd454"
+    },
+    {
+      "path": "src/runtime/tenant.js",
+      "bytes": 1262,
+      "sha256": "33b1af4a422c172af7d0ee9b60e24d610449b6b0d59e91bd882f88e473482c0a"
+    },
+    {
+      "path": "src/runtime-wave1.js",
+      "bytes": 4063,
+      "sha256": "4e670997bbfe7ce6d5fbe041a8819726eeaf623adc22e25b3b282c4453579fc0"
+    },
+    {
+      "path": "tests/runtime-wave1.test.mjs",
+      "bytes": 9246,
+      "sha256": "2415b3c1844f33dc9ed95480053b0d38f2c06bc2a70ad215cddb6bbe1cdfcd45"
+    }
+  ]
+}

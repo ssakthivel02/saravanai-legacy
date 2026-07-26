@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Runtime Wave 1 API
+  version: 1.0.0
+  description: |
+    Private-owner, disabled-by-default identity, tenant, policy, AI-envelope,
+    output-safety and observability endpoints. No production writes are enabled.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+components:
+  securitySchemes:
+    cloudflareAccess:
+      type: apiKey
+      in: header
+      name: cf-access-jwt-assertion
+  schemas:
+    RuntimeStatus:
+      type: object
+      required: [status, release, enabled, productionWritesEnabled, requestId]
+      properties:
+        status: { const: ok }
+        release: { const: runtime-wave-1.0.0 }
+        enabled: { type: boolean }
+        productionWritesEnabled: { const: false }
+        requestId: { type: string }
+    PolicyRequest:
+      type: object
+      required: [action, tenantId]
+      properties:
+        action: { type: string, maxLength: 120 }
+        tenantId:
+          type: string
+          pattern: '^[a-z0-9][a-z0-9_-]{1,62}$'
+        riskScore:
+          type: number
+          minimum: 0
+          maximum: 100
+      additionalProperties: false
+    AiEnvelopeRequest:
+      type: object
+      required: [prompt]
+      properties:
+        prompt: { type: string, minLength: 1, maxLength: 12000 }
+        purpose: { type: string, maxLength: 160 }
+        mode:
+          enum: [automatic, research, document, coding, website]
+        budget:
+          enum: [economy, balanced]
+      additionalProperties: false
+    OutputSafetyRequest:
+      type: object
+      required: [output]
+      properties:
+        output: { type: string, maxLength: 50000 }
+      additionalProperties: false
+paths:
+  /api/v1/runtime/status:
+    get:
+      summary: Return safe Runtime Wave 1 status
+      responses:
+        '200':
+          description: Status returned
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/RuntimeStatus' }
+  /api/v1/runtime/context:
+    get:
+      summary: Return masked private-owner runtime context
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Owner context returned }
+        '401': { description: Cloudflare Access authentication required }
+        '403': { description: Authenticated identity is not the configured owner }
+        '503': { description: Owner boundary or runtime flag is not configured }
+  /api/v1/runtime/policy/evaluate:
+    post:
+      summary: Evaluate a read-only or dry-run Wave 1 policy decision
+      security: [{ cloudflareAccess: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PolicyRequest' }
+      responses:
+        '200': { description: Policy allowed }
+        '403': { description: Policy denied }
+  /api/v1/runtime/ai/envelope:
+    post:
+      summary: Validate and hash an AI request without executing a model
+      security: [{ cloudflareAccess: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AiEnvelopeRequest' }
+      responses:
+        '200': { description: Envelope valid }
+        '422': { description: Prompt failed validation }
+  /api/v1/runtime/ai/output/check:
+    post:
+      summary: Check output for secret, PII and unsupported-claim risks
+      security: [{ cloudflareAccess: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/OutputSafetyRequest' }
+      responses:
+        '200': { description: Output is not blocked }
+        '422': { description: Output is blocked }
+  /api/v1/runtime/observability:
+    get:
+      summary: Return privacy-safe runtime control and binding posture
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Operational posture returned }
