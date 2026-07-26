@@ -1,0 +1,14 @@
+{
+  "name": "@sakthiai/releases-061-070",
+  "version": "0.70.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-release-pack.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run validate && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

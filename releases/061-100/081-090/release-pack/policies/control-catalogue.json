@@ -1,0 +1,473 @@
+{
+  "version": "0.90.0",
+  "controls": [
+    {
+      "controlId": "SAK-081-01",
+      "release": 81,
+      "domain": "Global Privacy Orchestration",
+      "statement": "purpose required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-081-02",
+      "release": 81,
+      "domain": "Global Privacy Orchestration",
+      "statement": "data classes required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-081-03",
+      "release": 81,
+      "domain": "Global Privacy Orchestration",
+      "statement": "legal basis required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-081-04",
+      "release": 81,
+      "domain": "Global Privacy Orchestration",
+      "statement": "retention positive",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-081-05",
+      "release": 81,
+      "domain": "Global Privacy Orchestration",
+      "statement": "rights mapping required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-082-01",
+      "release": 82,
+      "domain": "Regional Data Controls",
+      "statement": "region required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-082-02",
+      "release": 82,
+      "domain": "Regional Data Controls",
+      "statement": "storage region required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-082-03",
+      "release": 82,
+      "domain": "Regional Data Controls",
+      "statement": "processing region required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-082-04",
+      "release": 82,
+      "domain": "Regional Data Controls",
+      "statement": "cross region transfer mechanism required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-082-05",
+      "release": 82,
+      "domain": "Regional Data Controls",
+      "statement": "legal review for exception",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-083-01",
+      "release": 83,
+      "domain": "Children and Vulnerable User Safety",
+      "statement": "unknown age uses strict default",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-083-02",
+      "release": 83,
+      "domain": "Children and Vulnerable User Safety",
+      "statement": "child personalisation restricted",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-083-03",
+      "release": 83,
+      "domain": "Children and Vulnerable User Safety",
+      "statement": "child direct messaging denied",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-083-04",
+      "release": 83,
+      "domain": "Children and Vulnerable User Safety",
+      "statement": "guardian consent when required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-083-05",
+      "release": 83,
+      "domain": "Children and Vulnerable User Safety",
+      "statement": "vulnerability requires human review",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-084-01",
+      "release": 84,
+      "domain": "Public Event and Emergency Safety",
+      "statement": "local emergency contacts required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-084-02",
+      "release": 84,
+      "domain": "Public Event and Emergency Safety",
+      "statement": "crowd plan required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-084-03",
+      "release": 84,
+      "domain": "Public Event and Emergency Safety",
+      "statement": "weather plan required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-084-04",
+      "release": 84,
+      "domain": "Public Event and Emergency Safety",
+      "statement": "accessibility plan required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-084-05",
+      "release": 84,
+      "domain": "Public Event and Emergency Safety",
+      "statement": "child safety plan required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-084-06",
+      "release": 84,
+      "domain": "Public Event and Emergency Safety",
+      "statement": "owner approval required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-085-01",
+      "release": 85,
+      "domain": "Trust and Transparency Centre",
+      "statement": "plain language summary required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-085-02",
+      "release": 85,
+      "domain": "Trust and Transparency Centre",
+      "statement": "limitations required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-085-03",
+      "release": 85,
+      "domain": "Trust and Transparency Centre",
+      "statement": "data use required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-085-04",
+      "release": 85,
+      "domain": "Trust and Transparency Centre",
+      "statement": "human review disclosed",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-085-05",
+      "release": 85,
+      "domain": "Trust and Transparency Centre",
+      "statement": "publication approval required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-086-01",
+      "release": 86,
+      "domain": "AI Ethics and Impact Assessment",
+      "statement": "intended use required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-086-02",
+      "release": 86,
+      "domain": "AI Ethics and Impact Assessment",
+      "statement": "affected groups required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-086-03",
+      "release": 86,
+      "domain": "AI Ethics and Impact Assessment",
+      "statement": "harm analysis required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-086-04",
+      "release": 86,
+      "domain": "AI Ethics and Impact Assessment",
+      "statement": "mitigations required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-086-05",
+      "release": 86,
+      "domain": "AI Ethics and Impact Assessment",
+      "statement": "prohibited use denied",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-086-06",
+      "release": 86,
+      "domain": "AI Ethics and Impact Assessment",
+      "statement": "high risk owner approval",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-087-01",
+      "release": 87,
+      "domain": "Regulatory Change Management",
+      "statement": "official source required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-087-02",
+      "release": 87,
+      "domain": "Regulatory Change Management",
+      "statement": "jurisdiction required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-087-03",
+      "release": 87,
+      "domain": "Regulatory Change Management",
+      "statement": "effective date required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-087-04",
+      "release": 87,
+      "domain": "Regulatory Change Management",
+      "statement": "uncertain requires legal review",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-087-05",
+      "release": 87,
+      "domain": "Regulatory Change Management",
+      "statement": "control mapping required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-088-01",
+      "release": 88,
+      "domain": "Fraud Abuse and Misuse Prevention",
+      "statement": "signal required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-088-02",
+      "release": 88,
+      "domain": "Fraud Abuse and Misuse Prevention",
+      "statement": "risk score range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-088-03",
+      "release": 88,
+      "domain": "Fraud Abuse and Misuse Prevention",
+      "statement": "high risk block or challenge",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-088-04",
+      "release": 88,
+      "domain": "Fraud Abuse and Misuse Prevention",
+      "statement": "appeal for material decision",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-088-05",
+      "release": 88,
+      "domain": "Fraud Abuse and Misuse Prevention",
+      "statement": "human review for false positive",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-089-01",
+      "release": 89,
+      "domain": "Security Operations and Threat Intelligence",
+      "statement": "indicator type required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-089-02",
+      "release": 89,
+      "domain": "Security Operations and Threat Intelligence",
+      "statement": "raw secret not stored",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-089-03",
+      "release": 89,
+      "domain": "Security Operations and Threat Intelligence",
+      "statement": "confidence range",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-089-04",
+      "release": 89,
+      "domain": "Security Operations and Threat Intelligence",
+      "statement": "expiry required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-089-05",
+      "release": 89,
+      "domain": "Security Operations and Threat Intelligence",
+      "statement": "sharing boundary enforced",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-090-01",
+      "release": 90,
+      "domain": "Global Trust Assurance Gate",
+      "statement": "mandatory domains pass",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-090-02",
+      "release": 90,
+      "domain": "Global Trust Assurance Gate",
+      "statement": "legal reviews complete",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-090-03",
+      "release": 90,
+      "domain": "Global Trust Assurance Gate",
+      "statement": "evidence required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-090-04",
+      "release": 90,
+      "domain": "Global Trust Assurance Gate",
+      "statement": "waiver requires expiry",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    },
+    {
+      "controlId": "SAK-090-05",
+      "release": 90,
+      "domain": "Global Trust Assurance Gate",
+      "statement": "owner approval required",
+      "owner": "Owner/Security/Governance",
+      "status": "designed",
+      "evidenceIds": []
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "classes": {
+    "public": {
+      "externalSharing": true,
+      "encryptionRequired": false
+    },
+    "internal": {
+      "externalSharing": false,
+      "encryptionRequired": true
+    },
+    "confidential": {
+      "externalSharing": false,
+      "encryptionRequired": true,
+      "approvalRequired": true
+    },
+    "restricted": {
+      "externalSharing": false,
+      "encryptionRequired": true,
+      "approvalRequired": true,
+      "trustedDeviceRequired": true
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "publicRegistrationEnabled": false,
+  "productionWritesEnabled": false,
+  "paidProvidersEnabled": false,
+  "unifiedBillingEnabled": false,
+  "autonomousHighImpactActionsEnabled": false,
+  "crossTenantAccessEnabled": false,
+  "promptLoggingEnabled": false,
+  "uploadedContentLoggingEnabled": false,
+  "unsupportedCertificationClaimsEnabled": false
+}

@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 071-080 API
+  version: 0.80.0
+  description: Private owner-controlled enterprise capability contracts.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/marketplace-connectors:
+    get:
+      summary: List tenant-scoped Connector Marketplace Governance records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Connector Marketplace Governance record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/business-processes:
+    get:
+      summary: List tenant-scoped Business Process Orchestration records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Business Process Orchestration record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/support-cases:
+    get:
+      summary: List tenant-scoped Customer Support Operations records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Customer Support Operations record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/secure-messages:
+    get:
+      summary: List tenant-scoped Secure Communications Hub records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Secure Communications Hub record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/publications:
+    get:
+      summary: List tenant-scoped Knowledge Publishing and Editorial Workflow records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Knowledge Publishing and Editorial Workflow record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/learning-paths:
+    get:
+      summary: List tenant-scoped Learning and Skills Platform records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Learning and Skills Platform record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/metric-definitions:
+    get:
+      summary: List tenant-scoped Analytics and Executive Insights records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Analytics and Executive Insights record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/data-products:
+    get:
+      summary: List tenant-scoped Data Products and Contracts records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Data Products and Contracts record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/supplier-assessments:
+    get:
+      summary: List tenant-scoped Partner and Supplier Risk records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Partner and Supplier Risk record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
+  /api/v1/ecosystem-gates:
+    get:
+      summary: List tenant-scoped Ecosystem Readiness Gate records
+      responses:
+        '200': {description: Tenant-scoped records}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+    post:
+      summary: Submit a governed Ecosystem Readiness Gate record
+      responses:
+        '202': {description: Accepted for policy evaluation}
+        '400': {description: Validation failed}
+        '403': {description: Approval or permission required}
