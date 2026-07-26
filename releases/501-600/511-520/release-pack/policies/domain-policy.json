@@ -1,0 +1,10 @@
+{
+  "releaseRange": "511-520",
+  "trustedIdentityRequired": true,
+  "tenantScopeRequired": true,
+  "humanAccountabilityRequired": true,
+  "integrityHashRequired": true,
+  "appealOrCorrectionRequiredWhereRelevant": true,
+  "rollbackRequired": true,
+  "featureFlagDefault": "disabled"
+}
