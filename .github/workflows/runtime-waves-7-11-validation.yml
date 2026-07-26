@@ -1,0 +1,42 @@
+name: Runtime Waves 7-11 validation
+on:
+  pull_request:
+    paths:
+      - 'src/entry.js'
+      - 'src/runtime-waves7-11.js'
+      - 'src/runtime-v7-11/**'
+      - 'tests/runtime-waves7-11.test.mjs'
+      - 'scripts/validate-runtime-waves7-11.mjs'
+      - 'migrations/0009_runtime_wave7.sql'
+      - 'migrations/0010_runtime_wave8.sql'
+      - 'migrations/0011_runtime_wave9.sql'
+      - 'migrations/0012_runtime_wave10.sql'
+      - 'migrations/0013_runtime_wave11.sql'
+      - 'openapi/sakthiai-runtime-waves7-11.yaml'
+      - 'docs/RUNTIME_WAVES_7_11_*.md'
+      - '.github/workflows/runtime-waves-7-11-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Runtime Waves 1-6 regressions
+        run: |
+          node --test tests/runtime-wave1.test.mjs
+          node --test tests/runtime-wave2.test.mjs
+          node --test tests/runtime-wave3.test.mjs
+          node --test tests/runtime-wave4.test.mjs
+          node --test tests/runtime-wave5.test.mjs
+          node --test tests/runtime-wave6.test.mjs
+      - name: Runtime Waves 7-11 structural validation
+        run: node scripts/validate-runtime-waves7-11.mjs
+      - name: Runtime Waves 7-11 focused tests
+        run: node --test tests/runtime-waves7-11.test.mjs

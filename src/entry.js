@@ -8,7 +8,17 @@ import { handleRuntimeWave3, RUNTIME_WAVE_3_RELEASE } from './runtime-wave3.js';
 import { handleRuntimeWave4, RUNTIME_WAVE_4_RELEASE } from './runtime-wave4.js';
 import { handleRuntimeWave5, RUNTIME_WAVE_5_RELEASE } from './runtime-wave5.js';
 import { handleRuntimeWave6, RUNTIME_WAVE_6_RELEASE } from './runtime-wave6.js';
+import {
+  handleRuntimeWave7, RUNTIME_WAVE_7_RELEASE,
+  handleRuntimeWave8, RUNTIME_WAVE_8_RELEASE,
+  handleRuntimeWave9, RUNTIME_WAVE_9_RELEASE,
+  handleRuntimeWave10, RUNTIME_WAVE_10_RELEASE,
+  handleRuntimeWave11, RUNTIME_WAVE_11_RELEASE
+} from './runtime-waves7-11.js';
 import { RELEASE, premiumEnabled, providerStatus } from './router.js';
+
+const enabled = (env, name) => String(env[name] || '').toLowerCase() === 'true';
+const stopped = (env, name) => String(env[name] || 'true').toLowerCase() !== 'false';
 
 export default {
   async fetch(request, env, ctx) {
@@ -21,22 +31,37 @@ export default {
         release: RELEASE,
         governanceRelease: GOVERNANCE_RELEASE,
         runtimeWave1Release: RUNTIME_WAVE_1_RELEASE,
-        runtimeWave1Enabled: String(env.RUNTIME_WAVE1_ENABLED || '').toLowerCase() === 'true',
+        runtimeWave1Enabled: enabled(env, 'RUNTIME_WAVE1_ENABLED'),
         runtimeWave2Release: RUNTIME_WAVE_2_RELEASE,
-        runtimeWave2Enabled: String(env.RUNTIME_WAVE2_ENABLED || '').toLowerCase() === 'true',
-        runtimeWave2EmergencyStopped: String(env.RUNTIME_WAVE2_EMERGENCY_STOP || 'true').toLowerCase() !== 'false',
+        runtimeWave2Enabled: enabled(env, 'RUNTIME_WAVE2_ENABLED'),
+        runtimeWave2EmergencyStopped: stopped(env, 'RUNTIME_WAVE2_EMERGENCY_STOP'),
         runtimeWave3Release: RUNTIME_WAVE_3_RELEASE,
-        runtimeWave3Enabled: String(env.RUNTIME_WAVE3_ENABLED || '').toLowerCase() === 'true',
-        runtimeWave3EmergencyStopped: String(env.RUNTIME_WAVE3_EMERGENCY_STOP || 'true').toLowerCase() !== 'false',
+        runtimeWave3Enabled: enabled(env, 'RUNTIME_WAVE3_ENABLED'),
+        runtimeWave3EmergencyStopped: stopped(env, 'RUNTIME_WAVE3_EMERGENCY_STOP'),
         runtimeWave4Release: RUNTIME_WAVE_4_RELEASE,
-        runtimeWave4Enabled: String(env.RUNTIME_WAVE4_ENABLED || '').toLowerCase() === 'true',
-        runtimeWave4EmergencyStopped: String(env.RUNTIME_WAVE4_EMERGENCY_STOP || 'true').toLowerCase() !== 'false',
+        runtimeWave4Enabled: enabled(env, 'RUNTIME_WAVE4_ENABLED'),
+        runtimeWave4EmergencyStopped: stopped(env, 'RUNTIME_WAVE4_EMERGENCY_STOP'),
         runtimeWave5Release: RUNTIME_WAVE_5_RELEASE,
-        runtimeWave5Enabled: String(env.RUNTIME_WAVE5_ENABLED || '').toLowerCase() === 'true',
-        runtimeWave5EmergencyStopped: String(env.RUNTIME_WAVE5_EMERGENCY_STOP || 'true').toLowerCase() !== 'false',
+        runtimeWave5Enabled: enabled(env, 'RUNTIME_WAVE5_ENABLED'),
+        runtimeWave5EmergencyStopped: stopped(env, 'RUNTIME_WAVE5_EMERGENCY_STOP'),
         runtimeWave6Release: RUNTIME_WAVE_6_RELEASE,
-        runtimeWave6Enabled: String(env.RUNTIME_WAVE6_ENABLED || '').toLowerCase() === 'true',
-        runtimeWave6EmergencyStopped: String(env.RUNTIME_WAVE6_EMERGENCY_STOP || 'true').toLowerCase() !== 'false',
+        runtimeWave6Enabled: enabled(env, 'RUNTIME_WAVE6_ENABLED'),
+        runtimeWave6EmergencyStopped: stopped(env, 'RUNTIME_WAVE6_EMERGENCY_STOP'),
+        runtimeWave7Release: RUNTIME_WAVE_7_RELEASE,
+        runtimeWave7Enabled: enabled(env, 'RUNTIME_WAVE7_ENABLED'),
+        runtimeWave7EmergencyStopped: stopped(env, 'RUNTIME_WAVE7_EMERGENCY_STOP'),
+        runtimeWave8Release: RUNTIME_WAVE_8_RELEASE,
+        runtimeWave8Enabled: enabled(env, 'RUNTIME_WAVE8_ENABLED'),
+        runtimeWave8EmergencyStopped: stopped(env, 'RUNTIME_WAVE8_EMERGENCY_STOP'),
+        runtimeWave9Release: RUNTIME_WAVE_9_RELEASE,
+        runtimeWave9Enabled: enabled(env, 'RUNTIME_WAVE9_ENABLED'),
+        runtimeWave9EmergencyStopped: stopped(env, 'RUNTIME_WAVE9_EMERGENCY_STOP'),
+        runtimeWave10Release: RUNTIME_WAVE_10_RELEASE,
+        runtimeWave10Enabled: enabled(env, 'RUNTIME_WAVE10_ENABLED'),
+        runtimeWave10EmergencyStopped: stopped(env, 'RUNTIME_WAVE10_EMERGENCY_STOP'),
+        runtimeWave11Release: RUNTIME_WAVE_11_RELEASE,
+        runtimeWave11Enabled: enabled(env, 'RUNTIME_WAVE11_ENABLED'),
+        runtimeWave11EmergencyStopped: stopped(env, 'RUNTIME_WAVE11_EMERGENCY_STOP'),
         aiRuntime: Boolean(env.AI),
         costPolicy: 'free-first',
         premiumProvidersEnabled: premiumEnabled(env),
@@ -50,6 +75,11 @@ export default {
         }
       });
     }
+    if (url.pathname.startsWith('/api/v1/runtime/v11')) return handleRuntimeWave11(request, env, url);
+    if (url.pathname.startsWith('/api/v1/runtime/v10')) return handleRuntimeWave10(request, env, url);
+    if (url.pathname.startsWith('/api/v1/runtime/v9')) return handleRuntimeWave9(request, env, url);
+    if (url.pathname.startsWith('/api/v1/runtime/v8')) return handleRuntimeWave8(request, env, url);
+    if (url.pathname.startsWith('/api/v1/runtime/v7')) return handleRuntimeWave7(request, env, url);
     if (url.pathname.startsWith('/api/v1/runtime/v6')) return handleRuntimeWave6(request, env, url);
     if (url.pathname.startsWith('/api/v1/runtime/v5')) return handleRuntimeWave5(request, env, url);
     if (url.pathname.startsWith('/api/v1/runtime/v4')) return handleRuntimeWave4(request, env, url);

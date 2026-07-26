@@ -1,0 +1,29 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Runtime Waves 7-11 API
+  version: 11.0.0
+  description: Disabled-by-default private-owner metadata evaluation for model governance, privacy, API integration, resilience and enterprise readiness.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+components:
+  securitySchemes:
+    cloudflareAccess:
+      type: apiKey
+      in: header
+      name: cf-access-jwt-assertion
+paths:
+  /api/v1/runtime/v7/status: { get: { summary: Wave 7 safe status, responses: { '200': { description: Status } } } }
+  /api/v1/runtime/v7/model-card/validate: { post: { summary: Validate model-card metadata, security: [ { cloudflareAccess: [] } ], responses: { '200': { description: Valid }, '422': { description: Rejected } } } }
+  /api/v1/runtime/v7/evaluation/assess: { post: { summary: Assess supplied evaluation evidence, security: [ { cloudflareAccess: [] } ], responses: { '200': { description: Assessment } } } }
+  /api/v1/runtime/v8/status: { get: { summary: Wave 8 safe status, responses: { '200': { description: Status } } } }
+  /api/v1/runtime/v8/data/classify: { post: { summary: Classify supplied field metadata, security: [ { cloudflareAccess: [] } ], responses: { '200': { description: Classification } } } }
+  /api/v1/runtime/v8/dsar/validate: { post: { summary: Validate DSAR metadata without processing data, security: [ { cloudflareAccess: [] } ], responses: { '200': { description: Valid } } } }
+  /api/v1/runtime/v9/status: { get: { summary: Wave 9 safe status, responses: { '200': { description: Status } } } }
+  /api/v1/runtime/v9/contracts/validate: { post: { summary: Validate API contract metadata, security: [ { cloudflareAccess: [] } ], responses: { '200': { description: Valid } } } }
+  /api/v1/runtime/v9/webhook/validate: { post: { summary: Validate webhook configuration without sending, security: [ { cloudflareAccess: [] } ], responses: { '200': { description: Valid } } } }
+  /api/v1/runtime/v10/status: { get: { summary: Wave 10 safe status, responses: { '200': { description: Status } } } }
+  /api/v1/runtime/v10/bia/assess: { post: { summary: Assess business-impact metadata, security: [ { cloudflareAccess: [] } ], responses: { '200': { description: Assessment } } } }
+  /api/v1/runtime/v10/continuity/gate: { post: { summary: Evaluate continuity evidence without failover, security: [ { cloudflareAccess: [] } ], responses: { '200': { description: Eligible } } } }
+  /api/v1/runtime/v11/status: { get: { summary: Wave 11 safe status, responses: { '200': { description: Status } } } }
+  /api/v1/runtime/v11/trust-packet/build: { post: { summary: Build unsigned non-published trust packet, security: [ { cloudflareAccess: [] } ], responses: { '200': { description: Packet } } } }
+  /api/v1/runtime/v11/launch/gate: { post: { summary: Evaluate launch evidence without launching, security: [ { cloudflareAccess: [] } ], responses: { '200': { description: Eligible } } } }
