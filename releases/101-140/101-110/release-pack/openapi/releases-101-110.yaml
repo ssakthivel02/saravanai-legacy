@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 101-110 API
+  version: 1.110.0
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+components:
+  securitySchemes:
+    accessToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /api/v1/programme/101/enterprise-knowledge-products/status:
+    get:
+      summary: Return Release 101 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/102/ai-portfolio-and-value-governance/status:
+    get:
+      summary: Return Release 102 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/103/secure-tenant-provisioning/status:
+    get:
+      summary: Return Release 103 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/104/identity-federation-and-scim/status:
+    get:
+      summary: Return Release 104 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/105/customer-data-boundary-and-encryption/status:
+    get:
+      summary: Return Release 105 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/106/advanced-api-gateway-governance/status:
+    get:
+      summary: Return Release 106 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/107/search-relevance-operations/status:
+    get:
+      summary: Return Release 107 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/108/agent-workforce-planning/status:
+    get:
+      summary: Return Release 108 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/109/human-ai-collaboration-governance/status:
+    get:
+      summary: Return Release 109 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/110/customer-and-value-assurance-gate/status:
+    get:
+      summary: Return Release 110 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}

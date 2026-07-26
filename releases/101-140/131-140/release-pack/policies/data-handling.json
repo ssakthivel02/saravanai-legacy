@@ -1,0 +1,12 @@
+{
+  "classifications": [
+    "public",
+    "internal",
+    "confidential",
+    "restricted"
+  ],
+  "restrictedDataExternalRouting": "deny",
+  "tenantScopeRequired": true,
+  "retentionPolicyRequired": true,
+  "legalHoldOverridesDeletion": true
+}

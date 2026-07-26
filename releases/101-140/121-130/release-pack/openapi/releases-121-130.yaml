@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 121-130 API
+  version: 1.130.0
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+components:
+  securitySchemes:
+    accessToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /api/v1/programme/121/data-residency-and-sovereign-operations/status:
+    get:
+      summary: Return Release 121 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/122/regional-compliance-profiles/status:
+    get:
+      summary: Return Release 122 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/123/multi-region-deployment-orchestration/status:
+    get:
+      summary: Return Release 123 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/124/edge-resilience-and-offline-safety/status:
+    get:
+      summary: Return Release 124 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/125/secure-migration-factory/status:
+    get:
+      summary: Return Release 125 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/126/legacy-modernisation-control-plane/status:
+    get:
+      summary: Return Release 126 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/127/merger-and-acquisition-tenant-separation/status:
+    get:
+      summary: Return Release 127 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/128/third-party-exit-and-portability/status:
+    get:
+      summary: Return Release 128 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/129/business-continuity-exercise-programme/status:
+    get:
+      summary: Return Release 129 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/programme/130/sovereign-resilience-assurance-gate/status:
+    get:
+      summary: Return Release 130 status
+      security: [{accessToken: []}]
+      responses:
+        '200': {description: Tenant-scoped status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}

@@ -1,0 +1,1 @@
+import test from "node:test";import assert from "node:assert/strict";const d={public:false,paid:false,billing:false,autonomous:false,crossTenant:false};test("unsafe defaults disabled",()=>assert.equal(Object.values(d).every(v=>v===false),true));
