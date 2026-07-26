@@ -3,6 +3,7 @@ import { handleFiles } from './files.js';
 import { handleOwnerApi } from './owner-api.js';
 import { handleGovernance, GOVERNANCE_RELEASE } from './governance.js';
 import { handleRuntimeWave1, RUNTIME_WAVE_1_RELEASE } from './runtime-wave1.js';
+import { handleRuntimeWave2, RUNTIME_WAVE_2_RELEASE } from './runtime-wave2.js';
 import { RELEASE, premiumEnabled, providerStatus } from './router.js';
 
 export default {
@@ -17,6 +18,9 @@ export default {
         governanceRelease: GOVERNANCE_RELEASE,
         runtimeWave1Release: RUNTIME_WAVE_1_RELEASE,
         runtimeWave1Enabled: String(env.RUNTIME_WAVE1_ENABLED || '').toLowerCase() === 'true',
+        runtimeWave2Release: RUNTIME_WAVE_2_RELEASE,
+        runtimeWave2Enabled: String(env.RUNTIME_WAVE2_ENABLED || '').toLowerCase() === 'true',
+        runtimeWave2EmergencyStopped: String(env.RUNTIME_WAVE2_EMERGENCY_STOP || 'true').toLowerCase() !== 'false',
         aiRuntime: Boolean(env.AI),
         costPolicy: 'free-first',
         premiumProvidersEnabled: premiumEnabled(env),
@@ -30,6 +34,7 @@ export default {
         }
       });
     }
+    if (url.pathname.startsWith('/api/v1/runtime/v2')) return handleRuntimeWave2(request, env, url);
     if (url.pathname.startsWith('/api/v1/runtime')) return handleRuntimeWave1(request, env, url);
     if (url.pathname.startsWith('/api/v1/governance')) return handleGovernance(request, env, url);
     if (url.pathname.startsWith('/api/v1/files')) return handleFiles(request, env, url);

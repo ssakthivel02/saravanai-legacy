@@ -1,0 +1,126 @@
+{
+  "name": "SakthiAI Runtime Wave 2 — Bounded Agents and Approval Controls",
+  "fileCountBeforeManifest": 24,
+  "files": [
+    {
+      "path": ".github/workflows/runtime-wave-2-validation.yml",
+      "bytes": 994,
+      "sha256": "7d446fcb946f9073869baf67ad35d9568a6becbe5e8d2ae610aba5c8d9b45fcd"
+    },
+    {
+      "path": "RUNTIME_WAVE_2_BASELINE.json",
+      "bytes": 421,
+      "sha256": "56495adf963bef0868635ebe4422a64b0689470cfcc39a91084f1e1d3fbe9ffa"
+    },
+    {
+      "path": "RUNTIME_WAVE_2_UPLOAD_README.md",
+      "bytes": 441,
+      "sha256": "93b9173dc1e5ccba46d7cf6a43b976b4011d2632aa58539dabc2809b90354889"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_2_ACCEPTANCE_CHECKLIST.md",
+      "bytes": 606,
+      "sha256": "c09ea42666cc5fe558722b46ace516d104b03a123229832fd73b8b0445dc26bf"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_2_HLD.md",
+      "bytes": 344,
+      "sha256": "eb339a7186c35b9e874af7350d01d6e115309b307e67ba14a65df18f8c519b20"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_2_IMPLEMENTATION.md",
+      "bytes": 922,
+      "sha256": "defb3b42d7b6899fa93d08df298eec71b8b36d5a85a1b2531a94edb26a0dda82"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_2_LLD.md",
+      "bytes": 599,
+      "sha256": "d0846873eb42e70e32c77fb91e05e53dfc4d6348dffdd852911cb2a716813895"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_2_ROLLOUT_AND_ROLLBACK.md",
+      "bytes": 684,
+      "sha256": "72addac35ea23e0fa02116b32a5eda6629f5984a14fff31f0a860327f9ef95a1"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_2_THREAT_MODEL.md",
+      "bytes": 874,
+      "sha256": "6f41394ee5118c38b72d3bf084e7f11db5cd95735cd04a293d73bf59bf0e22cf"
+    },
+    {
+      "path": "migrations/0004_runtime_wave2.sql",
+      "bytes": 1581,
+      "sha256": "a9241441ae5fd159faea935252997f83ee6aeb4c13ca912a4320645e40207d10"
+    },
+    {
+      "path": "openapi/sakthiai-runtime-wave2.yaml",
+      "bytes": 2454,
+      "sha256": "55ad9a8350355d47211a730556bc95c9e4b1bd55d98780cb222d0cc3904d13e5"
+    },
+    {
+      "path": "scripts/validate-runtime-wave2.mjs",
+      "bytes": 2349,
+      "sha256": "322143651f891793dcaa5095dc55690bd0ea27b34a7a4b88f14cfea723f1ec87"
+    },
+    {
+      "path": "src/entry.js",
+      "bytes": 2324,
+      "sha256": "0d68564a1f9b38e9ac19d1ae66e9307415e8863e692a84eae19c27b25528eee9"
+    },
+    {
+      "path": "src/runtime-v2/approval.js",
+      "bytes": 1195,
+      "sha256": "a6ed5ab58aad4296cada2349fd7bb948a04ff0f9a95fb8bc24ed451a94f5c454"
+    },
+    {
+      "path": "src/runtime-v2/boundary.js",
+      "bytes": 1369,
+      "sha256": "e93d2ead8fef47df88dd1eb34e7ffd4facff55343ae331da35ede859c33a228f"
+    },
+    {
+      "path": "src/runtime-v2/idempotency.js",
+      "bytes": 815,
+      "sha256": "e588b58fd0ed70711a6837ab36b541b438cc175388c39c29875c375aaf06e58f"
+    },
+    {
+      "path": "src/runtime-v2/lease.js",
+      "bytes": 1234,
+      "sha256": "98d4327ffa44a1e5ca0225c5bc17f298580dd4e9395ff12d96c8e45258ee05a3"
+    },
+    {
+      "path": "src/runtime-v2/observability.js",
+      "bytes": 1062,
+      "sha256": "a2426c1cb2264ac779b2c92fa3c0ae2675906f8e70aaea4973847b746dfa529b"
+    },
+    {
+      "path": "src/runtime-v2/planner.js",
+      "bytes": 1741,
+      "sha256": "17a29a190eb583d5083ccdd225fb255ce0bb7959d2fa85592027df51eb92c802"
+    },
+    {
+      "path": "src/runtime-v2/rollback.js",
+      "bytes": 1087,
+      "sha256": "273d876b71b1be47e8c94e03a0d0fa5c18b8e7f33a0daa9776466d0d7205bfa1"
+    },
+    {
+      "path": "src/runtime-v2/shared.js",
+      "bytes": 1421,
+      "sha256": "a2f79332ebe8f2eb75736e1c86eb5c2a6814ad776367ab5f432b7a46e85acc1f"
+    },
+    {
+      "path": "src/runtime-v2/tool-registry.js",
+      "bytes": 1090,
+      "sha256": "38f5378ad7f6b38ad1aa5e05f743f2bf6a435370ec8066f50982ffccf0cd4b83"
+    },
+    {
+      "path": "src/runtime-wave2.js",
+      "bytes": 4183,
+      "sha256": "b787f2bda0eca1d4de748e075116e4282f4a6428562ae3a71b6bef41eea239f8"
+    },
+    {
+      "path": "tests/runtime-wave2.test.mjs",
+      "bytes": 9303,
+      "sha256": "40a9e5f73b72fa7daf95e01232150cba12999b2a12ee38054f2878efe95f4785"
+    }
+  ]
+}
