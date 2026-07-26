@@ -1,0 +1,51 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Runtime Wave 6 API
+  version: 6.0.0
+  description: Private-owner DevSecOps and software-supply-chain metadata evaluation. No external scanning, signing, repository changes, package installation, merging or deployment.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+components:
+  securitySchemes:
+    cloudflareAccess:
+      type: apiKey
+      in: header
+      name: cf-access-jwt-assertion
+paths:
+  /api/v1/runtime/v6/status:
+    get:
+      summary: Return safe Wave 6 state
+      responses:
+        '200': { description: Status returned }
+  /api/v1/runtime/v6/sbom/validate:
+    post:
+      summary: Validate caller-supplied SBOM metadata
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Valid }
+        '422': { description: Rejected }
+  /api/v1/runtime/v6/dependencies/assess:
+    post:
+      summary: Assess caller-supplied dependency findings without external lookup
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Assessment returned }
+  /api/v1/runtime/v6/provenance/validate:
+    post:
+      summary: Validate supplied build provenance metadata
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Valid }
+  /api/v1/runtime/v6/secrets/inspect:
+    post:
+      summary: Inspect supplied text for bounded secret markers
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Inspection returned }
+  /api/v1/runtime/v6/releases/gate:
+    post:
+      summary: Evaluate required release evidence without merging or deploying
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Eligible for human approval }
+        '422': { description: Blocked }
