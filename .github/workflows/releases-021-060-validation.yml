@@ -1,0 +1,27 @@
+name: Releases 021-060 validation
+on:
+  pull_request:
+    paths:
+      - 'releases/021-060/**'
+      - '.github/workflows/releases-021-060-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pack: ['021-030', '031-040', '041-050', '051-060']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify pack exists
+        run: test -f releases/021-060/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Validate pack
+        run: node releases/021-060/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Test pack
+        run: node --test releases/021-060/${{ matrix.pack }}/release-pack/tests/*.test.mjs
