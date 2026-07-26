@@ -4,6 +4,7 @@ on:
     paths:
       - 'src/entry.js'
       - 'src/runtime-waves12-30.js'
+      - 'src/runtime-v12-30/**'
       - 'tests/runtime-waves12-30.test.mjs'
       - 'scripts/validate-runtime-waves12-30.mjs'
       - 'migrations/0014_runtime_waves12_30.sql'
