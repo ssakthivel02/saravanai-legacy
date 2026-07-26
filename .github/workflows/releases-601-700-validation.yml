@@ -1,0 +1,37 @@
+name: Releases 601-700 validation
+on:
+  pull_request:
+    paths:
+      - 'releases/601-700/**'
+      - '.github/workflows/releases-601-700-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pack:
+          - '601-610'
+          - '611-620'
+          - '621-630'
+          - '631-640'
+          - '641-650'
+          - '651-660'
+          - '661-670'
+          - '671-680'
+          - '681-690'
+          - '691-700'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify pack exists
+        run: test -f releases/601-700/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Validate pack
+        run: node releases/601-700/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Test pack
+        run: node --test releases/601-700/${{ matrix.pack }}/release-pack/tests/*.test.mjs

@@ -1,0 +1,19 @@
+import type { ContentModerationAndSensitiveContextReview } from "./contracts";
+import { validateContentModerationAndSensitiveContextReview } from "./contracts";
+import { evaluateContentModerationAndSensitiveContextReview } from "./policy";
+
+export function assessRelease647(value: ContentModerationAndSensitiveContextReview) {
+  const validationErrors = validateContentModerationAndSensitiveContextReview(value);
+  if (validationErrors.length) {
+    return {
+      valid: false,
+      validationErrors,
+      decision: { allowed: false, reason: "validation_failed", obligations: ["correct_input"] }
+    };
+  }
+  return {
+    valid: true,
+    validationErrors: [],
+    decision: evaluateContentModerationAndSensitiveContextReview(value)
+  };
+}

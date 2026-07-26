@@ -1,0 +1,12 @@
+{
+  "classifications": [
+    "public",
+    "internal",
+    "confidential",
+    "restricted"
+  ],
+  "restrictedExternalRouting": "deny",
+  "retentionPolicyRequired": true,
+  "legalHoldOverridesDeletion": true,
+  "promptAndFileContentLogging": "deny"
+}
