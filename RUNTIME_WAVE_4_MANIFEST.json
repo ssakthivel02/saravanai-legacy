@@ -1,0 +1,122 @@
+{
+  "name": "SakthiAI Runtime Wave 4 — Workspace and Trust Controls",
+  "generatedAt": "2026-07-26T21:11:27.631615+00:00",
+  "fileCountBeforeManifest": 23,
+  "files": [
+    {
+      "path": ".github/workflows/runtime-wave-4-validation.yml",
+      "bytes": 1182,
+      "sha256": "94a04e4c0bc9fbb2fb3a2a9e8f4136e9236d0c85e156fc92faab57f7cfbcda24"
+    },
+    {
+      "path": "RUNTIME_WAVE_4_BASELINE.json",
+      "bytes": 393,
+      "sha256": "7e35b4dfa91416491e4f10c241e74876851895047606868bdcf07aadf4f151cf"
+    },
+    {
+      "path": "RUNTIME_WAVE_4_UPLOAD_README.md",
+      "bytes": 322,
+      "sha256": "9e33a58122fe6611f2e95019a4bbe2b5807e23a5343ce85568a0b96020796091"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_4_ACCEPTANCE_CHECKLIST.md",
+      "bytes": 315,
+      "sha256": "9fc5fb7aa73c609f51dc87ea50a7b5c19a6a79f7bfc2aed359d1fd9d5790d09c"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_4_HLD.md",
+      "bytes": 287,
+      "sha256": "aa719332cc2352b851757621ecf0bcac4913f5b1111fbf1b905c5a11f060e6f9"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_4_IMPLEMENTATION.md",
+      "bytes": 354,
+      "sha256": "0de4563b9b4e5128a45bd98c7c96bf5ec545ee4652a88e83b7d99fce2aa06d44"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_4_LLD.md",
+      "bytes": 307,
+      "sha256": "e12990408038780a21cd20917f8c9bcfc803dfada728166b6d569b6cf6a29065"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_4_ROLLOUT_AND_ROLLBACK.md",
+      "bytes": 305,
+      "sha256": "139afcfc9e7f7d809bc6fd3b4628d4ffd5cc175d841f3a10008f35de3917137d"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_4_THREAT_MODEL.md",
+      "bytes": 531,
+      "sha256": "5ce1ebbdf3fe2f6bfcfd13b2da9005d1b7437bce6f6720bad7f41a892a87ab93"
+    },
+    {
+      "path": "migrations/0006_runtime_wave4.sql",
+      "bytes": 1117,
+      "sha256": "16eacd0e55b849751f3e9a92e6c08b0b7f1d58c976442bd5856308160801f1ce"
+    },
+    {
+      "path": "openapi/sakthiai-runtime-wave4.yaml",
+      "bytes": 1263,
+      "sha256": "07569159df538f00bbb49d3a9929743a8a608946c6c8e77e886cb040588da3fc"
+    },
+    {
+      "path": "scripts/validate-runtime-wave4.mjs",
+      "bytes": 2061,
+      "sha256": "65cebbfc17a722ad14b79bf446294e1944365d706f1cebf7ab0f799fd837531d"
+    },
+    {
+      "path": "src/entry.js",
+      "bytes": 3216,
+      "sha256": "f3269d59a232ad52775647519dad5e02e5f9838d973c7ba4565c5c39635190f7"
+    },
+    {
+      "path": "src/runtime-v4/audit.js",
+      "bytes": 965,
+      "sha256": "d4ef3f51554c9f07e32e3ae6dda159c59f71803961e9eb99d55db3917c897a38"
+    },
+    {
+      "path": "src/runtime-v4/core.js",
+      "bytes": 2352,
+      "sha256": "ca5877f870711b28449223dc7232a68a003b216a82860f66040553b0cf00fd89"
+    },
+    {
+      "path": "src/runtime-v4/governance.js",
+      "bytes": 2882,
+      "sha256": "aa428eee719532d9aa9781a97884db8e5a62672e62a904c7232dc4152769958e"
+    },
+    {
+      "path": "src/runtime-v4/membership.js",
+      "bytes": 948,
+      "sha256": "e1b3c8d7916ee26691a967b698fe35a931db0d0bd06fbd32f45050928de92e5a"
+    },
+    {
+      "path": "src/runtime-v4/roles.js",
+      "bytes": 847,
+      "sha256": "20e4b0e6be4ff0c64b229f05d3f0f42c8688684d1a4d65e12e207c2fa17c55a2"
+    },
+    {
+      "path": "src/runtime-v4/sharing.js",
+      "bytes": 1011,
+      "sha256": "844918f58499d7463da580e7c02da638bd38b409187fb4dc925833eb39f4596f"
+    },
+    {
+      "path": "src/runtime-v4/trust.js",
+      "bytes": 1414,
+      "sha256": "00ef6338e8570652f52cfbaef15619ca55bc9be5b7658513b31ed307d9d495a7"
+    },
+    {
+      "path": "src/runtime-v4/workspace.js",
+      "bytes": 933,
+      "sha256": "4056a31d27ac1100b32546537bef30d93d92a7644e119f839c9bc2ead3e6919f"
+    },
+    {
+      "path": "src/runtime-wave4.js",
+      "bytes": 2986,
+      "sha256": "bafb069ceecec8c6967cff39a5c91a882caf284e96c9e328be436a18115a96f8"
+    },
+    {
+      "path": "tests/runtime-wave4.test.mjs",
+      "bytes": 7040,
+      "sha256": "cf063fb7696494015be8ab7a3af59eba82c00edca73afa466c23c58d72c83f9e"
+    }
+  ]
+}
