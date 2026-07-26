@@ -1,0 +1,152 @@
+{
+  "name": "SakthiAI Runtime Wave 5 — Observability and SRE Controls",
+  "generatedAt": "2026-07-26T21:31:54.617174+00:00",
+  "fileCountBeforeManifest": 29,
+  "files": [
+    {
+      "path": ".github/workflows/runtime-wave-5-validation.yml",
+      "bytes": 1333,
+      "sha256": "c7129708d4ff007ab13ffa14a88ca56cd97747151a2de8ce0f58119e9fe49ed9"
+    },
+    {
+      "path": "RUNTIME_WAVE_5_BASELINE.json",
+      "bytes": 471,
+      "sha256": "44c2d014f519bbd6afb13240aa6048c3f64836f522103074b39b14e38047c8fa"
+    },
+    {
+      "path": "RUNTIME_WAVE_5_UPLOAD_README.md",
+      "bytes": 326,
+      "sha256": "be1981087b19d9abb385be5cf77df87897270577d306e410f8c9cc3b458c37f6"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_5_ACCEPTANCE_CHECKLIST.md",
+      "bytes": 436,
+      "sha256": "088f9fcdf6717e7af29c5104f567eb15978a3690548639ee196e4cc70fd5c014"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_5_HLD.md",
+      "bytes": 326,
+      "sha256": "868fea1b0da3e4a10d909168bcebca8a5256872d43a5f6b5e490d810ed150b97"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_5_IMPLEMENTATION.md",
+      "bytes": 584,
+      "sha256": "94f6219384c50268d5791cbe0782da850a86e0bc8a8e29a4c225497aa84a4e05"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_5_INCIDENT_POLICY.md",
+      "bytes": 389,
+      "sha256": "36ff9126ef0dcde185c4044744a3f096dfdea271b43116b7158663ff96d384f4"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_5_LLD.md",
+      "bytes": 580,
+      "sha256": "3b4923311e8e34ba1f4c661319fe2e72dd6410b5dc28f519b11630b8e65dfbad"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_5_ROLLOUT_AND_ROLLBACK.md",
+      "bytes": 477,
+      "sha256": "7dd92e3084813e899b624aab01ceca39df333091b7d4f9756e8e6a6cc4d63def"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_5_SLO_POLICY.md",
+      "bytes": 326,
+      "sha256": "82a328f4b4d7097255f68100ecc7362ecdee6e8c7399d7d07c5e4c07598e690f"
+    },
+    {
+      "path": "docs/RUNTIME_WAVE_5_THREAT_MODEL.md",
+      "bytes": 692,
+      "sha256": "9d77900a150268a6964543b4dd3933d796bba9175cc18c4312a53625e56d07f1"
+    },
+    {
+      "path": "docs/adr/ADR-003-NON-EXECUTING-SRE-CONTROLS.md",
+      "bytes": 419,
+      "sha256": "b39a91363afed4d06fa45cdeff2af73ae3c3ade9e45c37012331ac76e8d127c0"
+    },
+    {
+      "path": "migrations/0007_runtime_wave5.sql",
+      "bytes": 1005,
+      "sha256": "6c92f0334be8c53a9da4b62d36da73b25c251ada22a55cbea047e4e611c65720"
+    },
+    {
+      "path": "openapi/sakthiai-runtime-wave5.yaml",
+      "bytes": 1769,
+      "sha256": "838cecca90afe531d628984df915c01d849c9f121d2e5150ba4c76b839b9b16d"
+    },
+    {
+      "path": "scripts/validate-runtime-wave5.mjs",
+      "bytes": 2244,
+      "sha256": "c6b8a3c675cbf1380c8f55f732fa10943a1a8b65e2e3b60ef76c7c28177cd01e"
+    },
+    {
+      "path": "src/entry.js",
+      "bytes": 3662,
+      "sha256": "7f0b1790de56fa37ea0184c856ba31169fb83fda1724b46bf3f74c5248e615d4"
+    },
+    {
+      "path": "src/runtime-v5/alerting.js",
+      "bytes": 995,
+      "sha256": "bf7c43d868030263f8d897999884b3f1145f4cac163b2dc7e5a1fb4ae2b08df2"
+    },
+    {
+      "path": "src/runtime-v5/burn-rate.js",
+      "bytes": 1001,
+      "sha256": "2a5e88ad25c7175f969a05ebb39d246188d09afa0f083455bc659cf9c6fdf3af"
+    },
+    {
+      "path": "src/runtime-v5/change-risk.js",
+      "bytes": 1187,
+      "sha256": "ba0da72a422b8e98b59aec7b3100caae88d4d4912ee33d1a074b573b6980ed4d"
+    },
+    {
+      "path": "src/runtime-v5/core.js",
+      "bytes": 2645,
+      "sha256": "63f2a0f15f58d252d9a18bbc403de2f38ad424daa216c98aa0aef6af61394776"
+    },
+    {
+      "path": "src/runtime-v5/deployment.js",
+      "bytes": 1839,
+      "sha256": "ccb3f4402908b4b0433c0a0a32815dc2ac587b3c00dd44b6658a94c3cb6493d3"
+    },
+    {
+      "path": "src/runtime-v5/evidence.js",
+      "bytes": 960,
+      "sha256": "89f43faa9e35865bc82e32e55d0a127ea83c4bc63c0b5b67f1f3549205b471c3"
+    },
+    {
+      "path": "src/runtime-v5/health.js",
+      "bytes": 1132,
+      "sha256": "4fe6b23ab3f769d07b4f5d5f9eb771a4dbdda16fa2b08bf7abf7cd2aabde8d66"
+    },
+    {
+      "path": "src/runtime-v5/incident.js",
+      "bytes": 1204,
+      "sha256": "141ba7f8b94f980645a64b3fae43b04826e23036d39387711f7912586ef90cd4"
+    },
+    {
+      "path": "src/runtime-v5/runbook.js",
+      "bytes": 1049,
+      "sha256": "f5311d5eb46383c28f28de7d89f8a974a124a90f2abad9620dfda08a77e931bc"
+    },
+    {
+      "path": "src/runtime-v5/slo.js",
+      "bytes": 2138,
+      "sha256": "fe4b81febd18a181ada981973c6ef642e490e138c57b9ba152150efa5f1b3c39"
+    },
+    {
+      "path": "src/runtime-v5/telemetry.js",
+      "bytes": 1047,
+      "sha256": "2a4531edee3c4afb44199772ecb1236192b85bcfe5f4f7de7283dce68264ad45"
+    },
+    {
+      "path": "src/runtime-wave5.js",
+      "bytes": 3351,
+      "sha256": "ed95ad75df2f0d146f7dec719d8b8c12f403c89d4178371c5cc86e832e85a4e2"
+    },
+    {
+      "path": "tests/runtime-wave5.test.mjs",
+      "bytes": 8900,
+      "sha256": "35dcd94a5e2f4230090df5bf7306d3a5687d53a12c9117a7bb63a8fe2bb196a4"
+    }
+  ]
+}

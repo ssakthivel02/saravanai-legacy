@@ -1,0 +1,51 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Runtime Wave 5 API
+  version: 5.0.0
+  description: Private-owner observability and SRE evaluation APIs. No probes, alerts, incidents, deployments, rollbacks, writes or paid monitoring.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+components:
+  securitySchemes:
+    cloudflareAccess:
+      type: apiKey
+      in: header
+      name: cf-access-jwt-assertion
+paths:
+  /api/v1/runtime/v5/status:
+    get:
+      summary: Return safe Wave 5 state
+      responses:
+        '200': { description: Status returned }
+  /api/v1/runtime/v5/slo/validate:
+    post:
+      summary: Validate an SLO definition without persisting it
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Valid }
+        '422': { description: Rejected }
+  /api/v1/runtime/v5/slo/evaluate:
+    post:
+      summary: Evaluate supplied SLI samples without querying telemetry
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Evaluation returned }
+  /api/v1/runtime/v5/incidents/triage:
+    post:
+      summary: Classify incident severity without creating an incident or sending a page
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Triage returned }
+  /api/v1/runtime/v5/deployments/gate:
+    post:
+      summary: Evaluate deployment evidence without deploying
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Gate returned }
+        '422': { description: Blocked }
+  /api/v1/runtime/v5/rollbacks/plan:
+    post:
+      summary: Build a human-reviewed rollback plan without commands or execution
+      security: [{ cloudflareAccess: [] }]
+      responses:
+        '200': { description: Plan returned }
