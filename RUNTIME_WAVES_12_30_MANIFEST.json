@@ -1,0 +1,57 @@
+{
+  "name": "SakthiAI Runtime Waves 12–30 — Enterprise Completion Compact Pack",
+  "generatedAt": "2026-07-26T23:18:05.566266+00:00",
+  "fileCountBeforeManifest": 10,
+  "files": [
+    {
+      "path": ".github/workflows/runtime-waves-12-30-validation.yml",
+      "bytes": 1418,
+      "sha256": "3a784839abd0a7b4de8cc262fa33d50755f92b81f882f6436ffd50359ac292a4"
+    },
+    {
+      "path": "RUNTIME_WAVES_12_30_BASELINE.json",
+      "bytes": 667,
+      "sha256": "e14d49bb8cb9109544184f87161cd095caa46a2ed4c11998eed212b96d002b61"
+    },
+    {
+      "path": "RUNTIME_WAVES_12_30_UPLOAD_README.md",
+      "bytes": 376,
+      "sha256": "ad43526eacde3e73dd9e0f9cede4b508c82016d274c86a59675c95ff28cf2288"
+    },
+    {
+      "path": "docs/RUNTIME_WAVES_12_30_ENTERPRISE_COMPLETION.md",
+      "bytes": 16707,
+      "sha256": "78f997fbe6f07dc5559df708acb3eb2df94f8355882c8053d605b89e5c324e03"
+    },
+    {
+      "path": "migrations/0014_runtime_waves12_30.sql",
+      "bytes": 672,
+      "sha256": "8bfa8b2925f6d08242d483a44943439a4fddef000dfcf45f8061b9683f184d55"
+    },
+    {
+      "path": "openapi/sakthiai-runtime-waves12-30.yaml",
+      "bytes": 10659,
+      "sha256": "be527294c3607213252f0efc695956c4cc6a8af50f2a20efe9f30ba505449281"
+    },
+    {
+      "path": "scripts/validate-runtime-waves12-30.mjs",
+      "bytes": 2692,
+      "sha256": "35c9134dc6e117640d483bf553ed3a8f558533a5fb3d11c7c8038d8dbd561272"
+    },
+    {
+      "path": "src/entry.js",
+      "bytes": 6058,
+      "sha256": "b53b928ca2af2a329a11dc1da81668f03c3410f82570b42ba27de6a8764138f3"
+    },
+    {
+      "path": "src/runtime-waves12-30.js",
+      "bytes": 27669,
+      "sha256": "fe5737b2accc101f5be4d785c2ff9092a38dbc4fc685e66d3cfc0a9ba893e24a"
+    },
+    {
+      "path": "tests/runtime-waves12-30.test.mjs",
+      "bytes": 8888,
+      "sha256": "b32fe942cbdfb886d74cd1ad581d4df9515d26e9a94a5f0a3468366ba0b3736e"
+    }
+  ]
+}
