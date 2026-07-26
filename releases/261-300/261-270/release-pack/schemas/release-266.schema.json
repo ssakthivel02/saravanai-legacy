@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Communication Automation Governance",
+  "type": "object",
+  "required": [
+    "actionId",
+    "tenantId",
+    "channel",
+    "recipientRefs",
+    "templateId",
+    "approvalId",
+    "externalSend",
+    "status"
+  ],
+  "properties": {
+    "actionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "channel": {
+      "enum": [
+        "email",
+        "calendar",
+        "collaboration"
+      ]
+    },
+    "recipientRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "templateId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approvalId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "externalSend": {
+      "type": "boolean"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved",
+        "sent",
+        "cancelled"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

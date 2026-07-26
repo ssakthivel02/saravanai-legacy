@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Children and Family Experience Safety",
+  "type": "object",
+  "required": [
+    "profileId",
+    "ageBand",
+    "parentalControlRequired",
+    "behaviouralProfilingAllowed",
+    "safeguardingOwner",
+    "reportingChannel",
+    "status"
+  ],
+  "properties": {
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ageBand": {
+      "enum": [
+        "child",
+        "teen"
+      ]
+    },
+    "parentalControlRequired": {
+      "const": true
+    },
+    "behaviouralProfilingAllowed": {
+      "const": false
+    },
+    "safeguardingOwner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reportingChannel": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

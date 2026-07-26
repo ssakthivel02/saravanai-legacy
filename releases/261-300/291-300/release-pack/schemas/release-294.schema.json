@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Model and Configuration Portability",
+  "type": "object",
+  "required": [
+    "packageId",
+    "tenantId",
+    "formatIds",
+    "schemaVersion",
+    "sha256",
+    "exportedAt",
+    "expiresAt",
+    "status"
+  ],
+  "properties": {
+    "packageId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "formatIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "schemaVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exportedAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expiresAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "created",
+        "downloaded",
+        "expired",
+        "revoked"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

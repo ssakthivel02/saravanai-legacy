@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Automation Value and Performance",
+  "type": "object",
+  "required": [
+    "metricId",
+    "automationId",
+    "owner",
+    "metric",
+    "baselineValue",
+    "currentValue",
+    "evidenceRefs",
+    "asOf"
+  ],
+  "properties": {
+    "metricId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "automationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metric": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baselineValue": {
+      "type": "number",
+      "minimum": 0
+    },
+    "currentValue": {
+      "type": "number",
+      "minimum": 0
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "asOf": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

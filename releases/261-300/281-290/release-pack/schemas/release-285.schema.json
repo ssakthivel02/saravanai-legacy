@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Privacy Operations and Rights Automation",
+  "type": "object",
+  "required": [
+    "requestId",
+    "tenantId",
+    "subjectRef",
+    "requestType",
+    "identityVerified",
+    "legalHoldRefs",
+    "dueAt",
+    "status"
+  ],
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requestType": {
+      "enum": [
+        "access",
+        "correction",
+        "deletion",
+        "portability",
+        "objection"
+      ]
+    },
+    "identityVerified": {
+      "type": "boolean"
+    },
+    "legalHoldRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "dueAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "received",
+        "verified",
+        "processing",
+        "completed",
+        "rejected"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

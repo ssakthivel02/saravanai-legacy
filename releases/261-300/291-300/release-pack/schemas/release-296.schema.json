@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Customer Migration and Upgrade Factory",
+  "type": "object",
+  "required": [
+    "migrationId",
+    "tenantId",
+    "sourceVersion",
+    "targetVersion",
+    "rehearsalEvidenceRefs",
+    "compatibilityEvidenceRefs",
+    "rollbackRef",
+    "status"
+  ],
+  "properties": {
+    "migrationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rehearsalEvidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "compatibilityEvidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "rollbackRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "rehearsed",
+        "cutover",
+        "completed",
+        "rolled_back"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,6 @@
+{
+  "regionalOwnerRequired": true,
+  "operationalHandoverRequired": true,
+  "providerExitRequired": true,
+  "multiPartyGoNoGoRequired": true
+}

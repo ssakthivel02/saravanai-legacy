@@ -1,0 +1,105 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 291–300 API
+    version: 2.300.0
+    description: Private automation, knowledge, compliance and global-readiness contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/291/global-tenant-and-regional-operations/status:
+  get:
+    summary: Return Release 291 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/292/platform-marketplace-and-plugin-operations/status:
+  get:
+    summary: Return Release 292 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/293/developer-ecosystem-and-api-programme/status:
+  get:
+    summary: Return Release 293 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/294/data-model-and-configuration-portability/status:
+  get:
+    summary: Return Release 294 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/295/release-train-and-portfolio-orchestration/status:
+  get:
+    summary: Return Release 295 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/296/customer-migration-and-upgrade-factory/status:
+  get:
+    summary: Return Release 296 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/297/global-support-and-follow-the-sun-operations/status:
+  get:
+    summary: Return Release 297 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/298/performance-scale-and-cost-certification-readiness/status:
+  get:
+    summary: Return Release 298 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/299/enterprise-general-availability-readiness-board/status:
+  get:
+    summary: Return Release 299 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/300/sakthiai-enterprise-programme-completion-gate-v2/status:
+  get:
+    summary: Return Release 300 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+

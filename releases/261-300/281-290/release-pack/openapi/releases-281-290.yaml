@@ -1,0 +1,105 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 281–290 API
+    version: 2.290.0
+    description: Private automation, knowledge, compliance and global-readiness contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/281/enterprise-control-library/status:
+  get:
+    summary: Return Release 281 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/282/automated-evidence-collection/status:
+  get:
+    summary: Return Release 282 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/283/audit-planning-and-fieldwork/status:
+  get:
+    summary: Return Release 283 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/284/regulatory-obligation-management/status:
+  get:
+    summary: Return Release 284 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/285/privacy-operations-and-rights-automation/status:
+  get:
+    summary: Return Release 285 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/286/model-risk-management/status:
+  get:
+    summary: Return Release 286 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/287/third-party-assurance-and-monitoring/status:
+  get:
+    summary: Return Release 287 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/288/business-continuity-and-crisis-exercises/status:
+  get:
+    summary: Return Release 288 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/289/executive-risk-and-compliance-reporting/status:
+  get:
+    summary: Return Release 289 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/290/trust-and-compliance-assurance-gate/status:
+  get:
+    summary: Return Release 290 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+

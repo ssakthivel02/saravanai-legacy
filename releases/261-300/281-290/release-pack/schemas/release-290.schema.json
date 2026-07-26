@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trust and Compliance Assurance Gate",
+  "type": "object",
+  "required": [
+    "gateId",
+    "releaseRange",
+    "controlEvidence",
+    "auditEvidence",
+    "privacyEvidence",
+    "continuityEvidence",
+    "decision"
+  ],
+  "properties": {
+    "gateId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "releaseRange": {
+      "type": "string"
+    },
+    "controlEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "auditEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "privacyEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "continuityEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "decision": {
+      "enum": [
+        "pending",
+        "go",
+        "conditional_go",
+        "no_go"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

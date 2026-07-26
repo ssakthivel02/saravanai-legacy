@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Third-Party Assurance and Monitoring",
+  "type": "object",
+  "required": [
+    "assuranceId",
+    "supplierId",
+    "owner",
+    "service",
+    "evidenceRefs",
+    "findingIds",
+    "exitPlanId",
+    "reviewAt"
+  ],
+  "properties": {
+    "assuranceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supplierId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "service": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "findingIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "exitPlanId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewAt": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

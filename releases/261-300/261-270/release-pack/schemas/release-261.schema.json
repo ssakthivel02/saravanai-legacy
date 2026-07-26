@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Enterprise Process Catalogue",
+  "type": "object",
+  "required": [
+    "processId",
+    "tenantId",
+    "name",
+    "owner",
+    "criticality",
+    "dependencyIds",
+    "dataClassifications",
+    "status"
+  ],
+  "properties": {
+    "processId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "criticality": {
+      "enum": [
+        "critical",
+        "important",
+        "standard"
+      ]
+    },
+    "dependencyIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "dataClassifications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "active",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

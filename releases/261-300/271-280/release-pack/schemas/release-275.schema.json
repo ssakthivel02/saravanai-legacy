@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Search Discovery and Recommendation Governance",
+  "type": "object",
+  "required": [
+    "profileId",
+    "tenantId",
+    "indexRefs",
+    "rankingPolicyId",
+    "accessFilterRequired",
+    "explanationAvailable",
+    "personalisationOptOutAvailable",
+    "status"
+  ],
+  "properties": {
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "indexRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "rankingPolicyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "accessFilterRequired": {
+      "const": true
+    },
+    "explanationAvailable": {
+      "const": true
+    },
+    "personalisationOptOutAvailable": {
+      "const": true
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved",
+        "retired"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

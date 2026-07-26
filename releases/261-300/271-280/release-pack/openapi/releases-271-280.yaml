@@ -1,0 +1,105 @@
+openapi: 3.1.0
+  info:
+    title: SakthiAI Releases 271–280 API
+    version: 2.280.0
+    description: Private automation, knowledge, compliance and global-readiness contracts.
+  servers:
+    - url: https://sakthiai.omsaravanabhava.org
+  components:
+    securitySchemes:
+      accessToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  paths:
+    /api/v1/programme/271/enterprise-knowledge-publishing/status:
+  get:
+    summary: Return Release 271 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/272/content-lifecycle-and-editorial-governance/status:
+  get:
+    summary: Return Release 272 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/273/multimodal-content-generation-safety/status:
+  get:
+    summary: Return Release 273 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/274/translation-transliteration-and-terminology/status:
+  get:
+    summary: Return Release 274 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/275/search-discovery-and-recommendation-governance/status:
+  get:
+    summary: Return Release 275 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/276/learning-assessment-and-credential-readiness/status:
+  get:
+    summary: Return Release 276 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/277/children-and-family-experience-safety/status:
+  get:
+    summary: Return Release 277 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/278/religious-cultural-and-heritage-integrity/status:
+  get:
+    summary: Return Release 278 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/279/public-knowledge-transparency-and-corrections/status:
+  get:
+    summary: Return Release 279 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+/api/v1/programme/280/knowledge-and-experience-assurance-gate/status:
+  get:
+    summary: Return Release 280 status
+    security:
+      - accessToken: []
+    responses:
+      '200': {description: Tenant-scoped status}
+      '401': {description: Authentication required}
+      '403': {description: Authorisation denied}
+

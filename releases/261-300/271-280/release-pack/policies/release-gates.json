@@ -1,0 +1,28 @@
+{
+  "required": [
+    "pull_request",
+    "existing_tests",
+    "pack_tests",
+    "tenant_isolation",
+    "four_eyes",
+    "secret_scan",
+    "dependency_review",
+    "sbom",
+    "schema_review",
+    "migration_review",
+    "privacy_review",
+    "accessibility_review",
+    "cultural_safety_review",
+    "rollback_plan",
+    "evidence_bundle",
+    "owner_approval"
+  ],
+  "forbidden": [
+    "direct_main_push",
+    "plaintext_secret",
+    "self_approval",
+    "unreviewed_production_migration",
+    "silent_paid_activation",
+    "unsupported_certification_claim"
+  ]
+}

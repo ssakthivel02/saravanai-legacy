@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Automated Evidence Collection",
+  "type": "object",
+  "required": [
+    "jobId",
+    "tenantId",
+    "controlIds",
+    "sourceConnectorIds",
+    "minimumDataRequired",
+    "sha256",
+    "expiresAt",
+    "status"
+  ],
+  "properties": {
+    "jobId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "controlIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "sourceConnectorIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "minimumDataRequired": {
+      "const": true
+    },
+    "sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expiresAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "running",
+        "completed",
+        "failed"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

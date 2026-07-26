@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Executive Risk and Compliance Reporting",
+  "type": "object",
+  "required": [
+    "indicatorId",
+    "owner",
+    "domain",
+    "value",
+    "target",
+    "evidenceRefs",
+    "asOf",
+    "status"
+  ],
+  "properties": {
+    "indicatorId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "value": {
+      "type": "number",
+      "minimum": 0
+    },
+    "target": {
+      "type": "number",
+      "minimum": 0
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "asOf": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "healthy",
+        "at_risk",
+        "failed"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

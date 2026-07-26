@@ -1,0 +1,27 @@
+name: Releases 261-300 validation
+on:
+  pull_request:
+    paths:
+      - 'releases/261-300/**'
+      - '.github/workflows/releases-261-300-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pack: ['261-270', '271-280', '281-290', '291-300']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify pack exists
+        run: test -f releases/261-300/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Validate pack
+        run: node releases/261-300/${{ matrix.pack }}/release-pack/scripts/validate-release-pack.mjs
+      - name: Test pack
+        run: node --test releases/261-300/${{ matrix.pack }}/release-pack/tests/*.test.mjs

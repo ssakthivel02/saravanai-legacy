@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Robotic Process Automation Safety",
+  "type": "object",
+  "required": [
+    "executionId",
+    "tenantId",
+    "automationId",
+    "allowedApplications",
+    "idempotencyKey",
+    "maximumSteps",
+    "productionWriteAllowed",
+    "killSwitchAvailable"
+  ],
+  "properties": {
+    "executionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "automationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "allowedApplications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "maximumSteps": {
+      "type": "number",
+      "minimum": 0
+    },
+    "productionWriteAllowed": {
+      "const": false
+    },
+    "killSwitchAvailable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false
+}

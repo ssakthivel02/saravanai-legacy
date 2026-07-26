@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Religious Cultural and Heritage Integrity",
+  "type": "object",
+  "required": [
+    "claimId",
+    "tradition",
+    "claimType",
+    "confidence",
+    "sourceRefs",
+    "sensitivityReviewer",
+    "status"
+  ],
+  "properties": {
+    "claimId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tradition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claimType": {
+      "enum": [
+        "documented",
+        "traditional_belief",
+        "scholarly_interpretation",
+        "unverified"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "sensitivityReviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "reviewed",
+        "published",
+        "withdrawn"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

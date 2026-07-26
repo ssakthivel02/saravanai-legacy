@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Public Knowledge Transparency and Corrections",
+  "type": "object",
+  "required": [
+    "recordId",
+    "publicationId",
+    "sourceRefs",
+    "limitations",
+    "updatedAt",
+    "correctionRefs",
+    "redressChannels",
+    "status"
+  ],
+  "properties": {
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publicationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "updatedAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "correctionRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "redressChannels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "published",
+        "withdrawn"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

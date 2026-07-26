@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Document-Driven Process Automation",
+  "type": "object",
+  "required": [
+    "processRunId",
+    "tenantId",
+    "documentRef",
+    "classification",
+    "extractionSchemaId",
+    "confidence",
+    "humanReviewRequired",
+    "status"
+  ],
+  "properties": {
+    "processRunId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "documentRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "classification": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extractionSchemaId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0
+    },
+    "humanReviewRequired": {
+      "type": "boolean"
+    },
+    "status": {
+      "enum": [
+        "received",
+        "validated",
+        "review",
+        "completed",
+        "rejected"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
