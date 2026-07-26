@@ -1,0 +1,7 @@
+{
+  "productionCredentialsInSandbox": false,
+  "productionSecretsInTestData": false,
+  "databaseRehearsalRequired": true,
+  "rollbackRequired": true,
+  "tenantScopeRequired": true
+}

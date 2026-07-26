@@ -1,0 +1,8 @@
+{
+  "billingEnabled": false,
+  "paymentCollectionEnabled": false,
+  "unifiedBillingEnabled": false,
+  "freeFirst": true,
+  "hardBudgetStopsRequired": true,
+  "costTransparencyRequired": true
+}

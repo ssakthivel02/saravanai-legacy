@@ -1,0 +1,7 @@
+{
+  "darkPatternsAllowed": false,
+  "coerciveTrackingAllowed": false,
+  "userOverrideRequired": true,
+  "accessibilityReviewRequired": true,
+  "nativeLanguageReviewForPublicLocales": true
+}

@@ -5,4 +5,5 @@
 - 161–170: platform engineering, DataOps and reliability
 - 171–180: interoperability, ecosystem, experimentation and long-term impact
 
-Merging these packs does not enable public registration, billing, payments, paid providers, Unified Billing, autonomous production writes or unsupported certification claims.
+Merging these packs does not enable public registration, billing, payments, paid providers,
+Unified Billing, autonomous production writes or unsupported certification claims.
