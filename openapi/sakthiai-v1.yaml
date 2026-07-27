@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
   title: SakthiAI API
-  version: 0.16.0-role-policy
-  description: Free-first private owner API contract with disabled-by-default exact-email role policy. Public multi-tenant access is not enabled.
+  version: 0.17.0-endpoint-authorisation
+  description: Free-first private owner API contract with disabled-by-default exact-email roles and endpoint authorisation. Public multi-tenant access is not enabled.
 servers:
   - url: https://sakthiai.omsaravanabhava.org
 paths:
@@ -24,6 +24,10 @@ paths:
       responses:
         '200':
           description: Completed task
+        '401':
+          description: Verified identity required when endpoint authorisation is active
+        '403':
+          description: Verified role is not authorised
         '422':
           description: Secret-shaped content detected
         '429':
@@ -82,9 +86,9 @@ paths:
         '201':
           description: File stored
         '401':
-          description: Owner token required
+          description: Owner token or verified owner required
         '503':
-          description: Private R2 binding not configured
+          description: Private R2 binding or server mutation gate not configured
   /api/v1/files/{id}/convert:
     post:
       summary: Convert a stored file to Markdown and optionally index it
@@ -113,9 +117,20 @@ paths:
       responses:
         '200':
           description: Owner-first access role readiness contract
+  /api/v1/platform/access/authorisation:
+    get:
+      summary: Get default-deny route catalogue, endpoint enforcement and mutation-gate state
+      description: Returns route counts and metadata-only audit policy. It never returns configured email addresses, Access JWTs, AUD values or profile keys.
+      responses:
+        '200':
+          description: Build 017 endpoint authorisation readiness contract
+        '401':
+          description: Verified identity required when enforcement is active
+        '403':
+          description: Owner role required when enforcement is active
   /api/v1/platform/capabilities:
     get:
-      summary: Get owner feature, binding and role-policy state
+      summary: Get owner feature, binding, role-policy and endpoint-authorisation state
       responses:
         '200':
           description: Owner platform capabilities
@@ -124,7 +139,7 @@ paths:
       summary: Get local-owner or cryptographically verified Cloudflare Access identity state
       responses:
         '200':
-          description: Session state and assigned role capabilities
+          description: Session state, role capabilities and endpoint-authorisation state
   /api/v1/mobile/config:
     get:
       summary: Get stable API paths and mobile-client release state
