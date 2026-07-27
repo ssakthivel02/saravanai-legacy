@@ -1,0 +1,39 @@
+name: Voice input and release currency
+
+on:
+  pull_request:
+    paths:
+      - 'assets/voice-input.js'
+      - 'assets/voice-input.css'
+      - 'assets/release-labels.js'
+      - 'service-worker.js'
+      - '_headers'
+      - 'tests/voice-input.test.mjs'
+      - 'scripts/validate-voice-input.mjs'
+      - 'VOICE_INPUT_BASELINE.json'
+      - 'docs/VOICE_INPUT_AND_LOGIN_UX_PLAN.md'
+      - '.github/workflows/voice-input-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Focused voice input tests
+        run: node --test tests/voice-input.test.mjs
+      - name: Voice and cache structural validation
+        run: node scripts/validate-voice-input.mjs
+      - name: Confirm no authentication or billing activation
+        run: |
+          ! grep -E '"ACCESS_JWT_ENFORCEMENT_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PUBLIC_REGISTRATION"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"BILLING_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
