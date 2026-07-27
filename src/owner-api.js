@@ -1,6 +1,10 @@
 const RELEASE = '0.11.0-owner-security';
+const PLATFORM_RELEASE = '0.15.0-access-readiness';
+const OWNER_BUILD = 15;
 const AUTH_RELEASE = 'access-auth-profile-foundation-1.0.0';
 const PROFILE_ISOLATION_RELEASE = 'authenticated-browser-profile-isolation-1.0.0';
+const RESEARCH_RELEASE = 'office-holder-evidence-resolver-1.0.0';
+const VOICE_RELEASE = 'continuous-explicit-stop-1.0.0';
 const TRUE_VALUES = new Set(['true', '1', 'yes', 'on']);
 
 function json(data, status = 200) {
@@ -64,14 +68,65 @@ function bindings(env) {
   };
 }
 
+function platformReleaseContract(state) {
+  return {
+    platformRelease: PLATFORM_RELEASE,
+    ownerBuild: OWNER_BUILD,
+    components: {
+      securityCore: RELEASE,
+      identityFoundation: AUTH_RELEASE,
+      profileIsolation: PROFILE_ISOLATION_RELEASE,
+      researchQuality: RESEARCH_RELEASE,
+      voiceInput: VOICE_RELEASE,
+      governanceFoundation: '0.20.0-governance-foundation',
+      runtimeProgramme: 'waves-1-50-assurance-foundation'
+    },
+    activation: {
+      ownerAccessPilot: state.accessJwtEnforcement ? 'worker-jwt-enforcement-active' : 'manual-cloudflare-activation-required',
+      accessJwtEnforcementEnabled: state.accessJwtEnforcement,
+      exactEmailPolicyRequired: true,
+      readerProfilesEnabled: false,
+      memberInvitationsEnabled: false,
+      serverRoleEnforcementEnabled: false,
+      publicRegistration: false,
+      serverWritesAllowed: false,
+      crossDeviceProfileSyncEnabled: false
+    },
+    usagePolicy: {
+      costPolicy: 'free-first',
+      browserSoftCapDefault: 50,
+      serverHardQuotaEnabled: false,
+      premiumProvidersEnabled: false,
+      paidFallbackEnabled: false,
+      providerQuotaBehaviour: 'fail-closed-no-silent-paid-fallback'
+    },
+    nextManualGate: state.accessJwtEnforcement
+      ? 'Verify the owner session and denied alternate account before any invitation work.'
+      : 'Create and test the exact-email Cloudflare Access application, then configure the AUD and enable Worker JWT enforcement.'
+  };
+}
+
 export async function handleOwnerApi(request, env, url) {
+  if (request.method === 'GET' && url.pathname === '/api/v1/platform/release') {
+    const state = bindings(env);
+    return json({
+      status: 'ok',
+      ...platformReleaseContract(state),
+      checkedAt: new Date().toISOString()
+    });
+  }
+
   if (request.method === 'GET' && url.pathname === '/api/v1/platform/capabilities') {
     const state = bindings(env);
     return json({
       status: 'ok',
       release: RELEASE,
+      platformRelease: PLATFORM_RELEASE,
+      ownerBuild: OWNER_BUILD,
       authRelease: AUTH_RELEASE,
       profileIsolationRelease: PROFILE_ISOLATION_RELEASE,
+      researchRelease: RESEARCH_RELEASE,
+      voiceRelease: VOICE_RELEASE,
       deploymentMode: 'private-first-owner',
       persistenceMode: state.d1 ? 'server-d1' : 'browser-indexeddb',
       costPolicy: 'free-first',
@@ -90,13 +145,16 @@ export async function handleOwnerApi(request, env, url) {
           browserProfileIsolationImplemented: true,
           browserProfileIsolationReady: state.accessJwtEnforcement,
           crossDeviceProfileSync: false,
+          readerProfilesEnabled: false,
+          memberInvitationsEnabled: false,
+          serverRoleEnforcementEnabled: false,
           publicAccounts: false
         },
         artifacts: { docx: true, xlsx: true, pptx: true, printPdf: true, codeZip: true, localGeneration: true },
         approvals: { dryRun: true, externalWrites: false },
         memory: { ownerApprovedOnly: true, local: true, server: state.d1 },
         knowledgeGraph: { local: true, server: state.d1 },
-        usageLedger: { local: true, server: state.d1, paidCallsBlocked: true },
+        usageLedger: { local: true, server: state.d1, paidCallsBlocked: true, hardServerQuota: false },
         backupSecurity: { aes256Gcm: true, pbkdf2Sha256: true, plaintextExport: false },
         mobile: { pwa: true, nativeClients: 'api-contract-prepared-not-released' }
       },
@@ -119,6 +177,8 @@ export async function handleOwnerApi(request, env, url) {
     return json({
       status: 'ok',
       release: RELEASE,
+      platformRelease: PLATFORM_RELEASE,
+      ownerBuild: OWNER_BUILD,
       authRelease: AUTH_RELEASE,
       profileIsolationRelease: PROFILE_ISOLATION_RELEASE,
       mode: identity.cryptographicallyVerified
@@ -131,6 +191,8 @@ export async function handleOwnerApi(request, env, url) {
       browserProfilePartitioningEnabled: verifiedProfile,
       browserProfilePartitioningMode: verifiedProfile ? 'verified-pseudonymous-profile-key' : 'legacy-local-owner',
       crossDeviceProfileSyncEnabled: false,
+      readerProfilesEnabled: false,
+      memberInvitationsEnabled: false,
       serverWritesAllowed: false,
       localPrivacyLock: true,
       encryptedBackups: true,
@@ -148,6 +210,8 @@ export async function handleOwnerApi(request, env, url) {
       status: 'ok',
       apiVersion: 'v1',
       release: RELEASE,
+      platformRelease: PLATFORM_RELEASE,
+      ownerBuild: OWNER_BUILD,
       authRelease: AUTH_RELEASE,
       profileIsolationRelease: PROFILE_ISOLATION_RELEASE,
       basePath: '/api/v1',
@@ -157,6 +221,7 @@ export async function handleOwnerApi(request, env, url) {
       endpoints: {
         health: '/health',
         status: '/api/v1/status',
+        release: '/api/v1/platform/release',
         session: '/api/v1/platform/session',
         chat: '/api/v1/chat',
         stream: '/api/v1/chat/stream',
@@ -169,3 +234,5 @@ export async function handleOwnerApi(request, env, url) {
 
   return json({ error: 'Owner platform API route not found.', code: 'OWNER_API_NOT_FOUND' }, 404);
 }
+
+export const __test = { bindings, enabled, platformReleaseContract };
