@@ -1,0 +1,51 @@
+name: Access role policy foundation
+
+on:
+  pull_request:
+    paths:
+      - 'src/access-policy.js'
+      - 'src/access-jwt.js'
+      - 'src/owner-api.js'
+      - 'assets/access-role-policy.js'
+      - 'assets/access-role-policy.css'
+      - 'assets/release-labels.js'
+      - 'service-worker.js'
+      - 'openapi/sakthiai-v1.yaml'
+      - 'tests/access-policy.test.mjs'
+      - 'tests/access-role-policy-ui.test.mjs'
+      - 'tests/access-jwt.test.mjs'
+      - 'tests/platform-release-contract.test.mjs'
+      - 'scripts/validate-access-role-policy.mjs'
+      - 'scripts/validate-access-readiness.mjs'
+      - 'docs/BUILD_016_ACCESS_ROLE_POLICY.md'
+      - 'ACCESS_ROLE_POLICY_BASELINE.json'
+      - '.github/workflows/access-role-policy-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Build 016 focused tests
+        run: node --test tests/access-policy.test.mjs tests/access-role-policy-ui.test.mjs tests/access-jwt.test.mjs tests/platform-release-contract.test.mjs
+      - name: Build 016 structural safety validation
+        run: node scripts/validate-access-role-policy.mjs
+      - name: Prior access readiness regression
+        run: node scripts/validate-access-readiness.mjs
+      - name: Confirm repository defaults do not activate identity, teams or billing
+        run: |
+          ! grep -E '"ACCESS_JWT_ENFORCEMENT_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"ACCESS_TEAM_PROFILES_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"ACCESS_READER_PROFILES_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"ACCESS_INVITATIONS_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PUBLIC_REGISTRATION"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PREMIUM_PROVIDERS_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
