@@ -26,7 +26,13 @@ jobs:
         with:
           node-version: '22'
       - name: Existing SakthiAI quality gate
-        run: npm test
+        shell: bash
+        run: |
+          if ! npm test > /tmp/sakthiai-test.log 2>&1; then
+            tail -n 160 /tmp/sakthiai-test.log
+            exit 1
+          fi
+          tail -n 40 /tmp/sakthiai-test.log
       - name: Focused research and voice tests
         run: node --test tests/free-research-quality.test.mjs tests/voice-input.test.mjs
       - name: Existing voice privacy and cache validation
