@@ -1,4 +1,5 @@
-const RELEASE = '0.11.0-owner-security';
+const RELEASE = '0.12.0-access-auth-foundation';
+const TRUE_VALUES = new Set(['true', '1', 'yes', 'on']);
 
 function json(data, status = 200) {
   return Response.json(data, {
@@ -10,13 +11,41 @@ function json(data, status = 200) {
   });
 }
 
-function accessIdentity(request) {
-  const email = request.headers.get('cf-access-authenticated-user-email') || '';
-  const jwt = request.headers.get('cf-access-jwt-assertion') || '';
+function enabled(value) {
+  return TRUE_VALUES.has(String(value ?? '').trim().toLowerCase());
+}
+
+function maskedEmail(value = '') {
+  const [local, domain] = String(value).split('@');
+  if (!local || !domain) return null;
+  return `${local.slice(0, 2)}***@${domain}`;
+}
+
+function accessIdentity(request, env = {}) {
+  const enforcementEnabled = enabled(env.ACCESS_JWT_ENFORCEMENT_ENABLED);
+  const cryptographicallyVerified = enforcementEnabled && request.headers.get('x-sakthiai-access-verified') === 'true';
+  const verifiedEmail = cryptographicallyVerified ? request.headers.get('x-sakthiai-access-email') || '' : '';
+  const legacyEmail = request.headers.get('cf-access-authenticated-user-email') || '';
+  const legacyJwt = request.headers.get('cf-access-jwt-assertion') || '';
+  const email = (verifiedEmail || (!enforcementEnabled && legacyEmail) || '').trim().toLowerCase();
+  const authenticated = cryptographicallyVerified || (!enforcementEnabled && Boolean(legacyEmail && legacyJwt));
+  const role = cryptographicallyVerified ? request.headers.get('x-sakthiai-access-role') || 'member' : authenticated ? 'owner-preview' : 'local-owner';
+  const profileKey = cryptographicallyVerified ? request.headers.get('x-sakthiai-profile-key') || null : null;
+
   return {
-    authenticated: Boolean(email && jwt),
+    authenticated,
+    cryptographicallyVerified,
+    enforcementEnabled,
     email: email || null,
-    source: email && jwt ? 'cloudflare-access' : 'none'
+    maskedEmail: maskedEmail(email),
+    role,
+    profileKey,
+    source: cryptographicallyVerified ? 'cloudflare-access-verified' : authenticated ? 'cloudflare-access-header-preview' : 'none',
+    assurance: cryptographicallyVerified
+      ? request.headers.get('x-sakthiai-access-assurance') || 'cloudflare-access-jwt-verified'
+      : authenticated
+        ? 'access-policy-dependent-not-cryptographically-verified-by-worker'
+        : 'unauthenticated-local-preview'
   };
 }
 
@@ -27,6 +56,7 @@ function bindings(env) {
     aiSearch: Boolean(env.AI_SEARCH && typeof env.AI_SEARCH.get === 'function'),
     workersAi: Boolean(env.AI),
     ownerIngestionSecret: typeof env.SAKTHI_INGEST_TOKEN === 'string' && env.SAKTHI_INGEST_TOKEN.length >= 24,
+    accessJwtEnforcement: enabled(env.ACCESS_JWT_ENFORCEMENT_ENABLED),
     premiumProvidersEnabled: false,
     kimiEnabled: false
   };
@@ -45,7 +75,17 @@ export async function handleOwnerApi(request, env, url) {
       features: {
         projects: { local: true, server: state.d1, privacyLock: true },
         conversations: { local: true, server: state.d1, encryptedExport: true },
-        identity: { ownerLocal: true, cloudflareAccessReady: true, publicAccounts: false },
+        identity: {
+          ownerLocal: true,
+          cloudflareAccessReady: true,
+          jwtVerificationReady: true,
+          jwtEnforcementEnabled: state.accessJwtEnforcement,
+          exactEmailAllowList: true,
+          rolesPrepared: ['owner', 'member'],
+          profileKeyPrepared: true,
+          browserProfileIsolationReady: false,
+          publicAccounts: false
+        },
         artifacts: { docx: true, xlsx: true, pptx: true, printPdf: true, codeZip: true, localGeneration: true },
         approvals: { dryRun: true, externalWrites: false },
         memory: { ownerApprovedOnly: true, local: true, server: state.d1 },
@@ -57,6 +97,8 @@ export async function handleOwnerApi(request, env, url) {
       bindings: state,
       requiredForPublicLaunch: [
         'Cloudflare Access or OIDC authentication',
+        'cryptographic Access JWT validation',
+        'browser storage isolation by verified profile key',
         'D1 database and migrations',
         'tenant and role enforcement',
         'server-side quota enforcement',
@@ -67,18 +109,28 @@ export async function handleOwnerApi(request, env, url) {
   }
 
   if (request.method === 'GET' && url.pathname === '/api/v1/platform/session') {
-    const identity = accessIdentity(request);
+    const identity = accessIdentity(request, env);
     return json({
       status: 'ok',
       release: RELEASE,
-      mode: identity.authenticated ? 'authenticated-owner' : 'local-owner-preview',
+      mode: identity.cryptographicallyVerified
+        ? `authenticated-${identity.role}`
+        : identity.authenticated
+          ? 'authenticated-header-preview'
+          : 'local-owner-preview',
       identity,
+      profileIsolationReady: Boolean(identity.cryptographicallyVerified && identity.profileKey),
+      browserProfilePartitioningEnabled: false,
+      crossDeviceProfileSyncEnabled: false,
       serverWritesAllowed: false,
       localPrivacyLock: true,
       encryptedBackups: true,
-      message: identity.authenticated
-        ? 'Cloudflare Access identity detected. Server write APIs remain disabled until D1/RBAC activation.'
-        : 'No server identity detected. Browser-local owner features require the local privacy lock on this device.'
+      publicRegistration: false,
+      message: identity.cryptographicallyVerified
+        ? 'Cloudflare Access JWT was cryptographically verified. The profile key is prepared, but browser and D1 partitioning remain gated.'
+        : identity.authenticated
+          ? 'Cloudflare Access headers were detected, but Worker-side JWT enforcement remains disabled.'
+          : 'No server identity detected. Browser-local owner features require the local privacy lock on this device.'
     });
   }
 
@@ -88,12 +140,13 @@ export async function handleOwnerApi(request, env, url) {
       apiVersion: 'v1',
       release: RELEASE,
       basePath: '/api/v1',
-      authentication: 'Cloudflare Access/OIDC planned before native release',
+      authentication: 'Cloudflare Access JWT verification prepared; activation remains gated',
       currentClient: 'installable PWA',
       nativeClients: { android: 'not-released', ios: 'not-released' },
       endpoints: {
         health: '/health',
         status: '/api/v1/status',
+        session: '/api/v1/platform/session',
         chat: '/api/v1/chat',
         stream: '/api/v1/chat/stream',
         research: '/api/v1/research',
