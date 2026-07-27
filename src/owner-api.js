@@ -1,4 +1,5 @@
-const RELEASE = '0.12.0-access-auth-foundation';
+const RELEASE = '0.11.0-owner-security';
+const AUTH_RELEASE = 'access-auth-profile-foundation-1.0.0';
 const TRUE_VALUES = new Set(['true', '1', 'yes', 'on']);
 
 function json(data, status = 200) {
@@ -68,6 +69,7 @@ export async function handleOwnerApi(request, env, url) {
     return json({
       status: 'ok',
       release: RELEASE,
+      authRelease: AUTH_RELEASE,
       deploymentMode: 'private-first-owner',
       persistenceMode: state.d1 ? 'server-d1' : 'browser-indexeddb',
       costPolicy: 'free-first',
@@ -113,6 +115,7 @@ export async function handleOwnerApi(request, env, url) {
     return json({
       status: 'ok',
       release: RELEASE,
+      authRelease: AUTH_RELEASE,
       mode: identity.cryptographicallyVerified
         ? `authenticated-${identity.role}`
         : identity.authenticated
@@ -139,6 +142,7 @@ export async function handleOwnerApi(request, env, url) {
       status: 'ok',
       apiVersion: 'v1',
       release: RELEASE,
+      authRelease: AUTH_RELEASE,
       basePath: '/api/v1',
       authentication: 'Cloudflare Access JWT verification prepared; activation remains gated',
       currentClient: 'installable PWA',
