@@ -168,7 +168,8 @@ export async function handleOwnerApi(request, env, url) {
       researchRelease: RESEARCH_RELEASE,
       voiceRelease: VOICE_RELEASE,
       deploymentMode: 'private-first-owner',
-      persistenceMode: state.d1 ? 'server-d1-resource-present-not-team-enabled' : 'browser-indexeddb',
+      persistenceMode: state.d1 ? 'server-d1' : 'browser-indexeddb',
+      serverPersistenceStatus: state.d1 ? 'resource-present-team-writes-disabled' : 'not-configured',
       costPolicy: 'free-first',
       publicRegistration: false,
       features: {
