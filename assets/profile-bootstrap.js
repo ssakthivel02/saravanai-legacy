@@ -9,7 +9,7 @@ const LOCAL_KEYS = new Set([
 const SESSION_KEYS = new Set(['sakthiai-owner-unlocked-until']);
 
 function installIndexedDbScope(context) {
-  if (!context.cryptographicallyVerified) return;
+  if (!context.cryptographicallyVerified || typeof IDBFactory === 'undefined') return;
   const prototype = IDBFactory.prototype;
   if (prototype.__sakthiaiProfileScoped) return;
   const originalOpen = prototype.open;
@@ -28,13 +28,13 @@ function installIndexedDbScope(context) {
 
 function storageKey(context, storage, key) {
   if (!context.cryptographicallyVerified || typeof key !== 'string') return key;
-  if (storage === localStorage && LOCAL_KEYS.has(key)) return scopedStorageKey(context, key);
-  if (storage === sessionStorage && SESSION_KEYS.has(key)) return scopedStorageKey(context, key);
+  if (globalThis.localStorage && storage === globalThis.localStorage && LOCAL_KEYS.has(key)) return scopedStorageKey(context, key);
+  if (globalThis.sessionStorage && storage === globalThis.sessionStorage && SESSION_KEYS.has(key)) return scopedStorageKey(context, key);
   return key;
 }
 
 function installStorageScope(context) {
-  if (!context.cryptographicallyVerified) return;
+  if (!context.cryptographicallyVerified || typeof Storage === 'undefined') return;
   const prototype = Storage.prototype;
   if (prototype.__sakthiaiProfileScoped) return;
   const originalGetItem = prototype.getItem;
@@ -54,6 +54,7 @@ function installStorageScope(context) {
 }
 
 function renderProfileBoundary(context) {
+  if (!globalThis.document) return;
   document.documentElement.dataset.profileScope = context.cryptographicallyVerified ? 'verified' : 'legacy-owner';
   const accessGrid = document.querySelector('#view-access .owner-security-grid');
   if (!accessGrid || document.getElementById('authenticatedProfileBoundary')) return;
@@ -73,8 +74,5 @@ installIndexedDbScope(context);
 installStorageScope(context);
 renderProfileBoundary(context);
 
-await import('./app.js');
-await import('./owner-platform.js');
-
 export const activeProfileContext = context;
-export const __test = { LOCAL_KEYS, SESSION_KEYS, storageKey };
+export const __test = { LOCAL_KEYS, SESSION_KEYS, installIndexedDbScope, installStorageScope, storageKey };
