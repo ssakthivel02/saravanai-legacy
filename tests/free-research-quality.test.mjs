@@ -20,7 +20,7 @@ test('official verification rejects local and private network URLs', () => {
 test('current statement selection ignores ended and deprecated office holders', () => {
   const statements = [
     { rank: 'normal', mainsnak: { datavalue: { value: { id: 'Q1' } } }, qualifiers: { P582: [{}] } },
-    { rank: 'deprecated', mainsnak: { datavalue: { value: { id: 'Q2' } } },
+    { rank: 'deprecated', mainsnak: { datavalue: { value: { id: 'Q2' } } } },
     { rank: 'preferred', mainsnak: { datavalue: { value: { id: 'Q3' } } } }
   ];
   const selected = selectCurrentStatement(statements);
