@@ -1,0 +1,53 @@
+name: Runtime Programme 1-50 validation
+on:
+  pull_request:
+    paths:
+      - 'src/entry.js'
+      - 'src/runtime-programme-control.js'
+      - 'tests/runtime-programme-control.test.mjs'
+      - 'scripts/validate-runtime-programme-control.mjs'
+      - 'scripts/runtime-programme-smoke.mjs'
+      - 'docs/RUNTIME_PROGRAMME_1_50_*.md'
+      - 'evidence/runtime-programme-1-50-index.json'
+      - 'openapi/sakthiai-runtime-programme-control.yaml'
+      - 'RUNTIME_PROGRAMME_1_50_BASELINE.json'
+      - '.github/workflows/runtime-programme-control-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: JavaScript syntax validation
+        run: |
+          node --check src/runtime-programme-control.js
+          node --check src/entry.js
+          node --check tests/runtime-programme-control.test.mjs
+          node --check scripts/runtime-programme-smoke.mjs
+      - name: Runtime Waves 1-6 regression
+        run: |
+          node --test tests/runtime-wave1.test.mjs
+          node --test tests/runtime-wave2.test.mjs
+          node --test tests/runtime-wave3.test.mjs
+          node --test tests/runtime-wave4.test.mjs
+          node --test tests/runtime-wave5.test.mjs
+          node --test tests/runtime-wave6.test.mjs
+      - name: Runtime Waves 7-11 regression
+        run: node --test tests/runtime-waves7-11.test.mjs
+      - name: Runtime Waves 12-30 regression
+        run: node --test tests/runtime-waves12-30.test.mjs
+      - name: Runtime Waves 31-50 regression
+        run: node --test tests/runtime-waves31-50.test.mjs
+      - name: Runtime Programme structural validation
+        run: node scripts/validate-runtime-programme-control.mjs
+      - name: Runtime Programme focused tests
+        run: node --test tests/runtime-programme-control.test.mjs
+      - name: Read-only 52-endpoint smoke validation
+        run: node scripts/runtime-programme-smoke.mjs
