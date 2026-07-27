@@ -1,0 +1,22 @@
+{
+  "repository": "ssakthivel02/sakthiai",
+  "programme": "Runtime Waves 1-50",
+  "baseBranch": "main",
+  "expectedEndpointCount": 52,
+  "liveChecksAutomatic": false,
+  "liveChecksManualOnly": true,
+  "httpMethods": ["GET"],
+  "credentialsTransmitted": false,
+  "productionMutationsEnabled": false,
+  "runtimeWavesEnabledByThisPack": false,
+  "emergencyStopsChangedByThisPack": false,
+  "migrationsExecutedByThisPack": false,
+  "billingEnabled": false,
+  "paymentsEnabled": false,
+  "paidProvidersEnabled": false,
+  "publicRegistrationEnabled": false,
+  "autonomousActionsEnabled": false,
+  "productionWritesEnabled": false,
+  "automaticRollbackEnabled": false,
+  "humanReviewRequired": true
+}
