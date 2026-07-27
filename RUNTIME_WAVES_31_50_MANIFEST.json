@@ -1,0 +1,25 @@
+{
+  "name": "SakthiAI Runtime Waves 31–50 — Advanced Assurance Repository Manifest",
+  "baseCommit": "eec432bedcf2d359e860094f5480c8537bcde8f3",
+  "hashAlgorithm": "Git blob SHA-1 identifier",
+  "validation": {
+    "structural": "PASS",
+    "focusedTestsPassed": 288,
+    "syntaxChecks": "PASS",
+    "offlineZipIntegrity": "PASS"
+  },
+  "files": [
+    {"path": ".github/workflows/runtime-waves-31-50-validation.yml", "blobSha": "08c05e3ee2b0a15b2a7655311b989c80a2929a5d"},
+    {"path": "RUNTIME_WAVES_31_50_BASELINE.json", "blobSha": "aba49aa678c89cc64500cd4dd859f2a593d79fbb"},
+    {"path": "RUNTIME_WAVES_31_50_UPLOAD_README.md", "blobSha": "62803bc5d7a678566b7ff47c33f87e40ce283ec1"},
+    {"path": "docs/RUNTIME_WAVES_31_50_ADVANCED_ASSURANCE.md", "blobSha": "ed4f311fbebc5328072edcfabb0db925dea30b89"},
+    {"path": "migrations/0015_runtime_waves31_50.sql", "blobSha": "46c8c906e7794c0d45c5a65a3f61fdebd08d75b2"},
+    {"path": "openapi/sakthiai-runtime-waves31-50.yaml", "blobSha": "e205e10bb1f6ac363fb274c2ffa2bd6596e48f97"},
+    {"path": "scripts/validate-runtime-waves31-50.mjs", "blobSha": "aadd5f59ab0754c3286d3edf568ce105d5df096a"},
+    {"path": "src/entry.js", "blobSha": "0897f8065d1b987bcd619fbeb41a7de0af838f30"},
+    {"path": "src/runtime-v31-50/catalog.js", "blobSha": "f85c22281c018ca631b92a413942c9aa74389208"},
+    {"path": "src/runtime-v31-50/core.js", "blobSha": "58257a6576c878db70fc6bd58adc0741fcaf6bd7"},
+    {"path": "src/runtime-waves31-50.js", "blobSha": "7f4051a087070e6f2285969c3d0aefaa618666e3"},
+    {"path": "tests/runtime-waves31-50.test.mjs", "blobSha": "39f5f91d2a63215b2a340d842df934356722e7cc"}
+  ]
+}
