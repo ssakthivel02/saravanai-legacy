@@ -33,4 +33,4 @@ jobs:
       - name: Confirm no activation or migration action exists
         run: |
           ! grep -E '"ACCESS_JWT_ENFORCEMENT_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
-          ! grep -R "wrangler d1 migrations apply" .github/workflows/access-auth-profile-validation.yml
+          test ! -f migrations/0016_access_auth_profile.sql
