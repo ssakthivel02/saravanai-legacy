@@ -1,0 +1,38 @@
+name: Authenticated browser profile isolation
+
+on:
+  pull_request:
+    paths:
+      - 'assets/profile-context.js'
+      - 'assets/profile-bootstrap.js'
+      - 'assets/release-labels.js'
+      - 'service-worker.js'
+      - 'tests/profile-context.test.mjs'
+      - 'scripts/validate-profile-isolation.mjs'
+      - 'docs/AUTHENTICATED_BROWSER_PROFILE_ISOLATION.md'
+      - 'PROFILE_ISOLATION_BASELINE.json'
+      - '.github/workflows/profile-isolation-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Profile context tests
+        run: node --test tests/profile-context.test.mjs
+      - name: Profile isolation structural validation
+        run: node scripts/validate-profile-isolation.mjs
+      - name: Confirm server and public activation remain absent
+        run: |
+          test ! -f migrations/0016_authenticated_profiles.sql
+          ! grep -E '"PUBLIC_REGISTRATION"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PUBLIC_TENANT_WRITES"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
