@@ -1,3 +1,5 @@
+import { compileAccessPolicy, normaliseEmail, resolveConfiguredRole } from './access-policy.js';
+
 const TRUE_VALUES = new Set(['true', '1', 'yes', 'on']);
 const JWKS_CACHE_TTL_MS = 5 * 60 * 1000;
 const jwksCache = new Map();
@@ -11,10 +13,6 @@ function enabled(value) {
 
 function clean(value, max = 8192) {
   return typeof value === 'string' ? value.trim().slice(0, max) : '';
-}
-
-function normaliseEmail(value) {
-  return clean(value, 254).toLowerCase();
 }
 
 function normaliseTeamDomain(value) {
@@ -68,14 +66,14 @@ function audienceMatches(actual, expected) {
 }
 
 function allowedEmails(env = {}) {
-  const result = new Set();
-  const owner = normaliseEmail(env.OWNER_EMAIL);
-  if (owner) result.add(owner);
-  for (const entry of clean(env.ACCESS_ALLOWED_EMAILS, 8192).split(',')) {
-    const email = normaliseEmail(entry);
-    if (email) result.add(email);
-  }
-  return { owner, values: result };
+  const policy = compileAccessPolicy(env);
+  return {
+    owner: policy.ownerEmail,
+    values: new Set([policy.ownerEmail, ...policy.memberEmails, ...policy.readerEmails].filter(Boolean)),
+    valid: policy.valid,
+    teamProfilesEnabled: policy.teamProfilesEnabled,
+    readerProfilesEnabled: policy.readerProfilesEnabled
+  };
 }
 
 async function loadJwks(teamDomain, fetchImpl = fetch) {
@@ -142,9 +140,9 @@ export async function verifyAccessJwt(token, request, env = {}, options = {}) {
     return { valid: false, status: 503, code: 'ACCESS_JWT_CONFIGURATION_INCOMPLETE' };
   }
 
-  const allow = allowedEmails(env);
-  if (!allow.values.size) {
-    return { valid: false, status: 503, code: 'ACCESS_ALLOWED_EMAILS_NOT_CONFIGURED' };
+  const policy = compileAccessPolicy(env);
+  if (!policy.valid) {
+    return { valid: false, status: 503, code: 'ACCESS_ROLE_POLICY_INVALID' };
   }
 
   try {
@@ -164,8 +162,13 @@ export async function verifyAccessJwt(token, request, env = {}, options = {}) {
     const jwks = options.jwks ?? await loadJwks(teamDomain, options.fetchImpl);
     await verifySignature(parsed, jwks);
 
-    if (!allow.values.has(email)) {
-      return { valid: false, status: 403, code: 'ACCESS_EMAIL_NOT_ALLOWED' };
+    const roleDecision = resolveConfiguredRole(email, env);
+    if (!roleDecision.role) {
+      return {
+        valid: false,
+        status: roleDecision.code === 'ACCESS_ROLE_POLICY_INVALID' ? 503 : 403,
+        code: roleDecision.code
+      };
     }
 
     return {
@@ -174,13 +177,14 @@ export async function verifyAccessJwt(token, request, env = {}, options = {}) {
       code: 'ACCESS_AUTHORISED',
       identity: {
         email,
-        role: email === allow.owner ? 'owner' : 'member',
+        role: roleDecision.role,
         profileKey: await profileKey(email),
         subject: clean(parsed.payload.sub, 512) || null,
         issuer: teamDomain,
         audience,
         expiresAt: new Date(parsed.payload.exp * 1000).toISOString(),
-        assurance: 'cloudflare-access-jwt-rs256-verified'
+        assurance: 'cloudflare-access-jwt-rs256-verified',
+        accessPolicyRelease: policy.release
       }
     };
   } catch (error) {
