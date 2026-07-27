@@ -1,0 +1,43 @@
+{
+  "release": "access-auth-profile-foundation-1.0.0",
+  "purpose": "Prepare cryptographically verified Cloudflare Access identity and deterministic local profile keys without enabling public registration or server persistence.",
+  "activation": {
+    "defaultEnabled": false,
+    "environmentVariable": "ACCESS_JWT_ENFORCEMENT_ENABLED",
+    "publicRegistration": false,
+    "databaseMigrationExecuted": false,
+    "runtimeWavesChanged": false,
+    "emergencyStopsChanged": false
+  },
+  "identity": {
+    "provider": "Cloudflare Access",
+    "jwtAlgorithm": "RS256",
+    "issuerValidation": true,
+    "audienceValidation": true,
+    "signatureValidation": true,
+    "exactEmailAllowList": true,
+    "roles": ["owner", "member"],
+    "passwordsStoredBySakthiAI": false
+  },
+  "profiles": {
+    "serverPersistenceEnabled": false,
+    "profileKeyGenerated": true,
+    "browserProfileIsolationImplementation": "next-gated-stage",
+    "crossDeviceSyncEnabled": false
+  },
+  "cost": {
+    "paidServicesRequired": false,
+    "paidIdentityProviderRequired": false,
+    "billingEnabled": false,
+    "paidProvidersEnabled": false
+  },
+  "prohibited": [
+    "self-service registration",
+    "password storage",
+    "automatic D1 writes",
+    "automatic user provisioning",
+    "automatic role elevation",
+    "runtime-wave activation",
+    "billing or payment activation"
+  ]
+}
