@@ -1,0 +1,37 @@
+{
+  "release": "authenticated-browser-profile-isolation-1.0.0",
+  "purpose": "Partition browser-local SakthiAI records and privacy-lock keys by a cryptographically verified pseudonymous profile key.",
+  "activation": {
+    "dependsOnAccessJwtEnforcement": true,
+    "defaultPublicRegistration": false,
+    "automaticUserProvisioning": false,
+    "databaseMigrationExecuted": false,
+    "serverPersistenceEnabled": false,
+    "crossDeviceSyncEnabled": false
+  },
+  "legacyCompatibility": {
+    "existingDatabaseNamePreserved": "sakthiai-owner-platform",
+    "existingOwnerKeysPreserved": true,
+    "automaticLegacyDataCopy": false,
+    "automaticLegacyDataDeletion": false
+  },
+  "verifiedProfiles": {
+    "databaseNamespace": "sakthiai-owner-platform-<profileKey>",
+    "profileKeyContainsEmail": false,
+    "scopedLocalKeys": [
+      "sakthiai-active-project",
+      "sakthiai-latest-response",
+      "sakthiai-daily-request-cap",
+      "sakthiai-owner-lock-v1"
+    ],
+    "scopedSessionKeys": ["sakthiai-owner-unlocked-until"]
+  },
+  "safety": {
+    "runtimeWavesChanged": false,
+    "emergencyStopsChanged": false,
+    "billingEnabled": false,
+    "paidProvidersEnabled": false,
+    "productionWritesEnabled": false,
+    "publicRegistrationEnabled": false
+  }
+}
