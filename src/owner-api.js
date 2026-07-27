@@ -1,5 +1,6 @@
 const RELEASE = '0.11.0-owner-security';
 const AUTH_RELEASE = 'access-auth-profile-foundation-1.0.0';
+const PROFILE_ISOLATION_RELEASE = 'authenticated-browser-profile-isolation-1.0.0';
 const TRUE_VALUES = new Set(['true', '1', 'yes', 'on']);
 
 function json(data, status = 200) {
@@ -70,6 +71,7 @@ export async function handleOwnerApi(request, env, url) {
       status: 'ok',
       release: RELEASE,
       authRelease: AUTH_RELEASE,
+      profileIsolationRelease: PROFILE_ISOLATION_RELEASE,
       deploymentMode: 'private-first-owner',
       persistenceMode: state.d1 ? 'server-d1' : 'browser-indexeddb',
       costPolicy: 'free-first',
@@ -85,7 +87,9 @@ export async function handleOwnerApi(request, env, url) {
           exactEmailAllowList: true,
           rolesPrepared: ['owner', 'member'],
           profileKeyPrepared: true,
-          browserProfileIsolationReady: false,
+          browserProfileIsolationImplemented: true,
+          browserProfileIsolationReady: state.accessJwtEnforcement,
+          crossDeviceProfileSync: false,
           publicAccounts: false
         },
         artifacts: { docx: true, xlsx: true, pptx: true, printPdf: true, codeZip: true, localGeneration: true },
@@ -100,7 +104,6 @@ export async function handleOwnerApi(request, env, url) {
       requiredForPublicLaunch: [
         'Cloudflare Access or OIDC authentication',
         'cryptographic Access JWT validation',
-        'browser storage isolation by verified profile key',
         'D1 database and migrations',
         'tenant and role enforcement',
         'server-side quota enforcement',
@@ -112,28 +115,31 @@ export async function handleOwnerApi(request, env, url) {
 
   if (request.method === 'GET' && url.pathname === '/api/v1/platform/session') {
     const identity = accessIdentity(request, env);
+    const verifiedProfile = Boolean(identity.cryptographicallyVerified && identity.profileKey);
     return json({
       status: 'ok',
       release: RELEASE,
       authRelease: AUTH_RELEASE,
+      profileIsolationRelease: PROFILE_ISOLATION_RELEASE,
       mode: identity.cryptographicallyVerified
         ? `authenticated-${identity.role}`
         : identity.authenticated
           ? 'authenticated-header-preview'
           : 'local-owner-preview',
       identity,
-      profileIsolationReady: Boolean(identity.cryptographicallyVerified && identity.profileKey),
-      browserProfilePartitioningEnabled: false,
+      profileIsolationReady: verifiedProfile,
+      browserProfilePartitioningEnabled: verifiedProfile,
+      browserProfilePartitioningMode: verifiedProfile ? 'verified-pseudonymous-profile-key' : 'legacy-local-owner',
       crossDeviceProfileSyncEnabled: false,
       serverWritesAllowed: false,
       localPrivacyLock: true,
       encryptedBackups: true,
       publicRegistration: false,
-      message: identity.cryptographicallyVerified
-        ? 'Cloudflare Access JWT was cryptographically verified. The profile key is prepared, but browser and D1 partitioning remain gated.'
+      message: verifiedProfile
+        ? 'Cloudflare Access JWT was cryptographically verified. Browser-local records and privacy-lock state are partitioned by the pseudonymous profile key on this device.'
         : identity.authenticated
-          ? 'Cloudflare Access headers were detected, but Worker-side JWT enforcement remains disabled.'
-          : 'No server identity detected. Browser-local owner features require the local privacy lock on this device.'
+          ? 'Cloudflare Access headers were detected, but Worker-side JWT enforcement remains disabled; the original local-owner database is preserved.'
+          : 'No verified server identity detected. The original browser-local owner database and privacy lock remain active on this device.'
     });
   }
 
@@ -143,8 +149,9 @@ export async function handleOwnerApi(request, env, url) {
       apiVersion: 'v1',
       release: RELEASE,
       authRelease: AUTH_RELEASE,
+      profileIsolationRelease: PROFILE_ISOLATION_RELEASE,
       basePath: '/api/v1',
-      authentication: 'Cloudflare Access JWT verification prepared; activation remains gated',
+      authentication: 'Cloudflare Access JWT verification and browser profile isolation prepared; activation remains gated',
       currentClient: 'installable PWA',
       nativeClients: { android: 'not-released', ios: 'not-released' },
       endpoints: {
