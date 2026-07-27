@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
   title: SakthiAI API
-  version: 0.10.0-owner-preview
-  description: Free-first private owner API contract. Public multi-tenant access is not enabled.
+  version: 0.15.0-access-readiness
+  description: Free-first private owner API contract with live release, session and access-readiness reporting. Public multi-tenant access is not enabled.
 servers:
   - url: https://sakthiai.omsaravanabhava.org
 paths:
@@ -100,21 +100,27 @@ paths:
       responses:
         '200':
           description: Conversion completed
+  /api/v1/platform/release:
+    get:
+      summary: Get the unified owner build, component releases and safe activation state
+      responses:
+        '200':
+          description: Platform release and access-readiness contract
   /api/v1/platform/capabilities:
     get:
-      summary: Get Releases 005–010 owner feature and binding state
+      summary: Get owner feature, binding, invitation and quota state
       responses:
         '200':
           description: Owner platform capabilities
   /api/v1/platform/session:
     get:
-      summary: Get local-owner or Cloudflare Access identity state
+      summary: Get local-owner or cryptographically verified Cloudflare Access identity state
       responses:
         '200':
-          description: Session state
+          description: Session and profile-isolation state
   /api/v1/mobile/config:
     get:
-      summary: Get the stable API paths and mobile-client release state
+      summary: Get stable API paths and mobile-client release state
       responses:
         '200':
           description: Mobile client configuration
