@@ -1,0 +1,44 @@
+name: Access, research and voice quality
+
+on:
+  pull_request:
+    paths:
+      - 'src/free-research.js'
+      - 'assets/voice-input.js'
+      - 'assets/release-labels.js'
+      - 'service-worker.js'
+      - 'tests/free-research-quality.test.mjs'
+      - 'tests/voice-input.test.mjs'
+      - 'docs/ACCESS_OWNER_PILOT_ROLLOUT.md'
+      - 'docs/AI_FEATURE_PARITY_AND_ADVANTAGE_REGISTER.md'
+      - '.github/workflows/access-research-voice-quality.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Focused research and voice tests
+        run: node --test tests/free-research-quality.test.mjs tests/voice-input.test.mjs
+      - name: Existing voice privacy and cache validation
+        run: node scripts/validate-voice-input.mjs
+      - name: Confirm safe activation boundary
+        run: |
+          ! grep -E '"ACCESS_JWT_ENFORCEMENT_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PUBLIC_REGISTRATION"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PREMIUM_PROVIDERS_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -R -E 'recognition\.start\(\).*(submit|requestSubmit)|requestSubmit\(\)' assets/voice-input.js
+      - name: Verify Access rollout safety language
+        run: |
+          grep -q 'exact owner Gmail address' docs/ACCESS_OWNER_PILOT_ROLLOUT.md
+          grep -q 'Do not add reader/member users' docs/ACCESS_OWNER_PILOT_ROLLOUT.md
+          grep -q 'No silent paid fallback' docs/AI_FEATURE_PARITY_AND_ADVANTAGE_REGISTER.md
