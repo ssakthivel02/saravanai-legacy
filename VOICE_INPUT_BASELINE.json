@@ -1,0 +1,33 @@
+{
+  "release": "voice-input-and-ui-currency-1.0.0",
+  "mode": "browser-progressive-enhancement",
+  "languages": ["en-GB", "en-IN", "ta-IN"],
+  "behaviour": {
+    "autoSubmit": false,
+    "audioStoredBySakthiAI": false,
+    "transcriptEditableBeforeSubmit": true,
+    "unsupportedBrowserFallback": "device-keyboard-dictation",
+    "serverSpeechEndpointEnabled": false
+  },
+  "privacy": {
+    "browserProviderMayProcessAudio": true,
+    "microphonePermissionRequired": true,
+    "permissionPolicy": "microphone=(self)"
+  },
+  "cost": {
+    "paidProviderRequired": false,
+    "workersAiSpeechUsed": false,
+    "billingEnabled": false
+  },
+  "cache": {
+    "fingerprintedAssets": false,
+    "immutableAssetCachingAllowed": false,
+    "assetPolicy": "public, max-age=0, must-revalidate"
+  },
+  "safety": {
+    "publicRegistrationChanged": false,
+    "runtimeWavesChanged": false,
+    "productionWritesChanged": false,
+    "authenticationActivationChanged": false
+  }
+}
