@@ -1,6 +1,8 @@
+import { ACCESS_POLICY_RELEASE, accessPolicySummary, capabilitiesForRole } from './access-policy.js';
+
 const RELEASE = '0.11.0-owner-security';
-const PLATFORM_RELEASE = '0.15.0-access-readiness';
-const OWNER_BUILD = 15;
+const PLATFORM_RELEASE = '0.16.0-role-policy';
+const OWNER_BUILD = 16;
 const AUTH_RELEASE = 'access-auth-profile-foundation-1.0.0';
 const PROFILE_ISOLATION_RELEASE = 'authenticated-browser-profile-isolation-1.0.0';
 const RESEARCH_RELEASE = 'office-holder-evidence-resolver-1.0.0';
@@ -45,6 +47,7 @@ function accessIdentity(request, env = {}) {
     email: email || null,
     maskedEmail: maskedEmail(email),
     role,
+    roleCapabilities: capabilitiesForRole(role),
     profileKey,
     source: cryptographicallyVerified ? 'cloudflare-access-verified' : authenticated ? 'cloudflare-access-header-preview' : 'none',
     assurance: cryptographicallyVerified
@@ -68,7 +71,8 @@ function bindings(env) {
   };
 }
 
-function platformReleaseContract(state) {
+function platformReleaseContract(state, env = {}) {
+  const policy = accessPolicySummary(env);
   return {
     platformRelease: PLATFORM_RELEASE,
     ownerBuild: OWNER_BUILD,
@@ -76,6 +80,7 @@ function platformReleaseContract(state) {
       securityCore: RELEASE,
       identityFoundation: AUTH_RELEASE,
       profileIsolation: PROFILE_ISOLATION_RELEASE,
+      accessRolePolicy: ACCESS_POLICY_RELEASE,
       researchQuality: RESEARCH_RELEASE,
       voiceInput: VOICE_RELEASE,
       governanceFoundation: '0.20.0-governance-foundation',
@@ -85,8 +90,11 @@ function platformReleaseContract(state) {
       ownerAccessPilot: state.accessJwtEnforcement ? 'worker-jwt-enforcement-active' : 'manual-cloudflare-activation-required',
       accessJwtEnforcementEnabled: state.accessJwtEnforcement,
       exactEmailPolicyRequired: true,
-      readerProfilesEnabled: false,
+      accessRolePolicyValid: policy.valid,
+      teamProfilesEnabled: policy.activation.teamProfilesEnabled,
+      readerProfilesEnabled: policy.activation.readerProfilesEnabled,
       memberInvitationsEnabled: false,
+      invitationRequestsActive: false,
       serverRoleEnforcementEnabled: false,
       publicRegistration: false,
       serverWritesAllowed: false,
@@ -101,8 +109,8 @@ function platformReleaseContract(state) {
       providerQuotaBehaviour: 'fail-closed-no-silent-paid-fallback'
     },
     nextManualGate: state.accessJwtEnforcement
-      ? 'Verify the owner session and denied alternate account before any invitation work.'
-      : 'Create and test the exact-email Cloudflare Access application, then configure the AUD and enable Worker JWT enforcement.'
+      ? 'Verify the owner session and denied alternate account. Keep team and reader profile variables disabled until server-side RBAC and shared persistence are validated.'
+      : 'Create and test the exact-email Cloudflare Access application, then configure the AUD and enable Worker JWT enforcement for the owner only.'
   };
 }
 
@@ -111,13 +119,44 @@ export async function handleOwnerApi(request, env, url) {
     const state = bindings(env);
     return json({
       status: 'ok',
-      ...platformReleaseContract(state),
+      ...platformReleaseContract(state, env),
+      checkedAt: new Date().toISOString()
+    });
+  }
+
+  if (request.method === 'GET' && url.pathname === '/api/v1/platform/access/readiness') {
+    const identity = accessIdentity(request, env);
+    const policy = accessPolicySummary(env);
+    return json({
+      status: 'ok',
+      platformRelease: PLATFORM_RELEASE,
+      ownerBuild: OWNER_BUILD,
+      accessPolicy: policy,
+      currentSession: {
+        authenticated: identity.authenticated,
+        cryptographicallyVerified: identity.cryptographicallyVerified,
+        enforcementEnabled: identity.enforcementEnabled,
+        role: identity.role,
+        maskedEmail: identity.maskedEmail,
+        capabilities: identity.roleCapabilities,
+        profileIsolationReady: Boolean(identity.cryptographicallyVerified && identity.profileKey)
+      },
+      boundaries: {
+        fullEmailExposed: false,
+        profileKeyExposed: false,
+        jwtExposed: false,
+        publicRegistration: false,
+        invitationsActive: false,
+        serverWritesAllowed: false,
+        paidFallbackEnabled: false
+      },
       checkedAt: new Date().toISOString()
     });
   }
 
   if (request.method === 'GET' && url.pathname === '/api/v1/platform/capabilities') {
     const state = bindings(env);
+    const policy = accessPolicySummary(env);
     return json({
       status: 'ok',
       release: RELEASE,
@@ -125,10 +164,12 @@ export async function handleOwnerApi(request, env, url) {
       ownerBuild: OWNER_BUILD,
       authRelease: AUTH_RELEASE,
       profileIsolationRelease: PROFILE_ISOLATION_RELEASE,
+      accessPolicyRelease: ACCESS_POLICY_RELEASE,
       researchRelease: RESEARCH_RELEASE,
       voiceRelease: VOICE_RELEASE,
       deploymentMode: 'private-first-owner',
       persistenceMode: state.d1 ? 'server-d1' : 'browser-indexeddb',
+      serverPersistenceStatus: state.d1 ? 'resource-present-team-writes-disabled' : 'not-configured',
       costPolicy: 'free-first',
       publicRegistration: false,
       features: {
@@ -140,12 +181,14 @@ export async function handleOwnerApi(request, env, url) {
           jwtVerificationReady: true,
           jwtEnforcementEnabled: state.accessJwtEnforcement,
           exactEmailAllowList: true,
-          rolesPrepared: ['owner', 'member'],
+          rolesPrepared: ['owner', 'member', 'reader'],
+          rolePolicyValid: policy.valid,
+          teamProfilesEnabled: policy.activation.teamProfilesEnabled,
           profileKeyPrepared: true,
           browserProfileIsolationImplemented: true,
           browserProfileIsolationReady: state.accessJwtEnforcement,
           crossDeviceProfileSync: false,
-          readerProfilesEnabled: false,
+          readerProfilesEnabled: policy.activation.readerProfilesEnabled,
           memberInvitationsEnabled: false,
           serverRoleEnforcementEnabled: false,
           publicAccounts: false
@@ -181,6 +224,7 @@ export async function handleOwnerApi(request, env, url) {
       ownerBuild: OWNER_BUILD,
       authRelease: AUTH_RELEASE,
       profileIsolationRelease: PROFILE_ISOLATION_RELEASE,
+      accessPolicyRelease: ACCESS_POLICY_RELEASE,
       mode: identity.cryptographicallyVerified
         ? `authenticated-${identity.role}`
         : identity.authenticated
@@ -191,14 +235,14 @@ export async function handleOwnerApi(request, env, url) {
       browserProfilePartitioningEnabled: verifiedProfile,
       browserProfilePartitioningMode: verifiedProfile ? 'verified-pseudonymous-profile-key' : 'legacy-local-owner',
       crossDeviceProfileSyncEnabled: false,
-      readerProfilesEnabled: false,
+      readerProfilesEnabled: accessPolicySummary(env).activation.readerProfilesEnabled,
       memberInvitationsEnabled: false,
       serverWritesAllowed: false,
       localPrivacyLock: true,
       encryptedBackups: true,
       publicRegistration: false,
       message: verifiedProfile
-        ? 'Cloudflare Access JWT was cryptographically verified. Browser-local records and privacy-lock state are partitioned by the pseudonymous profile key on this device.'
+        ? `Cloudflare Access JWT was cryptographically verified for the ${identity.role} role. Browser-local records and privacy-lock state are partitioned by the pseudonymous profile key on this device.`
         : identity.authenticated
           ? 'Cloudflare Access headers were detected, but Worker-side JWT enforcement remains disabled; the original local-owner database is preserved.'
           : 'No verified server identity detected. The original browser-local owner database and privacy lock remain active on this device.'
@@ -214,14 +258,16 @@ export async function handleOwnerApi(request, env, url) {
       ownerBuild: OWNER_BUILD,
       authRelease: AUTH_RELEASE,
       profileIsolationRelease: PROFILE_ISOLATION_RELEASE,
+      accessPolicyRelease: ACCESS_POLICY_RELEASE,
       basePath: '/api/v1',
-      authentication: 'Cloudflare Access JWT verification and browser profile isolation prepared; activation remains gated',
+      authentication: 'Cloudflare Access JWT verification, exact-email role policy and browser profile isolation prepared; owner activation remains manually gated',
       currentClient: 'installable PWA',
       nativeClients: { android: 'not-released', ios: 'not-released' },
       endpoints: {
         health: '/health',
         status: '/api/v1/status',
         release: '/api/v1/platform/release',
+        accessReadiness: '/api/v1/platform/access/readiness',
         session: '/api/v1/platform/session',
         chat: '/api/v1/chat',
         stream: '/api/v1/chat/stream',

@@ -13,7 +13,7 @@ const required = [
 ];
 
 for (const path of required) {
-  if (!fs.existsSync(path)) throw new Error(`Missing Build 015 file: ${path}`);
+  if (!fs.existsSync(path)) throw new Error(`Missing Build 015 foundation file: ${path}`);
 }
 
 const ownerApi = fs.readFileSync('src/owner-api.js', 'utf8');
@@ -25,9 +25,7 @@ const wrangler = fs.readFileSync('wrangler.jsonc', 'utf8');
 const docs = fs.readFileSync('docs/BUILD_015_ACCESS_READINESS.md', 'utf8');
 
 for (const marker of [
-  '0.15.0-access-readiness',
   '/api/v1/platform/release',
-  'readerProfilesEnabled: false',
   'memberInvitationsEnabled: false',
   'serverHardQuotaEnabled: false',
   'paidFallbackEnabled: false',
@@ -35,6 +33,12 @@ for (const marker of [
   'serverWritesAllowed: false'
 ]) {
   if (!ownerApi.includes(marker)) throw new Error(`Owner release contract missing marker: ${marker}`);
+}
+if (!/const PLATFORM_RELEASE = '0\.(?:1[5-9]|[2-9]\d)\./.test(ownerApi)) {
+  throw new Error('Owner platform release must remain at Build 015 or later.');
+}
+if (!/const OWNER_BUILD = (?:1[5-9]|[2-9]\d);/.test(ownerApi)) {
+  throw new Error('Owner build number must remain at 15 or later.');
 }
 
 for (const marker of [
@@ -49,19 +53,19 @@ for (const marker of [
 }
 
 if (!labels.includes("import './access-readiness.js'")) throw new Error('Access readiness module is not loaded by the current UI chain.');
-if (!labels.includes('Owner build 015')) throw new Error('Owner Build 015 label is missing.');
+if (!/Owner build 0?(?:1[5-9]|[2-9]\d)/i.test(labels)) throw new Error('Current owner build label must be 015 or later.');
 for (const asset of ['/assets/access-readiness.js', '/assets/access-readiness.css']) {
   if (!serviceWorker.includes(asset)) throw new Error(`Service worker does not cache ${asset}`);
 }
-if (!serviceWorker.includes('sakthiai-owner-v15-access-readiness')) throw new Error('Build 015 cache rotation is missing.');
-if (!openapi.includes('/api/v1/platform/release:') || !openapi.includes('0.15.0-access-readiness')) {
+if (!/sakthiai-owner-v(?:1[5-9]|[2-9]\d)-/.test(serviceWorker)) throw new Error('Current access-readiness-era cache rotation is missing.');
+if (!openapi.includes('/api/v1/platform/release:')) {
   throw new Error('OpenAPI release-readiness contract is missing.');
 }
-if (/"ACCESS_JWT_ENFORCEMENT_ENABLED"\s*:\s*"true"/.test(wrangler)) throw new Error('Build 015 must not activate Access JWT enforcement.');
-if (/"PUBLIC_REGISTRATION"\s*:\s*"true"/.test(wrangler)) throw new Error('Build 015 must not enable public registration.');
-if (/"PREMIUM_PROVIDERS_ENABLED"\s*:\s*"true"/.test(wrangler)) throw new Error('Build 015 must not enable premium providers.');
+if (/"ACCESS_JWT_ENFORCEMENT_ENABLED"\s*:\s*"true"/.test(wrangler)) throw new Error('Repository defaults must not activate Access JWT enforcement.');
+if (/"PUBLIC_REGISTRATION"\s*:\s*"true"/.test(wrangler)) throw new Error('Repository defaults must not enable public registration.');
+if (/"PREMIUM_PROVIDERS_ENABLED"\s*:\s*"true"/.test(wrangler)) throw new Error('Repository defaults must not enable premium providers.');
 for (const marker of ['reader profiles disabled', 'public registration disabled', 'No authentication setting is activated']) {
   if (!docs.includes(marker)) throw new Error(`Build 015 documentation missing safety statement: ${marker}`);
 }
 
-console.log('Build 015 access readiness, release contract and safety validation passed.');
+console.log('Build 015 access-readiness foundation remains valid for the current owner build.');

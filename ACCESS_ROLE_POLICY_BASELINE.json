@@ -1,0 +1,35 @@
+{
+  "release": "access-role-policy-foundation-1.0.0",
+  "ownerBuild": 16,
+  "policy": {
+    "exactEmailOnly": true,
+    "failClosed": true,
+    "ownerProfileRequired": true,
+    "teamProfilesEnabledByDefault": false,
+    "readerProfilesEnabledByDefault": false,
+    "invitationRequestsActive": false,
+    "publicRegistration": false,
+    "serverRoleEnforcementEnabled": false,
+    "sharedPersistenceEnabled": false
+  },
+  "roles": {
+    "owner": "owner-pilot-ready-after-manual-cloudflare-activation",
+    "member": "prepared-disabled-by-default",
+    "reader": "prepared-disabled-by-default"
+  },
+  "cost": {
+    "paidServicesRequired": false,
+    "paidFallbackEnabled": false,
+    "freeFirst": true
+  },
+  "prohibited": [
+    "wildcard-email-admission",
+    "automatic-invitations",
+    "public-signup",
+    "role-elevation-from-browser-input",
+    "email-addresses-in-readiness-responses",
+    "jwt-or-profile-key-rendering",
+    "shared-data-claims-without-server-rbac",
+    "silent-paid-fallback"
+  ]
+}

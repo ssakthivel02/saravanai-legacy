@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
   title: SakthiAI API
-  version: 0.15.0-access-readiness
-  description: Free-first private owner API contract with live release, session and access-readiness reporting. Public multi-tenant access is not enabled.
+  version: 0.16.0-role-policy
+  description: Free-first private owner API contract with disabled-by-default exact-email role policy. Public multi-tenant access is not enabled.
 servers:
   - url: https://sakthiai.omsaravanabhava.org
 paths:
@@ -102,13 +102,20 @@ paths:
           description: Conversion completed
   /api/v1/platform/release:
     get:
-      summary: Get the unified owner build, component releases and safe activation state
+      summary: Get unified owner build, component releases, activation gates and usage policy
       responses:
         '200':
-          description: Platform release and access-readiness contract
+          description: Release and activation contract
+  /api/v1/platform/access/readiness:
+    get:
+      summary: Get safe exact-email role policy, configured role counts and current verified role state
+      description: Never returns full configured email addresses, Access JWTs, AUD values or profile keys.
+      responses:
+        '200':
+          description: Owner-first access role readiness contract
   /api/v1/platform/capabilities:
     get:
-      summary: Get owner feature, binding, invitation and quota state
+      summary: Get owner feature, binding and role-policy state
       responses:
         '200':
           description: Owner platform capabilities
@@ -117,7 +124,7 @@ paths:
       summary: Get local-owner or cryptographically verified Cloudflare Access identity state
       responses:
         '200':
-          description: Session and profile-isolation state
+          description: Session state and assigned role capabilities
   /api/v1/mobile/config:
     get:
       summary: Get stable API paths and mobile-client release state

@@ -1,0 +1,95 @@
+name: Access role policy foundation
+
+on:
+  pull_request:
+    paths:
+      - 'src/access-policy.js'
+      - 'src/access-jwt.js'
+      - 'src/owner-api.js'
+      - 'assets/access-role-policy.js'
+      - 'assets/access-role-policy.css'
+      - 'assets/release-labels.js'
+      - 'service-worker.js'
+      - 'openapi/sakthiai-v1.yaml'
+      - 'tests/access-policy.test.mjs'
+      - 'tests/access-role-policy-ui.test.mjs'
+      - 'tests/access-jwt.test.mjs'
+      - 'tests/platform-release-contract.test.mjs'
+      - 'scripts/validate-access-role-policy.mjs'
+      - 'scripts/validate-access-readiness.mjs'
+      - 'docs/BUILD_016_ACCESS_ROLE_POLICY.md'
+      - 'ACCESS_ROLE_POLICY_BASELINE.json'
+      - '.github/workflows/access-role-policy-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing structural validation
+        run: npm run validate
+      - name: Existing static build
+        run: npm run build
+      - name: Build 016 access policy tests
+        run: node --test tests/access-policy.test.mjs
+      - name: Build 016 role policy UI tests
+        run: node --test tests/access-role-policy-ui.test.mjs
+      - name: Build 016 JWT role tests
+        run: node --test tests/access-jwt.test.mjs
+      - name: Build 016 platform contract tests
+        run: node --test tests/platform-release-contract.test.mjs
+      - name: Run complete unit suite by file
+        id: legacy-suite
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          : > failed-tests.txt
+          mkdir -p failed-test-logs
+          for file in tests/*.test.mjs; do
+            safe_name="$(basename "$file")"
+            node --test "$file" > "failed-test-logs/${safe_name}.log" 2>&1
+            status=$?
+            if [ "$status" -ne 0 ]; then
+              echo "$file" >> failed-tests.txt
+            else
+              rm -f "failed-test-logs/${safe_name}.log"
+            fi
+          done
+          if [ -s failed-tests.txt ]; then
+            echo "Failing test files:"
+            cat failed-tests.txt
+            exit 1
+          fi
+      - name: Upload unit failure evidence
+        if: steps.legacy-suite.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-016-unit-failures
+          path: |
+            failed-tests.txt
+            failed-test-logs
+          if-no-files-found: error
+          retention-days: 3
+      - name: Stop when any unit file failed
+        if: steps.legacy-suite.outcome == 'failure'
+        run: exit 1
+      - name: Build 016 structural safety validation
+        run: node scripts/validate-access-role-policy.mjs
+      - name: Prior access readiness regression
+        run: node scripts/validate-access-readiness.mjs
+      - name: Confirm repository defaults do not activate identity, teams or billing
+        run: |
+          ! grep -E '"ACCESS_JWT_ENFORCEMENT_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"ACCESS_TEAM_PROFILES_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"ACCESS_READER_PROFILES_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"ACCESS_INVITATIONS_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PUBLIC_REGISTRATION"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PREMIUM_PROVIDERS_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
