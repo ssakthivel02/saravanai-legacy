@@ -1,0 +1,36 @@
+name: Access authentication and profile foundation
+
+on:
+  pull_request:
+    paths:
+      - 'src/access-jwt.js'
+      - 'src/entry.js'
+      - 'src/owner-api.js'
+      - 'tests/access-jwt.test.mjs'
+      - 'scripts/validate-access-auth.mjs'
+      - 'docs/ACCESS_AUTH_PROFILE_FOUNDATION.md'
+      - 'ACCESS_AUTH_PROFILE_FOUNDATION_BASELINE.json'
+      - '.github/workflows/access-auth-profile-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Focused Access JWT tests
+        run: node --test tests/access-jwt.test.mjs
+      - name: Authentication foundation structural validation
+        run: node scripts/validate-access-auth.mjs
+      - name: Confirm no activation or migration action exists
+        run: |
+          ! grep -E '"ACCESS_JWT_ENFORCEMENT_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          test ! -f migrations/0016_access_auth_profile.sql
