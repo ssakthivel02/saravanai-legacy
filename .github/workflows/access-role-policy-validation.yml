@@ -45,8 +45,42 @@ jobs:
         run: node --test tests/access-jwt.test.mjs
       - name: Build 016 platform contract tests
         run: node --test tests/platform-release-contract.test.mjs
-      - name: Existing complete unit suite
-        run: npm run test:unit
+      - name: Run complete unit suite by file
+        id: legacy-suite
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          : > failed-tests.txt
+          mkdir -p failed-test-logs
+          for file in tests/*.test.mjs; do
+            safe_name="$(basename "$file")"
+            node --test "$file" > "failed-test-logs/${safe_name}.log" 2>&1
+            status=$?
+            if [ "$status" -ne 0 ]; then
+              echo "$file" >> failed-tests.txt
+            else
+              rm -f "failed-test-logs/${safe_name}.log"
+            fi
+          done
+          if [ -s failed-tests.txt ]; then
+            echo "Failing test files:"
+            cat failed-tests.txt
+            exit 1
+          fi
+      - name: Upload unit failure evidence
+        if: steps.legacy-suite.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-016-unit-failures
+          path: |
+            failed-tests.txt
+            failed-test-logs
+          if-no-files-found: error
+          retention-days: 3
+      - name: Stop when any unit file failed
+        if: steps.legacy-suite.outcome == 'failure'
+        run: exit 1
       - name: Build 016 structural safety validation
         run: node scripts/validate-access-role-policy.mjs
       - name: Prior access readiness regression
