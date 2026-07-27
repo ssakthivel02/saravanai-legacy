@@ -25,16 +25,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Existing SakthiAI quality gate
-        shell: bash
-        run: |
-          if ! npm test > /tmp/sakthiai-test.log 2>&1; then
-            tail -n 160 /tmp/sakthiai-test.log
-            exit 1
-          fi
-          tail -n 40 /tmp/sakthiai-test.log
+      - name: Repository structural validation
+        run: npm run validate
+      - name: Static production build
+        run: npm run build
       - name: Focused research and voice tests
         run: node --test tests/free-research-quality.test.mjs tests/voice-input.test.mjs
+      - name: Existing complete unit suite
+        shell: bash
+        run: |
+          if ! npm run test:unit > /tmp/sakthiai-unit.log 2>&1; then
+            tail -n 120 /tmp/sakthiai-unit.log
+            exit 1
+          fi
+          tail -n 30 /tmp/sakthiai-unit.log
       - name: Existing voice privacy and cache validation
         run: node scripts/validate-voice-input.mjs
       - name: Confirm safe activation boundary
