@@ -32,5 +32,5 @@ jobs:
         run: node scripts/validate-access-auth.mjs
       - name: Confirm no activation or migration action exists
         run: |
-          ! grep -R "ACCESS_JWT_ENFORCEMENT_ENABLED: true" .github docs src tests scripts ACCESS_AUTH_PROFILE_FOUNDATION_BASELINE.json
+          ! grep -E '"ACCESS_JWT_ENFORCEMENT_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
           ! grep -R "wrangler d1 migrations apply" .github/workflows/access-auth-profile-validation.yml
