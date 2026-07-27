@@ -1,0 +1,35 @@
+{
+  "release": "endpoint-authorisation-foundation-1.0.0",
+  "platformRelease": "0.17.0-endpoint-authorisation",
+  "ownerBuild": 17,
+  "activation": {
+    "routeAuthorisationEnabledByDefault": false,
+    "serverMutationsEnabledByDefault": false,
+    "defaultDenyReady": true,
+    "publicRegistration": false,
+    "invitationsActive": false,
+    "auditPersistenceEnabled": false
+  },
+  "roles": {
+    "owner": "catalogued-owner-routes",
+    "member": "catalogued-work-routes-only-when-team-gate-enabled",
+    "reader": "read-only-catalogue-prepared-not-activated"
+  },
+  "safety": {
+    "unknownRoutes": "deny-when-enabled",
+    "unverifiedProfiles": "deny-when-enabled",
+    "identityFieldsInAudit": false,
+    "paidFallbackEnabled": false,
+    "sharedPersistenceClaimed": false
+  },
+  "prohibited": [
+    "browser-supplied-role-elevation",
+    "wildcard-route-allow",
+    "unknown-route-allow",
+    "server-mutations-without-separate-gate",
+    "email-jwt-aud-or-profile-key-in-readiness-output",
+    "automatic-cloudflare-policy-change",
+    "automatic-d1-migration",
+    "silent-paid-fallback"
+  ]
+}
