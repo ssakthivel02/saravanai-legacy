@@ -1,0 +1,20 @@
+{
+  "repository": "ssakthivel02/sakthiai",
+  "baseBranch": "main",
+  "baseCommit": "3f6ab20a3a986c585be61f26cb1f6913305656b2",
+  "scope": "Runtime Programme 1-50 consolidation",
+  "totalWaves": 50,
+  "publicStatusEndpoint": "/api/v1/runtime/programme/status",
+  "privateControlEndpoint": "/api/v1/runtime/programme/control-centre",
+  "privateDashboard": "/runtime/control-centre",
+  "smokeEndpointCount": 52,
+  "migrationRequired": false,
+  "migrationExecuted": false,
+  "enableVariablesAdded": false,
+  "emergencyStopVariablesAdded": false,
+  "productionWritesEnabled": false,
+  "billingEnabled": false,
+  "paidProvidersEnabled": false,
+  "publicRegistrationEnabled": false,
+  "autonomousActionsEnabled": false
+}

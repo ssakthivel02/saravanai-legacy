@@ -1,0 +1,170 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SakthiAI Runtime Programme 1–50 Control API",
+    "version": "1.0.0",
+    "description": "Private-owner, metadata-only programme assurance. No execution, writes, billing or provider activation."
+  },
+  "servers": [
+    {
+      "url": "https://sakthiai.omsaravanabhava.org"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "cloudflareAccess": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "cf-access-jwt-assertion"
+      }
+    },
+    "schemas": {
+      "MetadataObject": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    }
+  },
+  "paths": {
+    "/api/v1/runtime/programme/status": {
+      "get": {
+        "summary": "Return safe programme counts",
+        "responses": {
+          "200": {
+            "description": "Safe public programme status"
+          }
+        }
+      }
+    },
+    "/api/v1/runtime/programme/control-centre": {
+      "get": {
+        "summary": "Return owner programme state matrix",
+        "security": [
+          {
+            "cloudflareAccess": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner control-centre metadata"
+          },
+          "401": {
+            "description": "Access required"
+          },
+          "403": {
+            "description": "Owner mismatch"
+          }
+        }
+      }
+    },
+    "/api/v1/runtime/programme/evidence/validate": {
+      "post": {
+        "summary": "Validate caller-supplied evidence metadata",
+        "security": [
+          {
+            "cloudflareAccess": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Evidence accepted"
+          },
+          "422": {
+            "description": "Evidence requires review"
+          }
+        }
+      }
+    },
+    "/api/v1/runtime/programme/smoke/plan": {
+      "post": {
+        "summary": "Generate a non-executing 52-endpoint smoke plan",
+        "security": [
+          {
+            "cloudflareAccess": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Smoke plan generated"
+          },
+          "422": {
+            "description": "Plan invalid"
+          }
+        }
+      }
+    },
+    "/api/v1/runtime/programme/release/gate": {
+      "post": {
+        "summary": "Evaluate manual owner merge eligibility",
+        "security": [
+          {
+            "cloudflareAccess": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Eligible for manual review"
+          },
+          "422": {
+            "description": "Release blocked"
+          }
+        }
+      }
+    },
+    "/api/v1/runtime/programme/rollback/plan": {
+      "post": {
+        "summary": "Generate a non-executing rollback plan",
+        "security": [
+          {
+            "cloudflareAccess": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetadataObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rollback plan generated"
+          }
+        }
+      }
+    }
+  }
+}

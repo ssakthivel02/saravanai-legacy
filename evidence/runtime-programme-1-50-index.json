@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0",
+  "programme": "SakthiAI Runtime Programme 1-50",
+  "generatedAt": "2026-07-27T06:45:00Z",
+  "evidenceMode": "repository-metadata-only",
+  "focusedTestsReported": 776,
+  "sources": [
+    {
+      "waves": "1",
+      "pullRequest": 21,
+      "mergeCommit": "5fd900da9a1ad10b9854177e5aff2fd077f2abf2",
+      "focusedTests": 24,
+      "status": "merged"
+    },
+    {
+      "waves": "2",
+      "pullRequest": 22,
+      "mergeCommit": "ef3b484108132456600c2c9f22f01eb50484d011",
+      "focusedTests": 27,
+      "status": "merged"
+    },
+    {
+      "waves": "3",
+      "pullRequest": 23,
+      "mergeCommit": "f928cc781bf75964533f2565d8d685c63669801d",
+      "focusedTests": 28,
+      "status": "merged"
+    },
+    {
+      "waves": "4",
+      "pullRequest": 24,
+      "mergeCommit": "6da647d0656d5ea22d8a04273ea7ec41e5f533bd",
+      "focusedTests": 28,
+      "status": "merged"
+    },
+    {
+      "waves": "5",
+      "pullRequest": 25,
+      "mergeCommit": "3a84ecea18800d426a0c192c672c840cdbcd49df",
+      "focusedTests": 34,
+      "status": "merged"
+    },
+    {
+      "waves": "6",
+      "pullRequest": 26,
+      "mergeCommit": "23e0fbe82435bf30ab2ea87f237cc91f6b0c96ca",
+      "focusedTests": 46,
+      "status": "merged"
+    },
+    {
+      "waves": "7-11",
+      "pullRequest": 27,
+      "mergeCommit": "181c126ffca9cfff7f3990af778cb6bb73c198ae",
+      "focusedTests": 66,
+      "status": "merged"
+    },
+    {
+      "waves": "12-30",
+      "pullRequest": 28,
+      "mergeCommit": "db4f439e200e8431defa64c482e9cbbc83b26666",
+      "integrityCommit": "eec432bedcf2d359e860094f5480c8537bcde8f3",
+      "focusedTests": 235,
+      "status": "merged"
+    },
+    {
+      "waves": "31-50",
+      "pullRequest": 30,
+      "mergeCommit": "3f6ab20a3a986c585be61f26cb1f6913305656b2",
+      "focusedTests": 288,
+      "status": "merged"
+    }
+  ],
+  "limitations": [
+    "This index records repository and CI metadata; it is not a certification.",
+    "It does not prove that optional Cloudflare variables or migrations were activated.",
+    "It contains no secrets, customer data, prompts, outputs or access tokens.",
+    "Live production availability must be confirmed separately through read-only status checks."
+  ]
+}
