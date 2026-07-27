@@ -33,6 +33,14 @@ export function voiceErrorMessage(code = '') {
   return messages[code] || 'Voice input could not be completed.';
 }
 
+function ensureVoiceStylesheet(documentRef) {
+  if (documentRef.querySelector('link[href="/assets/voice-input.css"]')) return;
+  const link = documentRef.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = '/assets/voice-input.css';
+  documentRef.head.append(link);
+}
+
 function createLanguageSelect(documentRef) {
   const select = documentRef.createElement('select');
   select.id = 'voiceLanguage';
@@ -53,6 +61,7 @@ function initialiseVoiceInput(documentRef = globalThis.document, scope = globalT
   const composerOptions = documentRef?.querySelector('#taskForm .composer-options');
   if (!input || !composerOptions || documentRef.getElementById('voiceInputPanel')) return;
 
+  ensureVoiceStylesheet(documentRef);
   const SpeechRecognition = speechRecognitionConstructor(scope);
   const panel = documentRef.createElement('div');
   panel.id = 'voiceInputPanel';
@@ -154,4 +163,4 @@ if (globalThis.document) {
   else initialiseVoiceInput();
 }
 
-export const __test = { DEFAULT_LANGUAGE, LANGUAGES, initialiseVoiceInput };
+export const __test = { DEFAULT_LANGUAGE, LANGUAGES, ensureVoiceStylesheet, initialiseVoiceInput };
