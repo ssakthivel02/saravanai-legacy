@@ -1,0 +1,69 @@
+name: Endpoint authorisation foundation
+
+on:
+  pull_request:
+    paths:
+      - 'src/access-route-catalogue.js'
+      - 'src/access-authorizer.js'
+      - 'src/access-denial.js'
+      - 'src/access-audit-contract.js'
+      - 'src/platform-release-017.js'
+      - 'src/entry.js'
+      - 'assets/access-authorisation.js'
+      - 'assets/access-authorisation.css'
+      - 'assets/access-readiness.js'
+      - 'assets/release-labels.js'
+      - 'service-worker.js'
+      - 'openapi/sakthiai-v1.yaml'
+      - 'openapi/sakthiai-access-v1.yaml'
+      - 'tests/access-route-catalogue.test.mjs'
+      - 'tests/access-authorizer.test.mjs'
+      - 'tests/access-denial.test.mjs'
+      - 'tests/access-audit-contract.test.mjs'
+      - 'tests/access-authorisation-ui.test.mjs'
+      - 'tests/platform-release-017.test.mjs'
+      - 'scripts/validate-access-authorisation.mjs'
+      - 'scripts/validate-access-role-policy.mjs'
+      - 'docs/BUILD_017_*.md'
+      - 'ACCESS_AUTHORISATION_BASELINE.json'
+      - '.github/workflows/access-authorisation-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI validation
+        run: npm run validate
+      - name: Existing static build
+        run: npm run build
+      - name: Build 017 route catalogue tests
+        run: node --test tests/access-route-catalogue.test.mjs
+      - name: Build 017 authorizer tests
+        run: node --test tests/access-authorizer.test.mjs
+      - name: Build 017 denial and audit tests
+        run: node --test tests/access-denial.test.mjs tests/access-audit-contract.test.mjs
+      - name: Build 017 UI and release tests
+        run: node --test tests/access-authorisation-ui.test.mjs tests/platform-release-017.test.mjs
+      - name: Complete unit regression suite
+        run: npm run test:unit
+      - name: Build 017 structural safety validation
+        run: node scripts/validate-access-authorisation.mjs
+      - name: Build 016 role policy regression
+        run: node scripts/validate-access-role-policy.mjs
+      - name: Build 015 access readiness regression
+        run: node scripts/validate-access-readiness.mjs
+      - name: Confirm repository defaults do not activate access, writes or billing
+        run: |
+          ! grep -E '"ACCESS_JWT_ENFORCEMENT_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"ACCESS_ROUTE_AUTHORIZATION_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"ACCESS_SERVER_MUTATIONS_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PUBLIC_REGISTRATION"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PREMIUM_PROVIDERS_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc

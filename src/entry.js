@@ -1,6 +1,12 @@
 import coreWorker from './worker.js';
 import { handleFiles } from './files.js';
 import { handleOwnerApi } from './owner-api.js';
+import { handleBuild017PlatformApi } from './platform-release-017.js';
+import {
+  accessRouteAuthorisationEnabled,
+  accessServerMutationsEnabled,
+  enforceRouteAuthorisation
+} from './access-authorizer.js';
 import { handleGovernance, GOVERNANCE_RELEASE } from './governance.js';
 import { handleRuntimeWave1, RUNTIME_WAVE_1_RELEASE } from './runtime-wave1.js';
 import { handleRuntimeWave2, RUNTIME_WAVE_2_RELEASE } from './runtime-wave2.js';
@@ -30,6 +36,10 @@ export default {
     const access = await enforceAccessJwt(request, env, url);
     if (access.response) return access.response;
     request = access.request;
+
+    const authorisation = await enforceRouteAuthorisation(request, env, url);
+    if (authorisation.response) return authorisation.response;
+    request = authorisation.request;
 
     if (request.method === 'GET' && url.pathname === '/health') {
       return Response.json({
@@ -74,6 +84,8 @@ export default {
         ...runtimeWaves31To50Health(env),
         ...runtimeProgrammeHealth(env),
         accessJwtEnforcementEnabled: accessJwtEnforcementEnabled(env),
+        accessRouteAuthorisationEnabled: accessRouteAuthorisationEnabled(env),
+        accessServerMutationsEnabled: accessServerMutationsEnabled(env),
         aiRuntime: Boolean(env.AI),
         costPolicy: 'free-first',
         premiumProvidersEnabled: premiumEnabled(env),
@@ -81,21 +93,12 @@ export default {
         publicRegistration: false,
         serverTenantWritesEnabled: Boolean(env.SAKTHI_DB) && String(env.PUBLIC_TENANT_WRITES || '').toLowerCase() === 'true'
       }, {
-        headers: {
-          'Cache-Control': 'no-store',
-          'X-Content-Type-Options': 'nosniff'
-        }
+        headers: { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' }
       });
     }
-    if (url.pathname === '/runtime/control-centre' || url.pathname.startsWith('/api/v1/runtime/programme')) {
-      return handleRuntimeProgrammeControl(request, env, url);
-    }
-    if (/^\/api\/v1\/runtime\/v(?:3[1-9]|4[0-9]|50)(?:\/|$)/.test(url.pathname)) {
-      return handleRuntimeWaves31To50(request, env, url);
-    }
-    if (/^\/api\/v1\/runtime\/v(?:1[2-9]|2[0-9]|30)(?:\/|$)/.test(url.pathname)) {
-      return handleRuntimeWaves12To30(request, env, url);
-    }
+    if (url.pathname === '/runtime/control-centre' || url.pathname.startsWith('/api/v1/runtime/programme')) return handleRuntimeProgrammeControl(request, env, url);
+    if (/^\/api\/v1\/runtime\/v(?:3[1-9]|4[0-9]|50)(?:\/|$)/.test(url.pathname)) return handleRuntimeWaves31To50(request, env, url);
+    if (/^\/api\/v1\/runtime\/v(?:1[2-9]|2[0-9]|30)(?:\/|$)/.test(url.pathname)) return handleRuntimeWaves12To30(request, env, url);
     if (url.pathname.startsWith('/api/v1/runtime/v11')) return handleRuntimeWave11(request, env, url);
     if (url.pathname.startsWith('/api/v1/runtime/v10')) return handleRuntimeWave10(request, env, url);
     if (url.pathname.startsWith('/api/v1/runtime/v9')) return handleRuntimeWave9(request, env, url);
@@ -110,6 +113,8 @@ export default {
     if (url.pathname.startsWith('/api/v1/governance')) return handleGovernance(request, env, url);
     if (url.pathname.startsWith('/api/v1/files')) return handleFiles(request, env, url);
     if (url.pathname.startsWith('/api/v1/platform') || url.pathname === '/api/v1/mobile/config') {
+      const build017 = await handleBuild017PlatformApi(request, env, url);
+      if (build017) return build017;
       return handleOwnerApi(request, env, url);
     }
     return coreWorker.fetch(request, env, ctx);

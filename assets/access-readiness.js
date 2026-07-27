@@ -11,7 +11,7 @@ export function deriveAccessReadiness(session = {}, release = {}) {
       title: role === 'owner' ? 'Owner login verified' : 'Authenticated profile verified',
       summary: `${identity.maskedEmail || 'Cloudflare Access identity'} · ${role}. Worker-side JWT verification and browser profile isolation are active.`,
       nextAction: role === 'owner'
-        ? 'Keep reader and member invitations disabled until server-side roles and shared persistence are implemented.'
+        ? 'Validate endpoint authorisation in a controlled environment before enabling team profiles or server mutations.'
         : 'This profile must remain within the permissions assigned by the owner.'
     };
   }
@@ -30,8 +30,8 @@ export function deriveAccessReadiness(session = {}, release = {}) {
     state: 'activation-pending',
     tone: 'planned',
     title: 'Owner Access activation pending',
-    summary: 'The Google identity connection and SakthiAI JWT verification code are prepared, but production enforcement remains deliberately disabled.',
-    nextAction: 'Create the whole-host exact-email Access application, test one allowed and one denied account, then enable Worker JWT enforcement.'
+    summary: 'The Google identity connection, JWT verification, role policy and endpoint authorisation code are prepared, but production enforcement remains deliberately disabled.',
+    nextAction: 'Create the whole-host exact-email Access application, test one allowed and one denied account, then enable Worker JWT enforcement before endpoint authorisation.'
   };
 }
 
@@ -137,6 +137,7 @@ function renderAccessReadiness(documentRef = globalThis.document, fetchImpl = gl
       metrics.append(
         createMetric(documentRef, 'Release', platformReleaseLabel(release), 'current'),
         createMetric(documentRef, 'JWT enforcement', activation.accessJwtEnforcementEnabled ? 'Enabled' : 'Manual activation pending', activation.accessJwtEnforcementEnabled ? 'ready' : 'planned'),
+        createMetric(documentRef, 'Endpoint authorisation', activation.endpointAuthorisationEnabled ? 'Enabled' : 'Prepared · disabled', activation.endpointAuthorisationEnabled ? 'ready' : 'planned'),
         createMetric(documentRef, 'Current role', session?.identity?.role || 'Local owner preview', session?.identity?.cryptographicallyVerified ? 'ready' : 'planned'),
         createMetric(documentRef, 'Reader/member access', activation.readerProfilesEnabled || activation.memberInvitationsEnabled ? 'Enabled' : 'Blocked until server RBAC', 'blocked'),
         createMetric(documentRef, 'Question limit', usage.serverHardQuotaEnabled ? 'Server enforced' : `${usage.browserSoftCapDefault || 50} local soft cap`, usage.serverHardQuotaEnabled ? 'ready' : 'planned'),

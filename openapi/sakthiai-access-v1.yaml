@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Endpoint Authorisation Contract
+  version: 0.17.0-endpoint-authorisation
+  description: Disabled-by-default, fail-closed endpoint authorisation contract for verified owner, member and reader profiles.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/platform/access/authorisation:
+    get:
+      summary: Get safe route-authorisation readiness and activation state
+      description: Returns route counts, activation gates and metadata-only audit policy. It never returns configured email addresses, JWTs, Access AUD values or profile keys.
+      responses:
+        '200':
+          description: Endpoint authorisation readiness
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorisationReadiness'
+        '401':
+          description: Verified Cloudflare Access identity required when enforcement is active
+        '403':
+          description: Verified role is not authorised for this owner-security route
+components:
+  schemas:
+    AuthorisationReadiness:
+      type: object
+      required: [status, platformRelease, ownerBuild, authorisation, boundaries]
+      properties:
+        status:
+          const: ok
+        platformRelease:
+          const: 0.17.0-endpoint-authorisation
+        ownerBuild:
+          const: 17
+        authorisation:
+          type: object
+          properties:
+            endpointAuthorisationEnabled:
+              type: boolean
+            serverMutationsEnabled:
+              type: boolean
+            defaultDenyReady:
+              const: true
+            catalogue:
+              type: object
+              properties:
+                routeCount:
+                  type: integer
+                  minimum: 1
+                defaultDecision:
+                  const: deny-unclassified-when-enabled
+            auditContract:
+              type: object
+              properties:
+                persistenceEnabled:
+                  const: false
+                externalLoggingEnabled:
+                  const: false
+        boundaries:
+          type: object
+          properties:
+            fullEmailExposed:
+              const: false
+            profileKeyExposed:
+              const: false
+            jwtExposed:
+              const: false
+            accessAudienceExposed:
+              const: false
+            publicRegistration:
+              const: false
+            invitationsActive:
+              const: false
+            paidFallbackEnabled:
+              const: false
