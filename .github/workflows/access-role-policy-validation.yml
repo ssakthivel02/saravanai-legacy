@@ -37,10 +37,16 @@ jobs:
         run: npm run validate
       - name: Existing static build
         run: npm run build
+      - name: Build 016 access policy tests
+        run: node --test tests/access-policy.test.mjs
+      - name: Build 016 role policy UI tests
+        run: node --test tests/access-role-policy-ui.test.mjs
+      - name: Build 016 JWT role tests
+        run: node --test tests/access-jwt.test.mjs
+      - name: Build 016 platform contract tests
+        run: node --test tests/platform-release-contract.test.mjs
       - name: Existing complete unit suite
         run: npm run test:unit
-      - name: Build 016 focused tests
-        run: node --test tests/access-policy.test.mjs tests/access-role-policy-ui.test.mjs tests/access-jwt.test.mjs tests/platform-release-contract.test.mjs
       - name: Build 016 structural safety validation
         run: node scripts/validate-access-role-policy.mjs
       - name: Prior access readiness regression
