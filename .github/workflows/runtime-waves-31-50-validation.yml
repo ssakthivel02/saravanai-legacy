@@ -1,0 +1,44 @@
+name: Runtime Waves 31-50 validation
+on:
+  pull_request:
+    paths:
+      - 'src/entry.js'
+      - 'src/runtime-waves31-50.js'
+      - 'src/runtime-v31-50/**'
+      - 'tests/runtime-waves31-50.test.mjs'
+      - 'scripts/validate-runtime-waves31-50.mjs'
+      - 'migrations/0015_runtime_waves31_50.sql'
+      - 'openapi/sakthiai-runtime-waves31-50.yaml'
+      - 'docs/RUNTIME_WAVES_31_50_ADVANCED_ASSURANCE.md'
+      - '.github/workflows/runtime-waves-31-50-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Runtime Waves 1-6 regression
+        run: |
+          node --test tests/runtime-wave1.test.mjs
+          node --test tests/runtime-wave2.test.mjs
+          node --test tests/runtime-wave3.test.mjs
+          node --test tests/runtime-wave4.test.mjs
+          node --test tests/runtime-wave5.test.mjs
+          node --test tests/runtime-wave6.test.mjs
+      - name: Runtime Waves 7-11 regression
+        run: node --test tests/runtime-waves7-11.test.mjs
+      - name: Runtime Waves 12-30 regression
+        run: |
+          node scripts/validate-runtime-waves12-30.mjs
+          node --test tests/runtime-waves12-30.test.mjs
+      - name: Runtime Waves 31-50 structural validation
+        run: node scripts/validate-runtime-waves31-50.mjs
+      - name: Runtime Waves 31-50 focused tests
+        run: node --test tests/runtime-waves31-50.test.mjs

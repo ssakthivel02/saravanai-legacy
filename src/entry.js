@@ -16,6 +16,7 @@ import {
   handleRuntimeWave11, RUNTIME_WAVE_11_RELEASE
 } from './runtime-waves7-11.js';
 import { handleRuntimeWaves12To30, runtimeWaves12To30Health } from './runtime-waves12-30.js';
+import { handleRuntimeWaves31To50, runtimeWaves31To50Health } from './runtime-waves31-50.js';
 import { RELEASE, premiumEnabled, providerStatus } from './router.js';
 
 const enabled = (env, name) => String(env[name] || '').toLowerCase() === 'true';
@@ -64,6 +65,7 @@ export default {
         runtimeWave11Enabled: enabled(env, 'RUNTIME_WAVE11_ENABLED'),
         runtimeWave11EmergencyStopped: stopped(env, 'RUNTIME_WAVE11_EMERGENCY_STOP'),
         ...runtimeWaves12To30Health(env),
+        ...runtimeWaves31To50Health(env),
         aiRuntime: Boolean(env.AI),
         costPolicy: 'free-first',
         premiumProvidersEnabled: premiumEnabled(env),
@@ -76,6 +78,9 @@ export default {
           'X-Content-Type-Options': 'nosniff'
         }
       });
+    }
+    if (/^\/api\/v1\/runtime\/v(?:3[1-9]|4[0-9]|50)(?:\/|$)/.test(url.pathname)) {
+      return handleRuntimeWaves31To50(request, env, url);
     }
     if (/^\/api\/v1\/runtime\/v(?:1[2-9]|2[0-9]|30)(?:\/|$)/.test(url.pathname)) {
       return handleRuntimeWaves12To30(request, env, url);
