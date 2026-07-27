@@ -51,7 +51,8 @@ const env = {
   ACCESS_TEAM_DOMAIN: 'https://sakthiai.cloudflareaccess.com',
   ACCESS_AUD: 'sakthiai-audience',
   OWNER_EMAIL: 'owner@example.com',
-  ACCESS_ALLOWED_EMAILS: 'member@example.com'
+  ACCESS_ALLOWED_EMAILS: 'member@example.com',
+  ACCESS_TEAM_PROFILES_ENABLED: 'true'
 };
 
 test('enforcement is disabled unless explicitly enabled', () => {
@@ -68,7 +69,7 @@ test('only minimal health and runtime status paths bypass the internal JWT guard
   assert.equal(isPublicAccessPath('/'), false);
 });
 
-test('valid owner token is signature, issuer, audience and allow-list verified', async () => {
+test('valid owner token is signature, issuer, audience and role-policy verified', async () => {
   const { jwks, token } = await fixture();
   const jwt = await token();
   const request = new Request('https://example.test/api/v1/platform/session', {
@@ -79,9 +80,10 @@ test('valid owner token is signature, issuer, audience and allow-list verified',
   assert.equal(result.identity.role, 'owner');
   assert.match(result.identity.profileKey, /^profile-[a-f0-9]{24}$/);
   assert.equal(result.identity.assurance, 'cloudflare-access-jwt-rs256-verified');
+  assert.equal(result.identity.accessPolicyRelease, 'access-role-policy-foundation-1.0.0');
 });
 
-test('allowed non-owner receives member role and isolated profile key', async () => {
+test('allowed non-owner receives member role only when the team profile gate is enabled', async () => {
   const { jwks, token } = await fixture();
   const jwt = await token({ email: 'member@example.com', sub: 'subject-2' });
   const request = new Request('https://example.test/api/v1/platform/session', {
@@ -91,6 +93,27 @@ test('allowed non-owner receives member role and isolated profile key', async ()
   assert.equal(result.valid, true);
   assert.equal(result.identity.role, 'member');
   assert.notEqual(result.identity.profileKey, null);
+
+  const blocked = await verifyAccessJwt(jwt, request, { ...env, ACCESS_TEAM_PROFILES_ENABLED: 'false' }, { jwks, nowSeconds: now });
+  assert.equal(blocked.valid, false);
+  assert.equal(blocked.status, 403);
+  assert.equal(blocked.code, 'ACCESS_TEAM_PROFILES_DISABLED');
+});
+
+test('reader profile requires both the team and reader profile gates', async () => {
+  const { jwks, token } = await fixture();
+  const jwt = await token({ email: 'reader@example.com', sub: 'subject-3' });
+  const request = new Request('https://example.test/api/v1/platform/session', {
+    headers: { 'cf-access-authenticated-user-email': 'reader@example.com' }
+  });
+  const readerEnv = { ...env, ACCESS_READER_EMAILS: 'reader@example.com' };
+  const blocked = await verifyAccessJwt(jwt, request, readerEnv, { jwks, nowSeconds: now });
+  assert.equal(blocked.valid, false);
+  assert.equal(blocked.code, 'ACCESS_READER_PROFILES_DISABLED');
+
+  const allowed = await verifyAccessJwt(jwt, request, { ...readerEnv, ACCESS_READER_PROFILES_ENABLED: 'true' }, { jwks, nowSeconds: now });
+  assert.equal(allowed.valid, true);
+  assert.equal(allowed.identity.role, 'reader');
 });
 
 test('unlisted email is denied even when the JWT is valid', async () => {
@@ -119,6 +142,18 @@ test('wrong audience, expired token and email-header mismatch are rejected', asy
 
   const mismatch = await verifyAccessJwt(await token({ email: 'member@example.com' }), request, env, { jwks, nowSeconds: now });
   assert.equal(mismatch.code, 'ACCESS_IDENTITY_HEADER_MISMATCH');
+});
+
+test('invalid role policy fails closed before accepting a token', async () => {
+  const { jwks, token } = await fixture();
+  const jwt = await token();
+  const request = new Request('https://example.test/private', {
+    headers: { 'cf-access-authenticated-user-email': 'owner@example.com' }
+  });
+  const result = await verifyAccessJwt(jwt, request, { ...env, ACCESS_MEMBER_EMAILS: 'same@example.com', ACCESS_READER_EMAILS: 'same@example.com' }, { jwks, nowSeconds: now });
+  assert.equal(result.valid, false);
+  assert.equal(result.status, 503);
+  assert.equal(result.code, 'ACCESS_ROLE_POLICY_INVALID');
 });
 
 test('guard is a no-op while disabled and blocks a protected path when enabled without a JWT', async () => {
