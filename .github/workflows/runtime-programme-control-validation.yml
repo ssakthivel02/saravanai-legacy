@@ -4,6 +4,7 @@ on:
     paths:
       - 'src/entry.js'
       - 'src/runtime-programme-control.js'
+      - 'src/runtime-programme/**'
       - 'tests/runtime-programme-control.test.mjs'
       - 'scripts/validate-runtime-programme-control.mjs'
       - 'scripts/runtime-programme-smoke.mjs'
@@ -28,6 +29,9 @@ jobs:
       - name: JavaScript syntax validation
         run: |
           node --check src/runtime-programme-control.js
+          node --check src/runtime-programme/catalog.js
+          node --check src/runtime-programme/core.js
+          node --check src/runtime-programme/ui.js
           node --check src/entry.js
           node --check tests/runtime-programme-control.test.mjs
           node --check scripts/runtime-programme-smoke.mjs
