@@ -4,6 +4,9 @@ import { readFile } from 'node:fs/promises';
 const required = [
   'src/entry.js',
   'src/runtime-programme-control.js',
+  'src/runtime-programme/catalog.js',
+  'src/runtime-programme/core.js',
+  'src/runtime-programme/ui.js',
   'tests/runtime-programme-control.test.mjs',
   'scripts/validate-runtime-programme-control.mjs',
   'scripts/runtime-programme-smoke.mjs',
@@ -30,7 +33,12 @@ for (const marker of [
   if (!entry.includes(marker)) throw new Error(`Entry integration marker missing: ${marker}`);
 }
 
-const runtime = await readFile(new URL('../src/runtime-programme-control.js', import.meta.url), 'utf8');
+const runtime = [
+  await readFile(new URL('../src/runtime-programme-control.js', import.meta.url), 'utf8'),
+  await readFile(new URL('../src/runtime-programme/catalog.js', import.meta.url), 'utf8'),
+  await readFile(new URL('../src/runtime-programme/core.js', import.meta.url), 'utf8'),
+  await readFile(new URL('../src/runtime-programme/ui.js', import.meta.url), 'utf8')
+].join('\n');
 for (const marker of [
   "runtime-programme-control-1.0.0",
   'RUNTIME_PROGRAMME_WAVE_COUNT = 50',
