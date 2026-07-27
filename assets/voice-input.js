@@ -4,6 +4,7 @@ const LANGUAGES = Object.freeze([
   ['en-IN', 'English (India)'],
   ['ta-IN', 'தமிழ் (India)']
 ]);
+const FATAL_ERRORS = new Set(['not-allowed', 'service-not-allowed', 'audio-capture', 'language-not-supported']);
 
 export function speechRecognitionConstructor(scope = globalThis) {
   return scope?.SpeechRecognition || scope?.webkitSpeechRecognition || null;
@@ -27,10 +28,14 @@ export function voiceErrorMessage(code = '') {
     'service-not-allowed': 'Speech recognition is blocked by the browser or device policy.',
     'audio-capture': 'No working microphone was found.',
     'network': 'The browser speech service could not be reached.',
-    'no-speech': 'No speech was detected. Try again and speak clearly.',
+    'no-speech': 'No speech was detected. Keep speaking or press Stop listening.',
     'language-not-supported': 'The selected language is not supported by this browser.'
   };
   return messages[code] || 'Voice input could not be completed.';
+}
+
+export function shouldRestartRecognition({ requestedListening = false, lastError = '', documentHidden = false } = {}) {
+  return requestedListening && !documentHidden && !FATAL_ERRORS.has(lastError);
 }
 
 function ensureVoiceStylesheet(documentRef) {
@@ -83,7 +88,7 @@ function initialiseVoiceInput(documentRef = globalThis.document, scope = globalT
 
   const privacy = documentRef.createElement('small');
   privacy.className = 'muted voice-privacy';
-  privacy.textContent = 'Voice is transcribed by the browser speech service and is never auto-submitted. Audio may be processed by the browser provider; SakthiAI does not store the recording.';
+  privacy.textContent = 'Press Start once, speak naturally, then press Stop. Voice is transcribed by the browser speech service and is never auto-submitted. Audio may be processed by the browser provider; SakthiAI does not store the recording.';
 
   const controls = documentRef.createElement('div');
   controls.className = 'voice-input-controls';
@@ -99,40 +104,66 @@ function initialiseVoiceInput(documentRef = globalThis.document, scope = globalT
   }
 
   const recognition = new SpeechRecognition();
-  recognition.continuous = false;
+  recognition.continuous = true;
   recognition.interimResults = true;
   recognition.maxAlternatives = 1;
   let listening = false;
+  let requestedListening = false;
   let startingText = '';
   let finalTranscript = '';
+  let lastError = '';
+  let restartTimer = null;
 
   function renderListeningState(active) {
     listening = active;
-    button.setAttribute('aria-pressed', String(active));
-    button.classList.toggle('listening', active);
-    button.querySelector('span:last-child').textContent = active ? 'Stop listening' : 'Start voice input';
-    language.disabled = active;
+    button.setAttribute('aria-pressed', String(requestedListening));
+    button.classList.toggle('listening', requestedListening);
+    button.querySelector('span:last-child').textContent = requestedListening ? 'Stop listening' : 'Start voice input';
+    language.disabled = requestedListening;
+  }
+
+  function clearRestartTimer() {
+    if (restartTimer) clearTimeout(restartTimer);
+    restartTimer = null;
+  }
+
+  function startRecognition() {
+    clearRestartTimer();
+    recognition.lang = language.value || DEFAULT_LANGUAGE;
+    try {
+      recognition.start();
+    } catch (error) {
+      const message = String(error?.message || '');
+      if (/already started|recognition has already started/i.test(message)) return;
+      requestedListening = false;
+      renderListeningState(false);
+      status.textContent = message || 'Voice input could not start.';
+    }
   }
 
   button.addEventListener('click', () => {
-    if (listening) {
-      recognition.stop();
+    if (requestedListening) {
+      requestedListening = false;
+      clearRestartTimer();
+      renderListeningState(listening);
+      status.textContent = 'Stopping voice input…';
+      try { recognition.stop(); } catch { renderListeningState(false); }
       return;
     }
     startingText = input.value;
     finalTranscript = '';
-    recognition.lang = language.value || DEFAULT_LANGUAGE;
+    lastError = '';
+    requestedListening = true;
+    renderListeningState(listening);
     status.textContent = 'Starting microphone…';
-    try {
-      recognition.start();
-    } catch (error) {
-      status.textContent = error?.message || 'Voice input could not start.';
-    }
+    startRecognition();
   });
 
   recognition.onstart = () => {
+    listening = true;
+    lastError = '';
     renderListeningState(true);
-    status.textContent = 'Listening… Speak in the selected language.';
+    status.textContent = 'Listening continuously… Press Stop listening when finished.';
   };
 
   recognition.onresult = (event) => {
@@ -144,18 +175,39 @@ function initialiseVoiceInput(documentRef = globalThis.document, scope = globalT
     }
     input.value = mergeTranscript(startingText, mergeTranscript(finalTranscript, interimTranscript));
     input.dispatchEvent(new Event('input', { bubbles: true }));
-    status.textContent = interimTranscript ? `Listening: ${normaliseTranscript(interimTranscript)}` : 'Speech captured. You can continue speaking.';
+    status.textContent = interimTranscript ? `Listening: ${normaliseTranscript(interimTranscript)}` : 'Speech captured. Continue speaking or press Stop listening.';
   };
 
   recognition.onerror = (event) => {
-    status.textContent = voiceErrorMessage(event.error);
+    lastError = event.error || '';
+    status.textContent = voiceErrorMessage(lastError);
+    if (FATAL_ERRORS.has(lastError)) requestedListening = false;
   };
 
   recognition.onend = () => {
+    listening = false;
+    renderListeningState(false);
+    const documentHidden = Boolean(documentRef.hidden);
+    if (shouldRestartRecognition({ requestedListening, lastError, documentHidden })) {
+      status.textContent = lastError === 'no-speech' ? 'No speech detected; microphone is resuming…' : 'Browser paused the microphone; resuming…';
+      lastError = '';
+      restartTimer = setTimeout(startRecognition, 300);
+      return;
+    }
+    requestedListening = false;
+    clearRestartTimer();
     renderListeningState(false);
     status.textContent = finalTranscript ? 'Voice text added. Review or edit it before submitting.' : status.textContent || 'Voice input stopped.';
     input.focus({ preventScroll: true });
   };
+
+  documentRef.addEventListener('visibilitychange', () => {
+    if (!documentRef.hidden || !requestedListening) return;
+    requestedListening = false;
+    clearRestartTimer();
+    status.textContent = 'Voice input stopped because the page is no longer visible.';
+    try { recognition.stop(); } catch { renderListeningState(false); }
+  });
 }
 
 if (globalThis.document) {

@@ -1,4 +1,4 @@
-const CACHE='sakthiai-owner-v13-voice-and-profile';
+const CACHE='sakthiai-owner-v14-access-research-voice';
 const CORE=['/','/index.html','/assets/styles.css','/assets/release002.css','/assets/release003.css','/assets/owner-platform.css','/assets/owner-security.css','/assets/voice-input.css','/assets/app.js','/assets/owner-platform.js','/assets/profile-context.js','/assets/profile-bootstrap.js','/assets/voice-input.js','/assets/artifact-formats.js','/assets/zip.js','/assets/task-capture.js','/assets/release-labels.js','/assets/owner-security.js','/assets/favicon.svg','/manifest.webmanifest','/offline.html'];
 
 self.addEventListener('install',(event)=>{
