@@ -1,0 +1,66 @@
+name: Runtime programme production assurance
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/runtime-programme-production-smoke.mjs'
+      - 'tests/runtime-programme-production-smoke.test.mjs'
+      - 'docs/RUNTIME_PROGRAMME_PRODUCTION_ASSURANCE.md'
+      - 'RUNTIME_PROGRAMME_PRODUCTION_ASSURANCE_BASELINE.json'
+      - '.github/workflows/runtime-programme-production-assurance.yml'
+  workflow_dispatch:
+    inputs:
+      run_live_smoke:
+        description: 'Run read-only smoke checks against the production domain'
+        required: true
+        type: boolean
+        default: false
+      base_url:
+        description: 'Production base URL'
+        required: true
+        default: 'https://sakthiai.omsaravanabhava.org'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI quality gate
+        run: npm test
+      - name: Production assurance focused tests
+        run: node --test tests/runtime-programme-production-smoke.test.mjs
+      - name: JavaScript syntax check
+        run: node --check scripts/runtime-programme-production-smoke.mjs
+      - name: Generate dry-run smoke plan
+        run: node scripts/runtime-programme-production-smoke.mjs > runtime-programme-smoke-plan.json
+      - name: Upload dry-run evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: runtime-programme-smoke-plan
+          path: runtime-programme-smoke-plan.json
+          retention-days: 14
+
+  live-smoke:
+    if: github.event_name == 'workflow_dispatch' && inputs.run_live_smoke == true
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run read-only production smoke verification
+        run: node scripts/runtime-programme-production-smoke.mjs --live --base-url='${{ inputs.base_url }}' > runtime-programme-production-report.json
+      - name: Upload production evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: runtime-programme-production-report
+          path: runtime-programme-production-report.json
+          retention-days: 30
