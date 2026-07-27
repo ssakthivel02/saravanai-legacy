@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   mergeTranscript,
   normaliseTranscript,
+  shouldRestartRecognition,
   speechRecognitionConstructor,
   voiceErrorMessage
 } from '../assets/voice-input.js';
@@ -30,4 +31,12 @@ test('voice errors are converted into clear user-facing messages', () => {
   assert.match(voiceErrorMessage('not-allowed'), /permission/i);
   assert.match(voiceErrorMessage('network'), /could not be reached/i);
   assert.match(voiceErrorMessage('unknown'), /could not be completed/i);
+});
+
+test('continuous recognition restarts only while the user still requests listening', () => {
+  assert.equal(shouldRestartRecognition({ requestedListening: true }), true);
+  assert.equal(shouldRestartRecognition({ requestedListening: false }), false);
+  assert.equal(shouldRestartRecognition({ requestedListening: true, documentHidden: true }), false);
+  assert.equal(shouldRestartRecognition({ requestedListening: true, lastError: 'not-allowed' }), false);
+  assert.equal(shouldRestartRecognition({ requestedListening: true, lastError: 'no-speech' }), true);
 });
