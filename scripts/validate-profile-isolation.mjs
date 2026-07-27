@@ -23,7 +23,7 @@ const capture = fs.readFileSync('assets/task-capture.js', 'utf8');
 const serviceWorker = fs.readFileSync('service-worker.js', 'utf8');
 const baseline = JSON.parse(fs.readFileSync('PROFILE_ISOLATION_BASELINE.json', 'utf8'));
 
-for (const marker of ['profile-[a-f0-9]{24}', 'sakthiai-owner-platform-', 'credentials: \'same-origin\'', 'legacyCompatible']) {
+for (const marker of ['profile-[a-f0-9]{24}', 'LEGACY_DATABASE_NAME', '${LEGACY_DATABASE_NAME}-${profileKey}', 'credentials: \'same-origin\'', 'legacyCompatible']) {
   if (!context.includes(marker)) throw new Error(`Profile context missing marker: ${marker}`);
 }
 for (const marker of ['IDBFactory.prototype', 'Storage.prototype', 'sakthiai-owner-lock-v1', 'sakthiai-owner-unlocked-until']) {
