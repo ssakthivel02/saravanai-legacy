@@ -33,8 +33,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Existing SakthiAI quality gate
-        run: npm test
+      - name: Existing structural validation
+        run: npm run validate
+      - name: Existing static build
+        run: npm run build
+      - name: Existing complete unit suite
+        run: npm run test:unit
       - name: Build 016 focused tests
         run: node --test tests/access-policy.test.mjs tests/access-role-policy-ui.test.mjs tests/access-jwt.test.mjs tests/platform-release-contract.test.mjs
       - name: Build 016 structural safety validation
