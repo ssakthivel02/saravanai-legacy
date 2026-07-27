@@ -29,8 +29,10 @@ jobs:
         run: npm run validate
       - name: Static production build
         run: npm run build
-      - name: Focused research and voice tests
-        run: node --test tests/free-research-quality.test.mjs tests/voice-input.test.mjs
+      - name: Focused voice tests
+        run: node --test tests/voice-input.test.mjs
+      - name: Focused research tests
+        run: node --test tests/free-research-quality.test.mjs
       - name: Existing complete unit suite
         shell: bash
         run: |
