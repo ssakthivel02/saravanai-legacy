@@ -20,6 +20,7 @@ export const ACCESS_ROUTE_CATALOGUE = Object.freeze([
   Object.freeze({ id: 'mobile-config-read', match: exact('/api/v1/mobile/config'), methods: ['GET'], roles: READ_ROLES, classification: 'profile-read', serverMutation: false }),
   Object.freeze({ id: 'owner-access-readiness', match: exact('/api/v1/platform/access/readiness'), methods: ['GET'], roles: OWNER_ONLY, classification: 'owner-security-read', serverMutation: false }),
   Object.freeze({ id: 'owner-authorisation-readiness', match: exact('/api/v1/platform/access/authorisation'), methods: ['GET'], roles: OWNER_ONLY, classification: 'owner-security-read', serverMutation: false }),
+  Object.freeze({ id: 'owner-storage-readiness', match: exact('/api/v1/platform/storage/readiness'), methods: ['GET'], roles: OWNER_ONLY, classification: 'owner-storage-read', serverMutation: false }),
   Object.freeze({ id: 'ai-chat', match: exact('/api/v1/chat'), methods: ['POST'], roles: WORK_ROLES, classification: 'ai-execution', serverMutation: false }),
   Object.freeze({ id: 'ai-chat-stream', match: exact('/api/v1/chat/stream'), methods: ['POST'], roles: WORK_ROLES, classification: 'ai-execution', serverMutation: false }),
   Object.freeze({ id: 'research-execution', match: exact('/api/v1/research'), methods: ['POST'], roles: WORK_ROLES, classification: 'research-execution', serverMutation: false }),
