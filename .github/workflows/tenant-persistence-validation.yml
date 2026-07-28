@@ -1,0 +1,62 @@
+name: Tenant persistence foundation
+
+on:
+  pull_request:
+    paths:
+      - 'src/tenant-*.js'
+      - 'src/platform-release-018.js'
+      - 'src/entry.js'
+      - 'src/access-route-catalogue.js'
+      - 'assets/tenant-persistence.*'
+      - 'assets/release-labels.js'
+      - 'service-worker.js'
+      - 'migrations/0009_tenant_persistence_foundation.sql'
+      - 'openapi/sakthiai-v1.yaml'
+      - 'tests/tenant-*.test.mjs'
+      - 'tests/platform-release-018.test.mjs'
+      - 'scripts/validate-tenant-persistence.mjs'
+      - 'scripts/validate-access-authorisation.mjs'
+      - 'docs/BUILD_018_*.md'
+      - 'TENANT_PERSISTENCE_BASELINE.json'
+      - '.github/workflows/tenant-persistence-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI validation
+        run: npm run validate
+      - name: Existing static build
+        run: npm run build
+      - name: Build 018 tenant context and storage tests
+        run: node --test tests/tenant-context.test.mjs tests/tenant-storage-policy.test.mjs
+      - name: Build 018 record, repository and quota tests
+        run: node --test tests/tenant-record-contract.test.mjs tests/tenant-repository.test.mjs tests/tenant-quota-policy.test.mjs tests/tenant-retention-policy.test.mjs
+      - name: Build 018 UI and release tests
+        run: node --test tests/tenant-persistence-ui.test.mjs tests/platform-release-018.test.mjs
+      - name: Complete unit regression suite
+        run: npm run test:unit
+      - name: Build 018 structural safety validation
+        run: node scripts/validate-tenant-persistence.mjs
+      - name: Build 017 authorisation regression
+        run: node scripts/validate-access-authorisation.mjs
+      - name: Build 016 role policy regression
+        run: node scripts/validate-access-role-policy.mjs
+      - name: Build 015 access readiness regression
+        run: node scripts/validate-access-readiness.mjs
+      - name: Confirm tenant storage, writes, deletion and paid paths remain disabled
+        run: |
+          ! grep -E '"TENANT_PERSISTENCE_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"TENANT_SERVER_WRITES_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"TENANT_HARD_QUOTA_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PUBLIC_REGISTRATION"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PREMIUM_PROVIDERS_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          grep -q 'DO NOT execute automatically' migrations/0009_tenant_persistence_foundation.sql

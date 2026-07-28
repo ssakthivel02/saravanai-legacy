@@ -1,0 +1,45 @@
+{
+  "release": "tenant-persistence-foundation-1.0.0",
+  "platformRelease": "0.18.0-tenant-persistence-foundation",
+  "ownerBuild": 18,
+  "schema": {
+    "version": "0009",
+    "automaticallyExecuted": false,
+    "plaintextPayloadAllowed": false,
+    "emailStored": false,
+    "jwtStored": false,
+    "profileKeyStored": false
+  },
+  "activation": {
+    "persistenceEnabledByDefault": false,
+    "emergencyStoppedByDefault": true,
+    "serverWritesEnabledByDefault": false,
+    "hardQuotaEnabledByDefault": false,
+    "automaticDeletionEnabled": false,
+    "publicRegistration": false
+  },
+  "requiredChain": [
+    "verified-cloudflare-access-jwt",
+    "exact-email-role-policy",
+    "endpoint-authorisation",
+    "d1-binding",
+    "schema-version-0009",
+    "explicit-owner-approval"
+  ],
+  "cost": {
+    "paidServicesRequired": false,
+    "paidOverageAllowed": false,
+    "silentPaidFallback": false
+  },
+  "prohibited": [
+    "cross-tenant-query",
+    "browser-supplied-tenant-id",
+    "plaintext-payload-storage",
+    "email-jwt-aud-or-profile-key-persistence",
+    "automatic-migration",
+    "automatic-deletion",
+    "writes-without-independent-mutation-gate",
+    "public-signup",
+    "silent-paid-overage"
+  ]
+}
