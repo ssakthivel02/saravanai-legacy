@@ -2,6 +2,8 @@ import coreWorker from './worker.js';
 import { handleFiles } from './files.js';
 import { handleOwnerApi } from './owner-api.js';
 import { handleBuild017PlatformApi } from './platform-release-017.js';
+import { handleBuild018PlatformApi } from './platform-release-018.js';
+import { tenantStoragePolicy, TENANT_STORAGE_RELEASE } from './tenant-storage-policy.js';
 import {
   accessRouteAuthorisationEnabled,
   accessServerMutationsEnabled,
@@ -42,6 +44,7 @@ export default {
     request = authorisation.request;
 
     if (request.method === 'GET' && url.pathname === '/health') {
+      const tenantStorage = tenantStoragePolicy(env);
       return Response.json({
         status: 'ok',
         service: 'sakthi-ai-nexus',
@@ -86,6 +89,12 @@ export default {
         accessJwtEnforcementEnabled: accessJwtEnforcementEnabled(env),
         accessRouteAuthorisationEnabled: accessRouteAuthorisationEnabled(env),
         accessServerMutationsEnabled: accessServerMutationsEnabled(env),
+        tenantPersistenceRelease: TENANT_STORAGE_RELEASE,
+        tenantPersistenceEnabled: tenantStorage.readsOperational,
+        tenantWritesEnabled: tenantStorage.writesOperational,
+        tenantPersistenceEmergencyStopped: tenantStorage.emergencyStopped,
+        tenantSchemaReady: tenantStorage.schemaReady,
+        tenantMigrationAutomaticallyExecuted: false,
         aiRuntime: Boolean(env.AI),
         costPolicy: 'free-first',
         premiumProvidersEnabled: premiumEnabled(env),
@@ -113,6 +122,8 @@ export default {
     if (url.pathname.startsWith('/api/v1/governance')) return handleGovernance(request, env, url);
     if (url.pathname.startsWith('/api/v1/files')) return handleFiles(request, env, url);
     if (url.pathname.startsWith('/api/v1/platform') || url.pathname === '/api/v1/mobile/config') {
+      const build018 = await handleBuild018PlatformApi(request, env, url);
+      if (build018) return build018;
       const build017 = await handleBuild017PlatformApi(request, env, url);
       if (build017) return build017;
       return handleOwnerApi(request, env, url);
