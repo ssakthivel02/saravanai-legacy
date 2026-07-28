@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
   title: SakthiAI API
-  version: 0.17.0-endpoint-authorisation
-  description: Free-first private owner API contract with disabled-by-default exact-email roles and endpoint authorisation. Public multi-tenant access is not enabled.
+  version: 0.18.0-tenant-persistence-foundation
+  description: Free-first private owner API contract with disabled-by-default exact-email roles, endpoint authorisation and verified tenant persistence. Public multi-tenant access and server writes are not enabled.
 servers:
   - url: https://sakthiai.omsaravanabhava.org
 paths:
@@ -128,9 +128,22 @@ paths:
           description: Verified identity required when enforcement is active
         '403':
           description: Owner role required when enforcement is active
+  /api/v1/platform/storage/readiness:
+    get:
+      summary: Get tenant context, D1 schema, quota, retention and operation readiness
+      description: Build 018 readiness only. It does not expose tenant IDs, email addresses, raw profile keys, JWTs or Access audiences and does not execute migration or writes.
+      responses:
+        '200':
+          description: Tenant persistence readiness contract
+        '401':
+          description: Verified identity required when endpoint enforcement is active
+        '403':
+          description: Owner role required when endpoint enforcement is active
+        '503':
+          description: Storage binding, schema or access chain is incomplete
   /api/v1/platform/capabilities:
     get:
-      summary: Get owner feature, binding, role-policy and endpoint-authorisation state
+      summary: Get owner feature, binding, role-policy, endpoint-authorisation and tenant-storage state
       responses:
         '200':
           description: Owner platform capabilities
@@ -139,7 +152,7 @@ paths:
       summary: Get local-owner or cryptographically verified Cloudflare Access identity state
       responses:
         '200':
-          description: Session state, role capabilities and endpoint-authorisation state
+          description: Session state, role capabilities, endpoint authorisation and tenant-context readiness
   /api/v1/mobile/config:
     get:
       summary: Get stable API paths and mobile-client release state
