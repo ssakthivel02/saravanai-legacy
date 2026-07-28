@@ -11,7 +11,6 @@ const required = [
   'assets/tenant-persistence.js',
   'assets/tenant-persistence.css',
   'migrations/0009_tenant_persistence_foundation.sql',
-  'openapi/sakthiai-storage-v1.yaml',
   'docs/BUILD_018_TENANT_PERSISTENCE.md',
   'docs/BUILD_018_ARCHITECTURE.md',
   'docs/BUILD_018_THREAT_MODEL.md',
@@ -52,7 +51,9 @@ for (const marker of ['payload_ciphertext BLOB NOT NULL', 'No email address, JWT
 if (!entry.includes("from './platform-release-018.js'")) throw new Error('Build 018 platform overlay is not wired into entry.js.');
 if (!labels.includes("import './tenant-persistence.js'")) throw new Error('Tenant persistence UI is not loaded.');
 if (!worker.includes('sakthiai-owner-v18-tenant-persistence')) throw new Error('Build 018 service-worker cache rotation is missing.');
-if (!openapi.includes('/api/v1/platform/storage/readiness:')) throw new Error('Primary OpenAPI storage readiness route is missing.');
+if (!openapi.includes('/api/v1/platform/storage/readiness:') || !openapi.includes('0.18.0-tenant-persistence-foundation')) {
+  throw new Error('Primary OpenAPI Build 018 storage readiness contract is missing.');
+}
 
 for (const variable of [
   'TENANT_PERSISTENCE_ENABLED',
