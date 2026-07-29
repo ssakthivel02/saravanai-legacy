@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
   title: SakthiAI API
-  version: 0.18.0-tenant-persistence-foundation
-  description: Free-first private owner API contract with disabled-by-default exact-email roles, endpoint authorisation and verified tenant persistence. Public multi-tenant access and server writes are not enabled.
+  version: 0.19.0-tenant-lifecycle-assurance
+  description: Free-first private owner API contract with disabled-by-default exact-email roles, endpoint authorisation, tenant persistence and non-production lifecycle assurance. Public multi-tenant access, production storage actions and server writes are not enabled.
 servers:
   - url: https://sakthiai.omsaravanabhava.org
 paths:
@@ -141,9 +141,20 @@ paths:
           description: Owner role required when endpoint enforcement is active
         '503':
           description: Storage binding, schema or access chain is incomplete
+  /api/v1/platform/storage/lifecycle:
+    get:
+      summary: Get non-production migration, backup, restore, isolation and deletion assurance readiness
+      description: Build 019 readiness only. It exposes no identity, tenant, backup-content or evidence-body data and performs no migration, backup, restore, deletion or production write.
+      responses:
+        '200':
+          description: Tenant lifecycle assurance contract
+        '401':
+          description: Verified identity required when endpoint enforcement is active
+        '403':
+          description: Owner role required when endpoint enforcement is active
   /api/v1/platform/capabilities:
     get:
-      summary: Get owner feature, binding, role-policy, endpoint-authorisation and tenant-storage state
+      summary: Get owner feature, binding, role-policy, endpoint-authorisation, tenant-storage and lifecycle-assurance state
       responses:
         '200':
           description: Owner platform capabilities
@@ -152,7 +163,7 @@ paths:
       summary: Get local-owner or cryptographically verified Cloudflare Access identity state
       responses:
         '200':
-          description: Session state, role capabilities, endpoint authorisation and tenant-context readiness
+          description: Session state, role capabilities, endpoint authorisation, tenant context and lifecycle readiness
   /api/v1/mobile/config:
     get:
       summary: Get stable API paths and mobile-client release state
