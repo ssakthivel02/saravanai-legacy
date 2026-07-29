@@ -1,0 +1,55 @@
+{
+  "release": "tenant-lifecycle-assurance-1.0.0",
+  "platformRelease": "0.19.0-tenant-lifecycle-assurance",
+  "ownerBuild": 19,
+  "scope": {
+    "migration": "0009 non-production rehearsal only",
+    "evidenceSchema": "0010 design only",
+    "backupExecution": false,
+    "restoreExecution": false,
+    "deletionExecution": false,
+    "productionActionsAllowed": false
+  },
+  "activation": {
+    "lifecycleAssuranceEnabledByDefault": false,
+    "emergencyStoppedByDefault": true,
+    "evidenceApprovedByDefault": false,
+    "automaticRecoveryEnabled": false,
+    "automaticFailoverEnabled": false,
+    "publicRegistration": false
+  },
+  "evidence": {
+    "rehearsalStages": 9,
+    "isolationCases": 8,
+    "backupChecksumRequired": true,
+    "restoreChecksumMatchRequired": true,
+    "legalHoldCheckRequired": true,
+    "ownerApprovalRequired": true,
+    "runtimePersistenceEnabled": false
+  },
+  "privacy": {
+    "emailStored": false,
+    "jwtStored": false,
+    "accessAudienceStored": false,
+    "rawProfileKeyStored": false,
+    "tenantIdExposed": false,
+    "evidencePayloadPersisted": false
+  },
+  "cost": {
+    "paidServicesRequired": false,
+    "paidOverageAllowed": false,
+    "silentPaidFallback": false
+  },
+  "prohibited": [
+    "production-migration-execution",
+    "automatic-backup-upload",
+    "automatic-restore",
+    "cross-tenant-access",
+    "browser-tenant-override",
+    "hard-delete",
+    "deletion-under-legal-hold",
+    "identity-material-in-evidence",
+    "public-registration",
+    "silent-paid-recovery"
+  ]
+}

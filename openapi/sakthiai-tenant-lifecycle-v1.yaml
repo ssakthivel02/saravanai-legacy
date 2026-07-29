@@ -1,0 +1,105 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Tenant Lifecycle Assurance API
+  version: 0.19.0-tenant-lifecycle-assurance
+  description: Disabled-by-default readiness contract for non-production migration rehearsal, backup, restore, tenant isolation and deletion evidence. It performs no production storage action.
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/platform/storage/lifecycle:
+    get:
+      summary: Get tenant lifecycle evidence and recovery readiness
+      description: Returns safe release, stage, case and activation metadata. It never exposes email, JWT, Access AUD, raw profile key, tenant ID, record payload, backup content or evidence body.
+      responses:
+        '200':
+          description: Tenant lifecycle readiness contract
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantLifecycleReadiness'
+        '401':
+          description: Verified Cloudflare Access identity required when endpoint authorisation is active
+        '403':
+          description: Owner role required when endpoint authorisation is active
+components:
+  schemas:
+    TenantLifecycleReadiness:
+      type: object
+      required: [status, platformRelease, ownerBuild, lifecycle, boundaries]
+      properties:
+        status:
+          const: ok
+        platformRelease:
+          const: 0.19.0-tenant-lifecycle-assurance
+        ownerBuild:
+          const: 19
+        lifecycle:
+          type: object
+          properties:
+            rehearsal:
+              type: object
+              properties:
+                productionExecutionAllowed:
+                  const: false
+                migrationAutomaticallyExecuted:
+                  const: false
+            backup:
+              type: object
+              properties:
+                runtimeBackupExecutionEnabled:
+                  const: false
+            restore:
+              type: object
+              properties:
+                productionRestoreAllowed:
+                  const: false
+                automaticRestoreEnabled:
+                  const: false
+            isolation:
+              type: object
+              properties:
+                crossTenantAccessAllowed:
+                  const: false
+            deletion:
+              type: object
+              properties:
+                hardDeleteImplemented:
+                  const: false
+                automaticPurgeEnabled:
+                  const: false
+            recovery:
+              type: object
+              properties:
+                operational:
+                  type: boolean
+                emergencyStopped:
+                  type: boolean
+                productionActionsAllowed:
+                  const: false
+        boundaries:
+          type: object
+          properties:
+            fullEmailExposed:
+              const: false
+            tenantIdExposed:
+              const: false
+            profileKeyExposed:
+              const: false
+            jwtExposed:
+              const: false
+            evidencePayloadPersisted:
+              const: false
+            migrationExecuted:
+              const: false
+            backupExecuted:
+              const: false
+            restoreExecuted:
+              const: false
+            deletionExecuted:
+              const: false
+            productionWritesEnabled:
+              const: false
+            publicRegistration:
+              const: false
+            paidFallbackEnabled:
+              const: false

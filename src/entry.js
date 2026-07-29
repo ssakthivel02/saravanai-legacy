@@ -3,7 +3,9 @@ import { handleFiles } from './files.js';
 import { handleOwnerApi } from './owner-api.js';
 import { handleBuild017PlatformApi } from './platform-release-017.js';
 import { handleBuild018PlatformApi } from './platform-release-018.js';
+import { handleBuild019PlatformApi } from './platform-release-019.js';
 import { tenantStoragePolicy, TENANT_STORAGE_RELEASE } from './tenant-storage-policy.js';
+import { tenantRecoveryPolicy, TENANT_RECOVERY_RELEASE } from './tenant-recovery-policy.js';
 import {
   accessRouteAuthorisationEnabled,
   accessServerMutationsEnabled,
@@ -45,6 +47,7 @@ export default {
 
     if (request.method === 'GET' && url.pathname === '/health') {
       const tenantStorage = tenantStoragePolicy(env);
+      const tenantLifecycle = tenantRecoveryPolicy(env);
       return Response.json({
         status: 'ok',
         service: 'sakthi-ai-nexus',
@@ -95,6 +98,11 @@ export default {
         tenantPersistenceEmergencyStopped: tenantStorage.emergencyStopped,
         tenantSchemaReady: tenantStorage.schemaReady,
         tenantMigrationAutomaticallyExecuted: false,
+        tenantLifecycleRelease: TENANT_RECOVERY_RELEASE,
+        tenantLifecycleAssuranceEnabled: tenantLifecycle.operational,
+        tenantLifecycleEmergencyStopped: tenantLifecycle.emergencyStopped,
+        tenantLifecycleEvidenceComplete: tenantLifecycle.evidence.complete,
+        tenantProductionActionsAllowed: false,
         aiRuntime: Boolean(env.AI),
         costPolicy: 'free-first',
         premiumProvidersEnabled: premiumEnabled(env),
@@ -122,6 +130,8 @@ export default {
     if (url.pathname.startsWith('/api/v1/governance')) return handleGovernance(request, env, url);
     if (url.pathname.startsWith('/api/v1/files')) return handleFiles(request, env, url);
     if (url.pathname.startsWith('/api/v1/platform') || url.pathname === '/api/v1/mobile/config') {
+      const build019 = await handleBuild019PlatformApi(request, env, url);
+      if (build019) return build019;
       const build018 = await handleBuild018PlatformApi(request, env, url);
       if (build018) return build018;
       const build017 = await handleBuild017PlatformApi(request, env, url);

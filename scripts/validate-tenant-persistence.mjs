@@ -50,9 +50,10 @@ for (const marker of ['payload_ciphertext BLOB NOT NULL', 'No email address, JWT
 }
 if (!entry.includes("from './platform-release-018.js'")) throw new Error('Build 018 platform overlay is not wired into entry.js.');
 if (!labels.includes("import './tenant-persistence.js'")) throw new Error('Tenant persistence UI is not loaded.');
-if (!worker.includes('sakthiai-owner-v18-tenant-persistence')) throw new Error('Build 018 service-worker cache rotation is missing.');
-if (!openapi.includes('/api/v1/platform/storage/readiness:') || !openapi.includes('0.18.0-tenant-persistence-foundation')) {
-  throw new Error('Primary OpenAPI Build 018 storage readiness contract is missing.');
+if (!/Owner build (?:0?1[89]|[2-9]\d)/i.test(labels)) throw new Error('Current owner build label must remain at Build 018 or later.');
+if (!/sakthiai-owner-v(?:1[89]|[2-9]\d)-/.test(worker)) throw new Error('Current PWA cache must remain at Build 018 or later.');
+if (!openapi.includes('/api/v1/platform/storage/readiness:') || !/version: 0\.(?:1[89]|[2-9]\d)\./.test(openapi)) {
+  throw new Error('Primary OpenAPI must retain Build 018 storage readiness and use release 0.18.0 or later.');
 }
 
 for (const variable of [
@@ -71,4 +72,4 @@ if (baseline.activation.persistenceEnabledByDefault !== false) throw new Error('
 if (baseline.activation.serverWritesEnabledByDefault !== false) throw new Error('Server writes must remain disabled by default.');
 if (baseline.cost.paidOverageAllowed !== false || baseline.cost.silentPaidFallback !== false) throw new Error('Paid overage must remain disabled.');
 
-console.log('Build 018 tenant persistence, isolation, quota and migration safety validation passed.');
+console.log('Build 018 tenant persistence, isolation, quota and migration safety validation passed for the current owner build.');

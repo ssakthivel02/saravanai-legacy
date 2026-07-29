@@ -1,0 +1,65 @@
+name: Tenant lifecycle assurance
+
+on:
+  pull_request:
+    paths:
+      - 'src/tenant-*.js'
+      - 'src/platform-release-019.js'
+      - 'src/entry.js'
+      - 'src/access-route-catalogue.js'
+      - 'assets/tenant-lifecycle.*'
+      - 'assets/release-labels.js'
+      - 'service-worker.js'
+      - 'migrations/0010_tenant_lifecycle_evidence.sql'
+      - 'openapi/sakthiai-v1.yaml'
+      - 'openapi/sakthiai-tenant-lifecycle-v1.yaml'
+      - 'tests/tenant-*.test.mjs'
+      - 'tests/platform-release-019.test.mjs'
+      - 'scripts/validate-tenant-lifecycle.mjs'
+      - 'scripts/validate-tenant-persistence.mjs'
+      - 'docs/BUILD_019_*.md'
+      - 'TENANT_LIFECYCLE_BASELINE.json'
+      - '.github/workflows/tenant-lifecycle-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing SakthiAI validation
+        run: npm run validate
+      - name: Existing static build
+        run: npm run build
+      - name: Build 019 rehearsal, backup and restore tests
+        run: node --test tests/tenant-rehearsal-plan.test.mjs tests/tenant-backup-contract.test.mjs tests/tenant-restore-contract.test.mjs
+      - name: Build 019 isolation, deletion and recovery tests
+        run: node --test tests/tenant-isolation-assurance.test.mjs tests/tenant-deletion-assurance.test.mjs tests/tenant-recovery-policy.test.mjs
+      - name: Build 019 UI and release tests
+        run: node --test tests/tenant-lifecycle-ui.test.mjs tests/platform-release-019.test.mjs
+      - name: Complete unit regression suite
+        run: npm run test:unit
+      - name: Build 019 structural safety validation
+        run: node scripts/validate-tenant-lifecycle.mjs
+      - name: Build 018 tenant persistence regression
+        run: node scripts/validate-tenant-persistence.mjs
+      - name: Build 017 authorisation regression
+        run: node scripts/validate-access-authorisation.mjs
+      - name: Build 016 role policy regression
+        run: node scripts/validate-access-role-policy.mjs
+      - name: Build 015 access readiness regression
+        run: node scripts/validate-access-readiness.mjs
+      - name: Confirm lifecycle, storage, public and paid paths remain disabled
+        run: |
+          ! grep -E '"TENANT_LIFECYCLE_ASSURANCE_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"TENANT_PERSISTENCE_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"TENANT_SERVER_WRITES_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PUBLIC_REGISTRATION"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          ! grep -E '"PREMIUM_PROVIDERS_ENABLED"[[:space:]]*:[[:space:]]*"true"' wrangler.jsonc
+          grep -q 'DO NOT execute automatically' migrations/0010_tenant_lifecycle_evidence.sql
