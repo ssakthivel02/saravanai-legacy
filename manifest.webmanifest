@@ -1,7 +1,7 @@
 {
-  "name": "Sakthi AI Nexus",
-  "short_name": "Sakthi AI",
-  "description": "Free-first private owner AI workspace for research, projects, files, artifacts, approvals, memory and usage controls.",
+  "name": "Omni AI Workspace",
+  "short_name": "Omni",
+  "description": "Free-first private AI workspace for research, projects, files, artifacts, approvals, memory and usage controls.",
   "start_url": "/#overview",
   "scope": "/",
   "display": "standalone",
