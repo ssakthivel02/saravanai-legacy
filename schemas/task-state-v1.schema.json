@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sakthiai.omsaravanabhava.org/schemas/task-state-v1.schema.json",
+  "title": "SakthiAI TaskStateV1",
+  "description": "Provider-neutral, checkpointable and exportable state for resumable SakthiAI agent tasks.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "taskId",
+    "tenantId",
+    "projectId",
+    "status",
+    "mode",
+    "createdAt",
+    "updatedAt",
+    "plan",
+    "checkpoints",
+    "artifacts",
+    "sources",
+    "approvals",
+    "budget",
+    "execution"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "taskId": { "type": "string", "minLength": 8, "maxLength": 128 },
+    "tenantId": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "projectId": { "type": ["string", "null"], "maxLength": 128 },
+    "parentTaskId": { "type": ["string", "null"], "maxLength": 128 },
+    "branchFromCheckpointId": { "type": ["string", "null"], "maxLength": 128 },
+    "status": {
+      "enum": ["draft", "awaiting_plan_approval", "queued", "running", "paused", "awaiting_approval", "completed", "failed", "cancelled"]
+    },
+    "mode": {
+      "enum": ["chat", "research", "frontier", "agent", "code", "artifact", "computer", "scheduler", "creative"]
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "approvalState", "steps"],
+      "properties": {
+        "revision": { "type": "integer", "minimum": 1 },
+        "approvalState": { "enum": ["not_required", "pending", "approved", "rejected", "revision_requested"] },
+        "approvedAt": { "type": ["string", "null"], "format": "date-time" },
+        "steps": {
+          "type": "array",
+          "maxItems": 500,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "title", "status", "dependsOn", "riskClass"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1, "maxLength": 128 },
+              "title": { "type": "string", "minLength": 1, "maxLength": 500 },
+              "status": { "enum": ["pending", "running", "blocked", "completed", "failed", "skipped"] },
+              "dependsOn": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+              "riskClass": { "enum": ["read_only", "reversible_write", "consequential_write"] },
+              "workerHint": { "type": ["string", "null"], "maxLength": 128 }
+            }
+          }
+        }
+      }
+    },
+    "checkpoints": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "createdAt", "stepId", "stateHash", "resumeTokenRef"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1, "maxLength": 128 },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "stepId": { "type": ["string", "null"], "maxLength": 128 },
+          "stateHash": { "type": "string", "minLength": 32, "maxLength": 256 },
+          "resumeTokenRef": { "type": ["string", "null"], "maxLength": 512 },
+          "provider": { "type": ["string", "null"], "maxLength": 128 },
+          "model": { "type": ["string", "null"], "maxLength": 256 },
+          "portable": { "type": "boolean", "default": true }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "uri", "sha256"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": { "enum": ["document", "pdf", "presentation", "spreadsheet", "code", "webapp", "image", "video", "audio", "data", "other"] },
+          "uri": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+          "evidenceManifestUri": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "maxItems": 5000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "uri", "retrievedAt", "qualityClass"],
+        "properties": {
+          "id": { "type": "string" },
+          "uri": { "type": "string" },
+          "retrievedAt": { "type": "string", "format": "date-time" },
+          "qualityClass": { "enum": ["official_primary", "authoritative_secondary", "reputable_secondary", "community", "unknown"] },
+          "contentHash": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "actionType", "status", "requestedAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "actionType": { "type": "string", "minLength": 1, "maxLength": 128 },
+          "status": { "enum": ["pending", "approved", "rejected", "expired"] },
+          "requestedAt": { "type": "string", "format": "date-time" },
+          "decidedAt": { "type": ["string", "null"], "format": "date-time" },
+          "policyId": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy", "maxCostUsd", "maxComputeSeconds", "spentCostUsd", "spentComputeSeconds"],
+      "properties": {
+        "policy": { "enum": ["free_first", "economy", "balanced", "premium", "local_only"] },
+        "maxCostUsd": { "type": ["number", "null"], "minimum": 0 },
+        "maxComputeSeconds": { "type": ["integer", "null"], "minimum": 0 },
+        "spentCostUsd": { "type": "number", "minimum": 0 },
+        "spentComputeSeconds": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preferredLane", "fallbackAllowed", "toolPolicy", "lastWorkerId"],
+      "properties": {
+        "preferredLane": { "enum": ["local", "self_hosted", "edge", "external_optional", "auto"] },
+        "fallbackAllowed": { "type": "boolean" },
+        "lastWorkerId": { "type": ["string", "null"], "maxLength": 256 },
+        "lastProvider": { "type": ["string", "null"], "maxLength": 128 },
+        "lastModel": { "type": ["string", "null"], "maxLength": 256 },
+        "toolPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["defaultDeny", "allowed", "denied"],
+          "properties": {
+            "defaultDeny": { "const": true },
+            "allowed": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+            "denied": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+          }
+        }
+      }
+    },
+    "memoryProposalIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 1000 }
+    }
+  }
+}
