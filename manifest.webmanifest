@@ -1,6 +1,6 @@
 {
-  "name": "Saravan AI Workspace",
-  "short_name": "Saravan",
+  "name": "SaravanAI — Private AI Workspace",
+  "short_name": "SaravanAI",
   "description": "Free-first private AI workspace for research, projects, files, artifacts, approvals, memory and usage controls.",
   "start_url": "/#overview",
   "scope": "/",
