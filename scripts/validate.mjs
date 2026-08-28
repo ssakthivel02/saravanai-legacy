@@ -107,7 +107,7 @@ const combined = `${html}\n${entry}\n${worker}\n${router}\n${governance}\n${free
 if (/sk-[A-Za-z0-9]{20,}|AIza[A-Za-z0-9_-]{20,}/.test(combined)) throw new Error('Potential API key found in source files');
 
 const manifest = JSON.parse(await readFile(new URL('../manifest.webmanifest', import.meta.url), 'utf8'));
-if (manifest.name !== 'Saravan AI Workspace' || manifest.short_name !== 'Saravan' || manifest.display !== 'standalone') throw new Error('Invalid Saravan PWA manifest');
+if (manifest.name !== 'SaravanAI — Private AI Workspace' || manifest.short_name !== 'SaravanAI' || manifest.display !== 'standalone') throw new Error('Invalid SaravanAI PWA manifest');
 
 const wrangler = JSON.parse((await readFile(new URL('../wrangler.jsonc', import.meta.url), 'utf8')).replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, ''));
 if (
@@ -128,4 +128,4 @@ if (health.version !== '0.11.0-owner-security' || health.kimiEnabled !== false |
   throw new Error('Invalid Release 011 health metadata');
 }
 
-console.log('Validation passed: Saravan legacy PWA identity with SakthiAI Release 012-020 governance foundation, Release 011 owner security and free-only routing.');
+console.log('Validation passed: SaravanAI legacy PWA identity with SakthiAI Release 012-020 governance foundation, Release 011 owner security and free-only routing.');
