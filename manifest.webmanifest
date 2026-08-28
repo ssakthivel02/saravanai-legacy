@@ -1,6 +1,6 @@
 {
-  "name": "Omni AI Workspace",
-  "short_name": "Omni",
+  "name": "Saravan AI Workspace",
+  "short_name": "Saravan",
   "description": "Free-first private AI workspace for research, projects, files, artifacts, approvals, memory and usage controls.",
   "start_url": "/#overview",
   "scope": "/",
