@@ -5,7 +5,7 @@
   "description": "Free-first SakthiAI owner platform with security-first governance, compliance evidence, tenant, editorial, agent, resilience and production launch foundations.",
   "type": "module",
   "scripts": {
-    "validate": "node scripts/validate.mjs",
+    "validate": "node scripts/validate.mjs && node scripts/validate-master-dashboard.mjs",
     "build": "node scripts/build.mjs",
     "test:unit": "node --test tests/*.test.mjs",
     "test": "npm run validate && npm run build && npm run test:unit"
