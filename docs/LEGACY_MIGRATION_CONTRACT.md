@@ -1,7 +1,7 @@
-# Omni legacy migration contract
+# Saravan legacy migration contract
 
-Target legacy identity: **Omni**
-Target domain: `omni.omsaravanabhava.org`
+Target legacy identity: **Saravan**
+Target domain: `saravan.omsaravanabhava.org`
 Source product: SakthiAI
 
 ## Non-negotiable controls
@@ -15,6 +15,6 @@ Source product: SakthiAI
 
 ## Migration scope
 1. Legacy domain/CNAME.
-2. Public-facing Omni branding, canonical metadata, manifest/PWA identity and social metadata.
+2. Public-facing Saravan branding, canonical metadata, manifest/PWA identity and social metadata.
 3. Existing SakthiAI functionality retained unless a defect is independently fixed and tested.
 4. No claims of production readiness until live-domain smoke tests pass.
