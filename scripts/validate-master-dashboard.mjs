@@ -23,7 +23,7 @@ for (const item of dashboard.innovationRadar) {
 for (const marker of ['sakthiMasterDashboard', 'master-dashboard.v1.json', 'Global AI innovation radar', 'Owner-pilot → public graduation gates', 'Distilled only']) {
   if (!ui.includes(marker)) throw new Error(`Master dashboard UI missing marker: ${marker}`);
 }
-for (const marker of ['durable design-memory surface', 'Owner Pilot', 'Public Candidate', 'architecture before feature count', 'MCP + A2A + A2UI']) {
+for (const marker of ['durable design-memory surface', 'Owner Pilot', 'Public Candidate', 'architecture before feature count', 'MCP/A2A/A2UI']) {
   if (!docs.includes(marker)) throw new Error(`Master dashboard documentation missing marker: ${marker}`);
 }
 if (capabilityRegistry.policy?.providerNeutral !== true || capabilityRegistry.policy?.comparativeModelClaimsRequireBenchmarks !== true) throw new Error('Capability registry lost provider-neutral/benchmark guardrails');
