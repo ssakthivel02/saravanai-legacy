@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-08-28T17:30:00Z",
+  "policy": {
+    "defaultExecutionLane": "auto",
+    "providerNeutral": true,
+    "openSelfHostedPreferred": true,
+    "silentPaidFallback": false,
+    "consequentialWritesRequireApproval": true,
+    "comparativeModelClaimsRequireBenchmarks": true
+  },
+  "capabilities": [
+    {
+      "id": "chat",
+      "name": "Sakthi Chat",
+      "status": "existing_partial",
+      "priority": "P0",
+      "targets": ["multiturn", "multimodal", "files", "web", "citations", "Tamil-English"]
+    },
+    {
+      "id": "research",
+      "name": "Sakthi Research",
+      "status": "existing_partial",
+      "priority": "P0",
+      "targets": ["fresh-web", "official-source-preference", "citation-graph", "contradiction-detection", "wide-research"]
+    },
+    {
+      "id": "frontier",
+      "name": "Sakthi Frontier",
+      "status": "planned",
+      "priority": "P1",
+      "targets": ["planner", "parallel-specialists", "tools", "independent-verifier", "test-evidence-gate", "synthesizer", "checkpoint-resume"]
+    },
+    {
+      "id": "agent",
+      "name": "Sakthi Agent",
+      "status": "planned",
+      "priority": "P0",
+      "targets": ["plan-mode", "task-DAG", "parallel-agents", "pause-resume-cancel", "steering", "durable-checkpoints"]
+    },
+    {
+      "id": "code",
+      "name": "Sakthi Code",
+      "status": "planned",
+      "priority": "P1",
+      "targets": ["repo-map", "search", "edit", "shell", "test", "lint", "branch-worktree", "commit", "pull-request", "CI", "rollback"]
+    },
+    {
+      "id": "artifact",
+      "name": "Sakthi Artifact Studio",
+      "status": "planned",
+      "priority": "P1",
+      "targets": ["DOCX", "PDF", "PPTX", "XLSX", "webapp", "code-package", "live-preview", "provenance-manifest"]
+    },
+    {
+      "id": "computer",
+      "name": "Sakthi Computer",
+      "status": "planned",
+      "priority": "P1",
+      "targets": ["connector-first", "DOM-browser", "authenticated-browser", "visual-fallback", "local-CLI", "takeover", "kill-switch"]
+    },
+    {
+      "id": "scheduler",
+      "name": "Sakthi Scheduler",
+      "status": "planned",
+      "priority": "P0",
+      "targets": ["one-time", "recurring", "conditional", "same-thread", "isolated-run", "project-aware", "connector-aware", "history", "retry", "budget-caps"]
+    },
+    {
+      "id": "creative",
+      "name": "Sakthi Creative Studio",
+      "status": "planned",
+      "priority": "P2",
+      "targets": ["image", "video", "avatar", "STT", "TTS", "translation", "dubbing", "music", "audio", "rights-consent-provenance"]
+    },
+    {
+      "id": "projects-memory",
+      "name": "Sakthi Projects & Memory",
+      "status": "existing_partial",
+      "priority": "P0",
+      "targets": ["projects", "branch-from-message", "proposed-memory-updates", "diff-approval-rollback", "import-export", "personal-project-team-boundaries"]
+    },
+    {
+      "id": "connectors-plugins",
+      "name": "Sakthi Connectors & Skills",
+      "status": "planned",
+      "priority": "P2",
+      "targets": ["MCP-compatible", "signed-manifests", "security-scanning", "least-privilege", "skills", "plugins", "sub-agents", "hooks", "revocation-dashboard"]
+    },
+    {
+      "id": "persistent-compute",
+      "name": "Sakthi Workspace Computer",
+      "status": "planned_owner_only",
+      "priority": "P1",
+      "targets": ["ephemeral-sandbox", "persistent-workspace", "self-hosted-worker", "snapshots", "secrets-vault", "egress-policy", "resource-quotas", "automatic-shutdown"]
+    }
+  ]
+}
