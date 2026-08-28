@@ -14,7 +14,7 @@ for (const file of required) {
 }
 
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-for (const marker of ['<main','manifest.webmanifest','owner-platform.css','owner-platform.js','Sakthi AI Nexus','view-projects','view-files','view-artifacts','view-approvals','view-memory','view-usage','view-access','citationPanel','budgetSelect','streamToggle']) {
+for (const marker of ['<main','manifest.webmanifest','owner-platform.css','owner-platform.js','SaravanAI','view-projects','view-files','view-artifacts','view-approvals','view-memory','view-usage','view-access','citationPanel','budgetSelect','streamToggle']) {
   if (!html.includes(marker)) throw new Error(`index.html missing marker: ${marker}`);
 }
 
