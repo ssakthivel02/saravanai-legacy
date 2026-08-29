@@ -1,0 +1,138 @@
+{
+  "schema_version": "0.1.0",
+  "registry": "sakthiai-agent-capabilities",
+  "default_policy": "deny_unlisted",
+  "capabilities": [
+    {
+      "id": "CAP-RESEARCH-001",
+      "name": "authoritative_research",
+      "agent": "AG-002",
+      "autonomy": "GREEN",
+      "inputs": ["question", "scope", "source_preferences"],
+      "outputs": ["evidence_bundle", "citations", "structured_findings", "next_tasks"],
+      "allowed_tool_classes": ["web_search", "file_read", "provider_research"],
+      "approval_required": false
+    },
+    {
+      "id": "CAP-GITHUB-READ-001",
+      "name": "github_read_control_tower",
+      "agent": "AG-005",
+      "autonomy": "GREEN",
+      "inputs": ["repository", "task_context"],
+      "outputs": ["repo_state", "blockers", "recommended_next_task"],
+      "allowed_tool_classes": ["github_read"],
+      "approval_required": false
+    },
+    {
+      "id": "CAP-GITHUB-BRANCH-001",
+      "name": "github_branch_build",
+      "agent": "AG-003",
+      "autonomy": "GREEN",
+      "inputs": ["repository", "base_ref", "work_packet"],
+      "outputs": ["branch", "commits", "evidence"],
+      "allowed_tool_classes": ["github_read", "github_branch_write"],
+      "forbidden_tool_classes": ["github_main_write", "github_destructive"],
+      "approval_required": false
+    },
+    {
+      "id": "CAP-GITHUB-PR-001",
+      "name": "open_draft_pull_request",
+      "agent": "AG-003",
+      "autonomy": "GREEN",
+      "inputs": ["repository", "head_branch", "base_branch", "evidence"],
+      "outputs": ["draft_pr"],
+      "allowed_tool_classes": ["github_pr_create_draft"],
+      "approval_required": false
+    },
+    {
+      "id": "CAP-CI-TRIAGE-001",
+      "name": "ci_failure_triage",
+      "agent": "AG-006",
+      "autonomy": "GREEN",
+      "inputs": ["repository", "workflow_run"],
+      "outputs": ["failure_class", "evidence", "remediation_task"],
+      "allowed_tool_classes": ["github_actions_read", "github_branch_write", "github_actions_rerun_bounded"],
+      "approval_required": false
+    },
+    {
+      "id": "CAP-CONTENT-001",
+      "name": "structured_content_factory",
+      "agent": "AG-004",
+      "autonomy": "GREEN",
+      "inputs": ["project", "checkpoint", "schema", "source_policy"],
+      "outputs": ["staging_records", "provenance", "next_checkpoint"],
+      "allowed_tool_classes": ["web_search", "file_read", "staging_write"],
+      "approval_required": false
+    },
+    {
+      "id": "CAP-ARTIFACT-001",
+      "name": "artifact_packaging",
+      "agent": "AG-007",
+      "autonomy": "GREEN",
+      "inputs": ["structured_outputs", "artifact_contract"],
+      "outputs": ["artifact", "manifest"],
+      "allowed_tool_classes": ["artifact_create", "file_write_staging"],
+      "approval_required": false
+    },
+    {
+      "id": "CAP-YOUTUBE-PREP-001",
+      "name": "youtube_upload_package",
+      "agent": "AG-008",
+      "autonomy": "GREEN",
+      "inputs": ["video", "channel_policy", "language_strategy"],
+      "outputs": ["title", "description", "chapters", "tags", "thumbnail_brief", "rights_checklist"],
+      "allowed_tool_classes": ["file_read", "web_search", "artifact_create"],
+      "approval_required": false
+    },
+    {
+      "id": "CAP-PUBLISH-001",
+      "name": "public_publish",
+      "agent": "AG-008",
+      "autonomy": "AMBER",
+      "inputs": ["approved_publication_packet"],
+      "outputs": ["publication_result"],
+      "allowed_tool_classes": ["publisher_write"],
+      "approval_required": true
+    },
+    {
+      "id": "CAP-DEPLOY-001",
+      "name": "production_deploy",
+      "agent": "AG-003",
+      "autonomy": "AMBER",
+      "inputs": ["approved_release_packet"],
+      "outputs": ["deployment_result", "rollback_reference"],
+      "allowed_tool_classes": ["production_deploy"],
+      "approval_required": true
+    },
+    {
+      "id": "CAP-DNS-001",
+      "name": "dns_or_edge_change",
+      "agent": "AG-005",
+      "autonomy": "AMBER",
+      "inputs": ["approved_change_packet"],
+      "outputs": ["change_result", "verification"],
+      "allowed_tool_classes": ["dns_write", "edge_config_write"],
+      "approval_required": true
+    },
+    {
+      "id": "CAP-COMMS-SEND-001",
+      "name": "external_message_send",
+      "agent": "AG-009",
+      "autonomy": "AMBER",
+      "inputs": ["approved_message", "recipient"],
+      "outputs": ["send_result"],
+      "allowed_tool_classes": ["email_send", "message_send"],
+      "approval_required": true
+    },
+    {
+      "id": "CAP-COMPUTER-001",
+      "name": "sandboxed_computer_use",
+      "agent": "AG-010",
+      "autonomy": "AMBER",
+      "inputs": ["domain_allowlist", "task", "stop_conditions"],
+      "outputs": ["action_trace", "result", "handoff_request"],
+      "allowed_tool_classes": ["sandbox_browser"],
+      "approval_required": true
+    }
+  ]
+}
