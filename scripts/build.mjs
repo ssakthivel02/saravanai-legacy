@@ -12,4 +12,4 @@ for (const entry of entries) {
   }
   await cp(new URL(`../${entry}`, import.meta.url), new URL(`../dist/${entry}`, import.meta.url), { recursive: true });
 }
-console.log('Sakthi AI Nexus static build created in dist/.');
+console.log('SaravanAI static build created in dist/.');
