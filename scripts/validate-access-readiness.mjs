@@ -57,7 +57,7 @@ if (!/Owner build 0?(?:1[5-9]|[2-9]\d)/i.test(labels)) throw new Error('Current 
 for (const asset of ['/assets/access-readiness.js', '/assets/access-readiness.css']) {
   if (!serviceWorker.includes(asset)) throw new Error(`Service worker does not cache ${asset}`);
 }
-if (!/sakthiai-owner-v(?:1[5-9]|[2-9]\d)-/.test(serviceWorker)) throw new Error('Current access-readiness-era cache rotation is missing.');
+if (!/(?:sakthiai|saravanai)-owner-v(?:1[5-9]|[2-9]\d)-/.test(serviceWorker)) throw new Error('Current access-readiness-era cache rotation is missing under the compatible SakthiAI/SaravanAI cache identity.');
 if (!openapi.includes('/api/v1/platform/release:')) {
   throw new Error('OpenAPI release-readiness contract is missing.');
 }
