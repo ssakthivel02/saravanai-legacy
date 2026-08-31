@@ -31,7 +31,7 @@ for (const marker of ['deriveRolePolicyView','/api/v1/platform/access/readiness'
 if (!labels.includes("import './access-role-policy.js'")) throw new Error('Role policy module is not loaded by the current UI chain.');
 if (!/Owner build 0?(?:1[6-9]|[2-9]\d)/i.test(labels)) throw new Error('Current owner build label must be 016 or later.');
 for (const asset of ['/assets/access-role-policy.js','/assets/access-role-policy.css']) if (!serviceWorker.includes(asset)) throw new Error(`Service worker does not cache ${asset}`);
-if (!/sakthiai-owner-v(?:1[6-9]|[2-9]\d)-/.test(serviceWorker)) throw new Error('Build 016-or-later PWA cache rotation is missing.');
+if (!/(?:sakthiai|saravanai)-owner-v(?:1[6-9]|[2-9]\d)-/.test(serviceWorker)) throw new Error('Build 016-or-later PWA cache rotation is missing under the compatible SakthiAI/SaravanAI cache identity.');
 if (!openapi.includes('/api/v1/platform/access/readiness:') || !/version: 0\.(?:1[6-9]|[2-9]\d)\./.test(openapi)) throw new Error('OpenAPI Build 016-or-later role-policy contract is missing.');
 
 for (const variable of ['ACCESS_JWT_ENFORCEMENT_ENABLED','ACCESS_TEAM_PROFILES_ENABLED','ACCESS_READER_PROFILES_ENABLED','ACCESS_INVITATIONS_ENABLED','PUBLIC_REGISTRATION','PREMIUM_PROVIDERS_ENABLED']) {

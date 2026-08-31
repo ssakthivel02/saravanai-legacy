@@ -51,7 +51,7 @@ for (const marker of ['payload_ciphertext BLOB NOT NULL', 'No email address, JWT
 if (!entry.includes("from './platform-release-018.js'")) throw new Error('Build 018 platform overlay is not wired into entry.js.');
 if (!labels.includes("import './tenant-persistence.js'")) throw new Error('Tenant persistence UI is not loaded.');
 if (!/Owner build (?:0?1[89]|[2-9]\d)/i.test(labels)) throw new Error('Current owner build label must remain at Build 018 or later.');
-if (!/sakthiai-owner-v(?:1[89]|[2-9]\d)-/.test(worker)) throw new Error('Current PWA cache must remain at Build 018 or later.');
+if (!/(?:sakthiai|saravanai)-owner-v(?:1[89]|[2-9]\d)-/.test(worker)) throw new Error('Current PWA cache must remain at Build 018 or later under the compatible SakthiAI/SaravanAI cache identity.');
 if (!openapi.includes('/api/v1/platform/storage/readiness:') || !/version: 0\.(?:1[89]|[2-9]\d)\./.test(openapi)) {
   throw new Error('Primary OpenAPI must retain Build 018 storage readiness and use release 0.18.0 or later.');
 }

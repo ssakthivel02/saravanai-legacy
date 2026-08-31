@@ -41,7 +41,7 @@ if (!labels.includes("import './access-authorisation.js'")) throw new Error('Bui
 if (!/Owner build (?:0?1[7-9]|[2-9]\d)/i.test(labels)) throw new Error('Current owner build label must remain at Build 017 or later.');
 if (!readiness.includes('Endpoint authorisation')) throw new Error('Access readiness does not show endpoint authorisation state.');
 for (const asset of ['/assets/access-authorisation.js','/assets/access-authorisation.css']) if (!serviceWorker.includes(asset)) throw new Error(`Service worker does not cache ${asset}`);
-if (!/sakthiai-owner-v(?:1[7-9]|[2-9]\d)-/.test(serviceWorker)) throw new Error('Current PWA cache must remain at Build 017 or later.');
+if (!/(?:sakthiai|saravanai)-owner-v(?:1[7-9]|[2-9]\d)-/.test(serviceWorker)) throw new Error('Current PWA cache must remain at Build 017 or later under the compatible SakthiAI/SaravanAI cache identity.');
 if (!openapi.includes('/api/v1/platform/access/authorisation:') || !/version: 0\.(?:1[7-9]|[2-9]\d)\./.test(openapi)) throw new Error('Primary OpenAPI must retain Build 017 authorisation and use release 0.17.0 or later.');
 if (!dedicatedOpenapi.includes('deny-unclassified-when-enabled')) throw new Error('Dedicated access OpenAPI contract is incomplete.');
 

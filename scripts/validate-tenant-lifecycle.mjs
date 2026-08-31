@@ -59,7 +59,7 @@ if (!entry.includes("from './platform-release-019.js'")) throw new Error('Build 
 if (!catalogue.includes('owner-storage-lifecycle')) throw new Error('Build 019 owner route is not classified.');
 if (!labels.includes("import './tenant-lifecycle.js'")) throw new Error('Build 019 lifecycle UI is not loaded.');
 for (const asset of ['/assets/tenant-lifecycle.js','/assets/tenant-lifecycle.css']) if (!worker.includes(asset)) throw new Error(`Service worker does not cache ${asset}`);
-if (!worker.includes('sakthiai-owner-v19-tenant-lifecycle')) throw new Error('Build 019 PWA cache rotation is missing.');
+if (!worker.includes("const CACHE='saravanai-owner-v20-postcutover'")) throw new Error('SaravanAI post-cutover PWA cache rotation is missing.');
 if (!primaryOpenapi.includes('/api/v1/platform/storage/lifecycle:') || !primaryOpenapi.includes('0.19.0-tenant-lifecycle-assurance')) throw new Error('Primary OpenAPI Build 019 contract is missing.');
 if (!dedicatedOpenapi.includes('productionActionsAllowed') || !dedicatedOpenapi.includes('paidFallbackEnabled')) throw new Error('Dedicated lifecycle OpenAPI safety contract is incomplete.');
 for (const marker of ['DO NOT execute automatically','environment IN (\'local\',\'preview\',\'non-production\')','No email, JWT, Access AUD']) if (!migration.includes(marker)) throw new Error(`Migration safety marker missing: ${marker}`);
@@ -84,4 +84,4 @@ if (baseline.activation.lifecycleAssuranceEnabledByDefault !== false || baseline
 if (baseline.privacy.evidencePayloadPersisted !== false) throw new Error('Evidence payload persistence must remain disabled.');
 if (baseline.cost.paidServicesRequired !== false || baseline.cost.silentPaidFallback !== false) throw new Error('Build 019 must remain free-first.');
 
-console.log('Build 019 tenant lifecycle, backup, restore, isolation, deletion and recovery safety validation passed.');
+console.log('Build 019 tenant lifecycle, backup, restore, isolation, deletion and recovery safety validation passed with SaravanAI post-cutover cache identity.');
