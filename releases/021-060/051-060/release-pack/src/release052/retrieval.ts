@@ -1,0 +1,1 @@
+export interface RetrievalHit{chunkId:string;documentId:string;score:number;sourceRef:string;permissions:string[];}export const filterAuthorisedHits=(h:RetrievalHit[],p:Set<string>)=>h.filter(x=>x.permissions.every(v=>p.has(v)));

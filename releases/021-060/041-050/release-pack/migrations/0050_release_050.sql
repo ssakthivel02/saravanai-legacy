@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS assurance_findings(finding_id TEXT PRIMARY KEY,control_id TEXT NOT NULL,severity TEXT NOT NULL,status TEXT NOT NULL,owner TEXT NOT NULL,due_at TEXT,updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS risk_acceptances(acceptance_id TEXT PRIMARY KEY,finding_id TEXT NOT NULL,accepted_by TEXT NOT NULL,rationale TEXT NOT NULL,expires_at TEXT NOT NULL,compensating_controls_json TEXT NOT NULL,accepted_at TEXT NOT NULL);

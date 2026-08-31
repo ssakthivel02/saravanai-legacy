@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "protectedBranches": [
+    "main"
+  ],
+  "requirements": {
+    "pullRequest": true,
+    "tests": true,
+    "secretScan": true,
+    "dependencyReview": true,
+    "sbom": true,
+    "codeOwnerReview": true,
+    "productionApproval": true,
+    "rollbackPlan": true,
+    "evidenceBundle": true
+  },
+  "forbidden": {
+    "directProductionPush": true,
+    "plaintextSecrets": true,
+    "unreviewedDatabaseMigration": true,
+    "paidProviderEnablementWithoutOwnerApproval": true
+  }
+}

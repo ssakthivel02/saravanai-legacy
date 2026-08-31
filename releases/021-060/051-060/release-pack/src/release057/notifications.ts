@@ -1,0 +1,1 @@
+export interface NotificationPreference{subject:string;channel:"email"|"in_app";category:string;enabled:boolean;quietHours?:{start:string;end:string;timezone:string};}

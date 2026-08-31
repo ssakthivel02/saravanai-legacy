@@ -1,0 +1,1 @@
+export interface KeyAccessEvent{eventId:string;secretId:string;actorSubject:string;action:"read_reference"|"use"|"rotate"|"revoke";outcome:"allowed"|"denied";requestId:string;occurredAt:string;}

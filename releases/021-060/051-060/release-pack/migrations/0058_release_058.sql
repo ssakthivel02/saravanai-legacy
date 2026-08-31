@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS privacy_requests(request_id TEXT PRIMARY KEY,subject_ref TEXT NOT NULL,tenant_id TEXT NOT NULL,request_type TEXT NOT NULL,status TEXT NOT NULL,due_at TEXT NOT NULL,legal_hold_applies INTEGER NOT NULL,created_at TEXT NOT NULL,completed_at TEXT);
+CREATE TABLE IF NOT EXISTS records_schedules(schedule_id TEXT PRIMARY KEY,record_type TEXT NOT NULL,retention_days INTEGER NOT NULL,disposition TEXT NOT NULL,legal_basis TEXT NOT NULL);

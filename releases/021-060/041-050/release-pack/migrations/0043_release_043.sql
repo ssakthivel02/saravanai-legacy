@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS policy_bundles(bundle_id TEXT NOT NULL,version TEXT NOT NULL,sha256 TEXT NOT NULL,status TEXT NOT NULL,approved_by TEXT,created_at TEXT NOT NULL,PRIMARY KEY(bundle_id,version));
+CREATE TABLE IF NOT EXISTS policy_decisions(decision_id TEXT PRIMARY KEY,tenant_id TEXT NOT NULL,bundle_id TEXT NOT NULL,bundle_version TEXT NOT NULL,input_hash TEXT NOT NULL,allow INTEGER NOT NULL,reason TEXT NOT NULL,obligations_json TEXT NOT NULL,decided_at TEXT NOT NULL);

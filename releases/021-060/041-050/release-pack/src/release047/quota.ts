@@ -1,0 +1,1 @@
+export interface QuotaPolicy{tenantId:string;metric:"requests"|"tokens"|"storage_bytes"|"workflow_runs";softLimit:number;hardLimit:number;period:"hour"|"day"|"month";}export function quotaDecision(u:number,p:QuotaPolicy):"allow"|"warn"|"deny"{if(u>=p.hardLimit)return"deny";if(u>=p.softLimit)return"warn";return"allow";}

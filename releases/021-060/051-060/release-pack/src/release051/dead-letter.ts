@@ -1,0 +1,1 @@
+export interface DeadLetterRecord{deadLetterId:string;eventId:string;tenantId:string;reason:string;attempts:number;firstFailedAt:string;lastFailedAt:string;status:"open"|"replayed"|"discarded";}export const mayReplay=(r:DeadLetterRecord)=>r.status==="open"&&r.attempts<=5;

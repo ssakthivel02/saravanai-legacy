@@ -1,0 +1,1 @@
+export type ModelStage="candidate"|"evaluating"|"approved"|"deprecated"|"retired";export interface RegisteredModel{modelId:string;provider:string;version:string;stage:ModelStage;capabilities:string[];evaluationSuiteId:string;approvedBy?:string;approvedAt?:string;}export const mayServeProduction=(m:RegisteredModel)=>m.stage==="approved"&&Boolean(m.approvedBy&&m.approvedAt);

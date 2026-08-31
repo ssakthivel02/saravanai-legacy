@@ -1,0 +1,1 @@
+export interface SecretReference{secretId:string;tenantId:string;binding:string;version:number;createdAt:string;rotateBy:string;status:"active"|"rotation_due"|"revoked";}export function rotationStatus(s:SecretReference,now=Date.now()):SecretReference["status"]{if(s.status==="revoked")return"revoked";return new Date(s.rotateBy).getTime()<=now?"rotation_due":"active";}

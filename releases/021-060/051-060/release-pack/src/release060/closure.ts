@@ -1,0 +1,1 @@
+export interface ProgrammeClosure{releaseRange:string;commitSha:string;evidenceIndexSha256:string;approvedBy:string[];residualRisks:string[];closedAt:string;}

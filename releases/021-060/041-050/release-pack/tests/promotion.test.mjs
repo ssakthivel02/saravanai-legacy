@@ -1,0 +1,1 @@
+import test from"node:test";import assert from"node:assert/strict";const pass=(s,m,f=0,r=[])=>f===0&&r.length===0&&Object.entries(m).every(([k,v])=>(s[k]??0)>=v);test("safety failure blocks model",()=>assert.equal(pass({q:.9},{q:.8},1),false));test("thresholds pass",()=>assert.equal(pass({q:.9},{q:.8}),true));

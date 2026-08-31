@@ -1,0 +1,1 @@
+export interface Incident{incidentId:string;severity:"SEV1"|"SEV2"|"SEV3"|"SEV4";status:"declared"|"investigating"|"contained"|"recovering"|"resolved";commander:string;communicationsLead?:string;operationsLead?:string;declaredAt:string;}export const requiresExecutiveComms=(i:Incident)=>i.severity==="SEV1";

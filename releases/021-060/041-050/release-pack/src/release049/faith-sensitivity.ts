@@ -1,0 +1,1 @@
+export interface FaithReference{tradition:string;claimType:"documented"|"traditional_belief"|"scholarly_interpretation"|"unverified";confidence:"high"|"medium"|"low";sourceRefs:string[];}

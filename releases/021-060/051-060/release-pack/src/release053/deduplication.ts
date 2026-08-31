@@ -1,0 +1,1 @@
+export const normaliseTitle=(v:string)=>v.normalize("NFKC").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();export const potentialDuplicate=(a:string,b:string)=>normaliseTitle(a)===normaliseTitle(b);

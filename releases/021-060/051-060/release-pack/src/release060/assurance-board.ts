@@ -1,0 +1,1 @@
+export interface ReadinessDomain{domain:string;status:"not_started"|"in_progress"|"ready"|"blocked";owner:string;evidenceIds:string[];blockers:string[];}export function overallReadiness(d:ReadinessDomain[]):"blocked"|"in_progress"|"ready"{if(d.some(x=>x.status==="blocked"))return"blocked";if(d.length&&d.every(x=>x.status==="ready"))return"ready";return"in_progress";}

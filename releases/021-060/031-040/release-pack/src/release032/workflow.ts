@@ -1,0 +1,4 @@
+export type WorkflowState="draft"|"queued"|"running"|"waiting_approval"|"completed"|"failed"|"cancelled";
+export interface WorkflowStep{stepId:string;type:"agent"|"approval"|"connector"|"transform"|"notification";dependsOn:string[];maxAttempts:number;timeoutSeconds:number;compensatingStepId?:string;}
+export interface WorkflowDefinition{workflowId:string;tenantId:string;version:number;steps:WorkflowStep[];enabled:boolean;}
+export function validateWorkflow(d:WorkflowDefinition):string[]{const errors:string[]=[];const ids=new Set(d.steps.map(s=>s.stepId));for(const s of d.steps){if(s.dependsOn.some(x=>!ids.has(x)))errors.push(`unknown_dependency:${s.stepId}`);if(s.maxAttempts<1||s.maxAttempts>5)errors.push(`invalid_attempts:${s.stepId}`);if(s.timeoutSeconds<1||s.timeoutSeconds>3600)errors.push(`invalid_timeout:${s.stepId}`);}return errors;}

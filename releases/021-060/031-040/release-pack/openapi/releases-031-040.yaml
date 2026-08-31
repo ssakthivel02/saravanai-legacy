@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 031–040 API
+  version: 0.40.0
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/release-031/status:
+    get:
+      summary: Enterprise AI Gateway status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-032/status:
+    get:
+      summary: AI Workflow Engine status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-033/status:
+    get:
+      summary: Enterprise Research Platform status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-034/status:
+    get:
+      summary: Document Intelligence status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-035/status:
+    get:
+      summary: Enterprise Automation status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-036/status:
+    get:
+      summary: Connector Framework status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-037/status:
+    get:
+      summary: Enterprise Administration status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-038/status:
+    get:
+      summary: Global Compliance Centre status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-039/status:
+    get:
+      summary: Disaster Recovery and Resilience status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-040/status:
+    get:
+      summary: Enterprise Launch Operations status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}

@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: SakthiAI Releases 051–060 API
+  version: 0.60.0
+servers:
+  - url: https://sakthiai.omsaravanabhava.org
+paths:
+  /api/v1/release-051/status:
+    get:
+      summary: Enterprise Data Platform and Eventing status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-052/status:
+    get:
+      summary: Retrieval and Search Platform status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-053/status:
+    get:
+      summary: Knowledge Quality and Stewardship status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-054/status:
+    get:
+      summary: Agent Evaluation and Simulation status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-055/status:
+    get:
+      summary: Secure Artifact and Code Generation status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-056/status:
+    get:
+      summary: Mobile and PWA Readiness status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-057/status:
+    get:
+      summary: Collaboration and Notifications status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-058/status:
+    get:
+      summary: Privacy Rights and Records Management status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-059/status:
+    get:
+      summary: Incident Command and Chaos Engineering status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}
+  /api/v1/release-060/status:
+    get:
+      summary: Global Production Assurance status
+      responses:
+        '200': {description: Capability status}
+        '401': {description: Authentication required}
+        '403': {description: Authorisation denied}

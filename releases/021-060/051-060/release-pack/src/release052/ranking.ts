@@ -1,0 +1,1 @@
+export interface RankingSignals{semantic:number;lexical:number;freshness:number;authority:number;}export const hybridScore=(s:RankingSignals)=>s.semantic*.45+s.lexical*.25+s.freshness*.1+s.authority*.2;

@@ -1,0 +1,1 @@
+export interface ApiClient{clientId:string;tenantId:string;name:string;scopes:string[];status:"active"|"suspended"|"revoked";createdAt:string;}export const hasScope=(c:ApiClient,s:string)=>c.status==="active"&&c.scopes.includes(s);

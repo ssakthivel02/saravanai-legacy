@@ -1,0 +1,1 @@
+export interface LineageEdge{lineageId:string;tenantId:string;sourceAssetId:string;targetAssetId:string;transformation:string;jobRef:string;observedAt:string;}

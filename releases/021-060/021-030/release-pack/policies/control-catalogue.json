@@ -1,0 +1,125 @@
+{
+  "version": "0.30.0",
+  "controls": [
+    {
+      "controlId": "SAK-001",
+      "domain": "Identity",
+      "statement": "Cloudflare Access identity is verified before protected API access",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-002",
+      "domain": "Identity",
+      "statement": "Tenant boundary is derived from trusted identity context",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-003",
+      "domain": "Identity",
+      "statement": "Privileged sessions require MFA and rotation",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-004",
+      "domain": "Zero Trust",
+      "statement": "Access is denied by default and evaluated per request",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-005",
+      "domain": "Zero Trust",
+      "statement": "Restricted resources require trusted devices",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-006",
+      "domain": "AI Safety",
+      "statement": "Prompt injection and secret-shaped input are inspected",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-007",
+      "domain": "AI Safety",
+      "statement": "Current facts require citations or human review",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-008",
+      "domain": "Agents",
+      "statement": "Agents use explicit tool allowlists and bounded steps",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-009",
+      "domain": "Agents",
+      "statement": "Production deployment requires human approval",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-010",
+      "domain": "Knowledge",
+      "statement": "All graph facts carry provenance and confidence",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-011",
+      "domain": "Memory",
+      "statement": "Memory requires source, consent basis and expiry",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-012",
+      "domain": "Observability",
+      "statement": "Telemetry labels use a privacy-safe allowlist",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-013",
+      "domain": "DevSecOps",
+      "statement": "Protected releases require tests, scans, SBOM and evidence",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-014",
+      "domain": "Workspace",
+      "statement": "Modules are rendered only for effective permissions",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    },
+    {
+      "controlId": "SAK-015",
+      "domain": "Readiness",
+      "statement": "Production launch requires signed go/no-go evidence",
+      "owner": "Owner/Security",
+      "evidence": [],
+      "status": "designed"
+    }
+  ]
+}

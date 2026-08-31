@@ -1,0 +1,1 @@
+export interface EvaluationResult{evaluationId:string;modelId:string;suiteId:string;scores:Record<string,number>;safetyFailures:number;regressions:string[];executedAt:string;}export function passesPromotion(r:EvaluationResult,min:Record<string,number>):boolean{return r.safetyFailures===0&&r.regressions.length===0&&Object.entries(min).every(([k,v])=>(r.scores[k]??0)>=v);}

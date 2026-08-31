@@ -1,0 +1,1 @@
+export interface ExecutionReceipt{executionId:string;automationId:string;requestId:string;startedAt:string;completedAt?:string;outcome:"started"|"succeeded"|"failed"|"cancelled";sideEffects:string[];evidenceRefs:string[];}

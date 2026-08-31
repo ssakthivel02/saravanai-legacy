@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS readiness_domains(domain TEXT PRIMARY KEY,status TEXT NOT NULL,owner TEXT NOT NULL,evidence_ids_json TEXT NOT NULL,blockers_json TEXT NOT NULL,updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS programme_closures(release_range TEXT PRIMARY KEY,commit_sha TEXT NOT NULL,evidence_index_sha256 TEXT NOT NULL,approved_by_json TEXT NOT NULL,residual_risks_json TEXT NOT NULL,closed_at TEXT NOT NULL);

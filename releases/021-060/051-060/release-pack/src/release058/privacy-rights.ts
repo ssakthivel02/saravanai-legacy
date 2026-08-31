@@ -1,0 +1,1 @@
+export interface PrivacyRequest{requestId:string;subjectRef:string;tenantId:string;type:"access"|"rectification"|"deletion"|"restriction"|"portability"|"objection";status:"received"|"verified"|"in_progress"|"completed"|"rejected";dueAt:string;legalHoldApplies:boolean;}export const mayDelete=(r:PrivacyRequest)=>r.type==="deletion"&&r.status==="verified"&&!r.legalHoldApplies;

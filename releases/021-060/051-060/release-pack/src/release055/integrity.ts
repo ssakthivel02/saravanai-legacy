@@ -1,0 +1,1 @@
+export interface ArtifactEvidence{artifactId:string;sha256:string;generatedBy:string;templateVersion:string;sourceRefs:string[];validationResults:string[];reviewedBy?:string;}

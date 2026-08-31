@@ -1,0 +1,1 @@
+export interface AssuranceFinding{findingId:string;controlId:string;severity:"low"|"medium"|"high"|"critical";status:"open"|"accepted"|"remediated"|"verified";owner:string;dueAt?:string;}export const blocksRelease=(f:AssuranceFinding[])=>f.some(x=>["high","critical"].includes(x.severity)&&!["remediated","verified"].includes(x.status));

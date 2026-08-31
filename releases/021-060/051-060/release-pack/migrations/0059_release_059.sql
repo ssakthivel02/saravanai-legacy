@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS incidents(incident_id TEXT PRIMARY KEY,severity TEXT NOT NULL,status TEXT NOT NULL,commander TEXT NOT NULL,communications_lead TEXT,operations_lead TEXT,declared_at TEXT NOT NULL,resolved_at TEXT);
+CREATE TABLE IF NOT EXISTS chaos_experiments(experiment_id TEXT PRIMARY KEY,hypothesis TEXT NOT NULL,scope_json TEXT NOT NULL,blast_radius TEXT NOT NULL,abort_conditions_json TEXT NOT NULL,approved_by TEXT,executed_at TEXT,outcome TEXT);

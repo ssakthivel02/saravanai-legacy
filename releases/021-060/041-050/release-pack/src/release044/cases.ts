@@ -1,0 +1,1 @@
+export interface CaseRecord{caseId:string;tenantId:string;type:"security"|"privacy"|"compliance"|"content"|"operations";severity:"low"|"medium"|"high"|"critical";status:"open"|"investigating"|"waiting"|"resolved"|"closed";owner:string;evidenceIds:string[];}
