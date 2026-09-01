@@ -1,0 +1,97 @@
+{
+  "schema_version": "0.1.0",
+  "policy": "sakthiai-agent-governance",
+  "defaults": {
+    "unknown_capability": "deny",
+    "unknown_tool": "deny",
+    "production_write": "approval_required",
+    "destructive_action": "approval_required",
+    "secret_in_prompt": "deny",
+    "provider_paid_fallback": "deny_unless_budget_authorized",
+    "browser_automation": "fallback_only",
+    "max_transient_retries": 2,
+    "checkpoint_required_for_resumable_tasks": true,
+    "completion_requires_evidence": true
+  },
+  "autonomy": {
+    "GREEN": {
+      "may_execute": true,
+      "approval_required": false,
+      "scope": [
+        "read_only_research",
+        "read_only_repository_inspection",
+        "staging_data_creation",
+        "isolated_branch_changes",
+        "draft_pull_request_creation",
+        "bounded_ci_triage",
+        "artifact_generation",
+        "internal_task_ledger_updates",
+        "publication_or_deployment_preparation_only"
+      ]
+    },
+    "AMBER": {
+      "may_execute": true,
+      "approval_required": true,
+      "scope": [
+        "merge_pull_request",
+        "production_deployment",
+        "dns_or_edge_change",
+        "external_message_send",
+        "public_publish",
+        "identity_or_rbac_change",
+        "persistent_data_delete_or_overwrite",
+        "paid_provider_enablement",
+        "sandboxed_computer_use_for_consequential_steps"
+      ]
+    },
+    "RED": {
+      "may_execute": false,
+      "approval_required": false,
+      "scope": [
+        "secret_exfiltration",
+        "safeguard_bypass",
+        "mfa_bypass",
+        "unbounded_destructive_change",
+        "owner_impersonation",
+        "unapproved_financial_transaction"
+      ]
+    }
+  },
+  "provider_routing": {
+    "order": [
+      "sakthi_edge_or_local_when_sufficient",
+      "free_or_included_provider_when_sufficient",
+      "approved_paid_provider_within_budget"
+    ],
+    "workers": ["openai", "manus", "claude", "gemini", "kimi", "ollama"],
+    "rule": "provider_is_worker_not_system_of_record"
+  },
+  "action_packet_required_for": [
+    "production_deployment",
+    "dns_change",
+    "public_publish",
+    "external_message_send",
+    "identity_or_rbac_change",
+    "merge_to_protected_branch",
+    "persistent_destructive_change"
+  ],
+  "action_packet_fields": [
+    "task_id",
+    "requested_action",
+    "target",
+    "reason",
+    "diff_or_payload_summary",
+    "evidence",
+    "risk",
+    "rollback",
+    "expiry",
+    "approval_reference"
+  ],
+  "evidence_minimums": {
+    "research": ["source_references", "searched_at", "unresolved_uncertainty"],
+    "code": ["changed_files", "test_or_ci_evidence", "known_limitations"],
+    "data": ["record_count", "schema_validation", "provenance", "next_checkpoint"],
+    "artifact": ["artifact_reference", "input_reference", "generation_manifest"],
+    "deployment": ["release_ref", "precheck", "postcheck", "rollback_reference"]
+  }
+}
