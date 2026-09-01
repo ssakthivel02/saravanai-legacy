@@ -1,0 +1,304 @@
+{
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-08-28T18:55:00+01:00",
+  "publicSafe": true,
+  "capturePolicy": {
+    "purpose": "Preserve distilled SakthiAI decisions, capability gaps, innovation candidates and next actions without publishing raw conversations or secrets.",
+    "rawChatStoredInRepository": false,
+    "secretsAllowed": false,
+    "personalSensitiveDataAllowed": false,
+    "captureRule": "Capture the decision, rationale, owner/public boundary, evidence source and implementation status; never copy a whole private conversation into Git history."
+  },
+  "northStar": {
+    "goal": "Build SakthiAI into a benchmark-proven world-class AI operating platform rather than a feature-count clone.",
+    "strategy": "Owner/private experimental capability first; harden and graduate only proven capabilities to public use.",
+    "moats": [
+      "provider-neutral orchestration and migration",
+      "checkpointed resumable long-running agents",
+      "evidence-first research and contradiction handling",
+      "local/self-hosted/edge fallback",
+      "Tamil and Indian-language excellence",
+      "transparent cost, latency, provenance and authority",
+      "open agent/tool/UI interoperability"
+    ]
+  },
+  "releaseLanes": {
+    "ownerPilot": {
+      "label": "Owner Pilot",
+      "definition": "Useful capability may run for the owner behind exact-owner identity, feature flags, default-deny permissions, explicit budget limits and rollback controls before public hardening."
+    },
+    "publicCandidate": {
+      "label": "Public Candidate",
+      "definition": "Capability has passed security, privacy, licensing, tenancy, abuse, reliability, accessibility, cost and rollback gates and is eligible for controlled public rollout."
+    },
+    "watch": {
+      "label": "Watch",
+      "definition": "Promising technology to research or benchmark before committing implementation resources."
+    },
+    "reject": {
+      "label": "Reject / Defer",
+      "definition": "Low strategic value, excessive lock-in/risk, unsupported claims or poor cost-benefit; retain rationale rather than silently forgetting the idea."
+    }
+  },
+  "currentProgramme": {
+    "branch": "feature/manus-claude-parity-20260828",
+    "pullRequest": 46,
+    "issue": 45,
+    "programme": "SAI-PARITY-020",
+    "state": "foundation-in-progress",
+    "runtimeActivation": "none-from-this-programme-yet"
+  },
+  "decisions": [
+    {
+      "id": "DEC-2026-08-28-001",
+      "title": "Private-first, public-later capability graduation",
+      "status": "accepted",
+      "decision": "Advanced agent, computer, persistent-compute and experimental model features may be implemented for owner use first; public exposure requires a separate graduation gate.",
+      "rationale": "This preserves development velocity without pretending an owner prototype is safe for untrusted multi-user production."
+    },
+    {
+      "id": "DEC-2026-08-28-002",
+      "title": "Dashboard is the canonical design-memory surface",
+      "status": "accepted",
+      "decision": "Important SakthiAI ideas and decisions from future discussions are distilled into this dashboard/registry rather than relying on conversational recall alone.",
+      "rationale": "A structured decision ledger is searchable, reviewable, versioned and less likely to lose constraints than an unstructured transcript."
+    },
+    {
+      "id": "DEC-2026-08-28-003",
+      "title": "Functional parity without proprietary cloning",
+      "status": "accepted",
+      "decision": "Capture the valuable Manus, Claude, OpenAI, Gemini, Kimi and other market workflows while keeping SakthiAI contracts provider-neutral and avoiding copied proprietary code, prompts, weights, branding or protected UI.",
+      "rationale": "The durable asset is SakthiAI's architecture and user experience, not dependency on one competitor."
+    },
+    {
+      "id": "DEC-2026-08-28-004",
+      "title": "World-best claim must be benchmarked",
+      "status": "accepted",
+      "decision": "Do not claim SakthiAI is best-in-world or Fable-equivalent based on roadmap breadth; prove advantages on representative research, coding, long-horizon agent, multimodal, cost and reliability benchmarks.",
+      "rationale": "Feature quantity without quality, reliability and economics creates a fragile product rather than a moat."
+    }
+  ],
+  "priorityBuilds": [
+    {"rank":1,"id":"P0-TASKSTATE","title":"Portable TaskState + checkpoints + failover","lane":"ownerPilot","status":"contract-started"},
+    {"rank":2,"id":"P0-PLAN","title":"Plan Mode + task DAG + pause/resume/steering","lane":"ownerPilot","status":"planned"},
+    {"rank":3,"id":"P0-BRANCH-MEMORY","title":"Conversation branching + proposed memory/instruction updates","lane":"ownerPilot","status":"planned"},
+    {"rank":4,"id":"P0-SCHEDULER","title":"Context-aware scheduler with same-thread and isolated-run modes","lane":"ownerPilot","status":"planned"},
+    {"rank":5,"id":"P1-WIDE-RESEARCH","title":"Parallel research agents + evidence graph + contradiction engine","lane":"ownerPilot","status":"planned"},
+    {"rank":6,"id":"P1-FRONTIER","title":"Sakthi Frontier planner/executor/verifier orchestration","lane":"ownerPilot","status":"planned"},
+    {"rank":7,"id":"P1-CODE","title":"Repository-to-PR coding agent with tests and rollback","lane":"ownerPilot","status":"planned"},
+    {"rank":8,"id":"P1-COMPUTER","title":"Connector-first browser/computer operator","lane":"ownerPilot","status":"planned"},
+    {"rank":9,"id":"P1-ARTIFACTS","title":"Native editable Artifact Studio + live artifacts","lane":"ownerPilot","status":"planned"},
+    {"rank":10,"id":"P2-INTEROP","title":"MCP + A2A + A2UI capability interoperability","lane":"ownerPilot","status":"planned"}
+  ],
+  "innovationRadar": [
+    {
+      "id":"RADAR-KIMI-SWARM",
+      "vendor":"Moonshot AI / Kimi",
+      "region":"China",
+      "technology":"Kimi Agent Swarm and K3 long-horizon agentic coding",
+      "signal":"Kimi documents large-scale automatic sub-agent coordination and very large parallel tool-call workloads.",
+      "whatSakthiAILearns":"Dynamic bounded agent fan-out, sub-agent resource pools, result deduplication and parallel batch/research execution.",
+      "action":"pilot-design",
+      "lane":"ownerPilot",
+      "priority":"P1",
+      "risk":"Parallelism can multiply cost, duplicate work and amplify errors; SakthiAI must bound worker count and require verifier synthesis.",
+      "source":"https://www.kimi.com/en/help/agent/agent-swarm",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-GLM-LONG-HORIZON",
+      "vendor":"Z.ai",
+      "region":"China",
+      "technology":"GLM-5.2/5.3 long-horizon coding, 1M context and ZCode computer automation",
+      "signal":"Z.ai is combining long context, coding effort controls, project memory, subagents, automation and computer/browser control.",
+      "whatSakthiAILearns":"Separate context capacity from task-state durability; add explicit effort levels, project memory inspection, reconnect recovery and visible computer permissions.",
+      "action":"benchmark-and-adapt",
+      "lane":"ownerPilot",
+      "priority":"P1",
+      "risk":"Vendor benchmark claims require independent validation and computer control requires strict permissions.",
+      "source":"https://z.ai/blog/glm-5.3",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-QWEN-MULTIMODAL-AGENT",
+      "vendor":"Alibaba Qwen",
+      "region":"China",
+      "technology":"Qwen3.7 multimodal interactive agents",
+      "signal":"Qwen3.7 models combine image/text/video understanding, function calling, web search, screen perception and GUI/mobile navigation.",
+      "whatSakthiAILearns":"Open/replaceable multimodal perception lane for browser/mobile/computer tasks, with structured outputs and caching.",
+      "action":"benchmark",
+      "lane":"watch",
+      "priority":"P1",
+      "risk":"Model licensing, deployment footprint and GUI reliability must be checked per exact model release.",
+      "source":"https://www.alibabacloud.com/help/en/model-studio/qwen3-7-plus",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-GOOGLE-A2A",
+      "vendor":"Linux Foundation / Google ecosystem",
+      "region":"Global",
+      "technology":"Agent2Agent (A2A) interoperability",
+      "signal":"A2A has moved into production-oriented cross-vendor agent interoperability with broad ecosystem adoption.",
+      "whatSakthiAILearns":"Give SakthiAI agents discoverable capability cards, secure task handoff and cross-vendor collaboration instead of hard-coded proprietary agent calls.",
+      "action":"adopt-protocol-layer",
+      "lane":"ownerPilot",
+      "priority":"P1",
+      "risk":"Remote agents remain untrusted boundaries; identity, capability negotiation, provenance and authorization are mandatory.",
+      "source":"https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-GOOGLE-A2UI",
+      "vendor":"Google open-source ecosystem",
+      "region":"Global",
+      "technology":"A2UI portable generative UI",
+      "signal":"A2UI lets remote agents describe safe native UI using declarative data rather than executing arbitrary frontend code.",
+      "whatSakthiAILearns":"Allow SakthiAI agents to return interactive forms, dashboards, charts and controls that render consistently on web/mobile using an approved component catalog.",
+      "action":"prototype",
+      "lane":"ownerPilot",
+      "priority":"P1",
+      "risk":"Component catalog and action binding must remain host-controlled; never treat generated UI as automatic authorization.",
+      "source":"https://developers.googleblog.com/en/a2ui-v0-9-generative-ui/",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-GEMINI-COMPUTER",
+      "vendor":"Google",
+      "region":"USA / Global",
+      "technology":"Gemini native computer-use models",
+      "signal":"Gemini integrates computer use with search, maps grounding and function calling for browser/mobile/desktop agents.",
+      "whatSakthiAILearns":"Use one multimodal perception/action contract across browser, desktop and mobile while preserving the SakthiAI connector-first hierarchy.",
+      "action":"benchmark",
+      "lane":"watch",
+      "priority":"P1",
+      "risk":"Visual computer operation should remain fallback behind reliable APIs/DOM automation.",
+      "source":"https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-SAKANA-ORCHESTRATION",
+      "vendor":"Sakana AI",
+      "region":"Japan",
+      "technology":"Fugu collective model orchestration",
+      "signal":"Sakana reports improvements by dynamically orchestrating multiple frontier models rather than relying on one model.",
+      "whatSakthiAILearns":"Invest in orchestration quality, diversity-aware model selection and verifier ensembles; this can be a stronger moat than chasing a single largest model.",
+      "action":"research-and-benchmark",
+      "lane":"ownerPilot",
+      "priority":"P1",
+      "risk":"Vendor-reported benchmark gains must be reproduced before claims or routing policy changes.",
+      "source":"https://sakana.ai/fugu-1-1-claude-code-interface/",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-MISTRAL-VIBE-MCP",
+      "vendor":"Mistral AI",
+      "region":"Europe",
+      "technology":"Unified Work/Code/Chat agent plus MCP connectors and human-in-loop tool execution",
+      "signal":"Mistral is converging productivity, coding and chat around reusable connectors and explicit tool approvals.",
+      "whatSakthiAILearns":"One shared conversation/agent runtime should power work, code and chat surfaces while connector permissions stay centrally governed.",
+      "action":"adopt-pattern",
+      "lane":"ownerPilot",
+      "priority":"P1",
+      "risk":"Do not reproduce product branding/UI; use open MCP contracts and SakthiAI-native approval semantics.",
+      "source":"https://mistral.ai/news/connectors/",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-MINIMAX-OMNI-VIDEO",
+      "vendor":"MiniMax",
+      "region":"China",
+      "technology":"H3 unified multimodal video/audio generation",
+      "signal":"H3 combines text, image, video and audio context with video generation and native stereo audio.",
+      "whatSakthiAILearns":"Creative Studio should evolve toward one multimodal project context instead of isolated image/video/audio tools.",
+      "action":"creative-lab-evaluation",
+      "lane":"watch",
+      "priority":"P2",
+      "risk":"High compute/storage cost plus content provenance, rights and safety requirements.",
+      "source":"https://www.minimax.io/news/minimax-h3-open-source",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-BYTEDANCE-REALTIME",
+      "vendor":"ByteDance Seed",
+      "region":"China",
+      "technology":"SeedRealtime native audio-visual full-duplex interaction",
+      "signal":"SeedRealtime combines continuous audio, video and text perception with proactive speech and tool calls.",
+      "whatSakthiAILearns":"Future Sakthi Live mode should support interruptible full-duplex voice, screen/camera understanding and event-driven proactive assistance under explicit user controls.",
+      "action":"research",
+      "lane":"watch",
+      "priority":"P2",
+      "risk":"Continuous sensing is privacy-sensitive; opt-in capture indicators, local processing where feasible and no silent recording are mandatory.",
+      "source":"https://seed.bytedance.com/en/blog/seedrealtime-audio-visual-full-duplex-llm-released-toward-omni-modal-natural-interaction",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-BYTEDANCE-SEEDANCE",
+      "vendor":"ByteDance Seed",
+      "region":"China",
+      "technology":"Seedance 2.5 reference-driven longer-form audio-video creation",
+      "signal":"The product direction is moving from short prompt-to-clip generation toward controllable creative work with references and iterative extensions.",
+      "whatSakthiAILearns":"Build a creative timeline/project layer with shot continuity, reference assets, extension and revision rather than a one-shot video button.",
+      "action":"creative-roadmap",
+      "lane":"watch",
+      "priority":"P2",
+      "risk":"Rights/provenance and compute economics must be solved before broad public generation.",
+      "source":"https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-XAI-ALWAYS-ON",
+      "vendor":"xAI",
+      "region":"USA / Global",
+      "technology":"Always-on computer agents and integrated speech-to-speech voice agents",
+      "signal":"Grok Bot and Voice Agent Builder illustrate persistent AI coworkers plus lower-latency unified voice-agent stacks.",
+      "whatSakthiAILearns":"Persistent agent workers need approval escalation, memory, dedicated compute and observability; live voice should minimize unnecessary STT/LLM/TTS hops.",
+      "action":"architecture-study",
+      "lane":"watch",
+      "priority":"P2",
+      "risk":"Always-on agents expand attack surface and ongoing cost; owner pilot only until isolation/kill-switch/evidence are mature.",
+      "source":"https://x.ai/news/introducing-grok-bot",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-BAIDU-UNIFIED-MULTIMODAL",
+      "vendor":"Baidu ERNIE",
+      "region":"China",
+      "technology":"Unified multimodal foundation model architecture",
+      "signal":"ERNIE 5.0 describes a unified autoregressive architecture across text, image, video and audio instead of late-fusing separate modality systems.",
+      "whatSakthiAILearns":"Keep SakthiAI's multimodal API and memory representation modality-neutral so future unified models can replace stitched pipelines cleanly.",
+      "action":"architecture-watch",
+      "lane":"watch",
+      "priority":"P2",
+      "risk":"Do not tie product architecture to one vendor/model implementation.",
+      "source":"https://ernie.baidu.com/blog/posts/ernie5.0/",
+      "sourceChecked":"2026-08-28"
+    },
+    {
+      "id":"RADAR-OPENAI-CODEX-COMPUTER",
+      "vendor":"OpenAI",
+      "region":"USA / Global",
+      "technology":"Codex long-running professional work, plugins, shareable sites and computer use",
+      "signal":"Codex is expanding from coding into broader professional workflows and remote computer operation with steering across devices.",
+      "whatSakthiAILearns":"Sakthi Code should be an execution substrate usable by technical and non-technical workflows, with remote steering and interactive result surfaces.",
+      "action":"parity-target",
+      "lane":"ownerPilot",
+      "priority":"P1",
+      "risk":"External OpenAI use remains optional; SakthiAI's task state and artifacts must stay portable.",
+      "source":"https://openai.com/index/codex-for-every-role-tool-workflow/",
+      "sourceChecked":"2026-08-28"
+    }
+  ],
+  "graduationGates": [
+    "threat model and abuse cases complete",
+    "licensing/IP and model-use rights verified",
+    "data classification, privacy and retention contract complete",
+    "multi-tenant isolation and server-side authorization proven",
+    "secrets and connector scopes least-privilege",
+    "human approval/rollback for consequential writes",
+    "cost and quota limits tested under abuse and retry storms",
+    "failure recovery, task checkpoints and restore evidence complete",
+    "accessibility plus Tamil/English acceptance criteria passed",
+    "observability, incident response and emergency stop proven",
+    "benchmark and regression evidence meets the advertised claim"
+  ]
+}
