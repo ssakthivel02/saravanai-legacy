@@ -10,6 +10,10 @@
     {
       "pattern": "sakthiai.omsaravanabhava.org",
       "custom_domain": true
+    },
+    {
+      "pattern": "api-sakthiai.omsaravanabhava.org",
+      "custom_domain": true
     }
   ],
   "vars": {
