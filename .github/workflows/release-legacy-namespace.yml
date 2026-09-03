@@ -1,0 +1,54 @@
+name: Release legacy SaravanAI namespace
+
+on:
+  push:
+    branches: [hotfix/sakthiai-namespace-release]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: saravanai-legacy-namespace-release
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate and build legacy rollback target
+        run: npm test
+      - name: Assert SakthiAI domains are released in source
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -q '"pattern": "sakthiai.omsaravanabhava.org"' wrangler.jsonc
+          ! grep -q '"pattern": "api-sakthiai.omsaravanabhava.org"' wrangler.jsonc
+          grep -q 'legacy-saravanai.omsaravanabhava.org' wrangler.jsonc
+          grep -q 'api-saravanai.omsaravanabhava.org' wrangler.jsonc
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build legacy assets
+        run: npm run build
+      - name: Require Cloudflare deployment credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${CLOUDFLARE_API_TOKEN:-}"
+          test -n "${CLOUDFLARE_ACCOUNT_ID:-}"
+      - name: Redeploy legacy Worker on legacy-only domains
+        run: npx --yes wrangler@latest deploy --keep-vars
