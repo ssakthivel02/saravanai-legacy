@@ -8,11 +8,11 @@
   "preview_urls": false,
   "routes": [
     {
-      "pattern": "sakthiai.omsaravanabhava.org",
+      "pattern": "legacy-saravanai.omsaravanabhava.org",
       "custom_domain": true
     },
     {
-      "pattern": "api-sakthiai.omsaravanabhava.org",
+      "pattern": "api-saravanai.omsaravanabhava.org",
       "custom_domain": true
     }
   ],
